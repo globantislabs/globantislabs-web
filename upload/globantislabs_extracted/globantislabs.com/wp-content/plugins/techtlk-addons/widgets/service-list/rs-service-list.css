@@ -1,0 +1,200 @@
+.rs-service-list .services-inner {
+  padding: 40px 30px;
+  background-color: #f7f7f7;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  border-bottom: 1px solid #e7e7e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  position: relative;
+}
+.rs-service-list .services-inner .count_number {
+  transition: all 0.3s ease 0s;
+}
+.rs-service-list .services-inner .feature_img {
+  position: absolute;
+  content: "";
+  right: 50px;
+  bottom: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease 0s;
+  z-index: 1;
+}
+.rs-service-list .services-inner .feature_img img {
+  width: 280px;
+  height: auto;
+}
+.rs-service-list .services-inner .icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: all 0.3s ease 0s;
+  flex-shrink: 0;
+}
+.rs-service-list .services-inner .icon-wrap svg {
+  width: 60px;
+  height: 60px;
+}
+.rs-service-list .services-inner .icon-wrap svg path {
+  fill: #2B4DFF;
+  transition: all 0.3s ease 0s;
+}
+.rs-service-list .services-inner .icon-wrap i {
+  font-size: 60px;
+  color: #2B4DFF;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.rs-service-list .services-inner .icon-wrap i:after {
+  font-size: inherit;
+  line-height: inherit;
+}
+.rs-service-list .services-inner .title {
+  margin-bottom: 0px;
+  transition: all 0.3s ease 0s;
+}
+.rs-service-list .services-inner .subinfo {
+  transition: all 0.3s ease 0s;
+}
+.rs-service-list .services-inner .desc-text {
+  transition: all 0.3s ease 0s;
+  color: #585B6F;
+}
+.rs-service-list .services-inner .desc-text span {
+  display: block;
+  color: #0A165E;
+  margin-top: 10px;
+  line-height: 26px;
+}
+.rs-service-list .services-inner .btn-part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: all 0.3s ease 0s;
+  flex-shrink: 0;
+}
+.rs-service-list .services-inner .btn-part svg {
+  width: 15px;
+  height: 15px;
+}
+.rs-service-list .services-inner .btn-part svg path {
+  fill: #2B4DFF;
+  transition: all 0.3s ease 0s;
+}
+.rs-service-list .services-inner .btn-part i {
+  font-size: 22px;
+  color: #2B4DFF;
+  line-height: 1;
+}
+.rs-service-list .services-inner .top-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.rs-service-list .services-inner .top-wrapper span {
+  display: block;
+  line-height: 18px;
+}
+.rs-service-list .services-inner .bottom-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+.rs-service-list .services-inner:last-child {
+  margin-bottom: 0 !important;
+}
+.rs-service-list .services-inner:hover .feature_img {
+  opacity: 1;
+}
+.rs-service-list .services-inner:hover::after {
+  left: 0;
+}
+.rs-service-list.thumb-bg .services-inner {
+  overflow: hidden;
+}
+.rs-service-list.thumb-bg .services-inner .feature_img {
+  z-index: 0;
+  top: 0;
+  width: 80%;
+  height: 100%;
+  left: -30%;
+  overflow: hidden;
+}
+.rs-service-list.thumb-bg .services-inner .feature_img img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+.rs-service-list.thumb-bg .services-inner > *:not(.feature_img) {
+  z-index: 1;
+}
+.rs-service-list.thumb-bg .services-inner.active .feature_img, .rs-service-list.thumb-bg .services-inner:hover .feature_img {
+  left: 0;
+  width: 100%;
+  opacity: 1;
+}
+.rs-service-list.scrollable-yes {
+  height: 200px;
+  overflow-y: auto;
+  padding-right: 25px;
+}
+.rs-service-list.scrollable-yes::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+}
+.rs-service-list.scrollable-yes::-webkit-scrollbar-track {
+  background-color: #c4cdff;
+  border-radius: 5px;
+}
+.rs-service-list.scrollable-yes::-webkit-scrollbar-thumb {
+  background-color: #0A165E;
+  border-radius: 5px;
+}
+.rs-service-list.style-3 .services-inner {
+  border: none;
+  padding: 20px;
+}
+.rs-service-list.style-3.animate-border {
+  position: relative;
+}
+.rs-service-list.style-3.animate-border .services-inner:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  background: #2B4DFF;
+  width: 0;
+  transition: all 0.3s ease 0s;
+}
+.rs-service-list.style-3.animate-border .services-inner:hover:after {
+  width: 100%;
+}
+.rs-service-list.style-3 .top-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+.rs-service-list.style-3 .icon-wrap svg {
+  width: 20px;
+  height: 20px;
+}
+.rs-service-list.style-3 .icon-wrap i {
+  font-size: 20px;
+}
+.rs-service-list.dynamic .top-wrapper {
+  width: 100%;
+}

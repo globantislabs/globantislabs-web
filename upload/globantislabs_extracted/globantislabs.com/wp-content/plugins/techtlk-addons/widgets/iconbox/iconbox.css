@@ -1,0 +1,43 @@
+.rs-iconbox-area .box-inner {
+  position: relative;
+  transition: 0.4s;
+  overflow: hidden;
+  display: flex;
+  gap: 15px;
+  transition: all 0.3s ease 0s;
+}
+.rs-iconbox-area .box-inner .icon-area {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: #0A165E;
+  flex-shrink: 0;
+  transition: all 0.3s ease 0s;
+}
+.rs-iconbox-area .box-inner .icon-area svg {
+  width: 18px;
+  height: 18px;
+}
+.rs-iconbox-area .box-inner .icon-area svg path {
+  transition: all 0.3s ease 0s;
+}
+.rs-iconbox-area .box-inner .icon-area i {
+  transition: all 0.3s ease 0s;
+  font-size: 30px;
+}
+.rs-iconbox-area .box-inner .icon-area img {
+  transition: all 0.3s ease 0s;
+}
+.rs-iconbox-area .box-inner .text-area .title {
+  margin: 0;
+  color: #121933;
+  transition: all 0.3s ease 0s;
+}
+.rs-iconbox-area .box-inner .text-area p {
+  margin: 0;
+  transition: all 0.3s ease 0s;
+}
+.rs-iconbox-area .box-inner:hover .text-area .title {
+  color: #2B4DFF;
+}

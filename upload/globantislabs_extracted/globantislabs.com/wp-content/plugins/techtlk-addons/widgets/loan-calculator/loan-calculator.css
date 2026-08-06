@@ -1,0 +1,116 @@
+.rs-addon-loan-calculator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.rs-addon-loan-calculator .chart-wrapper,
+.rs-addon-loan-calculator .content-wrapper {
+  width: 100%;
+  max-width: 50%;
+}
+.rs-addon-loan-calculator .data-slider {
+  margin-bottom: 50px;
+}
+.rs-addon-loan-calculator .data-slider .data-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.rs-addon-loan-calculator .data-slider .data-item label {
+  color: #0A165E;
+}
+.rs-addon-loan-calculator .data-slider .data-item input {
+  margin-top: 12px;
+  width: 100%;
+  border: none;
+  outline: none;
+  opacity: 1;
+  height: 13px;
+  border-radius: 5px;
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.rs-addon-loan-calculator .data-slider .data-item input:hover {
+  opacity: 1;
+}
+.rs-addon-loan-calculator .data-slider .data-item input::-webkit-slider-runnable-track {
+  height: 13px;
+  background: #ededed;
+  border-radius: inherit;
+  cursor: pointer;
+}
+.rs-addon-loan-calculator .data-slider .data-item input::-moz-range-track {
+  height: 13px;
+  cursor: pointer;
+  background: #ededed;
+  border-radius: inherit;
+}
+.rs-addon-loan-calculator .data-slider .data-item input::-webkit-slider-thumb {
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 13px;
+  width: 13px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #2B4DFF;
+  box-shadow: -407px 0 0 400px #2B4DFF;
+}
+.rs-addon-loan-calculator .data-slider .data-item input::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  cursor: ew-resize;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #2B4DFF;
+  box-shadow: -407px 0 0 400px #2B4DFF;
+}
+.rs-addon-loan-calculator .data-slider .data-item:last-child {
+  margin-bottom: 0;
+}
+.rs-addon-loan-calculator .sum_heading {
+  margin-bottom: 28px;
+}
+.rs-addon-loan-calculator .data-result {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.rs-addon-loan-calculator .data-result .chart-details {
+  width: 100%;
+  max-width: calc(50% - 14px);
+  padding: 30px;
+  border-radius: 5px;
+  background: rgba(3, 51, 51, 0.1);
+  color: #fff;
+}
+.rs-addon-loan-calculator .data-result .chart-details label {
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: inherit;
+  font-weight: 600;
+}
+.rs-addon-loan-calculator .data-result .chart-details.principal, .rs-addon-loan-calculator .data-result .chart-details.t-payable {
+  background: #2B4DFF;
+}
+.rs-addon-loan-calculator .data-result .chart-details.interest, .rs-addon-loan-calculator .data-result .chart-details.m-payable {
+  background: #0A165E;
+}
+.rs-addon-loan-calculator .data-result .chart-details.principal {
+  order: 1;
+}
+.rs-addon-loan-calculator .data-result .chart-details.interest {
+  order: 2;
+}
+.rs-addon-loan-calculator .data-result .chart-details.m-payable {
+  order: 3;
+}
+.rs-addon-loan-calculator .data-result .chart-details.t-payable {
+  order: 4;
+}

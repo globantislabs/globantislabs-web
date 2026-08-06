@@ -1,0 +1,1624 @@
+Uri: https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap
+File Name: C:\Downloaded Web Sites\globantislabs.com\css2
+Content Type: text/css
+
+Uri: https://fonts.googleapis.com/css?family=Space+Grotesk:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap
+File Name: C:\Downloaded Web Sites\globantislabs.com\css-1
+Content Type: text/css
+
+Uri: https://fonts.googleapis.com/css?family=Space+Grotesk:400,500,600,700&display=swap&ver=1.0.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\css
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj42VnskPMU.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj42VnskPMU.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVnskPMU.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVnskPMU.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj62UXskPMU.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj62UXskPMU.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUUsj.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUUsj.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUXskPMU.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUXskPMU.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUUsj.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUUsj.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUXskPMU.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\s\spacegrotesk\v22\V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUXskPMU.ttf
+Content Type: font/ttf
+
+Uri: https://globantislabs.com/
+File Name: C:\Downloaded Web Sites\globantislabs.com\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/about/
+File Name: C:\Downloaded Web Sites\globantislabs.com\about\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/appointment/
+File Name: C:\Downloaded Web Sites\globantislabs.com\appointment\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/careers/
+File Name: C:\Downloaded Web Sites\globantislabs.com\careers\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/comments/feed/
+File Name: C:\Downloaded Web Sites\globantislabs.com\comments\feed\index.htm
+Content Type: application/rss+xml
+
+Uri: https://globantislabs.com/contact/
+File Name: C:\Downloaded Web Sites\globantislabs.com\contact\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/feed/
+File Name: C:\Downloaded Web Sites\globantislabs.com\feed\index.htm
+Content Type: application/rss+xml
+
+Uri: https://globantislabs.com/industries/automotive/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\automotive\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/industries/cybersecurity/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\cybersecurity\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/industries/ecommerce/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\ecommerce\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/industries/education/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\education\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/industries/financial-services/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\financial-services\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/industries/healthcare/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\healthcare\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/industries/logistics/
+File Name: C:\Downloaded Web Sites\globantislabs.com\industries\logistics\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/artificial-intelligence/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\artificial-intelligence\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/cms-development/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\cms-development\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/devops-services/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\devops-services\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/it-support-services/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\it-support-services\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/software-development/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\software-development\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/ui-ux-design/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\ui-ux-design\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/service/web-development/
+File Name: C:\Downloaded Web Sites\globantislabs.com\service\web-development\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/technologies/
+File Name: C:\Downloaded Web Sites\globantislabs.com\technologies\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/why-choose-us-2/
+File Name: C:\Downloaded Web Sites\globantislabs.com\why-choose-us-2\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/work-process/
+File Name: C:\Downloaded Web Sites\globantislabs.com\work-process\index.htm
+Content Type: text/html
+
+Uri: https://globantislabs.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.6
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\contact-form-7\includes\css\styles.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.6
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\contact-form-7\includes\js\index.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.6
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\contact-form-7\includes\swv\js\index.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\css\widget-divider.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/css/widget-google_maps.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\css\widget-google_maps.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\css\widget-heading.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\css\widget-image.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/images/placeholder.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\images\placeholder.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\js\frontend-modules.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\js\frontend.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\js\webpack.runtime.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInLeft.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\lib\animations\styles\fadeInLeft.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInRight.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\lib\animations\styles\fadeInRight.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInUp.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\lib\animations\styles\fadeInUp.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/lib/animations/styles/rotateInUpRight.min.css?ver=4.0.9
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\lib\animations\styles\rotateInUpRight.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\elementor\assets\lib\swiper\v8\swiper.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/css/fonts/revicons/css/revicons.css
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\css\fonts\revicons\css\revicons.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/css/fonts/revicons/fonts/revicons.eot?5510888
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\css\fonts\revicons\fonts\revicons.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/css/fonts/revicons/fonts/revicons.svg?5510888
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\css\fonts\revicons\fonts\revicons.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/css/fonts/revicons/fonts/revicons.ttf?5510888
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\css\fonts\revicons\fonts\revicons.ttf
+Content Type: application/octet-stream
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/css/fonts/revicons/fonts/revicons.woff?5510888
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\css\fonts\revicons\fonts\revicons.woff
+Content Type: font/woff
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/css/sr7.css?ver=6.7.40
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\css\sr7.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/js/libs/tptools.js?ver=6.7.40
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\js\libs\tptools.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/revslider/public/js/sr7.js?ver=6.7.40
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\revslider\public\js\sr7.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/headding-title.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\headding-title.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516395
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516416
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-1.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516417
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-2.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516418
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-3.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516419
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-4.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516420
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-5.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516422
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-6.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516423
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-7.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516424
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-8.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516425
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-9.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516426
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-10.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516427
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-11.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516428
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-12.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516429
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-13.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516430
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-14.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516431
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-15.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516432
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-16.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516433
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-17.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-18.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516435
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-19.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516436
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-20.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/css/rsaddons.css?ver=1779516437
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\css\rsaddons-21.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/custom.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\custom.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/ddbeforeandafter.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\ddbeforeandafter.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/headding-title.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\headding-title.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/jQuery-plugin-progressbar.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\jQuery-plugin-progressbar.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/jquery-ui.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\jquery-ui.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/jquery.countdownTimer.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\jquery.countdownTimer.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/jquery.marquee.min.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\jquery.marquee.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/parallax-effect.min.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\parallax-effect.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/popper.min.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\popper.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/slick.min.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\slick.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/assets/js/tilt.jquery.min.js?ver=201513434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\assets\js\tilt.jquery.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/advanced-tab/advanced-tab.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\advanced-tab\advanced-tab.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/breadcrumb-widget/breadcrumb-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\breadcrumb-widget\breadcrumb-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/brochures/brochures.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\brochures\brochures.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/button-rotating/button-rotating.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\button-rotating\button-rotating.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/button/button.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\button\button.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/cf7/cf7.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\cf7\cf7.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/counter/counter.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\counter\counter.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/gsap-marquee-slide/gsap-marquee-slide.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\gsap-marquee-slide\gsap-marquee-slide.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/header-offcanvas/close.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\header-offcanvas\close.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/header-offcanvas/header-offcanvas.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\header-offcanvas\header-offcanvas.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/heading/heading.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\heading\heading.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/hotspot-widget/hotspot.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\hotspot-widget\hotspot.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/iconbox/iconbox.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\iconbox\iconbox.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/image-widget/image-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\image-widget\image-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/image-widget/img/ruler-shape-revers.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\image-widget\img\ruler-shape-revers.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/image-widget/img/ruler-shape.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\image-widget\img\ruler-shape.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/latest-blog-grid/blog-grid.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\latest-blog-grid\blog-grid.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/latest-blog-slider/blog-slider.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\latest-blog-slider\blog-slider.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/line-rain-animation/line-rain-animation.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\line-rain-animation\line-rain-animation.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/loan-calculator/loan-calculator.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\loan-calculator\loan-calculator.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/logo-widget/logo-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\logo-widget\logo-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/marquee-slider-logo/marquee-slider-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\marquee-slider-logo\marquee-slider-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/modal/modal.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\modal\modal.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/newsletter/newsletter.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\newsletter\newsletter.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/portfolio-filter/portfolio-filter-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\portfolio-filter\portfolio-filter-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/portfolio-grid/portfolio-grid.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\portfolio-grid\portfolio-grid.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/portfolio-slider/portfolio-slider.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\portfolio-slider\portfolio-slider.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/post-navigation/post-navigation.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\post-navigation\post-navigation.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/pricing-switcher/pricing-switcher.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\pricing-switcher\pricing-switcher.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/progress/rs-progress.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\progress\rs-progress.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/project-information/project-information.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\project-information\project-information.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/rs-accordion/rs-accordion.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\rs-accordion\rs-accordion.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/rs-award-widget/award-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\rs-award-widget\award-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/search-result/rs-search-result.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\search-result\rs-search-result.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/service-expand-effect/service-expand-effect.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\service-expand-effect\service-expand-effect.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/service-list/rs-service-list.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\service-list\rs-service-list.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/service-slider/service-slider-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\service-slider\service-slider-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/services/rs-service-grid.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\services\rs-service-grid.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/social-icons/rs-social-icons.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\social-icons\rs-social-icons.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/team-member-slider/team-slider-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\team-member-slider\team-slider-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/team-member/team-grid-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\team-member\team-grid-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/testimonial/slider/testimonial-slider-widget.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\testimonial\slider\testimonial-slider-widget.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/video/rs-video.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\video\rs-video.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-addons/widgets/work-process/work-process.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-addons\widgets\work-process\work-process.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-header-footer/assets/css/header-footer-elementor.css?ver=1.0.2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-header-footer\assets\css\header-footer-elementor.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-header-footer/inc/js/frontend.js?ver=1.0.2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-header-footer\inc\js\frontend.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/techtlk-header-footer/inc/widgets-css/frontend.css?ver=1.0.2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\techtlk-header-footer\inc\widgets-css\frontend.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/ultimate-coming-soon/assets/build/global.bundle.css?ver=1.1.4
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\ultimate-coming-soon\assets\build\global.bundle.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/ultimate-coming-soon/assets/build/global.bundle.js?ver=1.1.4
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\ultimate-coming-soon\assets\build\global.bundle.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\client\blocks\wc-blocks.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\css\woocommerce-layout.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\css\woocommerce-smallscreen.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\css\woocommerce.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/fonts/cardo_normal_400.woff2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\fonts\cardo_normal_400.woff2
+Content Type: font/woff2
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt,wght.woff2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\fonts\Inter-VariableFont_slnt,wght.woff2
+Content Type: font/woff2
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\fonts\WooCommerce.ttf
+Content Type: application/octet-stream
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\fonts\WooCommerce.woff
+Content Type: font/woff
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\fonts\WooCommerce.woff2
+Content Type: font/woff2
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/amex.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\amex.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/diners.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\diners.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/discover.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\discover.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/jcb.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\jcb.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/laser.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\laser.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/maestro.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\maestro.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/mastercard.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\mastercard.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/credit-cards/visa.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\credit-cards\visa.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/images/icons/loader.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\images\icons\loader.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\js\frontend\add-to-cart.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\js\frontend\order-attribution.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\js\frontend\woocommerce.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\js\jquery-blockui\jquery.blockUI.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\js\js-cookie\js.cookie.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=10.7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\plugins\woocommerce\assets\js\sourcebuster\sourcebuster.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/ajax-loader.gif
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\ajax-loader.gif
+Content Type: image/gif
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/bootstrap.min.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/default.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\default.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/fonts/slick.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\fonts\slick.ttf
+Content Type: application/octet-stream
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/fonts/slick.woff
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\fonts\slick.woff
+Content Type: font/woff
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/magnific-popup.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\magnific-popup.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/odometer.min.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\odometer.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/owl.carousel.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\owl.carousel.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/responsive.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\responsive.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/rsanimations.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\rsanimations.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/slick.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\slick.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/css/swiper.min.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\css\swiper.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/fonts/remixicon.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\fonts\remixicon.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/fonts/remixicon.eot?t=1718271040674
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\fonts\remixicon.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/fonts/remixicon.svg?t=1718271040674
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\fonts\remixicon.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/fonts/remixicon.ttf?t=1718271040674
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\fonts\remixicon.ttf
+Content Type: application/octet-stream
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/fonts/remixicon.woff2?t=1718271040674
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\fonts\remixicon.woff2
+Content Type: font/woff2
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/fonts/remixicon.woff?t=1718271040674
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\fonts\remixicon.woff
+Content Type: font/woff
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/images/arrow.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\images\arrow.svg
+Content Type: image/svg+xml
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/bootstrap.min.js?ver=5.0.2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\bootstrap.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/chart.umd.min.js?ver=8.1.4
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\chart.umd.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/classie.js?ver=1.0.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\classie.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/interactions/gsap.min.js?ver=1.1.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\interactions\gsap.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/interactions/rs-anim-int.js?ver=1.1.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\interactions\rs-anim-int.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/interactions/rs-scroll-trigger.min.js?ver=1.1.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\interactions\rs-scroll-trigger.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/interactions/rs-splitText.min.js?ver=1.1.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\interactions\rs-splitText.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/isotope.js?ver=3.0.4
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\isotope.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/jquery.appear.min.js?ver=1.0.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\jquery.appear.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/jquery.lettering.js?ver=2.0.3
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\jquery.lettering.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/jquery.magnific-popup.min.js?ver=1.1.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\jquery.magnific-popup.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/lenis.min.js?ver=1.0.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\lenis.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/main.js?ver=1.2.3
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\main.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/modernizr-2.8.3.min.js?ver=2.8.3
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\modernizr-2.8.3.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/odometer.min.js?ver=1.0.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\odometer.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/owl.carousel.min.js?ver=2.2.1
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\owl.carousel.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/theia-sticky-sidebar.js?ver=1.2.3
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\theia-sticky-sidebar.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/waypoints-sticky.min.js?ver=2.0.5
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\waypoints-sticky.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/js/waypoints.min.js?ver=2.0.3
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\js\waypoints.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/webfonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\webfonts\fa-solid-900.ttf
+Content Type: application/octet-stream
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/assets/webfonts/fa-solid-900.woff2
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\assets\webfonts\fa-solid-900.woff2
+Content Type: font/woff2
+
+Uri: https://globantislabs.com/wp-content/themes/techtlk/style.css?ver=7.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\themes\techtlk\style.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/1.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\1.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/12.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\12.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/13.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\13.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/14.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\14.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/19.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\19.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/2.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\2.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/22.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\22.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/23.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\23.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/24.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\24.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/25.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\25.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/26.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\26.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/29.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\29.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/3-1.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\3-1.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/34.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\34.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/5.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\5.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/6.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\6.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/8.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\8.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/9.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\9.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/footer.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\footer.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/09/Logo-F1-Backup-Recovered-e1767885722960.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\Logo-F1-Backup-Recovered-e1767885722960.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/angular.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\angular.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/banner-ai.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\banner-ai.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/bg_003-scaled-1.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\bg_003-scaled-1.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_08-100x100.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_08-100x100.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_08-150x150.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_08-150x150.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_08-300x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_08-300x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_08-500x500.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_08-500x500.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_08.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_08.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_09-100x100.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_09-100x100.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_09-150x150.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_09-150x150.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_09-300x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_09-300x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_09-500x500.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_09-500x500.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_09.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_09.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_10-100x100.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_10-100x100.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_10-150x150.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_10-150x150.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_10-300x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_10-300x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_10-500x500.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_10-500x500.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_10.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_10.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_11-100x100.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_11-100x100.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_11-150x150.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_11-150x150.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_11-300x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_11-300x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_11-500x500.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_11-500x500.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_11.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_11.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_12-100x100.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_12-100x100.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_12-150x150.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_12-150x150.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_12-300x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_12-300x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_12-500x500.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_12-500x500.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_12.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_12.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_13-100x100.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_13-100x100.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_13-150x150.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_13-150x150.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_13-300x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_13-300x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_13-500x500.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_13-500x500.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/inner_13.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\inner_13.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/laravel.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\laravel.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/React.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\React.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/vue.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\vue.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/webflow.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\webflow.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2024/10/wordpress.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\10\wordpress.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/01/about_video.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\about_video.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/01/page-banner.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\page-banner.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/about_mna00n-240x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\about_mna00n-240x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/about_mna00n-600x750.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\about_mna00n-600x750.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/about_mna00n.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\about_mna00n.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/about_o01-240x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\about_o01-240x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/about_o01-600x750.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\about_o01-600x750.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/about_o01.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\about_o01.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/Asset-134x-Photoroom1-scaled.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\Asset-134x-Photoroom1-scaled.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/bg-map.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\bg-map.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/faq00-240x300.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\faq00-240x300.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/faq00-600x750.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\faq00-600x750.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/faq00.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\faq00.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/map.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\map.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/technologybackground76-Converted.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\technologybackground76-Converted.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/02/why-choose-24.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\why-choose-24.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2025/04/cta_bg.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\04\cta_bg.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/2149595827.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\2149595827.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/about-office-e1767452844756-300x248.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\about-office-e1767452844756-300x248.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/about-office-e1767452844756-600x495.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\about-office-e1767452844756-600x495.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/about-office-e1767452844756-768x634.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\about-office-e1767452844756-768x634.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/about-office-e1767452844756.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\about-office-e1767452844756.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/Asset-1@4x-Photoroom-100x100.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\Asset-1@4x-Photoroom-100x100.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/Asset-1@4x-Photoroom-300x300.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\Asset-1@4x-Photoroom-300x300.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/favicon-icon-2.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\favicon-icon-2.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/logo-2x.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\logo-2x.png
+Content Type: image/png
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/pexels-sevenstormphotography-443383.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\pexels-sevenstormphotography-443383.jpg
+Content Type: image/jpeg
+
+Uri: https://globantislabs.com/wp-content/uploads/2026/01/RMZ-Millenia-Campus-4A_9726_20170916_001.avif
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2026\01\RMZ-Millenia-Campus-4A_9726_20170916_001.avif
+Content Type: image/avif
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/custom-frontend.min.css?ver=1779448831
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\custom-frontend.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/custom-widget-icon-list.min.css?ver=1779448831
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\custom-widget-icon-list.min.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-152.css?ver=1779448832
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-152.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-15869.css?ver=1779516418
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-15869.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-15996.css?ver=1779516419
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-15996.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-16339.css?ver=1779449038
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-16339.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-169.css?ver=1779516430
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-169.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-173.css?ver=1779516431
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-173.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-175.css?ver=1779516434
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-175.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-179.css?ver=1779516433
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-179.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-181.css?ver=1779516432
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-181.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-183.css?ver=1779516436
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-183.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-193.css?ver=1779516424
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-193.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-195.css?ver=1779516425
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-195.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-197.css?ver=1779516423
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-197.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-199.css?ver=1779516429
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-199.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-20.css?ver=1779457298
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-20.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-205.css?ver=1779457874
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-205.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-20818.css?ver=1779516435
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-20818.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-209.css?ver=1779457493
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-209.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-238.css?ver=1779516426
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-238.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-26.css?ver=1779496562
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-26.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-28.css?ver=1779505330
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-28.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-28567.css?ver=1779448831
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-28567.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-29268.css?ver=1779449038
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-29268.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-30.css?ver=1779457887
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-30.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-34.css?ver=1779516422
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-34.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-content/uploads/elementor/css/post-34405.css?ver=1779448831
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\elementor\css\post-34405.css
+Content Type: text/css
+
+Uri: https://globantislabs.com/wp-includes/js/dist/hooks.min.js?ver=7496969728ca0f95732d
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-includes\js\dist\hooks.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-includes/js/dist/i18n.min.js?ver=781d11515ad3d91786ec
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-includes\js\dist\i18n.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-includes/js/imagesloaded.min.js?ver=5.0.0
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-includes\js\imagesloaded.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-includes\js\jquery\jquery-migrate.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-includes\js\jquery\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-includes\js\jquery\ui\core.min.js
+Content Type: application/javascript
+
+Uri: https://globantislabs.com/wp-json/
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\index.htm
+Content Type: application/json
+
+Uri: https://globantislabs.com/wp-json/oembed/1.0/embed?url=https:%2F%2Fglobantislabs.com%2F
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\oembed\1.0\embed
+Content Type: application/json
+
+Uri: https://globantislabs.com/wp-json/oembed/1.0/embed?url=https:%2F%2Fglobantislabs.com%2F&format=xml
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\oembed\1.0\embed-1
+Content Type: text/xml
+
+Uri: https://globantislabs.com/wp-json/oembed/1.0/embed?url=https:%2F%2Fglobantislabs.com%2Fabout%2F
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\oembed\1.0\embed-2
+Content Type: application/json
+
+Uri: https://globantislabs.com/wp-json/oembed/1.0/embed?url=https:%2F%2Fglobantislabs.com%2Fabout%2F&format=xml
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\oembed\1.0\embed-3
+Content Type: text/xml
+
+Uri: https://globantislabs.com/wp-json/oembed/1.0/embed?url=https:%2F%2Fglobantislabs.com%2Fcareers%2F
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\oembed\1.0\embed-4
+Content Type: application/json
+
+Uri: https://globantislabs.com/wp-json/oembed/1.0/embed?url=https:%2F%2Fglobantislabs.com%2Fcareers%2F&format=xml
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\oembed\1.0\embed-5
+Content Type: text/xml
+
+Uri: https://globantislabs.com/wp-json/wp/v2/pages/16339
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\wp\v2\pages\16339
+Content Type: application/json
+
+Uri: https://globantislabs.com/wp-json/wp/v2/pages/26
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\wp\v2\pages\26
+Content Type: application/json
+
+Uri: https://globantislabs.com/wp-json/wp/v2/pages/28
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-json\wp\v2\pages\28
+Content Type: application/json
+
+Uri: https://globantislabs.com/xmlrpc.php?rsd
+File Name: C:\Downloaded Web Sites\globantislabs.com\xmlrpc.php
+Content Type: text/xml
+
+Uri: https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447
+File Name: C:\Downloaded Web Sites\globantislabs.com\beacon.min.js\v833ccba57c9e4d2798f2e76cebdd09a11778172276447
+Content Type: text/javascript
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/09/about-_tech.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\09\about-_tech.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/09/process.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\09\process.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/about2.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\about2.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/ai-about1.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\ai-about1.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/ai-about2.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\ai-about2.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/azure.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\azure.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/call-to-action.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\call-to-action.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/figma.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\figma.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/git.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\git.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/gitlab.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\gitlab.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/grafana.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\grafana.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/hotjar.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\hotjar.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/influxdb.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\influxdb.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/inner_05.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\inner_05.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/juju.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\juju.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/keras.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\keras.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/plotly.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\plotly.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/puppet.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\puppet.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/sketch.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\sketch.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_001.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_001.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_01.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_01.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_02.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_02.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_03.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_03.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_04.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_04.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_05.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_05.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_06.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_06.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_07.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_07.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/tek_10.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\tek_10.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/usa.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\usa.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2024/10/web.gif
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2024\10\web.gif
+Content Type: image/gif
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/about_01.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\about_01.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/about_02.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\about_02.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/concept.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\concept.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/Ellipse-1457.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\Ellipse-1457.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/Ellipse-1458.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\Ellipse-1458.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/start-up.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\start-up.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/technology.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\technology.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/technology1.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\technology1.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/02/testimonials.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\02\testimonials.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/04/services_01.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\04\services_01.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/04/services_02.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\04\services_02.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/04/services_04.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\04\services_04.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/04/services_05.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\04\services_05.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/demo/wp-content/uploads/2025/04/testimonials.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\demo\wp-content\uploads\2025\04\testimonials.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2024/09/ser_details.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2024\09\ser_details.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/about-1.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\about-1.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/about.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\about.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/blog_new_02.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\blog_new_02.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/blog_new_03.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\blog_new_03.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/blog_new_05.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\blog_new_05.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/call.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\call.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/Ellipse-1462.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\Ellipse-1462.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/Mask-group.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\Mask-group.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/page-banner-shape-1.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\page-banner-shape-1.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/page-banner-shape-2.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\page-banner-shape-2.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/project_new_02.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\project_new_02.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/project_new_05.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\project_new_05.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/project_new_06.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\project_new_06.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/shape001.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\shape001.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/shape002.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\shape002.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/01/why_choose01.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\01\why_choose01.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/02/contact-zman.png
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\contact-zman.png
+Content Type: image/png
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/02/hm2_abou2t.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\hm2_abou2t.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/02/hm2_about.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\hm2_about.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/02/Vector-8.svg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\Vector-8.svg
+Content Type: image/svg+xml
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/02/vr-girl.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\vr-girl.jpg
+Content Type: image/jpeg
+
+Uri: https://techtlk.rstheme.com/wp-content/uploads/2025/02/vrhm2.jpg
+File Name: C:\Downloaded Web Sites\globantislabs.com\wp-content\uploads\2025\02\vrhm2.jpg
+Content Type: image/jpeg
+

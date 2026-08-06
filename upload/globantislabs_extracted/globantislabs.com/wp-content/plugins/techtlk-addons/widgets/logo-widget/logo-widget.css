@@ -1,0 +1,171 @@
+.rsaddons-logo-showcase .clip-path-enable .rs-grid-figure {
+  clip-path: polygon(0% 0%, 80% 0, 100% 20%, 100% 100%, 0% 100%) !important;
+}
+.rsaddons-logo-showcase.rsl_logo_style1 .rs-addon-slider .rs-grid-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsaddons-logo-showcase.rsl_logo_style1 .rs-addon-slider .rs-grid-figure .logo-img img {
+  transition: all 0.3s ease;
+}
+.rsaddons-logo-showcase.rsl_logo_style1 .rs-addon-slider .rs-grid-figure .logo-img img:hover {
+  transform: scale(1.2);
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0px 15px 0px;
+  background-color: #F7F7F7;
+  height: 202px;
+  position: relative;
+  border-radius: 20px 0 0 0;
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure:before {
+  position: absolute;
+  content: "";
+  top: -12px;
+  right: 0;
+  background-color: #F7F7F7;
+  width: 125px;
+  height: 12px;
+  border-radius: 15px 20px 0 0;
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure:after {
+  position: absolute;
+  content: "";
+  bottom: -12px;
+  right: 0;
+  background-color: #F7F7F7;
+  width: 60px;
+  height: 12px;
+  border-radius: 0 0 20px 15px;
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure .left-bottom-shape {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 30px;
+  height: 12px;
+  background-color: #F7F7F7;
+  border-radius: 0 0 15px 20px;
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure .rs-grid-img {
+  width: 90px;
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure .logo-img img {
+  transition: all 0.3s ease;
+}
+.rsaddons-logo-showcase.rsl_logo_style2 .rs-grid-figure .logo-img img:hover {
+  transform: scale(1.2);
+}
+.rsaddons-logo-showcase.rsl_logo_style3 .grid-item .rs-grid-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0px 15px 0px;
+  background-color: #F7F7F7;
+  height: 202px;
+  position: relative;
+  transition: all 0.3s linear;
+}
+.rsaddons-logo-showcase.rsl_logo_style3 .grid-item .rs-grid-figure .logo-img a img.hovers-logos {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  visibility: hidden;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.rsaddons-logo-showcase.rsl_logo_style3 .grid-item .rs-grid-figure:hover {
+  background-color: #507a7c;
+}
+.rsaddons-logo-showcase.rsl_logo_style3 .grid-item .rs-grid-figure:hover .logo-img a img.mains-logos {
+  display: block;
+  visibility: hidden;
+  transform: translateY(100%);
+}
+.rsaddons-logo-showcase.rsl_logo_style3 .grid-item .rs-grid-figure:hover .logo-img a img.hovers-logos {
+  display: block;
+  opacity: 3;
+  visibility: visible;
+}
+.rsaddons-logo-showcase.rsl_logo_style3 .grid-item .rs-grid-figure .rs-grid-img {
+  width: 90px;
+}
+.rsaddons-logo-showcase .rs-logo-grid.logo-grid-style1.rsl_logo_style3 .rs-grid-figure {
+  overflow: hidden;
+}
+.rsaddons-logo-showcase .rs-logo-grid.logo-grid-style1.rsl_logo_style3 .rs-grid-figure .logo-img img {
+  transform: scale(1);
+  transition: all ease 0.4s;
+}
+.rsaddons-logo-showcase .rs-logo-grid.logo-grid-style1.rsl_logo_style3 .rs-grid-figure:hover .logo-img img {
+  transform: scale(1.1);
+}
+.rsaddons-logo-showcase.bg_animation_yes {
+  overflow: hidden;
+  position: relative;
+}
+.rsaddons-logo-showcase.bg_animation_yes .anim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-repeat: repeat-x !important;
+  background-size: contain !important;
+  background-position: center !important;
+  position: absolute;
+  width: 6400px;
+  height: inherit;
+  -webkit-animation: wave 45s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  animation: wave 45s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.rsaddons-logo-showcase.bg_animation_yes:hover .anim {
+  animation-play-state: paused;
+}
+.rsaddons-logo-showcase.overlay_edge_yes {
+  position: relative;
+}
+.rsaddons-logo-showcase.overlay_edge_yes::after, .rsaddons-logo-showcase.overlay_edge_yes::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  width: 350px;
+  z-index: 1;
+  pointer-events: none;
+}
+.rsaddons-logo-showcase.overlay_edge_yes::after {
+  right: 0;
+  background: linear-gradient(to right, transparent 0%, white 100%);
+}
+.rsaddons-logo-showcase.overlay_edge_yes::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+@-webkit-keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
