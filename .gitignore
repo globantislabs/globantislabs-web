@@ -52,3 +52,25 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# WordPress backup / extracted source (not part of this Next.js project)
+/upload/
+/download/
+
+# Local mini-services & examples (separate concerns)
+/mini-services/
+/examples/
+
+# Local SQLite database (runtime data, not source)
+/db/*.db
+/db/*.db-journal
+
+# Runtime pid files
+.zscripts/dev.pid
+
+# Local verification screenshots (created during dev, not source)
+/v2-*.png
+/s-*.png
+/screenshot-*.png
+/shot-*.png
+/*.png
