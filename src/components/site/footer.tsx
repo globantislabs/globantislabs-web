@@ -43,7 +43,7 @@ export function Footer() {
         <div className="absolute inset-0 grid-pattern opacity-30" aria-hidden />
         <div className="relative mx-auto flex max-w-[1310px] flex-col items-start gap-6 px-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:py-14">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[34px] lg:leading-[42px]">
               Have Any Projects In Your Mind ?
             </h2>
             <p className="mt-3 text-sm text-white/60 sm:text-base">
@@ -64,7 +64,7 @@ export function Footer() {
       {/* Main footer */}
       <div className="relative mx-auto max-w-[1310px] px-6 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          {/* Brand + contact */}
+          {/* Brand + contact — uses white Logo-F1-Backup logo via variant="dark" */}
           <div>
             <Logo variant="dark" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/55">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, CalendarCheck, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,15 +12,25 @@ export function Consultation() {
       id="consultation"
       className="relative scroll-mt-24 overflow-hidden py-20 lg:py-24"
     >
-      {/* Brand blue gradient backdrop */}
+      {/* Brand orange gradient backdrop (matches original CTA section) */}
       <div className="absolute inset-0 brand-gradient" aria-hidden />
       <div
         className="absolute inset-0 opacity-25"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 15% 20%, rgba(255,255,255,0.45) 0, transparent 35%), radial-gradient(circle at 85% 80%, rgba(10,22,94,0.35) 0, transparent 40%)",
+            "radial-gradient(circle at 15% 20%, rgba(255,255,255,0.45) 0, transparent 35%), radial-gradient(circle at 85% 80%, rgba(11,22,94,0.35) 0, transparent 40%)",
         }}
         aria-hidden
+      />
+
+      {/* Original decorative call-to-action.png (CTA graphic on the right) */}
+      <Image
+        src="/images/wp/2024-10/call-to-action.png"
+        alt=""
+        width={420}
+        height={420}
+        aria-hidden
+        className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 opacity-30 lg:block"
       />
 
       <div className="relative mx-auto max-w-[1310px] px-6">
@@ -35,7 +46,7 @@ export function Consultation() {
             <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
               [ Free Consultation ]
             </span>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[40px]">
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[40px] lg:leading-[50px]">
               Book A Free IT Consultation
             </h2>
             <p className="mt-4 max-w-xl text-base text-white/85">

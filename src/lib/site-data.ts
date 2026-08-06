@@ -8,12 +8,12 @@ import {
   Boxes,
   LifeBuoy,
   Smartphone,
-  Layers,
   ShieldCheck,
   Sparkles,
   Scale,
   Rocket,
   Cpu,
+  Lock,
 } from "lucide-react";
 
 export const company = {
@@ -123,11 +123,19 @@ export const aboutPills = [
   "Real-Time Analytics",
 ];
 
+/**
+ * Tech logo image path helper.
+ * The original WordPress site uses these PNG logos from
+ * wp-content/uploads/2024/10/ (we copied them to /public/images/wp/2024-10/).
+ */
+const techImg = (filename: string) =>
+  `/images/wp/2024-10/${filename}.png`;
+
 export type Service = {
   icon: LucideIcon;
   title: string;
   desc: string;
-  techs: string[];
+  techs: { name: string; img: string }[];
 };
 
 export const services: Service[] = [
@@ -135,55 +143,100 @@ export const services: Service[] = [
     icon: Globe,
     title: "Web Development",
     desc: "Our web development services focus on performance, reliability, and user experience. We create modern web applications that are responsive, secure, and built to scale globally.",
-    techs: ["React", "Next.js", "Node.js", "TypeScript"],
+    techs: [
+      { name: "React", img: techImg("tek_02") },
+      { name: "Angular", img: techImg("tek_03") },
+      { name: "Node", img: techImg("tek_001") },
+      { name: "Next", img: techImg("tek_01") },
+    ],
   },
   {
     icon: ServerCog,
     title: "DevOps Services",
     desc: "We deliver end-to-end DevOps services that help organizations accelerate software delivery, improve reliability, and scale infrastructure globally.",
-    techs: ["Docker", "Kubernetes", "AWS", "GitLab CI"],
+    techs: [
+      { name: "GitLab", img: techImg("gitlab") },
+      { name: "Juju", img: techImg("juju") },
+      { name: "Git", img: techImg("git") },
+      { name: "Puppet", img: techImg("puppet") },
+    ],
   },
   {
     icon: LifeBuoy,
     title: "Maintenance & Support",
     desc: "We provide reliable global support services to ensure your software operates smoothly, securely, and efficiently at all times.",
-    techs: ["24/7 Monitoring", "SLA", "Incident Response"],
+    techs: [
+      { name: "GitLab", img: techImg("gitlab") },
+      { name: "Juju", img: techImg("juju") },
+      { name: "Git", img: techImg("git") },
+      { name: "Puppet", img: techImg("puppet") },
+    ],
   },
   {
     icon: PenTool,
     title: "UI/UX Design",
     desc: "We design intuitive and engaging digital experiences that align with global user expectations and business objectives.",
-    techs: ["Figma", "Design Systems", "Prototyping", "Research"],
+    techs: [
+      { name: "Hotjar", img: techImg("hotjar") },
+      { name: "Figma", img: techImg("figma") },
+      { name: "Sketch", img: techImg("sketch") },
+      { name: "Azure", img: techImg("azure") },
+    ],
   },
   {
     icon: Boxes,
     title: "CMS Development",
     desc: "Our ERP and CRM solutions empower organizations to streamline operations, improve customer relationships, and drive data-driven growth.",
-    techs: ["ERP", "CRM", "Headless CMS", "Workflows"],
+    techs: [
+      { name: "Juju", img: techImg("juju") },
+      { name: "Docker", img: techImg("tek_10") },
+      { name: "InfluxDB", img: techImg("influxdb") },
+      { name: "React", img: techImg("tek_02") },
+    ],
   },
   {
     icon: ShieldCheck,
     title: "IT Support and Services",
     desc: "We provide reliable, scalable, and proactive IT support services to ensure your business operations run smoothly, securely, and without interruption.",
-    techs: ["Helpdesk", "Infrastructure", "Security", "Cloud"],
+    techs: [
+      { name: "Juju", img: techImg("juju") },
+      { name: "Docker", img: techImg("tek_10") },
+      { name: "InfluxDB", img: techImg("influxdb") },
+      { name: "React", img: techImg("tek_02") },
+    ],
   },
   {
     icon: BrainCircuit,
     title: "Artificial Intelligence",
     desc: "We help organizations harness AI and Machine Learning to automate operations, enhance decision-making, and unlock new business opportunities.",
-    techs: ["ML", "LLMs", "Computer Vision", "NLP"],
+    techs: [
+      { name: "Keras", img: techImg("keras") },
+      { name: "Plotly", img: techImg("plotly") },
+      { name: "Grafana", img: techImg("grafana") },
+      { name: "InfluxDB", img: techImg("influxdb") },
+    ],
   },
   {
     icon: Smartphone,
     title: "App Development",
     desc: "We develop high-performance mobile applications that deliver consistent user experiences across Android and iOS devices worldwide.",
-    techs: ["iOS", "Android", "React Native", "Flutter"],
+    techs: [
+      { name: "Swift", img: techImg("tek_04") },
+      { name: "Kotlin", img: techImg("tek_06") },
+      { name: "Flutter", img: techImg("tek_05") },
+      { name: "React Native", img: techImg("tek_07") },
+    ],
   },
   {
     icon: Code2,
     title: "Custom Software Development",
     desc: "We build enterprise-grade, custom software solutions designed to meet unique business requirements.",
-    techs: ["Cloud", "Microservices", "APIs", "Enterprise"],
+    techs: [
+      { name: "Java", img: techImg("tek_04") },
+      { name: "Python", img: techImg("tek_06") },
+      { name: "Go", img: techImg("tek_05") },
+      { name: "C#", img: techImg("tek_07") },
+    ],
   },
 ];
 
@@ -205,7 +258,7 @@ export const whyFeatures: WhyFeature[] = [
     desc: "We leverage cutting-edge technologies to build intelligent, scalable, and future-ready digital solutions.",
   },
   {
-    icon: ShieldCheck,
+    icon: Lock,
     title: "Security & Risk Management",
     desc: "Security and risk management are integral to everything we build. We adopt a proactive, security-first approach to protect digital assets, ensure data privacy, and mitigate risks across the entire technology lifecycle—enabling our global clients to operate with confidence.",
   },

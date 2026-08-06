@@ -56,3 +56,35 @@ Stage Summary:
 - Code is live at https://github.com/globantislabs/globantislabs-web (main branch).
 - Token was used transiently for 2 pushes and is NOT stored anywhere in the repo or git config.
 - SECURITY: The PAT the user pasted in chat is compromised; user was advised to revoke it immediately at https://github.com/settings/tokens.
+
+---
+Task ID: polish-1
+Agent: Z.ai Code (main)
+Task: Polish remaining 20% — use ALL original pics and elements, match exact color formation.
+
+Work Log:
+- Re-extracted exact Elementor global palette from post-34405.css:
+  - primary #FB8D2E (orange), secondary #0B165E (navy), text #47506D
+  - accent #FFF4EB (cream), light bg #F5F6F7, CTA orange #FF4A17, dark orange #E86400
+  - Note: previous version incorrectly used blue (#2b4dff) as the site-wide accent.
+    The original Elementor theme is ORANGE+NAVY. Only the Revolution Slider layer
+    inside the hero uses blue (#2b4dff button, #1b4bf9 label) — that's kept.
+- Copied all original WordPress media into public/images/wp/:
+  - 2024-09/, 2024-10/ (incl. tek_01-10.png, tek_001.png, gitlab/git/juju/puppet/
+    figma/sketch/azure/hotjar/influxdb/keras/plotly/grafana.png, call-to-action.png)
+  - 2025-01/ (about.jpg, hm2-about.jpg, why_choose01.jpg, call.jpg, page-banner.jpg ...)
+  - 2025-02/ (hm2_about.jpg, hm2_abou2t.jpg, vr-girl.jpg, why-choose-24.jpg, Vector-8.svg ...)
+  - 2026-01/ (2149595827.jpg, pexels-sevenstormphotography-443383.jpg, about-office.jpg,
+    logo-2x.png, favicon-icon-2.png)
+- Updated globals.css to switch brand tokens from blue → orange:
+  - --color-brand: #FB8D2E (orange)
+  - --color-brand-dark: #E86400 (darker orange hover)
+  - --color-brand-light: #FF8A4C
+  - --color-brand-cta: #FF4A17 (bright CTA orange)
+  - --color-brand-blue: #2B4DFF (kept for hero slider button + label only)
+  - --color-ink: #0B165E (navy)
+  - --color-body: #47506D
+  - --color-shade: #F5F6F7
+  - --color-cream: #FFF4EB
+  - Updated h2/h3/h4 base sizes to match Elementor (42/30/24px).
+- Rebuilt all section components with original images + orange palette (see polish-2..7).

@@ -4,17 +4,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
+/**
+ * Hero — recreates the original Revolution Slider "Slider 1" exactly.
+ *
+ * Two slides (auto-advance 6s) with full-bleed background images and a navy
+ * overlay. Text is positioned to the LEFT (matches the original slider layer
+ * config: x:39px, y:middle, max-width:753px for the title).
+ *
+ * Layer colors come from the SR7.JSON config:
+ *   - title:        #ffffff, Space Grotesk 700, 80px / line 94px, ls -1px
+ *   - description:  #ffffff (75% via overlay), 18px / line 28px
+ *   - button bg:    #2b4dff (rgba(43,77,255,1)) — BLUE, kept from slider
+ *   - button hover: #0349ef
+ *   - small label:  #1b4bf9 — BLUE (matches the slider's "[ Smart IT solutions ]")
+ *
+ * Background images: original wp-content/uploads/2026/01/ files.
+ */
 const slides = [
   {
-    bg: "/images/hero-bg.jpg",
+    bg: "/images/wp/2026-01/2149595827.jpg",
     label: "[ Smart IT solutions ]",
     title: "Transforming Ideas Into IT Solutions",
     desc: "Provide world wide survival strategies to ensure proactive domination at the end of the day fueling digital transformation with expert solutions.",
   },
   {
-    bg: "/images/hero-bg-2.jpg",
+    bg: "/images/wp/2026-01/pexels-sevenstormphotography-443383.jpg",
     label: "[ Smart IT solutions ]",
     title: "Smart IT Solutions For Smarter Businesses",
     desc: "Provide world wide survival strategies to ensure proactive domination at the end of the day fueling digital transformation with expert solutions.",
@@ -56,28 +72,29 @@ export function Hero() {
         </div>
       ))}
 
-      {/* Dark gradient overlay for legibility (matches original slider look) */}
+      {/* Navy gradient overlay (matches original slider look — left-darker for legibility) */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(100deg, rgba(10,22,94,0.92) 0%, rgba(10,22,94,0.78) 42%, rgba(10,22,94,0.35) 100%)",
+            "linear-gradient(100deg, rgba(11,22,94,0.94) 0%, rgba(11,22,94,0.78) 42%, rgba(11,22,94,0.30) 100%)",
         }}
         aria-hidden
       />
-      <div className="absolute inset-0 grid-pattern opacity-30" aria-hidden />
+      <div className="absolute inset-0 grid-pattern opacity-25" aria-hidden />
 
-      {/* Content */}
-      <div className="relative mx-auto flex min-h-[640px] max-w-7xl items-center px-6 pt-28 lg:min-h-[820px] lg:pt-36">
+      {/* Content — left-aligned, max-width matches slider (753px title) */}
+      <div className="relative mx-auto flex min-h-[640px] max-w-[1310px] items-center px-6 pt-28 lg:min-h-[820px] lg:pt-36">
         <div className="max-w-3xl">
           <motion.div
             key={`label-${active}`}
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 text-base font-medium text-white"
+            className="text-base font-medium"
+            style={{ color: "#1b4bf9" }}
           >
-            <span className="text-brand-light">{slide.label}</span>
+            {slide.label}
           </motion.div>
 
           <motion.h1
@@ -95,7 +112,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-            className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg"
+            className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 lg:text-[18px] lg:leading-[28px]"
           >
             {slide.desc}
           </motion.p>
@@ -108,21 +125,14 @@ export function Hero() {
           >
             <Link
               href="#consultation"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-[5px] bg-brand px-7 text-base font-medium text-white shadow-lg shadow-brand/30 transition-all hover:bg-brand-dark"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-[5px] bg-brand-blue px-7 text-base font-medium text-white shadow-lg shadow-brand-blue/30 transition-all hover:bg-[#0349ef]"
             >
               Free Consultation
               <ArrowRight className="size-4" />
             </Link>
-            <Link
-              href="#services"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-[5px] border border-white/25 bg-white/5 px-7 text-base font-medium text-white backdrop-blur transition-all hover:bg-white/15"
-            >
-              <Sparkles className="size-4 text-brand-light" />
-              Our Services
-            </Link>
           </motion.div>
 
-          {/* Slide controls */}
+          {/* Slide indicators — Revolution Slider "uranus" style bullets */}
           <div className="mt-12 flex items-center gap-3">
             {slides.map((_, i) => (
               <button
@@ -135,7 +145,7 @@ export function Hero() {
                   className={
                     "block h-[3px] rounded-full transition-all duration-500 " +
                     (i === active
-                      ? "w-12 bg-brand-light"
+                      ? "w-12 bg-white"
                       : "w-6 bg-white/40 group-hover:bg-white/70")
                   }
                 />
@@ -153,7 +163,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom wave/transition */}
+      {/* Bottom divider */}
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
     </section>
   );

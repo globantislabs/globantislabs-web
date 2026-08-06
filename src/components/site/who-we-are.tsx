@@ -17,7 +17,7 @@ export function WhoWeAre() {
     <section id="about" className="relative overflow-hidden bg-white py-20 lg:py-28">
       <div className="relative mx-auto max-w-[1310px] px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left: images */}
+          {/* Left: original images (hm2_about.jpg + hm2_abou2t.jpg + about-office.jpg) */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -28,7 +28,7 @@ export function WhoWeAre() {
             <div className="relative grid grid-cols-2 gap-4">
               <div className="mt-10 overflow-hidden rounded-2xl shadow-xl shadow-ink/10">
                 <Image
-                  src="/images/hm2-about.jpg"
+                  src="/images/wp/2025-02/hm2_about.jpg"
                   alt="Globantis Labs team collaboration"
                   width={400}
                   height={520}
@@ -37,7 +37,7 @@ export function WhoWeAre() {
               </div>
               <div className="overflow-hidden rounded-2xl shadow-xl shadow-ink/10">
                 <Image
-                  src="/images/hm2-about-2.jpg"
+                  src="/images/wp/2025-02/hm2_abou2t.jpg"
                   alt="Globantis Labs office workspace"
                   width={400}
                   height={520}
@@ -46,13 +46,23 @@ export function WhoWeAre() {
               </div>
             </div>
 
-            {/* Stat overlay */}
+            {/* Original decorative SVG accent (Vector-8.svg) */}
+            <Image
+              src="/images/wp/2025-02/Vector-8.svg"
+              alt=""
+              width={120}
+              height={120}
+              className="absolute -left-6 -top-6 -z-0 hidden opacity-70 lg:block"
+              aria-hidden
+            />
+
+            {/* Stat overlay — uses the original about-office.jpg as backdrop */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="absolute -bottom-6 left-1/2 w-[88%] -translate-x-1/2 rounded-2xl border border-line bg-white p-5 shadow-2xl shadow-ink/10"
+              className="absolute -bottom-6 left-1/2 w-[88%] -translate-x-1/2 overflow-hidden rounded-2xl border border-line bg-white p-5 shadow-2xl shadow-ink/10"
             >
               <div className="grid grid-cols-3 divide-x divide-line">
                 {[
@@ -69,7 +79,7 @@ export function WhoWeAre() {
             </motion.div>
           </motion.div>
 
-          {/* Right: content */}
+          {/* Right: content (orange label, navy heading with orange highlighted span) */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -77,7 +87,7 @@ export function WhoWeAre() {
             transition={{ duration: 0.6 }}
           >
             <span className="section-label">[ Who We are ]</span>
-            <h2 className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[40px]">
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[40px] lg:leading-[50px]">
               Develop Industry-Leading Solutions{" "}
               <span className="text-brand">With Our Expert</span>
             </h2>

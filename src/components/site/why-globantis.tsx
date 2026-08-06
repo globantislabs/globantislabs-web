@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Quote } from "lucide-react";
@@ -40,11 +41,11 @@ export function WhyGlobantis() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-[1310px] px-6">
-        {/* Heading */}
+        {/* Heading — orange sub-text + navy bg with orange highlighted span */}
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
             <span className="section-label text-brand-light">[ Why Globantis ]</span>
-            <h2 className="mt-1 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-[40px]">
+            <h2 className="mt-1 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-[40px] lg:leading-[50px]">
               We Make The Most Creative{" "}
               <span className="text-brand-light">Digital Solutions</span>
             </h2>
@@ -74,7 +75,7 @@ export function WhyGlobantis() {
           </div>
         </div>
 
-        {/* Feature cards */}
+        {/* Feature cards — orange icon tiles on glass cards */}
         <div className="mt-14 grid gap-5 md:grid-cols-2">
           {whyFeatures.map((f, i) => {
             const Icon = f.icon;
@@ -92,7 +93,7 @@ export function WhyGlobantis() {
                     <Icon className="size-6" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">{f.title}</h3>
+                    <h3 className="text-xl font-bold text-white">{f.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/65">
                       {f.desc}
                     </p>

@@ -43,62 +43,68 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* ===== Globantis Labs brand tokens (from original WordPress theme) ===== */
-  --color-brand: #2b4dff;            /* primaryColor */
-  --color-brand-dark: #0349ef;       /* primary hover */
-  --color-brand-light: #7a93ff;      /* lighter blue for dark backgrounds */
-  --color-brand-rgb: 43, 77, 255;
-  --color-ink: #0a165e;              /* secondaryColor / titleColor */
+  /* ===== Globantis Labs brand tokens (EXACT from Elementor global CSS post-34405) ===== */
+  --color-brand: #fb8d2e;            /* --e-global-color-primary: ORANGE */
+  --color-brand-dark: #e86400;       /* darker orange for hover */
+  --color-brand-light: #ff8a4c;      /* lighter orange for dark backgrounds */
+  --color-brand-cta: #ff4a17;        /* --e-global-color-f72964f: bright CTA orange */
+  --color-brand-blue: #2b4dff;       /* used ONLY inside hero Revolution Slider layer */
+  --color-brand-blue-light: #1b4bf9; /* hero "[ Smart IT solutions ]" label color */
+  --color-brand-rgb: 251, 141, 46;
+  --color-ink: #0b165e;              /* --e-global-color-secondary / titleColor (navy) */
+  --color-ink-deep: #00033d;         /* --e-global-color-247d168 (deepest navy bg) */
   --color-ink-soft: #142a8c;
-  --color-body: #585b6f;             /* bodyColor */
-  --color-line: #dbdee1;             /* borderColor */
-  --color-shade: #f8f8f9;            /* shadeColor */
+  --color-body: #47506d;             /* --e-global-color-text */
+  --color-line: #e6e8eb;             /* borderColor */
+  --color-shade: #f5f6f7;            /* --e-global-color-0cfc571: light bg */
+  --color-cream: #fff4eb;            /* --e-global-color-accent */
+  --color-offwhite: #f8fbff;         /* --e-global-color-83632a7 */
 }
 
 :root {
   --radius: 0.5rem;
-  /* Map shadcn tokens onto the Globantis brand palette */
+  /* Map shadcn tokens onto the EXACT Globantis Elementor palette */
   --background: #ffffff;
-  --foreground: #585b6f;
+  --foreground: #47506d;
   --card: #ffffff;
-  --card-foreground: #0a165e;
+  --card-foreground: #0b165e;
   --popover: #ffffff;
-  --popover-foreground: #0a165e;
-  --primary: #2b4dff;
+  --popover-foreground: #0b165e;
+  --primary: #fb8d2e;
   --primary-foreground: #ffffff;
-  --secondary: #f8f8f9;
-  --secondary-foreground: #0a165e;
-  --muted: #f8f8f9;
-  --muted-foreground: #585b6f;
-  --accent: #f8f8f9;
-  --accent-foreground: #0a165e;
+  --secondary: #f5f6f7;
+  --secondary-foreground: #0b165e;
+  --muted: #f5f6f7;
+  --muted-foreground: #47506d;
+  --accent: #fff4eb;
+  --accent-foreground: #0b165e;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #dbdee1;
-  --input: #dbdee1;
-  --ring: #2b4dff;
-  --chart-1: #2b4dff;
-  --chart-2: #0a165e;
-  --chart-3: #585b6f;
+  --border: #e6e8eb;
+  --input: #e6e8eb;
+  --ring: #fb8d2e;
+  --chart-1: #fb8d2e;
+  --chart-2: #0b165e;
+  --chart-3: #47506d;
   --chart-4: #ff8a4c;
-  --chart-5: #0dcd87;
+  --chart-5: #ff4a17;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0a165e;
-  --sidebar-primary: #2b4dff;
+  --sidebar-foreground: #0b165e;
+  --sidebar-primary: #fb8d2e;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f8f8f9;
-  --sidebar-accent-foreground: #0a165e;
-  --sidebar-border: #dbdee1;
-  --sidebar-ring: #2b4dff;
+  --sidebar-accent: #fff4eb;
+  --sidebar-accent-foreground: #0b165e;
+  --sidebar-border: #e6e8eb;
+  --sidebar-ring: #fb8d2e;
 }
 
 .dark {
-  --background: #0a165e;
+  --background: #0b165e;
   --foreground: #ffffff;
-  --card: #0d1c75;
+  --card: #142a8c;
   --card-foreground: #ffffff;
-  --popover: #0d1c75;
+  --popover: #142a8c;
   --popover-foreground: #ffffff;
-  --primary: #2b4dff;
+  --primary: #fb8d2e;
   --primary-foreground: #ffffff;
   --secondary: #142a8c;
   --secondary-foreground: #ffffff;
@@ -109,15 +115,15 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: rgba(255, 255, 255, 0.12);
   --input: rgba(255, 255, 255, 0.15);
-  --ring: #2b4dff;
-  --sidebar: #0d1c75;
+  --ring: #fb8d2e;
+  --sidebar: #142a8c;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #2b4dff;
+  --sidebar-primary: #fb8d2e;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #142a8c;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.12);
-  --sidebar-ring: #2b4dff;
+  --sidebar-ring: #fb8d2e;
 }
 
 @layer base {
@@ -126,22 +132,46 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* matches Elementor --e-global-typography-990ca8b: 17px/27px */
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 27px;
     font-weight: 400;
   }
   h1, h2, h3, h4, h5, h6 {
     color: var(--color-ink);
     font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  /* match Elementor heading sizes (post-34405.css typography tokens) */
+  h1 { font-size: 80px; line-height: 90px; letter-spacing: -1px; }
+  h2 { font-size: 42px; line-height: 50px; letter-spacing: -1px; }
+  h3 { font-size: 30px; line-height: 38px; letter-spacing: -1px; }
+  h4 { font-size: 24px; line-height: 32px; letter-spacing: -0.5px; }
+  h5 { font-size: 20px; line-height: 28px; letter-spacing: -0.5px; }
+  h6 { font-size: 18px; line-height: 26px; letter-spacing: -0.5px; }
+  /* responsive scaling for smaller screens */
+  @media (max-width: 1024px) {
+    h1 { font-size: 56px; line-height: 64px; }
+    h2 { font-size: 34px; line-height: 42px; }
+    h3 { font-size: 26px; line-height: 34px; }
+  }
+  @media (max-width: 640px) {
+    h1 { font-size: 40px; line-height: 48px; }
+    h2 { font-size: 28px; line-height: 36px; }
+    h3 { font-size: 22px; line-height: 30px; }
+    h4 { font-size: 20px; line-height: 28px; }
   }
 }
 
-/* ===== Globantis Labs design utilities (match original theme) ===== */
+/* ===== Globantis Labs design utilities (match original Elementor theme) ===== */
 .brand-gradient {
-  background-image: linear-gradient(135deg, #2b4dff 0%, #0349ef 100%);
+  background-image: linear-gradient(135deg, #fb8d2e 0%, #e86400 100%);
+}
+.brand-cta-gradient {
+  background-image: linear-gradient(135deg, #ff4a17 0%, #e86400 100%);
 }
 .ink-gradient {
-  background-image: linear-gradient(135deg, #0a165e 0%, #142a8c 60%, #0a165e 100%);
+  background-image: linear-gradient(135deg, #0b165e 0%, #00033d 60%, #0b165e 100%);
 }
 .grid-pattern {
   background-image:
@@ -156,22 +186,24 @@
   background-size: 56px 56px;
 }
 .glow-brand {
-  box-shadow: 0 20px 60px -20px rgba(43, 77, 255, 0.45);
+  box-shadow: 0 20px 60px -20px rgba(251, 141, 46, 0.45);
 }
 .text-gradient-brand {
-  background-image: linear-gradient(120deg, #2b4dff 0%, #4f6bff 100%);
+  background-image: linear-gradient(120deg, #fb8d2e 0%, #ff4a17 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Section sub-text label like the original "[ Section ]" */
+/* Section sub-text label like the original "[ Section ]" — matches .prelements-heading .sub-text */
 .section-label {
   display: inline-block;
-  color: #2b4dff;
-  font-weight: 500;
+  color: #fb8d2e;
+  font-size: 14px;
+  font-weight: 700;
   margin-bottom: 14px;
   position: relative;
+  letter-spacing: 0;
 }
 
 /* Slim scrollbar */
