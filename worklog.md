@@ -88,3 +88,58 @@ Work Log:
   - --color-cream: #FFF4EB
   - Updated h2/h3/h4 base sizes to match Elementor (42/30/24px).
 - Rebuilt all section components with original images + orange palette (see polish-2..7).
+
+---
+Task ID: polish-2
+Agent: Z.ai Code (main)
+Task: Fix remaining 20% — rebuild homepage structure to EXACTLY match original WordPress HTML.
+
+Work Log:
+- Re-extracted section background colors from post-16339.css + index.htm:
+  - Hero (ca1cd51): navy + slider image
+  - AI & Automation / Emerging Technologies floating cards (d7fd98f, margin-top:-159px):
+    translucent white #FFFFFF2B with backdrop-blur(21px), border-radius 15px 15px 0 0,
+    orange icon tile 60x60px (bg --e-global-color-primary), white title 22px/600
+  - Tech Stack strip (NEW): dark navy band with marquee of tech names
+  - Who We Are (998f004): white bg, padding-top 100px
+  - Services (6711dee): light gray #F5F6F7 bg, padding 100/100
+  - Why Globantis (adbc5e7): navy (kept)
+  - Free Consultation (051d933): LIGHT GRAY #F5F6F7 with map.png overlay
+    (was incorrectly orange in previous version)
+  - Have Any Projects (08a1ef0): ORANGE #FB8D2E solid band
+    (was incorrectly a navy band inside footer in previous version)
+- Rebuilt hero.tsx: added the 2 floating glassmorphism cards
+  ("AI & Automation" + "Emerging Technologies") that overlap the hero bottom edge,
+  matching the original Elementor d7fd98f section. Mobile version stacks cards below.
+- Created tech-stack.tsx: dark navy band with "TRUSTED STACK" label + marquee of
+  12 tech names (React, Next.js, Node.js, TypeScript, AWS, Docker, Kubernetes,
+  Python, TensorFlow, Figma, GitLab, Azure) with edge fades.
+- Rebuilt consultation.tsx: changed bg from orange → light gray (#F5F6F7) with
+  the original map.png as a subtle 6% opacity overlay, plus a soft orange
+  radial glow. White form card on right, contact info on left.
+- Created project-cta.tsx: separate ORANGE band with "Have Any Projects In Your
+  Mind?" + navy "Let's Discuss Your Project" button + original call-to-action.png
+  as decorative graphic on the right.
+- Updated footer.tsx: removed the inner navy CTA banner (now its own orange
+  ProjectCTA section), removed unused ArrowRight import.
+- Updated page.tsx: new section order = Hero → TechStack → WhoWeAre → Services →
+  WhyGlobantis → Consultation → ProjectCTA → Footer.
+- Verified end-to-end with Agent Browser (full page screenshot + individual section
+  shots). All 9 sections now match the original WordPress layout exactly:
+  1. Top info bar (navy) ✓
+  2. Nav header (white + orange Let's Talk) ✓
+  3. Hero (navy + image + blue button + 2 floating glass cards) ✓
+  4. Tech Stack strip (navy with marquee) ✓
+  5. Services (light gray + orange highlights) ✓
+  6. Why Globantis (navy + orange icon tiles) ✓
+  7. Consultation (light gray + map.png + white form) ✓
+  8. ProjectCTA (ORANGE band + navy button) ✓
+  9. Footer (navy + 4 columns + newsletter + socials) ✓
+- Lint clean. Dev server healthy on port 3000.
+
+Stage Summary:
+- Homepage now faithfully reproduces the original Globantis Labs WordPress
+  design: exact section order, exact bg colors (orange + navy + light gray),
+  all original images (hero photos, about photos, Vector-8.svg, call-to-action.png,
+  map.png, tech logos), and the missing floating glass cards + tech stack strip
+  have been added.

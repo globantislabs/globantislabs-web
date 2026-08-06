@@ -5,7 +5,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  ArrowRight,
   Linkedin,
   Twitter,
   Facebook,
@@ -38,31 +37,8 @@ export function Footer() {
       id="contact"
       className="relative mt-auto overflow-hidden bg-ink text-white"
     >
-      {/* CTA banner */}
-      <div className="relative border-b border-white/10">
-        <div className="absolute inset-0 grid-pattern opacity-30" aria-hidden />
-        <div className="relative mx-auto flex max-w-[1310px] flex-col items-start gap-6 px-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:py-14">
-          <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[34px] lg:leading-[42px]">
-              Have Any Projects In Your Mind ?
-            </h2>
-            <p className="mt-3 text-sm text-white/60 sm:text-base">
-              AI, automation, and emerging technologies are converging to
-              transform how organizations operate, compete, and scale.
-            </p>
-          </div>
-          <Link
-            href="#consultation"
-            className="inline-flex h-12 items-center gap-2 rounded-[5px] bg-brand px-6 text-sm font-medium text-white shadow-lg shadow-brand/30 transition-all hover:bg-brand-dark hover:shadow-brand/50"
-          >
-            Let&apos;s Discuss Your Project
-            <ArrowRight className="size-4" />
-          </Link>
-        </div>
-      </div>
-
       {/* Main footer */}
-      <div className="relative mx-auto max-w-[1310px] px-6 py-14">
+      <div className="relative mx-auto max-w-[1310px] px-6 py-16">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {/* Brand + contact — uses white Logo-F1-Backup logo via variant="dark" */}
           <div>

@@ -6,31 +6,39 @@ import { Mail, MapPin, Phone, CalendarCheck, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { company } from "@/lib/site-data";
 
+/**
+ * Free Consultation section.
+ *
+ * Background: light gray (#F5F6F7) with the original `map.png` overlay —
+ * matches the original Elementor `051d933` section which uses
+ * `--e-global-color-0cfc571` (light) + `url("../../2025/02/map.png")`.
+ *
+ * Layout: 2 columns — left contact info, right white form card.
+ */
 export function Consultation() {
   return (
     <section
       id="consultation"
-      className="relative scroll-mt-24 overflow-hidden py-20 lg:py-24"
+      className="relative scroll-mt-24 overflow-hidden bg-shade py-20 lg:py-28"
     >
-      {/* Brand orange gradient backdrop (matches original CTA section) */}
-      <div className="absolute inset-0 brand-gradient" aria-hidden />
+      {/* Original map.png overlay (subtle, low opacity) */}
       <div
-        className="absolute inset-0 opacity-25"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
-          backgroundImage:
-            "radial-gradient(circle at 15% 20%, rgba(255,255,255,0.45) 0, transparent 35%), radial-gradient(circle at 85% 80%, rgba(11,22,94,0.35) 0, transparent 40%)",
+          backgroundImage: "url('/images/wp/2025-02/map.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
         }}
         aria-hidden
       />
-
-      {/* Original decorative call-to-action.png (CTA graphic on the right) */}
-      <Image
-        src="/images/wp/2024-10/call-to-action.png"
-        alt=""
-        width={420}
-        height={420}
+      <div
+        className="absolute inset-0 opacity-60"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 80% 20%, rgba(251,141,46,0.08) 0, transparent 50%)",
+        }}
         aria-hidden
-        className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 opacity-30 lg:block"
       />
 
       <div className="relative mx-auto max-w-[1310px] px-6">
@@ -41,15 +49,13 @@ export function Consultation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="text-white"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
-              [ Free Consultation ]
-            </span>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[40px] lg:leading-[50px]">
-              Book A Free IT Consultation
+            <span className="section-label">[ Free Consultation ]</span>
+            <h2 className="mt-1 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[40px] lg:leading-[50px]">
+              Book A Free{" "}
+              <span className="text-brand">IT Consultation</span>
             </h2>
-            <p className="mt-4 max-w-xl text-base text-white/85">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-body">
               Be our family and grow your business along with us. Tell us about
               your project and our experts will get back to you within 24 hours.
             </p>
@@ -86,7 +92,7 @@ export function Consultation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-2xl bg-white p-6 shadow-2xl shadow-ink/30 sm:p-8"
+            className="rounded-2xl bg-white p-6 shadow-2xl shadow-ink/15 sm:p-8"
           >
             <div className="flex items-center gap-3">
               <div className="flex size-11 items-center justify-center rounded-xl bg-brand text-white">
@@ -158,15 +164,15 @@ function ContactItem({
   href?: string;
 }) {
   const inner = (
-    <div className="flex items-start gap-3 rounded-2xl border border-white/25 bg-white/10 p-4 backdrop-blur transition-colors hover:bg-white/20">
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/20 text-white">
+    <div className="flex items-start gap-3 rounded-2xl border border-line bg-white p-4 transition-colors hover:border-brand/30 hover:shadow-sm">
+      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
         {icon}
       </div>
       <div className="min-w-0">
-        <p className="text-[11px] font-medium uppercase tracking-wider text-white/70">
+        <p className="text-[11px] font-medium uppercase tracking-wider text-body">
           {label}
         </p>
-        <p className="truncate text-sm font-semibold text-white">{value}</p>
+        <p className="truncate text-sm font-semibold text-ink">{value}</p>
       </div>
     </div>
   );

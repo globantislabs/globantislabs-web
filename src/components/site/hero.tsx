@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Cpu, Sparkles } from "lucide-react";
 
 /**
  * Hero — recreates the original Revolution Slider "Slider 1" exactly.
@@ -21,6 +21,10 @@ import { ArrowRight } from "lucide-react";
  *   - small label:  #1b4bf9 — BLUE (matches the slider's "[ Smart IT solutions ]")
  *
  * Background images: original wp-content/uploads/2026/01/ files.
+ *
+ * Below the hero content, two glassmorphism cards ("AI & Automation" and
+ * "Emerging Technologies") overlap the hero's bottom edge — exactly like the
+ * original Elementor `d7fd98f` section (margin-top: -159px).
  */
 const slides = [
   {
@@ -34,6 +38,19 @@ const slides = [
     label: "[ Smart IT solutions ]",
     title: "Smart IT Solutions For Smarter Businesses",
     desc: "Provide world wide survival strategies to ensure proactive domination at the end of the day fueling digital transformation with expert solutions.",
+  },
+];
+
+const floatingCards = [
+  {
+    icon: Cpu,
+    title: "AI & Automation",
+    desc: "AI and automation convert complex, repetitive work into intelligent, scalable workflows.",
+  },
+  {
+    icon: Sparkles,
+    title: "Emerging Technologies",
+    desc: "Emerging technologies are frontier innovations advancing how businesses operate globally.",
   },
 ];
 
@@ -72,7 +89,7 @@ export function Hero() {
         </div>
       ))}
 
-      {/* Navy gradient overlay (matches original slider look — left-darker for legibility) */}
+      {/* Navy gradient overlay (left-darker for legibility) */}
       <div
         className="absolute inset-0"
         style={{
@@ -161,6 +178,62 @@ export function Hero() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Floating glassmorphism cards — overlap hero bottom (margin-top: -159px in original) */}
+      <div className="absolute inset-x-0 bottom-0 z-10 hidden lg:block">
+        <div className="mx-auto max-w-[1310px] px-6">
+          <div className="grid grid-cols-2 gap-6 translate-y-1/2">
+            {floatingCards.map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + i * 0.15 }}
+                  className="flex items-start gap-4 rounded-t-[15px] border border-white/20 border-b-0 bg-white/10 p-7 backdrop-blur-[21px]"
+                  style={{ backgroundColor: "rgba(255,255,255,0.17)" }}
+                >
+                  <div className="flex size-[60px] shrink-0 items-center justify-center rounded bg-brand text-white">
+                    <Icon className="size-7" />
+                  </div>
+                  <div>
+                    <h4 className="text-[22px] font-semibold leading-[30px] text-white">
+                      {card.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-relaxed text-white/75">
+                      {card.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: stack cards below hero */}
+      <div className="relative z-10 grid gap-4 px-6 py-6 lg:hidden">
+        {floatingCards.map((card) => {
+          const Icon = card.icon;
+          return (
+            <div
+              key={card.title}
+              className="flex items-start gap-4 rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur"
+            >
+              <div className="flex size-12 shrink-0 items-center justify-center rounded bg-brand text-white">
+                <Icon className="size-6" />
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-white">{card.title}</h4>
+                <p className="mt-1 text-xs leading-relaxed text-white/75">
+                  {card.desc}
+                </p>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Bottom divider */}
