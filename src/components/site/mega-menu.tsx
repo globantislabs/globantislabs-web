@@ -4,23 +4,21 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import type { NavItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 /**
- * Globantis Labs — MegaMenu
+ * Globantis Labs — MegaMenu (v2)
  *
- * Spec (per user request):
- * - Style family: Mega menu
- * - Scale: Medium (~520px wide)
- * - Per-item content: icon tile + 1-line description + right-side preview
- *   image that updates as you hover each item (Apple-style)
- * - Header strip: none — straight into the link list
- * - Footer strip: navy ink gradient with "Not sure where to start?" + orange
- *   Book consultation button
- * - Animation: slide reveal — opens like a blind, 280ms ease-out-expo
- * - Trigger: both hover AND click (hover for desktop, click for keyboard/touch)
+ * Spec (per user request, round 2):
+ * - Scope: just the dropdown panel — header stays as-is
+ * - Width: Wide (~960px) centered under the trigger
+ * - Layout: 3-column link grid + right-side featured card
+ * - Per-item: icon tile + title + 1-line description
+ * - Footer: ORANGE brand gradient strip with CTA button (was navy)
+ * - Animation: slide reveal — blind opening, 280ms ease-out-expo
+ * - Trigger: both hover AND click (existing header behavior)
  * - Card: pure white, hairline border, soft shadow
  */
 type MegaMenuProps = {
@@ -30,11 +28,9 @@ type MegaMenuProps = {
 };
 
 export function MegaMenu({ item, open, onOpenChange }: MegaMenuProps) {
-  // Active child drives the right-side preview image
   const children = item.children ?? [];
   const [activeIdx, setActiveIdx] = React.useState<number>(0);
 
-  // Reset to first item when dropdown reopens
   React.useEffect(() => {
     if (open) setActiveIdx(0);
   }, [open]);
@@ -53,83 +49,85 @@ export function MegaMenu({ item, open, onOpenChange }: MegaMenuProps) {
 
   const active = children[activeIdx] ?? children[0];
 
+  // Pick grid columns based on child count
+  const gridCols =
+    children.length <= 3
+      ? "lg:grid-cols-1"
+      : children.length <= 6
+        ? "lg:grid-cols-2"
+        : "lg:grid-cols-3";
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
           // Slide reveal — like a blind opening from the top
-          initial={{ opacity: 0, y: -12, height: 0 }}
+          initial={{ opacity: 0, y: -16, height: 0 }}
           animate={{ opacity: 1, y: 0, height: "auto" }}
-          exit={{ opacity: 0, y: -8, height: 0 }}
+          exit={{ opacity: 0, y: -10, height: 0 }}
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5"
         >
           <div
             className="overflow-hidden rounded-2xl border border-line bg-white shadow-float"
-            // Click outside closes
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Link list + preview image — 2-column split */}
-            <div className="grid grid-cols-[1fr_15rem]">
-              {/* Left — link list */}
-              <ul className="divide-y divide-line">
+            {/* Main body: link grid (left) + featured card (right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_18rem]">
+              {/* Left — link grid */}
+              <div className={cn("grid gap-px bg-line p-2", gridCols)}>
                 {children.map((child, i) => {
                   const Icon = child.icon;
                   const isActive = i === activeIdx;
                   return (
-                    <li key={child.href + i}>
-                      <Link
-                        href={child.href}
-                        onClick={() => onOpenChange(false)}
-                        onMouseEnter={() => setActiveIdx(i)}
-                        onFocus={() => setActiveIdx(i)}
+                    <Link
+                      key={child.href + i}
+                      href={child.href}
+                      onClick={() => onOpenChange(false)}
+                      onMouseEnter={() => setActiveIdx(i)}
+                      onFocus={() => setActiveIdx(i)}
+                      className={cn(
+                        "group relative flex items-start gap-3 bg-white p-3.5 transition-colors",
+                        isActive ? "bg-cream" : "hover:bg-cream/60"
+                      )}
+                    >
+                      {/* Hover flame top-bar (signature) */}
+                      <span
+                        aria-hidden
                         className={cn(
-                          "group flex items-start gap-3 px-4 py-3 transition-colors",
-                          isActive ? "bg-cream" : "hover:bg-cream/60"
+                          "absolute inset-x-0 top-0 h-[2px] origin-left bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo",
+                          isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                        )}
+                      />
+                      {/* Icon tile */}
+                      <span
+                        className={cn(
+                          "flex size-10 shrink-0 items-center justify-center rounded-lg border transition-all duration-300",
+                          isActive
+                            ? "border-brand bg-brand text-white shadow-sm"
+                            : "border-brand/20 bg-cream text-brand group-hover:border-brand group-hover:bg-brand group-hover:text-white"
                         )}
                       >
-                        {/* Icon tile — cream bg, orange icon, fills on hover */}
-                        <span
-                          className={cn(
-                            "flex size-9 shrink-0 items-center justify-center rounded-lg border transition-all duration-300",
-                            isActive
-                              ? "border-brand bg-brand text-white shadow-sm"
-                              : "border-brand/20 bg-cream text-brand group-hover:border-brand group-hover:bg-brand group-hover:text-white"
-                          )}
-                        >
-                          {Icon && <Icon className="size-4.5" />}
+                        {Icon && <Icon className="size-5" />}
+                      </span>
+                      {/* Title + description */}
+                      <span className="flex min-w-0 flex-col gap-0.5">
+                        <span className="text-sm font-bold leading-tight text-ink">
+                          {child.label}
                         </span>
-
-                        {/* Label + description */}
-                        <span className="flex flex-col gap-0.5 min-w-0">
-                          <span className="text-sm font-bold leading-tight text-ink">
-                            {child.label}
+                        {child.desc && (
+                          <span className="line-clamp-1 text-xs leading-snug text-body">
+                            {child.desc}
                           </span>
-                          {child.desc && (
-                            <span className="text-xs leading-snug text-body line-clamp-1">
-                              {child.desc}
-                            </span>
-                          )}
-                        </span>
-
-                        {/* Subtle → on the right — animates on hover */}
-                        <ArrowRight
-                          aria-hidden
-                          className={cn(
-                            "ml-auto size-4 shrink-0 self-center transition-all duration-300",
-                            isActive
-                              ? "translate-x-0 text-brand opacity-100"
-                              : "-translate-x-1 text-ink/0 opacity-0 group-hover:translate-x-0 group-hover:text-brand group-hover:opacity-100"
-                          )}
-                        />
-                      </Link>
-                    </li>
+                        )}
+                      </span>
+                    </Link>
                   );
                 })}
-              </ul>
+              </div>
 
-              {/* Right — preview image (Apple-style) */}
-              <div className="relative hidden bg-shade sm:block">
+              {/* Right — featured card with image + CTA */}
+              <div className="relative hidden bg-shade lg:block">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active.href + (active.image ?? "")}
@@ -145,7 +143,7 @@ export function MegaMenu({ item, open, onOpenChange }: MegaMenuProps) {
                         alt={active.label}
                         fill
                         className="object-cover"
-                        sizes="240px"
+                        sizes="288px"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center">
@@ -157,38 +155,51 @@ export function MegaMenu({ item, open, onOpenChange }: MegaMenuProps) {
                       aria-hidden
                       className="absolute inset-0 bg-gradient-to-t from-ink-deep/90 via-ink-deep/30 to-transparent"
                     />
-                    {/* Active label overlay */}
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <span className="rule-flame" />
-                      <p className="mt-2 text-sm font-bold leading-snug text-white">
+                    {/* Active item overlay */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="rule-flame" aria-hidden />
+                      <p className="mt-2 text-base font-bold leading-snug text-white">
                         {active.label}
                       </p>
                       {active.desc && (
-                        <p className="mt-0.5 text-[11px] leading-snug text-white/70 line-clamp-2">
+                        <p className="mt-1 line-clamp-2 text-xs leading-snug text-white/75">
                           {active.desc}
                         </p>
                       )}
+                      <Link
+                        href={active.href}
+                        onClick={() => onOpenChange(false)}
+                        className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-light"
+                      >
+                        View page
+                        <ArrowUpRight className="size-3.5" />
+                      </Link>
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
             </div>
 
-            {/* Footer — navy ink CTA strip */}
+            {/* Footer — ORANGE brand gradient CTA strip */}
             {item.footerCta && (
-              <div className="ink-gradient flex items-center justify-between gap-4 px-5 py-4 text-white">
+              <div className="brand-gradient flex items-center justify-between gap-4 px-6 py-4 text-white">
                 <div className="flex min-w-0 items-center gap-3">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                    <Sparkles className="size-4 text-brand-light" aria-hidden />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/15">
+                    <Sparkles className="size-4 text-white" aria-hidden />
                   </span>
-                  <p className="truncate text-sm font-bold">
-                    {item.footerCta.label}
-                  </p>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold">
+                      {item.footerCta.label}
+                    </p>
+                    <p className="truncate text-xs text-white/70">
+                      A senior engineer replies in 1 business day.
+                    </p>
+                  </div>
                 </div>
                 <Link
                   href={item.footerCta.href}
                   onClick={() => onOpenChange(false)}
-                  className="btn-lift inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-brand px-4 text-xs font-semibold text-white shadow-lg shadow-brand/20 hover:bg-brand-dark"
+                  className="btn-lift inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-white px-4 text-xs font-bold text-brand shadow-lg shadow-ink/10 hover:bg-shade"
                 >
                   {item.footerCta.button}
                   <ArrowRight className="size-3.5" />
