@@ -53,10 +53,37 @@ export const company = {
   phoneHref: "tel:+00915569566",
   email: "sales@globantislabs.com",
   emailHref: "mailto:sales@globantislabs.com",
+  careersEmail: "careers@globantislabs.com",
   usaAddress: "374 William S Canning Blvd, Fall River MA Road 2721, USA",
   canadaAddress: "3992 Rue de la Seine Laval, Québec H7W 2S3, Canada",
   indiaAddress: "RMZ Millenia Business Park, Perungudi, Chennai, India",
   founded: "2026",
+  offices: [
+    {
+      city: "Fall River, MA",
+      country: "United States",
+      address: "374 William S Canning Blvd, Fall River, MA 02721, USA",
+      tz: "US Eastern (UTC−5)",
+      image: "/images/wp/2026-01/pexels-sevenstormphotography-443383.jpg",
+      role: "Headquarters · Client engagement · Product",
+    },
+    {
+      city: "Laval, Québec",
+      country: "Canada",
+      address: "3992 Rue de la Seine, Laval, QC H7W 2S3, Canada",
+      tz: "Canada Eastern (UTC−5)",
+      image: "/images/wp/2026-01/2149595827.jpg",
+      role: "Delivery · Cloud & DevOps · AI research",
+    },
+    {
+      city: "Chennai",
+      country: "India",
+      address: "RMZ Millenia Business Park, Perungudi, Chennai, India",
+      tz: "India Standard (UTC+5:30)",
+      image: "/images/wp/2026-01/about-office-e1767452844756.jpg",
+      role: "Engineering hub · 24/5 follow-the-sun",
+    },
+  ],
 };
 
 export type NavItem = {
@@ -1349,6 +1376,268 @@ export const jobOpenings = [
     meta: "Last Date: April 4, 2026  |  Remote / Chennai / Hybrid",
     desc: "We are looking for an AI / Software Developer Intern who is passionate about building intelligent systems. This role offers hands-on experience in developing and deploying AI models along with software development.",
     href: "https://careers.globantislabs.com/",
+  },
+  {
+    id: "02",
+    title: "Senior Full-Stack Engineer",
+    meta: "Full-time  |  Remote / Laval / Hybrid",
+    desc: "Own end-to-end features across React, Node.js, TypeScript and Postgres on a healthcare SaaS platform shipping to 12+ countries. You'll work directly with the client engineering team and own production releases.",
+    href: "https://careers.globantislabs.com/",
+  },
+  {
+    id: "03",
+    title: "DevOps / Platform Engineer",
+    meta: "Full-time  |  Chennai / Hybrid",
+    desc: "Operate our internal platform — Kubernetes, Terraform, GitLab CI/CD, Grafana. Ship the developer tooling that 30+ engineers use every day, and keep our 99.99% uptime SLA intact.",
+    href: "https://careers.globantislabs.com/",
+  },
+  {
+    id: "04",
+    title: "UI/UX Designer",
+    meta: "Full-time  |  Remote / Laval",
+    desc: "Lead discovery sprints, design systems and high-fidelity prototypes for fintech and healthcare clients. You'll own research, Figma libraries and the design QA bar across the engagement.",
+    href: "https://careers.globantislabs.com/",
+  },
+];
+
+// ===== Careers — hiring process steps =====
+export const hiringProcess = [
+  {
+    step: "01",
+    title: "Application review",
+    desc: "A senior engineer — not a recruiter — reads your application within 5 business days. We share notes and a decision.",
+  },
+  {
+    step: "02",
+    title: "Intro call (30 min)",
+    desc: "30 minutes with the hiring manager. We talk through your experience, the role and the team. No live coding yet.",
+  },
+  {
+    step: "03",
+    title: "Practical session (90 min)",
+    desc: "A real-world exercise drawn from a past engagement. We review code, design decisions and trade-offs together.",
+  },
+  {
+    step: "04",
+    title: "Team & culture (60 min)",
+    desc: "Meet 2–3 future teammates. We discuss how we work, how we resolve disagreements and what good engineering looks like.",
+  },
+  {
+    step: "05",
+    title: "Offer & onboarding",
+    desc: "Offer within 7 days of the final round. Onboarding includes a senior mentor, a 30-day plan and your first production deploy.",
+  },
+];
+
+// ===== Careers — culture pillars =====
+export const culturePillars = [
+  {
+    icon: ShieldCheck,
+    title: "Security-first by default",
+    desc: "Threat modelling, secure code review and dependency hygiene are part of every PR — not a separate security audit phase.",
+  },
+  {
+    icon: Users,
+    title: "Mentorship, not micromanagement",
+    desc: "Every engineer gets a senior mentor. You set your weekly direction with your lead, not the other way around.",
+  },
+  {
+    icon: Rocket,
+    title: "Ship to production",
+    desc: "No six-month release cycles. Engineers here deploy to production in their first week — through guarded feature flags and thorough observability.",
+  },
+  {
+    icon: Sparkles,
+    title: "Curiosity budget",
+    desc: "10% of every sprint is reserved for learning, side projects and contributing to open-source tools we use.",
+  },
+];
+
+// ===== Appointment — slots + topics =====
+export const appointmentSlots = [
+  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00",
+];
+
+export const consultationTopics = [
+  "Software Architecture Review",
+  "AI / ML Strategy",
+  "Cloud Migration & DevOps",
+  "UI/UX Design Sprint",
+  "Cybersecurity Assessment",
+  "Other",
+];
+
+// ===== Appointment — FAQ =====
+export const appointmentFAQ = [
+  {
+    q: "Is the consultation really free?",
+    a: "Yes — completely free, no commitment. We run this call because we enjoy talking to engineers and product leaders about hard problems. Whether or not we work together, you'll leave with a written technical recommendation.",
+  },
+  {
+    q: "Who takes the call?",
+    a: "A senior engineer — usually a VP of Engineering or a Practice Lead. Not a salesperson. We want you to ask hard technical questions and get straight answers.",
+  },
+  {
+    q: "What should I bring?",
+    a: "A short description of what you're building, the team you have, and any timing constraints. Architecture diagrams or a Notion doc are welcome but not required.",
+  },
+  {
+    q: "What happens after the call?",
+    a: "Within 24 hours, you'll get a short written summary: what we heard, what we'd recommend, and (if it's a fit) a small first milestone proposal. No follow-up spam.",
+  },
+  {
+    q: "What if I'm not ready to start a project?",
+    a: "That's fine. The call is for you. We'll share the recommendation and stay available if you want to revisit later — weeks or months down the line.",
+  },
+  {
+    q: "Do you sign NDAs before the call?",
+    a: "We can — just ask. We're also comfortable speaking at a high level first if you'd rather not share specifics before an NDA is in place.",
+  },
+];
+
+// ===== Contact — response SLA + channels =====
+export const contactResponseSLA = [
+  { label: "First reply", value: "1 business day", desc: "A senior engineer reads every inbound enquiry and replies within one business day — never an auto-responder." },
+  { label: "Discovery call", value: "Within 5 days", desc: "If your enquiry looks like a fit, we'll book a 30-minute discovery call within the same week." },
+  { label: "Proposal", value: "5–7 days", desc: "After discovery, we ship a written proposal with scope, milestones, team and pricing — usually within a week." },
+];
+
+// ===== Contact — FAQ =====
+export const contactFAQ = [
+  {
+    q: "What information should I include in my enquiry?",
+    a: "Tell us what you're building, the team you have today, the timeline you're working against, and any compliance or security requirements. The more concrete, the faster we can give you a useful answer.",
+  },
+  {
+    q: "Do you work with startups or only enterprises?",
+    a: "Both. We've shipped MVPs for seed-stage founders and 18-month transformation programs for Fortune 500s. The engagement model scales to your stage.",
+  },
+  {
+    q: "Can you work in our time zone?",
+    a: "Yes. Our three offices (US, Canada, India) give us follow-the-sun coverage. Most clients get at least 4 hours of overlap with their team every business day.",
+  },
+  {
+    q: "What's your minimum engagement?",
+    a: "For project work, our smallest engagement is typically a 4–6 week architecture review or a design sprint. We also offer monthly retained engineering for ongoing work.",
+  },
+  {
+    q: "Do you sign NDAs and MSAs?",
+    a: "Yes. We have a standard mutual NDA we can sign before our first call, and a master services agreement template ready to review with your legal team.",
+  },
+];
+
+// ===== Technologies — categories =====
+export const technologyCategories = [
+  {
+    name: "Frontend",
+    desc: "Production-grade web and mobile interfaces with strict accessibility, performance budgets and design-system discipline.",
+    items: ["React", "Angular", "Vue.js", "Next.js", "TypeScript", "Figma"],
+  },
+  {
+    name: "Backend & Languages",
+    desc: "Service-oriented architectures, event-driven systems and polyglot persistence — engineered for scale and auditability.",
+    items: ["Node.js", "Python", "Go", "Java", "Laravel", "GraphQL"],
+  },
+  {
+    name: "Data & Storage",
+    desc: "OLTP, OLAP, streaming and search — chosen to fit the workload, not the trend. We model data for the questions you'll ask next.",
+    items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "Elasticsearch", "InfluxDB"],
+  },
+  {
+    name: "Cloud & DevOps",
+    desc: "Infrastructure-as-Code, automated CI/CD and full observability. Every change ships through a pipeline — never a console click.",
+    items: ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "GitLab", "Jenkins", "Puppet", "Grafana"],
+  },
+  {
+    name: "AI & ML",
+    desc: "Models shipped with the same release discipline as application code — versioned, monitored and rolled back when needed.",
+    items: ["TensorFlow", "PyTorch", "Keras", "Plotly"],
+  },
+];
+
+// ===== Work process — detailed phases with deliverables =====
+export const workProcessPhases = [
+  {
+    phase: "01",
+    title: "Discovery & Requirement Analysis",
+    duration: "1–2 weeks",
+    desc: "We begin by understanding your business objectives, technical requirements and market challenges. Through detailed discussions and analysis, we define a clear project scope aligned with your goals.",
+    deliverables: ["Stakeholder interviews", "Technical requirements doc", "Risk register", "Project charter"],
+  },
+  {
+    phase: "02",
+    title: "Planning & Strategy",
+    duration: "1 week",
+    desc: "Our team creates a well-defined project roadmap, architecture and delivery plan. Timelines, milestones and risk factors are identified to ensure predictable and efficient execution.",
+    deliverables: ["Architecture diagram", "Sprint roadmap", "Team plan", "Communication protocol"],
+  },
+  {
+    phase: "03",
+    title: "Design & Prototyping",
+    duration: "2–4 weeks",
+    desc: "We design intuitive user experiences and robust system architectures. Prototypes and design mockups are shared early to gather feedback and ensure alignment before development begins.",
+    deliverables: ["Wireframes", "Clickable prototype", "Design system", "Design QA checklist"],
+  },
+  {
+    phase: "04",
+    title: "Development & Implementation",
+    duration: "Sprint cycles",
+    desc: "Using agile methodologies, our engineers build secure, scalable and high-performance solutions. Regular updates and sprint reviews keep clients informed throughout the development lifecycle.",
+    deliverables: ["Working software", "Sprint reviews", "Burndown reports", "Release notes"],
+  },
+  {
+    phase: "05",
+    title: "Testing & Quality Assurance",
+    duration: "Continuous",
+    desc: "Every solution undergoes rigorous testing for functionality, performance, security and compliance. We ensure the final product meets international quality standards.",
+    deliverables: ["Test plans", "Automation suite", "Security scan report", "Compliance checklist"],
+  },
+  {
+    phase: "06",
+    title: "Deployment & Launch",
+    duration: "1 week",
+    desc: "We manage seamless deployment with minimal disruption, including infrastructure setup, data migration and production rollout — ensuring a smooth go-live for your team and users.",
+    deliverables: ["Runbook", "Deployment scripts", "Rollback plan", "Launch comms"],
+  },
+  {
+    phase: "07",
+    title: "Support & Continuous Improvement",
+    duration: "Ongoing",
+    desc: "Post-launch, we provide ongoing support, maintenance and enhancements to ensure long-term reliability and continuous improvement.",
+    deliverables: ["SLA dashboard", "Monthly review", "Backlog grooming", "Quarterly roadmap"],
+  },
+];
+
+// ===== Why Choose Us — comparison table =====
+export const whyChooseComparison = [
+  { label: "Senior engineers on every engagement", us: true, them: false },
+  { label: "Security-first by default (SOC2 / ISO 27001)", us: true, them: false },
+  { label: "Fixed-scope sprints with documented deliverables", us: true, them: true },
+  { label: "24/5 follow-the-sun coverage across 3 offices", us: true, them: false },
+  { label: "Written technical recommendation in 24 hours", us: true, them: false },
+  { label: "Quarterly business review with the leadership team", us: true, them: false },
+  { label: "Production-grade observability from day one", us: true, them: false },
+  { label: "Code ownership transferred to your team", us: true, them: false },
+];
+
+// ===== Why Choose Us — FAQ =====
+export const whyChooseFAQ = [
+  {
+    q: "How do you price engagements?",
+    a: "Two models: fixed-scope for well-defined projects (paid per milestone) and monthly retained for ongoing engineering work. We share pricing ranges in our first call — never a 'let's hop on a call' email chain.",
+  },
+  {
+    q: "What happens if the scope changes mid-engagement?",
+    a: "We treat scope changes as engineering decisions: we assess impact, write a short change request, and get your written approval before any work begins. No silent scope creep, no surprise invoices.",
+  },
+  {
+    q: "Do you transfer code ownership to us?",
+    a: "Yes — always. You own all source code, infrastructure and documentation we produce on your engagement. We hand over repos, CI/CD access and architecture diagrams at the closeout.",
+  },
+  {
+    q: "Can you scale the team up or down quickly?",
+    a: "Yes — within 2 weeks we can add or reduce 1–2 engineers. Larger team changes need 4–6 weeks because we don't hire fresh bodies for client work; we add engineers who already understand our culture.",
   },
 ];
 
