@@ -52,3 +52,17 @@ prompt
 server.log
 # Skills directory
 /skills/
+# Local dev artifacts — never push these
+verify-*.png
+verify-*.jpg
+*.db
+*.db-journal
+.env
+.env.local
+.env.production
+/prisma/dev.db*
+server.log
+test-results/
+prompt
+.claude
+.z-ai-config
