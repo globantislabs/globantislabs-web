@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
-import { Logo } from "./logo";
 import type { Service } from "@/lib/site-data";
 
 type Crumb = { label: string; href?: string };
@@ -9,14 +8,17 @@ type Crumb = { label: string; href?: string };
 /**
  * ServiceHero — full-bleed image hero for the top of every service detail page.
  *
- * Spec (per user request):
+ * v2 changes (per user request):
+ * - Removed the logo from the breadcrumb (cleaner, less busy)
+ * - Tighter, neater alignment — single max-width column for everything
+ * - Perfectly aligned KPI strip — equal columns, hairline divider above
+ * - Consistent button heights, gap, and padding
+ *
+ * Spec:
  * - Full-width background image (unique per service — set on service.banner.image)
  * - Navy ink scrim on the left for F-pattern text legibility
- * - Breadcrumb at top-left
- * - Eyebrow label + H1 title + description + CTA button
+ * - Breadcrumb (text-only, no logo) → eyebrow + H1 + description + CTA
  * - 3-4 KPI strip at the bottom of the hero
- *
- * Style references: Stripe / Apple service pages, full-bleed photo + scrim + text.
  */
 export function ServiceHero({
   service,
@@ -27,9 +29,10 @@ export function ServiceHero({
 }) {
   const heroImage = service.banner?.image ?? "/images/wp/2025-01/about.jpg";
   const stats = (service.stats ?? []).slice(0, 4);
+  const trail = crumbs ?? [];
 
   return (
-    <section className="relative flex min-h-[640px] items-center overflow-hidden bg-ink lg:min-h-[80vh]">
+    <section className="relative flex min-h-[600px] items-center overflow-hidden bg-ink lg:min-h-[78vh]">
       {/* Background image */}
       <Image
         src={heroImage}
@@ -40,7 +43,7 @@ export function ServiceHero({
         className="object-cover"
       />
 
-      {/* Scrim — left-heavy for F-pattern text legibility + bottom vignette into ink */}
+      {/* Scrim — left-heavy for F-pattern text legibility + bottom vignette */}
       <div
         aria-hidden
         className="absolute inset-0"
@@ -59,38 +62,39 @@ export function ServiceHero({
       />
       <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
 
-      {/* Content */}
+      {/* Content — single max-width column for everything (neat, clean alignment) */}
       <div className="container-site relative w-full py-20 lg:py-28">
-        <div className="max-w-3xl">
-          {/* Breadcrumb */}
-          <nav
-            aria-label="Breadcrumb"
-            className="mb-6 flex flex-wrap items-center gap-1.5 text-xs text-white/60"
-          >
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 transition-colors hover:text-white"
+        <div className="max-w-2xl">
+          {/* Breadcrumb — text-only, no logo */}
+          {trail.length > 0 && (
+            <nav
+              aria-label="Breadcrumb"
+              className="mb-6 flex flex-wrap items-center gap-1.5 text-xs text-white/60"
             >
-              <Logo variant="dark" />
-            </Link>
-            {(crumbs ?? []).map((c, i) => (
-              <span key={i} className="inline-flex items-center gap-1.5">
-                <ChevronRight className="size-3 text-white/30" aria-hidden />
-                {c.href ? (
-                  <Link
-                    href={c.href}
-                    className="transition-colors hover:text-white"
-                  >
-                    {c.label}
-                  </Link>
-                ) : (
-                  <span className="text-white">{c.label}</span>
-                )}
-              </span>
-            ))}
-          </nav>
+              {trail.map((c, i) => (
+                <span key={i} className="inline-flex items-center gap-1.5">
+                  {c.href ? (
+                    <Link
+                      href={c.href}
+                      className="transition-colors hover:text-white"
+                    >
+                      {c.label}
+                    </Link>
+                  ) : (
+                    <span className="text-white">{c.label}</span>
+                  )}
+                  {i < trail.length - 1 && (
+                    <ChevronRight
+                      className="size-3 text-white/30"
+                      aria-hidden
+                    />
+                  )}
+                </span>
+              ))}
+            </nav>
+          )}
 
-          {/* Eyebrow + title */}
+          {/* Eyebrow */}
           {service.banner?.label && (
             <div className="flex items-center gap-4">
               <span
@@ -103,45 +107,52 @@ export function ServiceHero({
             </div>
           )}
 
-          <h1 className="mt-5 text-display-xl font-bold text-white">
+          {/* Title */}
+          <h1 className="mt-5 text-display-xl font-bold leading-[1.05] text-white">
             {service.title}
           </h1>
 
+          {/* Description — aligned to the same max-width as everything else */}
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
             {service.desc}
           </p>
 
-          {/* CTA */}
+          {/* CTAs — both buttons perfectly aligned */}
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               href="/contact"
-              className="btn-lift inline-flex h-14 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
+              className="btn-lift inline-flex h-13 items-center justify-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
             >
               Discuss your project
               <ArrowRight className="size-4" aria-hidden />
             </Link>
             <Link
               href="/appointment"
-              className="btn-lift inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur transition-colors hover:bg-white/15"
+              className="btn-lift inline-flex h-13 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/15"
             >
               Book a free call
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
 
-          {/* KPI strip at the bottom of the hero */}
+          {/* KPI strip — perfectly aligned grid with hairline divider above */}
           {stats.length > 0 && (
-            <div className="mt-14 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-4 sm:gap-8 lg:mt-16">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col gap-1">
-                  <div className="font-mono text-3xl font-bold leading-none text-white sm:text-4xl">
-                    {s.value}
+            <div className="mt-14 border-t border-white/10 pt-8 lg:mt-16">
+              <dl
+                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+                style={{ alignItems: "start" }}
+              >
+                {stats.map((s) => (
+                  <div key={s.label} className="flex flex-col gap-1.5">
+                    <dt className="font-mono text-3xl font-bold leading-none text-white sm:text-4xl">
+                      {s.value}
+                    </dt>
+                    <dd className="text-xs leading-tight text-white/60 sm:text-sm">
+                      {s.label}
+                    </dd>
                   </div>
-                  <div className="mt-1.5 text-xs leading-tight text-white/60 sm:text-sm">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </dl>
             </div>
           )}
         </div>
