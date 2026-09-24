@@ -1,70 +1,74 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import {
+  OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://globantislabs.com"),
-  title: {
-    default: "Globantis Labs — Engineering Software, AI & Digital Systems",
-    template: "%s · Globantis Labs",
-  },
+  metadataBase: new URL(SITE_URL),
+  title: "Globantis Labs | Transforming Ideas Into IT Solutions",
   description:
-    "Globantis Labs is a global software engineering firm. We build secure, scalable web, mobile, AI, cloud and DevOps systems for clients across the USA, Canada and India.",
+    "Globantis Labs delivers world-class software, web, AI, DevOps and IT support solutions that fuel digital transformation for smarter businesses worldwide.",
   keywords: [
     "Globantis Labs",
-    "software development",
-    "web development",
-    "AI services",
-    "DevOps",
-    "UI/UX design",
-    "CMS development",
-    "IT support",
-    "digital transformation",
+    "IT Solutions",
+    "Software Development",
+    "Web Development",
+    "Artificial Intelligence",
+    "DevOps Services",
+    "UI/UX Design",
+    "Digital Transformation",
   ],
   authors: [{ name: "Globantis Labs" }],
-  creator: "Globantis Labs",
-  publisher: "Globantis Labs",
   icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/images/favicon.png",
   },
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Globantis Labs — Engineering Software, AI & Digital Systems",
+    title: "Globantis Labs | Transforming Ideas Into IT Solutions",
     description:
-      "Transforming ideas into IT solutions. We build secure, scalable software for global clients across financial services, healthcare, education, logistics and more.",
-    url: "https://globantislabs.com",
-    siteName: "Globantis Labs",
-    locale: "en_US",
+      "Smart IT solutions for smarter businesses. Fueling digital transformation with expert solutions worldwide.",
+    url: "/",
+    siteName: SITE_NAME,
     type: "website",
+    locale: "en_US",
+    images: [
+      { url: OG_IMAGE, width: 1200, height: 630, alt: `${SITE_NAME} — Transforming Ideas Into IT Solutions` },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Globantis Labs",
+    title: "Globantis Labs | Transforming Ideas Into IT Solutions",
     description:
-      "Transforming ideas into IT solutions — secure, scalable software engineering for global clients.",
+      "Smart IT solutions for smarter businesses. Fueling digital transformation with expert solutions worldwide.",
+    images: [OG_IMAGE],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -76,8 +80,18 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
+        className={`${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

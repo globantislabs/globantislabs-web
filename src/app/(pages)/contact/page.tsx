@@ -1,240 +1,159 @@
-"use client";
-
-import * as React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Check, Mail, Phone, Clock } from "lucide-react";
-import { PageShell } from "@/components/site/page-shell";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
-import { Container, Section } from "@/components/site/primitives";
-import { Reveal } from "@/components/site/reveal";
-import { contactChannels, company, consultationTopics } from "@/lib/site-data";
-import { useToast } from "@/hooks/use-toast";
+import { ContactForm } from "@/components/site/contact-form";
+import { Reveal, SectionHeading } from "@/components/site/primitives";
+import { buildMetadata } from "@/lib/seo";
+import { company } from "@/lib/site-data";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Contact Us | Globantis Labs",
+  description:
+    "Get in touch with Globantis Labs. Available office branches in Canada and India, and a team ready to help with your next IT project.",
+  path: "/contact",
+  keywords: [
+    "contact Globantis Labs",
+    "IT company office locations",
+    "software development Canada",
+    "IT services India",
+    "get in touch",
+  ],
+});
+
+const offices = [
+  {
+    country: "Canada",
+    address: company.canadaAddress,
+    image: "/images/wp/2024-10/usa.jpg",
+    alt: "Canada office",
+  },
+  {
+    country: "India",
+    address: company.indiaAddress,
+    image: "/images/wp/2026-01/RMZ-Millenia-Campus-4A_9726_20170916_001.avif",
+    alt: "India office",
+  },
+];
 
 export default function ContactPage() {
-  const { toast } = useToast();
-  const [submitting, setSubmitting] = React.useState(false);
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitting(true);
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      toast({
-        title: "Thanks — we'll be in touch.",
-        description: `A senior engineer will reply to ${data.email} within one business day.`,
-      });
-      form.reset();
-    } catch {
-      toast({
-        title: "Something went wrong.",
-        description: `Email us directly at ${company.email} while we resolve this.`,
-        variant: "destructive",
-      });
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   return (
-    <PageShell>
+    <>
       <PageBanner
-        eyebrow="Contact"
-        title="Tell us what you're building."
-        description="A senior engineer — not a salesperson — will read your message and reply within one business day. No script, no gatekeeper."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        title="Contact Us"
+        label="[ Contact ]"
+        crumbs={[{ label: "Contact" }]}
       />
 
-      <Section className="border-b border-hairline">
-        <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
-            {/* Left — channels + offices */}
-            <div className="lg:col-span-5">
-              <Reveal>
-                <p className="micro-label mb-4">Direct channels</p>
-                <ul className="space-y-3">
-                  {contactChannels.map((c) => {
-                    const Icon = c.icon;
-                    return (
-                      <li
-                        key={c.label}
-                        className="flex items-center gap-3 rounded-md border border-hairline bg-paper p-4"
-                      >
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-brand-soft text-brand">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <div>
-                          <p className="text-xs text-muted-foreground">
-                            {c.label}
-                          </p>
-                          {c.href ? (
-                            <a
-                              href={c.href}
-                              className="text-sm font-medium text-foreground hover:text-brand"
-                            >
-                              {c.value}
-                            </a>
-                          ) : (
-                            <p className="text-sm font-medium text-foreground">
-                              {c.value}
-                            </p>
-                          )}
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Reveal>
+      {/* Office branches */}
+      <section className="bg-white py-section-md">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              label="[ Locations ]"
+              title="Available Office Branches"
+              lead="We work with clients across the USA, Canada, India, and the UAE. Reach the team closest to you or send us a message below."
+            />
+          </Reveal>
 
-              <Reveal delay={0.1}>
-                <p className="micro-label mt-10 mb-4">Offices</p>
-                <ul className="space-y-3">
-                  {company.offices.map((o) => (
-                    <li
-                      key={o.city}
-                      className="rounded-md border border-hairline bg-paper p-4"
-                    >
-                      <p className="text-xs text-muted-foreground">
-                        {o.country}
-                      </p>
-                      <p className="mt-0.5 text-sm font-medium text-foreground">
-                        {o.city}
-                      </p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {o.address}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </div>
-
-            {/* Right — form */}
-            <div className="lg:col-span-7">
-              <Reveal delay={0.1}>
-                <form
-                  onSubmit={onSubmit}
-                  className="rounded-md border border-hairline bg-paper p-6 md:p-8"
-                >
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    <Field label="Name" name="name" required placeholder="Your name" />
-                    <Field
-                      label="Work email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@company.com"
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8">
+            {offices.map((o, i) => (
+              <Reveal
+                key={o.country}
+                delay={Math.min(i * 0.07, 0.35)}
+                className="h-full"
+              >
+                <div className="group card-lift relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white hover:border-flame/40 hover:shadow-lift">
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+                  />
+                  <div className="relative h-56 shrink-0 overflow-hidden">
+                    <Image
+                      src={o.image}
+                      alt={o.alt}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105"
                     />
-                    <Field
-                      label="Company"
-                      name="company"
-                      placeholder="Company name"
-                    />
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="topic" className="text-xs font-medium text-foreground">
-                        Topic
-                      </label>
-                      <select
-                        id="topic"
-                        name="topic"
-                        defaultValue=""
-                        className="h-11 rounded-md border border-hairline bg-background px-3 text-sm text-foreground focus:border-brand focus:outline-none"
-                      >
-                        <option value="" disabled>
-                          Select a topic
-                        </option>
-                        {consultationTopics.map((t) => (
-                          <option key={t} value={t}>
-                            {t}
-                          </option>
-                        ))}
-                      </select>
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+                    <div className="absolute bottom-4 left-5 flex items-center gap-2 text-white">
+                      <MapPin className="size-4 text-brand-light" aria-hidden />
+                      <span className="text-lg font-bold">{o.country}</span>
                     </div>
                   </div>
-
-                  <div className="mt-5 flex flex-col gap-1.5">
-                    <label htmlFor="message" className="text-xs font-medium text-foreground">
-                      What are you building?
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      required
-                      placeholder="A short paragraph on the problem, the team, and any timing constraints."
-                      className="w-full rounded-md border border-hairline bg-background p-3 text-sm text-foreground focus:border-brand focus:outline-none"
-                    />
+                  <div className="flex flex-1 items-start p-6">
+                    <p className="text-sm leading-relaxed text-body">{o.address}</p>
                   </div>
-
-                  <ul className="mt-6 space-y-2 text-xs text-muted-foreground">
-                    {[
-                      "Reply within one business day",
-                      "Written technical recommendation",
-                      "No commitment, no follow-up spam",
-                    ].map((t) => (
-                      <li key={t} className="flex items-center gap-2">
-                        <Check className="h-3.5 w-3.5 text-brand" />
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-xs text-muted-foreground">
-                      By submitting, you agree to be contacted about your enquiry.
-                    </p>
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="btn-brand disabled:opacity-60"
-                    >
-                      {submitting ? "Sending..." : "Send enquiry"}
-                      {!submitting && <ArrowRight className="h-4 w-4" />}
-                    </button>
-                  </div>
-                </form>
+                </div>
               </Reveal>
-            </div>
+            ))}
           </div>
-        </Container>
-      </Section>
-    </PageShell>
-  );
-}
 
-function Field({
-  label,
-  name,
-  type = "text",
-  required,
-  placeholder,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-}) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={name} className="text-xs font-medium text-foreground">
-        {label}
-        {required && <span className="ml-0.5 text-brand">*</span>}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        className="h-11 rounded-md border border-hairline bg-background px-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-brand focus:outline-none"
-      />
-    </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:gap-6">
+            <Reveal delay={0.07} className="h-full">
+              <a
+                href={company.emailHref}
+                className="group flex h-full items-center gap-4 rounded-xl border border-line bg-shade p-5 transition-all duration-300 ease-out-expo hover:-translate-y-0.5 hover:border-flame/40 hover:bg-white hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2"
+              >
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-300 ease-out-expo group-hover:bg-brand group-hover:text-white">
+                  <Mail className="size-5" aria-hidden />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
+                    Email
+                  </p>
+                  <p className="truncate text-sm font-medium text-ink">{company.email}</p>
+                </div>
+              </a>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <div className="flex h-full items-center gap-4 rounded-xl border border-line bg-shade p-5">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+                  <Clock className="size-5" aria-hidden />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
+                    Hours
+                  </p>
+                  <p className="text-sm font-medium text-ink">24/7 Global Support</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact form */}
+      <section className="bg-shade py-section-md">
+        <div className="container-site">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <Reveal className="relative mx-auto w-full max-w-md lg:mx-0">
+              {/* Offset flame frame — editorial depth */}
+              <span
+                aria-hidden
+                className="absolute -left-4 -top-4 h-full w-full rounded-2xl border border-flame/40"
+              />
+              <Image
+                src="/images/wp/2025-02/contact-zman.png"
+                alt="Contact Globantis Labs"
+                width={720}
+                height={720}
+                className="relative w-full rounded-2xl object-cover shadow-float"
+              />
+            </Reveal>
+            <Reveal delay={0.07}>
+              <SectionHeading
+                label="[ Any Query ]"
+                title="Let's Contact With Us"
+                lead="Send us a message and our team will get back to you within one business day. Fields marked with * are required."
+              />
+              <div className="mt-8">
+                <ContactForm />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

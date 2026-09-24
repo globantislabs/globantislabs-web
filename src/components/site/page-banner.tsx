@@ -1,125 +1,94 @@
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { Logo } from "./logo";
 
 type Crumb = { label: string; href?: string };
 
 export function PageBanner({
-  eyebrow,
   title,
-  description,
+  label,
+  image,
   crumbs,
 }: {
-  eyebrow?: string;
   title: string;
-  description?: string;
+  label?: string;
+  image?: string;
   crumbs?: Crumb[];
 }) {
+  const trail = crumbs ?? [];
   return (
-    <section className="relative overflow-hidden border-b border-hairline bg-paper">
-      {/* Subtle pattern: technical grid lines, very low contrast */}
+    <section className="relative overflow-hidden bg-ink pb-16 pt-20 lg:pb-24 lg:pt-28">
+      {/* decorative shapes */}
+      <Image
+        src="/images/wp/2025-01/page-banner-shape-1.png"
+        alt=""
+        aria-hidden
+        width={300}
+        height={300}
+        className="pointer-events-none absolute -left-20 top-1/2 hidden -translate-y-1/2 opacity-40 lg:block"
+      />
+      <Image
+        src="/images/wp/2025-01/page-banner-shape-2.png"
+        alt=""
+        aria-hidden
+        width={400}
+        height={400}
+        className="pointer-events-none absolute -right-24 -top-10 hidden opacity-30 lg:block"
+      />
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          color: "var(--ink)",
-        }}
+        aria-hidden
+        className="pointer-events-none absolute inset-0 grid-pattern opacity-20"
+      />
+      {/* Bottom flame accent thread — crisp centered rule */}
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-1/2 h-[3px] w-44 -translate-x-1/2 rounded-full bg-gradient-to-r from-flame/0 via-flame to-flame/0"
       />
 
-      {/* Oversized brand Z mark — anchor in the corner */}
-      <svg
-        aria-hidden
-        viewBox="0 0 30 30"
-        className="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 opacity-[0.06]"
-      >
-        <rect
-          x="1.49"
-          y="1.49"
-          width="27.02"
-          height="27.02"
-          rx="4"
-          ry="4"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-          className="text-foreground"
-        />
-        <polygon
-          points="24.3,7.1 13.14,22.91 5.7,22.91 16.86,7.1"
-          fill="currentColor"
-          className="text-foreground"
-        />
-      </svg>
+      <div className="container-site relative text-center">
+        {/* Breadcrumb */}
+        <div className="mb-7 flex items-center justify-center gap-2 text-sm text-white/60">
+          <Link href="/" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+            <Logo variant="dark" />
+          </Link>
+          {trail.map((c) => (
+            <span key={c.label} className="inline-flex items-center gap-2">
+              <ChevronRight className="size-3.5 text-white/30" />
+              {c.href ? (
+                <Link href={c.href} className="transition-colors hover:text-white">
+                  {c.label}
+                </Link>
+              ) : (
+                <span className="text-white">{c.label}</span>
+              )}
+            </span>
+          ))}
+        </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-        {crumbs && crumbs.length > 0 && (
-          <nav
-            aria-label="Breadcrumb"
-            className="mb-6 flex flex-wrap items-center gap-1 text-xs text-muted-foreground"
-          >
-            {crumbs.map((c, i) => (
-              <span key={i} className="inline-flex items-center gap-1">
-                {c.href ? (
-                  <Link href={c.href} className="hover:text-foreground">
-                    {c.label}
-                  </Link>
-                ) : (
-                  <span className="text-foreground">{c.label}</span>
-                )}
-                {i < crumbs.length - 1 && (
-                  <ChevronRight className="h-3 w-3 text-muted-foreground/60" />
-                )}
-              </span>
-            ))}
-          </nav>
-        )}
-        {eyebrow && <p className="micro-label mb-4">{eyebrow}</p>}
-        <h1 className="display max-w-4xl text-4xl text-foreground md:text-5xl lg:text-6xl">
+        {label && <span className="section-label !text-brand-light">{label}</span>}
+
+        <h1 className="text-display-lg mx-auto max-w-4xl font-bold text-white sm:text-display-xl">
           {title}
         </h1>
-        {description && (
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            {description}
-          </p>
-        )}
-      </div>
-    </section>
-  );
-}
 
-/** A simple CTA strip used at the bottom of content pages. */
-export function CTAStrip({
-  heading,
-  body,
-  buttonLabel = "Start a project",
-  href = "/contact",
-  className,
-}: {
-  heading: string;
-  body?: string;
-  buttonLabel?: string;
-  href?: string;
-  className?: string;
-}) {
-  return (
-    <section className={cn("border-t border-hairline bg-paper", className)}>
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-14 sm:px-6 md:flex-row md:items-center lg:px-8">
-        <div className="max-w-2xl">
-          <p className="micro-label mb-3">Next step</p>
-          <h2 className="display text-2xl text-foreground md:text-3xl">
-            {heading}
-          </h2>
-          {body && (
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-              {body}
-            </p>
-          )}
-        </div>
-        <Link href={href} className="btn-brand">
-          {buttonLabel}
-        </Link>
+        {image && (
+          <div className="mt-12 flex justify-center">
+            <div className="relative">
+              <div
+                aria-hidden
+                className="absolute -inset-3 rounded-3xl border border-flame/25"
+              />
+              <Image
+                src={image}
+                alt={title}
+                width={560}
+                height={340}
+                className="relative max-h-[340px] w-auto rounded-2xl object-cover shadow-float"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

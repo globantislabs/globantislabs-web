@@ -3,23 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ============================================================
-   Globantis Labs — Design System
-   Aesthetic: "Engineering Paper" — B2B IT services firm
-   - Display + body: Space Grotesk (deliberate, technical)
-   - Numeric / code labels: JetBrains Mono
-   - Palette: paper white (light) / ink (dark) + petrol teal accent
-   - Avoided AI defaults: no cream+terracotta, no near-black+acid-green,
-     no ALL-CAPS eyebrows, no middle-dot metadata, no → on every link.
-   ============================================================ */
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
-
+  /* Use Space Grotesk as the sans font everywhere (matches original theme) */
+  --font-sans: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-mono: var(--font-space-grotesk), "Space Grotesk", monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -28,7 +17,6 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
-
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -50,259 +38,460 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Brand-locked tokens — survive Tailwind v4 opacity utilities */
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-brand-soft: var(--brand-soft);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-paper: var(--paper);
-  --color-paper-soft: var(--paper-soft);
-  --color-hairline: var(--hairline);
-  --color-copper: var(--copper);
+  /* ============================================================
+     GLOBANTIS LABS — PREMIUM DESIGN TOKENS
+     One accent family (burnt orange), one authority family
+     (navy ink), warm neutrals. 60-30-10 distribution.
+     ============================================================ */
+
+  /* --- Accent: deep orange (fills, CTAs) --- */
+  --color-brand: #d9742b;            /* primary orange */
+  --color-brand-dark: #b85d1c;       /* hover / pressed */
+  --color-brand-light: #e8915a;      /* soft orange for dark backgrounds */
+  --color-brand-cta: #c75a1f;        /* CTA gradient head */
+  --color-brand-rgb: 217, 116, 43;
+
+  /* --- Accent: bright flame (text highlights, gradient heads) --- */
+  --color-flame: #fb8d2e;            /* highlight orange — headings spans, accent rules */
+  --color-flame-soft: #ff8a4c;       /* gradient tail for flame accents */
+
+  /* --- Authority: navy ink --- */
+  --color-ink: #0b165e;              /* headings / dark sections */
+  --color-ink-deep: #00033d;         /* deepest navy bg */
+  --color-ink-soft: #142a8c;
+
+  /* --- Warm neutrals --- */
+  --color-body: #47506d;             /* body text */
+  --color-line: #e6e8eb;             /* hairline borders */
+  --color-shade: #f5f6f7;            /* light section bg */
+  --color-cream: #fff4eb;            /* brand cream — icon tiles, soft bands */
+  --color-offwhite: #f8fbff;
+
+  /* ============================================================
+     FLUID DISPLAY TYPE (clamp, Major-Third-ish scale)
+     H1 40→76 · H2 30→48 · H3 24→32 · H4 20→26
+     ============================================================ */
+  --text-display-xl: clamp(2.5rem, 1.55rem + 4.3vw, 4.75rem);
+  --text-display-xl--line-height: 1.06;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-lg: clamp(1.875rem, 1.32rem + 2.7vw, 3rem);
+  --text-display-lg--line-height: 1.12;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-md: clamp(1.5rem, 1.24rem + 1.2vw, 2rem);
+  --text-display-md--line-height: 1.2;
+  --text-display-md--letter-spacing: -0.015em;
+  --text-display-sm: clamp(1.25rem, 1.12rem + 0.6vw, 1.625rem);
+  --text-display-sm--line-height: 1.3;
+  --text-display-sm--letter-spacing: -0.01em;
+
+  /* ============================================================
+     MOTION — GPU-friendly easings, Apple-grade curves
+     ============================================================ */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+
+  /* ============================================================
+     SHADOWS — layered, tinted with navy (never plain black)
+     ============================================================ */
+  --shadow-soft: 0 1px 2px rgba(11, 22, 94, 0.05),
+    0 2px 8px rgba(11, 22, 94, 0.06);
+  --shadow-lift: 0 4px 10px rgba(11, 22, 94, 0.06),
+    0 12px 32px rgba(11, 22, 94, 0.1);
+  --shadow-float: 0 8px 20px rgba(11, 22, 94, 0.08),
+    0 24px 64px rgba(11, 22, 94, 0.14);
+  --shadow-glow-flame: 0 10px 30px -8px rgba(251, 141, 46, 0.55);
+}
+
+@utility py-section-sm {
+  padding-block: clamp(3.5rem, 5.5vw, 5rem);
+}
+@utility py-section-md {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+}
+@utility py-section-lg {
+  padding-block: clamp(5.5rem, 11vw, 8.5rem);
+}
+@utility pt-section-md {
+  padding-top: clamp(4.5rem, 8vw, 7rem);
+}
+@utility pb-section-md {
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
 }
 
 :root {
-  --radius: 0.25rem; /* tighter radius — editorial, not SaaS-card */
-
-  /* LIGHT — engineering paper */
-  --background: oklch(0.975 0.008 95);     /* #F6F4EE — warm paper */
-  --foreground: oklch(0.18 0.012 240);    /* #0E1117 — deep ink */
-  --card: oklch(0.985 0.005 95);           /* slightly brighter paper */
-  --card-foreground: oklch(0.18 0.012 240);
-  --popover: oklch(0.985 0.005 95);
-  --popover-foreground: oklch(0.18 0.012 240);
-  --primary: oklch(0.32 0.06 195);         /* #0E5C5C petrol teal */
-  --primary-foreground: oklch(0.975 0.008 95);
-  --secondary: oklch(0.93 0.012 95);
-  --secondary-foreground: oklch(0.18 0.012 240);
-  --muted: oklch(0.93 0.012 95);
-  --muted-foreground: oklch(0.42 0.012 240);
-  --accent: oklch(0.92 0.025 195);
-  --accent-foreground: oklch(0.32 0.06 195);
-  --destructive: oklch(0.55 0.2 25);
-  --border: oklch(0.88 0.012 95);
-  --input: oklch(0.88 0.012 95);
-  --ring: oklch(0.32 0.06 195);
-
-  --chart-1: oklch(0.32 0.06 195);
-  --chart-2: oklch(0.6 0.1 95);
-  --chart-3: oklch(0.45 0.08 280);
-  --chart-4: oklch(0.7 0.14 60);
-  --chart-5: oklch(0.55 0.18 340);
-
-  --sidebar: oklch(0.985 0.005 95);
-  --sidebar-foreground: oklch(0.18 0.012 240);
-  --sidebar-primary: oklch(0.32 0.06 195);
-  --sidebar-primary-foreground: oklch(0.975 0.008 95);
-  --sidebar-accent: oklch(0.92 0.025 195);
-  --sidebar-accent-foreground: oklch(0.32 0.06 195);
-  --sidebar-border: oklch(0.88 0.012 95);
-  --sidebar-ring: oklch(0.32 0.06 195);
-
-  /* Brand */
-  --brand: #0E5C5C;          /* petrol teal */
-  --brand-foreground: #F6F4EE;
-  --brand-soft: #DCEAE8;
-  --ink: #0E1117;
-  --ink-soft: #2A3038;
-  --paper: #F6F4EE;
-  --paper-soft: #EDE9DF;
-  --hairline: #D9D4C7;
-  --copper: #B5663A;
+  --radius: 0.5rem;
+  /* Map shadcn tokens onto the EXACT Globantis palette */
+  --background: #ffffff;
+  --foreground: #47506d;
+  --card: #ffffff;
+  --card-foreground: #0b165e;
+  --popover: #ffffff;
+  --popover-foreground: #0b165e;
+  --primary: #d9742b;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f6f7;
+  --secondary-foreground: #0b165e;
+  --muted: #f5f6f7;
+  --muted-foreground: #47506d;
+  --accent: #fff4eb;
+  --accent-foreground: #0b165e;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e6e8eb;
+  --input: #e6e8eb;
+  --ring: #d9742b;
+  --chart-1: #d9742b;
+  --chart-2: #0b165e;
+  --chart-3: #47506d;
+  --chart-4: #e8915a;
+  --chart-5: #c75a1f;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0b165e;
+  --sidebar-primary: #d9742b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fff4eb;
+  --sidebar-accent-foreground: #0b165e;
+  --sidebar-border: #e6e8eb;
+  --sidebar-ring: #d9742b;
 }
 
 .dark {
-  /* DARK — ink + petrol teal */
-  --background: oklch(0.16 0.012 240);   /* #0E1117 — deep ink */
-  --foreground: oklch(0.93 0.012 95);    /* warm paper */
-  --card: oklch(0.205 0.012 240);
-  --card-foreground: oklch(0.93 0.012 95);
-  --popover: oklch(0.205 0.012 240);
-  --popover-foreground: oklch(0.93 0.012 95);
-  --primary: oklch(0.74 0.08 195);       /* #5DC8C2 mint petrol */
-  --primary-foreground: oklch(0.16 0.012 240);
-  --secondary: oklch(0.26 0.012 240);
-  --secondary-foreground: oklch(0.93 0.012 95);
-  --muted: oklch(0.26 0.012 240);
-  --muted-foreground: oklch(0.68 0.012 95);
-  --accent: oklch(0.3 0.04 195);
-  --accent-foreground: oklch(0.74 0.08 195);
-  --destructive: oklch(0.7 0.2 22);
-  --border: oklch(0.28 0.012 240);
-  --input: oklch(0.28 0.012 240);
-  --ring: oklch(0.74 0.08 195);
-
-  --chart-1: oklch(0.74 0.08 195);
-  --chart-2: oklch(0.7 0.1 95);
-  --chart-3: oklch(0.6 0.08 280);
-  --chart-4: oklch(0.75 0.14 60);
-  --chart-5: oklch(0.65 0.18 340);
-
-  --sidebar: oklch(0.205 0.012 240);
-  --sidebar-foreground: oklch(0.93 0.012 95);
-  --sidebar-primary: oklch(0.74 0.08 195);
-  --sidebar-primary-foreground: oklch(0.16 0.012 240);
-  --sidebar-accent: oklch(0.3 0.04 195);
-  --sidebar-accent-foreground: oklch(0.74 0.08 195);
-  --sidebar-border: oklch(0.28 0.012 240);
-  --sidebar-ring: oklch(0.74 0.08 195);
-
-  --brand: #5DC8C2;
-  --brand-foreground: #0E1117;
-  --brand-soft: #1A2A2C;
-  --ink: #E8E4DA;
-  --ink-soft: #B0AAA0;
-  --paper: #0E1117;
-  --paper-soft: #161A22;
-  --hairline: #1F2530;
-  --copper: #D49070;
+  --background: #0b165e;
+  --foreground: #ffffff;
+  --card: #142a8c;
+  --card-foreground: #ffffff;
+  --popover: #142a8c;
+  --popover-foreground: #ffffff;
+  --primary: #d9742b;
+  --primary-foreground: #ffffff;
+  --secondary: #142a8c;
+  --secondary-foreground: #ffffff;
+  --muted: #142a8c;
+  --muted-foreground: #b9bdcf;
+  --accent: #142a8c;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #d9742b;
+  --sidebar: #142a8c;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #d9742b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #142a8c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.12);
+  --sidebar-ring: #d9742b;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01" on, "ss02" on, "cv11" on;
-    font-variant-numeric: tabular-nums;
-  }
-  ::selection {
-    background-color: var(--brand);
-    color: var(--brand-foreground);
-  }
-}
-
-@layer components {
-  /* Editorial hairline rule (subtle, not broadsheet-everywhere) */
-  .hr-editorial {
-    border-color: var(--hairline);
-    border-top-width: 1px;
+    /* Fluid 16→17px, generous 1.7 leading (premium readability) */
+    font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+    line-height: 1.7;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Micro label — sentence case, leading hairline, NOT ALL-CAPS tracked */
-  .micro-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    color: var(--muted-foreground);
-    font-family: var(--font-mono);
-    text-transform: none;
-  }
-  .micro-label::before {
-    content: "";
-    width: 1.5rem;
-    height: 1px;
-    background-color: currentColor;
-    opacity: 0.6;
-  }
-  .micro-label.is-centered::before { display: none; }
-
-  /* Display heading */
-  .display {
-    font-family: var(--font-display);
-    font-weight: 500;
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-ink);
+    font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1.02;
+    line-height: 1.15;
+    text-wrap: balance;
   }
 
-  /* Numbered marker — only used when content is genuinely a sequence */
-  .step-number {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--brand);
-    font-feature-settings: "tnum" on;
+  /* Fluid fallback scale — pages override with display-* utilities */
+  h1 { font-size: var(--text-display-xl); }
+  h2 { font-size: var(--text-display-lg); }
+  h3 { font-size: var(--text-display-md); }
+  h4 { font-size: var(--text-display-sm); }
+  h5 { font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem); line-height: 1.35; }
+  h6 { font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem); line-height: 1.4; }
+
+  p {
+    text-wrap: pretty;
   }
 
-  /* Brand button — solid, deliberate radius */
-  .btn-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    background-color: var(--brand);
-    color: var(--brand-foreground);
-    border-radius: var(--radius);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  .btn-brand:hover { opacity: 0.88; }
-
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    border: 1px solid var(--hairline);
-    color: var(--foreground);
-    border-radius: var(--radius);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-  }
-  .btn-ghost:hover {
-    background-color: var(--paper-soft);
-    border-color: var(--brand);
+  /* Premium focus: 2px brand ring with offset */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 
-  /* Logo breathing — kept from original SVG mark */
-  @keyframes breathe {
-    0%, 100% { opacity: 0.75; }
-    50% { opacity: 1; }
-  }
-  .logo-breathe {
-    animation: breathe 2.6s ease-in-out infinite;
-  }
-
-  /* Subtle paper grain for editorial feel — very low opacity */
-  .grain-overlay {
-    position: relative;
-  }
-  .grain-overlay::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    opacity: 0.35;
-    mix-blend-mode: multiply;
-  }
-  .dark .grain-overlay::after {
-    mix-blend-mode: screen;
-    opacity: 0.18;
+  ::selection {
+    background: rgba(251, 141, 46, 0.28);
+    color: var(--color-ink-deep);
   }
 }
 
-/* Reduced motion — kill non-essential animation */
+/* ============================================================
+   BRAND UTILITIES
+   ============================================================ */
+.brand-gradient {
+  background-image: linear-gradient(135deg, #d9742b 0%, #b85d1c 100%);
+}
+.brand-cta-gradient {
+  background-image: linear-gradient(135deg, #c75a1f 0%, #b85d1c 100%);
+}
+.ink-gradient {
+  background-image: linear-gradient(135deg, #0b165e 0%, #00033d 60%, #0b165e 100%);
+}
+.text-gradient-brand {
+  background-image: linear-gradient(120deg, #d9742b 0%, #c75a1f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-flame {
+  background-image: linear-gradient(120deg, #fb8d2e 0%, #ff8a4c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shared accent thread — 3px flame rule for editorial moments */
+.rule-flame {
+  width: 44px;
+  height: 3px;
+  border-radius: 9999px;
+  background-image: linear-gradient(90deg, #fb8d2e 0%, #ff8a4c 100%);
+}
+
+/* Grid textures */
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.grid-pattern-dark {
+  background-image:
+    linear-gradient(to right, rgba(10, 22, 94, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 22, 94, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.glow-brand {
+  box-shadow: 0 20px 60px -20px rgba(217, 116, 43, 0.45);
+}
+
+/* Site container — single source of truth */
+.container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1310px;
+  padding-inline: 1.5rem;
+}
+
+/* Premium button micro-interaction (transform/opacity only) */
+.btn-lift {
+  transition:
+    transform 200ms var(--ease-out-quart),
+    box-shadow 200ms var(--ease-out-quart),
+    background-color 200ms var(--ease-out-quart);
+}
+.btn-lift:hover {
+  transform: translateY(-2px);
+}
+.btn-lift:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 100ms;
+}
+
+/* Signature card lift — pairs with the 3px flame top-bar hover */
+.card-lift {
+  transition:
+    transform 300ms var(--ease-out-expo),
+    box-shadow 300ms var(--ease-out-expo),
+    border-color 300ms var(--ease-out-expo);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+}
+
+/* Section eyebrow label — matches original "[ Section ]" pattern */
+.section-label {
+  display: inline-block;
+  color: #d9742b;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+/* Slim scrollbar */
+.slim-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background: rgba(10, 22, 94, 0.18);
+  border-radius: 9999px;
+}
+.slim-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 116, 43, 0.55);
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+/* Subtle Ken Burns for hero media (transform-only, GPU-composited) */
+@keyframes kenburns {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.1); }
+}
+.animate-kenburns {
+  animation: kenburns 8s var(--ease-out-expo) both;
+  will-change: transform;
+}
+
+/* ============================================================
+   ACCESSIBILITY — respect reduced motion globally
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+  html {
+    scroll-behavior: auto;
   }
-  .logo-breathe { animation: none !important; opacity: 1 !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* Custom scrollbar (used in long lists, command palette) */
-.scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
-.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: var(--hairline);
-  border-radius: 4px;
+@utility my-widget {
+  background: red;
 }
-.scrollbar-thin::-webkit-scrollbar-thumb:hover { background-color: var(--brand); }
+
+/* ============================================================
+   DARK-MODE OVERRIDES
+   The original components use hardcoded colors (bg-white, bg-shade,
+   text-ink, text-body, border-line). To make dark mode apply globally
+   without rewriting every component, we override these tokens when
+   .dark is on <html>. The dark background becomes navy ink (#0b165e),
+   cards become a deeper navy (#142a8c), and text inverts appropriately.
+   ============================================================ */
+.dark body {
+  background-color: var(--color-ink-deep) !important;
+}
+
+/* Light surfaces → navy ink */
+.dark .bg-white {
+  background-color: var(--color-ink) !important;
+}
+.dark .bg-shade {
+  background-color: #0a124a !important;
+}
+.dark .bg-cream {
+  background-color: rgba(217, 116, 43, 0.15) !important;
+}
+.dark .bg-offwhite {
+  background-color: var(--color-ink) !important;
+}
+
+/* Text colors — invert to white / soft white */
+.dark .text-ink,
+.dark .text-ink\/80,
+.dark .text-ink\/70,
+.dark .text-ink\/65,
+.dark .text-ink\/60,
+.dark .text-ink\/45,
+.dark .text-ink\/40 {
+  color: #ffffff !important;
+}
+.dark .text-body {
+  color: #b9bdcf !important;
+}
+
+/* Borders — soften to white-tinted */
+.dark .border-line,
+.dark .border-ink\/15,
+.dark .border-ink\/10,
+.dark .border-ink\/5 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Inputs/forms in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  color: #ffffff !important;
+}
+.dark input.bg-shade,
+.dark textarea.bg-shade,
+.dark .bg-shade input,
+.dark .bg-shade textarea {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+.dark input:focus,
+.dark textarea:focus {
+  background-color: rgba(255, 255, 255, 0.10) !important;
+}
+
+/* Header on dark — keep navy tint */
+.dark header .bg-white\/95,
+.dark header .bg-white {
+  background-color: rgba(11, 22, 94, 0.95) !important;
+}
+
+/* Sheet (mobile menu) on dark */
+.dark [data-state="open"] .bg-white,
+.dark .sm\:bg-white {
+  background-color: var(--color-ink) !important;
+}
+
+/* Logo image — invert in dark for legibility (uses dark variant of logo) */
+.dark img[alt="Globantis Labs"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Logo specifically when variant=light (the orange+navy wordmark) */
+.dark header img[alt="Globantis Labs"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Soft hover bg in dark */
+.dark .hover\:bg-brand\/5:hover,
+.dark .hover\:bg-brand\/10:hover,
+.dark .hover\:bg-white\/5:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+

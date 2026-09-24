@@ -1,84 +1,126 @@
-import { PageShell } from "@/components/site/page-shell";
-import { PageBanner, CTAStrip } from "@/components/site/page-banner";
-import { Container, Section, SectionHeading } from "@/components/site/primitives";
-import { Reveal } from "@/components/site/reveal";
+import { ShieldCheck, Headset, Globe2 } from "lucide-react";
+import { PageBanner } from "@/components/site/page-banner";
+import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
+import { buildMetadata } from "@/lib/seo";
 import { whyChooseTop, whyChooseGrid } from "@/lib/site-data";
+
+export const metadata = buildMetadata({
+  title: "Why Choose Us | Globantis Labs",
+  description:
+    "Trusted & reliable, 24/7 customer support, global client experience. Six more reasons organizations partner with Globantis Labs.",
+  path: "/why-choose-us",
+  keywords: [
+    "why choose Globantis Labs",
+    "trusted IT partner",
+    "24/7 customer support",
+    "global software services",
+    "reliable software development company",
+  ],
+});
+
+const topIcons = [ShieldCheck, Headset, Globe2];
 
 export default function WhyChooseUsPage() {
   return (
-    <PageShell>
+    <>
       <PageBanner
-        eyebrow="Why choose us"
-        title="Reliability you can audit."
-        description="We earn trust the long way — through transparent reporting, predictable delivery and a security-first engineering culture. Here is what that looks like in practice."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Why Choose Us" }]}
+        title="Why Choose Us"
+        label="[ Why Choose Us ]"
+        crumbs={[{ label: "Why Choose Us" }]}
       />
 
-      {/* Top three reasons */}
-      <Section className="border-b border-hairline">
-        <Container>
+      {/* Top three differentiators */}
+      <section className="bg-white py-section-md">
+        <div className="container-site">
           <Reveal>
             <SectionHeading
-              eyebrow="Three reasons clients stay"
-              title="Trust, support and global experience."
+              label="[ Why Choose Us ]"
+              title={
+                <>
+                  Globantis Labs – Your{" "}
+                  <span className="text-flame">Global Technology Partner</span> for the Future.
+                </>
+              }
             />
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-md border border-hairline bg-hairline md:grid-cols-3">
-            {whyChooseTop.map((r, i) => (
-              <Reveal key={r.title} delay={i * 0.08}>
-                <div className="flex h-full flex-col gap-2 bg-background p-8">
-                  <span className="step-number">
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {whyChooseTop.map((item, i) => {
+              const Icon = topIcons[i] ?? ShieldCheck;
+              return (
+                <Reveal key={item.title} delay={Math.min(i * 0.07, 0.35)} className="h-full">
+                  <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift">
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+                    />
+                    <div className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                      <Icon aria-hidden className="size-6" />
+                    </div>
+                    <h3 className="mt-5 text-display-md font-bold text-ink">{item.title}</h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-body">
+                      {item.desc}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Six more differentiators */}
+      <section className="bg-shade py-section-md">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              label="[ Why Choose Us ]"
+              title={
+                <>
+                  Years of Delivering{" "}
+                  <span className="text-flame">Custom IT Solutions</span> Services.
+                </>
+              }
+            />
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {whyChooseGrid.map((item, i) => (
+              <Reveal key={item.title} delay={Math.min(i * 0.07, 0.35)} className="h-full">
+                <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift">
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-flame/12 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                  <span className="bg-gradient-to-br from-ink/15 to-ink/[0.04] bg-clip-text text-5xl font-bold leading-none text-transparent transition-all duration-500 group-hover:from-flame group-hover:to-flame-soft">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="font-display text-lg font-semibold text-foreground">
-                    {r.title}
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {r.desc}
+                  <h3 className="relative mt-5 text-display-sm font-bold text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="relative mt-2.5 text-sm leading-relaxed text-body">
+                    {item.desc}
                   </p>
                 </div>
               </Reveal>
             ))}
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      {/* Full grid */}
-      <Section className="border-b border-hairline bg-paper">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="The full picture"
-              title="Six engineering disciplines we don't compromise on."
-              description="From how we hire to how we ship, every discipline below is observable inside our delivery dashboard — clients see the same numbers we do."
-            />
-          </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-md border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
-            {whyChooseGrid.map((g, i) => (
-              <Reveal key={g.title} delay={Math.min(i * 0.05, 0.2)}>
-                <div className="flex h-full flex-col gap-2 bg-background p-6">
-                  <span className="step-number">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="font-display text-base font-semibold text-foreground">
-                    {g.title}
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {g.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <CTAStrip
-        heading="See the work process behind these promises."
-        body="Every promise above maps to a concrete stage in our delivery process. Read how we operate — then judge us against it."
-        buttonLabel="Read the work process"
-        href="/work-process"
+      {/* CTA */}
+      <CTABand
+        title="Ready to work with a partner who delivers?"
+        desc="Let's talk about your project and how we can help you ship it."
+        ctaHref="/contact"
+        ctaLabel="Get in touch"
+        tone="ink"
+        className="bg-white"
       />
-    </PageShell>
+    </>
   );
 }

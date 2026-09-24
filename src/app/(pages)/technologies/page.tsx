@@ -1,85 +1,101 @@
-"use client";
-
-import * as React from "react";
-import { PageShell } from "@/components/site/page-shell";
-import { PageBanner, CTAStrip } from "@/components/site/page-banner";
-import { Container, Section, SectionHeading } from "@/components/site/primitives";
-import { Reveal } from "@/components/site/reveal";
+import Image from "next/image";
+import { PageBanner } from "@/components/site/page-banner";
+import { CTABand, Reveal, SectionHeading } from "@/components/site/primitives";
+import { buildMetadata } from "@/lib/seo";
 import { technologiesGrid } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
+
+export const metadata = buildMetadata({
+  title: "Technologies | Globantis Labs",
+  description:
+    "The technologies, frameworks, and platforms we use to build modern, scalable, and secure digital solutions.",
+  path: "/technologies",
+  keywords: [
+    "technology stack",
+    "React Angular Vue development",
+    "AWS Azure cloud platforms",
+    "AI machine learning tools",
+    "DevOps toolchain",
+  ],
+});
 
 export default function TechnologiesPage() {
-  // Categories derived from the data — used as filter chips
-  const categories = React.useMemo(
-    () => ["All", ...Array.from(new Set(technologiesGrid.map((t) => t.category)))],
-    []
-  );
-  const [active, setActive] = React.useState("All");
-  const filtered = active === "All"
-    ? technologiesGrid
-    : technologiesGrid.filter((t) => t.category === active);
-
   return (
-    <PageShell>
+    <>
       <PageBanner
-        eyebrow="Technologies"
-        title="Our engineering stack, in the open."
-        description="The tools, languages and platforms our engineers use every day. We pick boring, proven technology for production and adopt frontier tools only when they earn their keep."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
+        title="Technologies"
+        label="[ Our technologies ]"
+        crumbs={[{ label: "Technologies" }]}
       />
 
-      <Section className="border-b border-hairline">
-        <Container>
+      <section className="relative overflow-hidden bg-white py-section-md">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 grid-pattern-dark"
+        />
+        <div className="container-site relative">
           <Reveal>
             <SectionHeading
-              eyebrow="Toolchain"
-              title="Thirty technologies, four disciplines."
-              description="Filter by category to see what we'd reach for on day one of a new engagement. Every entry below has shipped production code for at least one of our clients."
+              label="[ Technologies ]"
+              title="What Technologies We Use"
+              lead="We choose the right tool for the job — from proven enterprise frameworks to emerging platforms. Here are some of the technologies our teams work with every day."
             />
           </Reveal>
 
-          {/* Category filter */}
-          <div className="mt-8 flex flex-wrap gap-2">
-            {categories.map((c) => (
-              <button
-                key={c}
-                onClick={() => setActive(c)}
-                className={cn(
-                  "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-                  active === c
-                    ? "border-brand bg-brand text-brand-foreground"
-                    : "border-hairline bg-paper text-foreground hover:border-brand"
-                )}
-              >
-                {c}
-              </button>
-            ))}
+          {/* Varied tile wall — cream accent tiles punctuate the white logo wall */}
+          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+            {technologiesGrid.map((t, i) => {
+              const isAccent = i % 5 === 0;
+              return (
+                <Reveal
+                  key={t.name}
+                  delay={Math.min(i * 0.07, 0.35)}
+                  className="h-full"
+                >
+                  <div
+                    className={`group card-lift relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border p-8 hover:border-flame/40 hover:shadow-lift ${
+                      isAccent ? "border-flame/25 bg-cream" : "border-line bg-white"
+                    }`}
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+                    />
+                    <div className="flex h-16 w-full items-center justify-center">
+                      <Image
+                        src={t.img}
+                        alt={t.name}
+                        width={120}
+                        height={80}
+                        className={`max-h-16 w-auto object-contain transition-all duration-300 ease-out-expo group-hover:scale-110 group-hover:opacity-100 ${
+                          isAccent
+                            ? "opacity-100"
+                            : "opacity-70 grayscale group-hover:grayscale-0"
+                        }`}
+                      />
+                    </div>
+                    <p
+                      className={`text-sm font-semibold ${
+                        isAccent ? "text-brand" : "text-ink"
+                      }`}
+                    >
+                      {t.name}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
+        </div>
+      </section>
 
-          {/* Tech grid — typographic, not card-based */}
-          <ul className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-hairline bg-hairline sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            {filtered.map((t, i) => (
-              <Reveal key={t.name} delay={Math.min(i * 0.02, 0.15)}>
-                <li className="flex aspect-[4/3] flex-col items-start justify-between gap-1 bg-background p-4">
-                  <span className="font-display text-sm font-semibold text-foreground">
-                    {t.name}
-                  </span>
-                  <span className="font-mono text-[10px] text-muted-foreground">
-                    {t.category}
-                  </span>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-
-      <CTAStrip
-        heading="Want engineers who know your stack?"
-        body="Tell us what you're running today. We'll match you with senior engineers who have shipped production code on the same technology."
-        buttonLabel="Start a project"
-        href="/contact"
+      {/* CTA */}
+      <CTABand
+        className="bg-shade"
+        title={"Let's build the future together."}
+        desc="Reach out and discover how Globantis Labs can engineer your next big thing."
+        ctaHref="/contact"
+        ctaLabel="Get in touch"
       />
-    </PageShell>
+    </>
   );
 }

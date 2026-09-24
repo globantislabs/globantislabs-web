@@ -1,20 +1,23 @@
-import { PageShell } from "@/components/site/page-shell";
-import { Hero } from "@/components/site/sections/hero";
-import { WhoWeAre } from "@/components/site/sections/who-we-are";
-import { Services } from "@/components/site/sections/services-grid";
-import { IndustriesStrip } from "@/components/site/sections/industries-strip";
-import { WhyGlobantis } from "@/components/site/sections/why-globantis";
-import { Consultation } from "@/components/site/sections/consultation";
+import { Header } from "@/components/site/header";
+import { Hero } from "@/components/site/hero";
+import { WhoWeAre } from "@/components/site/who-we-are";
+import { Services } from "@/components/site/services";
+import { WhyGlobantis } from "@/components/site/why-globantis";
+import { Consultation } from "@/components/site/consultation";
+import { Footer } from "@/components/site/footer";
 
 export default function Home() {
   return (
-    <PageShell>
-      <Hero />
-      <WhoWeAre />
-      <Services />
-      <IndustriesStrip />
-      <WhyGlobantis />
-      <Consultation />
-    </PageShell>
+    <div className="flex min-h-screen flex-col bg-background">
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <WhoWeAre />
+        <Services />
+        <WhyGlobantis />
+        <Consultation />
+      </main>
+      <Footer />
+    </div>
   );
 }

@@ -1,110 +1,175 @@
+"use client";
+
 import Link from "next/link";
-import { LogoMark } from "./logo";
+import {
+  Mail,
+  MapPin,
+  ArrowRight,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Github,
+  Send,
+} from "lucide-react";
+import { Logo } from "./logo";
 import {
   company,
-  footerCompanyLinks,
-  footerServiceLinks,
-  footerIndustryLinks,
+  footerCompany,
+  footerIndustries,
+  services,
 } from "@/lib/site-data";
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+
+const servicesLinks = services.slice(0, 7).map((s) => ({
+  label: s.title,
+  href: `/services/${s.slug}`,
+}));
+
+const socials = [
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Github, href: "#", label: "GitHub" },
+];
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-hairline bg-paper">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Top CTA strip */}
-        <div className="flex flex-col items-start justify-between gap-6 border-b border-hairline py-10 md:flex-row md:items-center">
-          <div className="max-w-xl">
-            <p className="micro-label mb-3">Let's build together</p>
-            <h2 className="display text-2xl text-foreground md:text-3xl">
-              Engineering your next software system.
+    <footer
+      id="contact"
+      className="relative mt-auto overflow-hidden bg-ink text-white"
+    >
+      {/* CTA banner */}
+      <div className="relative border-b border-white/10">
+        <div className="absolute inset-0 grid-pattern opacity-30" aria-hidden />
+        <div className="relative container-site flex flex-col items-start gap-6 px-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:py-14">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[34px] lg:leading-[42px]">
+              Have Any Projects In Your Mind ?
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {company.description}
+            <p className="mt-3 text-sm text-white/60 sm:text-base">
+              AI, automation, and emerging technologies are converging to
+              transform how organizations operate, compete, and scale.
             </p>
           </div>
-          <Link href="/contact" className="btn-brand">
-            Start a project
+          <Link
+            href="#consultation"
+            className="btn-lift inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
+          >
+            Let&apos;s Discuss Your Project
+            <ArrowRight className="size-4" />
           </Link>
         </div>
+      </div>
 
-        {/* Link columns */}
-        <div className="grid grid-cols-2 gap-8 py-10 md:grid-cols-4">
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2">
-              <LogoMark size={28} />
-              <span className="font-display text-base font-semibold text-foreground">
-                {company.name}
-              </span>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              {company.tagline}
+      {/* Main footer */}
+      <div className="relative container-site py-14">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12">
+          {/* Brand + contact — uses white Logo-F1-Backup logo via variant="dark" */}
+          <div>
+            <Logo variant="dark" />
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/55">
+              Provide world-wide survival strategies to ensure proactive
+              domination — fueling digital transformation with expert solutions.
             </p>
-            <div className="mt-5 flex items-center gap-3">
-              <SocialLink href={company.social.linkedin} label="LinkedIn">
-                <Linkedin className="h-4 w-4" />
-              </SocialLink>
-              <SocialLink href={company.social.github} label="GitHub">
-                <Github className="h-4 w-4" />
-              </SocialLink>
-              <SocialLink href={company.social.x} label="X">
-                <Twitter className="h-4 w-4" />
-              </SocialLink>
+
+            <div className="mt-6 space-y-3 text-sm">
+              <a
+                href={company.emailHref}
+                className="flex items-center gap-3 text-white/70 transition-colors hover:text-brand-light"
+              >
+                <span className="flex size-9 items-center justify-center rounded-lg bg-white/5">
+                  <Mail className="size-4 text-brand-light" />
+                </span>
+                {company.email}
+              </a>
+              <p className="flex items-start gap-3 text-white/70">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/5">
+                  <MapPin className="size-4 text-brand-light" />
+                </span>
+                <span className="leading-relaxed">
+                  {company.canadaAddress}
+                  <br />
+                  <span className="text-white/45">{company.indiaAddress}</span>
+                </span>
+              </p>
             </div>
           </div>
 
-          <FooterColumn title="Company" links={footerCompanyLinks} />
-          <FooterColumn title="Services" links={footerServiceLinks} />
-          <FooterColumn title="Industries" links={footerIndustryLinks} />
+          {/* Company */}
+          <FooterCol title="Company" links={footerCompany} />
+          {/* Services */}
+          <FooterCol title="Services" links={servicesLinks} />
+          {/* Industries */}
+          <FooterCol title="Industries" links={footerIndustries} />
         </div>
 
-        {/* Offices */}
-        <div className="grid grid-cols-1 gap-6 border-t border-hairline py-8 sm:grid-cols-3">
-          {company.offices.map((office) => (
-            <div key={office.city}>
-              <div className="micro-label">{office.country}</div>
-              <p className="mt-2 text-sm font-medium text-foreground">
-                {office.city}
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                {office.address}
-              </p>
-            </div>
-          ))}
-        </div>
+        {/* Newsletter + socials */}
+        <div className="mt-12 grid gap-8 border-t border-white/10 pt-8 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+          <div>
+            <p className="text-sm font-semibold text-white">
+              Subscribe Newsletter
+            </p>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-3 flex max-w-md items-center gap-2 rounded-full border border-white/15 bg-white/5 p-1.5 pl-4 focus-within:border-brand/50"
+            >
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="h-9 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/40"
+              />
+              <button
+                type="submit"
+                className="inline-flex h-9 items-center gap-1.5 rounded-full bg-brand px-4 text-xs font-medium text-white transition-colors hover:bg-brand-dark"
+              >
+                <Send className="size-3.5" />
+                Subscribe
+              </button>
+            </form>
+          </div>
 
-        {/* Contact bar */}
-        <div className="flex flex-col items-start justify-between gap-4 border-t border-hairline py-6 sm:flex-row sm:items-center">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            <a
-              href={company.emailHref}
-              className="inline-flex items-center gap-2 text-foreground hover:text-brand"
-            >
-              <Mail className="h-4 w-4 text-brand" />
-              {company.email}
-            </a>
-            <a
-              href={company.phoneHref}
-              className="inline-flex items-center gap-2 text-foreground hover:text-brand"
-            >
-              <Phone className="h-4 w-4 text-brand" />
-              {company.phone}
-            </a>
-            <span className="inline-flex items-center gap-2 text-muted-foreground">
-              <MapPin className="h-4 w-4 text-brand" />
-              US · CA · IN
+          <div className="flex items-center gap-3 lg:justify-end">
+            <span className="text-xs font-medium text-white/50">
+              Social Share:
             </span>
+            {socials.map((s) => {
+              const Icon = s.icon;
+              return (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:border-brand/50 hover:bg-brand hover:text-white"
+                >
+                  <Icon className="size-4" />
+                </a>
+              );
+            })}
           </div>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {company.name}. All rights reserved.
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto container-site flex flex-col items-center justify-between gap-2 px-6 py-5 text-xs text-white/45 sm:flex-row">
+          <p>
+            Copyright © {company.founded}. Designed by{" "}
+            <span className="font-semibold text-white/70">Globantis Labs</span>.
           </p>
+          <div className="flex items-center gap-5">
+            <Link href="#" className="transition-colors hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="transition-colors hover:text-white">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-function FooterColumn({
+function FooterCol({
   title,
   links,
 }: {
@@ -113,41 +178,23 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="micro-label mb-4">{title}</p>
-      <ul className="space-y-2.5">
-        {links.map((link) => (
-          <li key={link.href}>
+      <h4 className="text-[13px] font-bold uppercase tracking-[0.14em] text-white">
+        {title}
+      </h4>
+      <span className="mt-3 block h-[3px] w-8 rounded-full bg-gradient-to-r from-flame to-flame-soft" aria-hidden />
+      <ul className="mt-4 space-y-2.5">
+        {links.map((l) => (
+          <li key={l.label}>
             <Link
-              href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              href={l.href}
+              className="group inline-flex items-center gap-1.5 text-sm text-white/55 transition-colors hover:text-brand-light"
             >
-              {link.label}
+              <span className="h-px w-0 bg-brand-light transition-all duration-300 group-hover:w-3" />
+              {l.label}
             </Link>
           </li>
         ))}
       </ul>
     </div>
-  );
-}
-
-function SocialLink({
-  href,
-  label,
-  children,
-}: {
-  href: string;
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={label}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-hairline text-foreground transition-colors hover:border-brand hover:text-brand"
-    >
-      {children}
-    </a>
   );
 }
