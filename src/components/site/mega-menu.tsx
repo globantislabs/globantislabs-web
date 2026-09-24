@@ -3,32 +3,38 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { NavItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 /**
- * Globantis Labs — MegaMenu (v3 — no hover image)
+ * Globantis Labs — MegaMenu (v4 — full redesign)
  *
- * Spec evolution:
- * - v1: Apple-style left list + right preview image
- * - v2: 3-col grid + right featured card (image updates on hover)
- * - v3 (this): full-width link grid only — NO hover image
+ * NEW PALETTE & LAYOUT (per user request: "don't stuck with orange and blue"):
+ * - Panel: deep forest green (#0F3D3E) — drops as a dark editorial moment
+ * - Text: warm cream (#F5F2EC) for titles, soft cream/70 for descriptions
+ * - Accent: burnished copper (#B8702D) for numbered markers + hover + arrow
+ * - Layout: single full-width list, one item per row, hairline rules between
+ * - Per row: mono numbered marker (01) + bold title + 1-line description
+ * - No footer CTA — clean end
+ * - Animation: staggered fade + slide-down, 200ms ease-out, 30ms per row
+ * - Hover: row bg lightens to forest-tint-2, marker brightens to copper,
+ *   arrow slides in from the right
  *
- * Final spec:
- * - Width: ~960px centered under the trigger
- * - Layout: full-width multi-column link grid (3 cols for many, 2 for medium, 1 for few)
- * - Per-item: icon tile + title + 1-line description
- * - Footer: ORANGE brand gradient strip with CTA button
- * - Animation: slide reveal — blind opening, 280ms ease-out-expo
- * - Trigger: both hover AND click (existing header behavior)
- * - Card: pure white, hairline border, soft shadow
+ * Trigger: both hover (desktop) AND click (keyboard/touch).
  */
 type MegaMenuProps = {
   item: NavItem;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
+
+// Local palette — scoped to this component only
+const forest = "#0F3D3E";
+const forestSoft = "#154545";
+const cream = "#F5F2EC";
+const copper = "#B8702D";
+const copperSoft = "#D49070";
 
 export function MegaMenu({ item, open, onOpenChange }: MegaMenuProps) {
   const children = item.children ?? [];
@@ -44,99 +50,133 @@ export function MegaMenu({ item, open, onOpenChange }: MegaMenuProps) {
 
   if (!children.length) return null;
 
-  // Pick grid columns based on child count
-  const gridCols =
-    children.length <= 3
-      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-      : children.length <= 6
-        ? "grid-cols-1 sm:grid-cols-2"
-        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
-
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          // Slide reveal — like a blind opening from the top
-          initial={{ opacity: 0, y: -16, height: 0 }}
-          animate={{ opacity: 1, y: 0, height: "auto" }}
-          exit={{ opacity: 0, y: -10, height: 0 }}
-          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          // Subtle fade + slide-down, 200ms ease-out
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5"
+          style={{ minWidth: "min(560px, 92vw)" }}
         >
           <div
-            className="overflow-hidden rounded-2xl border border-line bg-white shadow-float"
+            className="overflow-hidden rounded-xl border shadow-2xl"
+            style={{
+              backgroundColor: forest,
+              borderColor: "rgba(245, 242, 236, 0.10)",
+              boxShadow:
+                "0 20px 50px -10px rgba(15, 61, 62, 0.45), 0 8px 16px -4px rgba(0,0,0,0.18)",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Full-width link grid — NO right preview panel */}
-            <div className={cn("grid gap-px bg-line p-2", gridCols)}>
-              {children.map((child, i) => {
-                const Icon = child.icon;
-                return (
-                  <Link
-                    key={child.href + i}
-                    href={child.href}
-                    onClick={() => onOpenChange(false)}
-                    className="group relative flex items-start gap-3 bg-white p-4 transition-colors hover:bg-cream"
-                  >
-                    {/* Hover flame top-bar (signature) */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
-                    />
-                    {/* Icon tile */}
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand transition-all duration-300 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                      {Icon && <Icon className="size-5" />}
-                    </span>
-                    {/* Title + description */}
-                    <span className="flex min-w-0 flex-col gap-1">
-                      <span className="text-sm font-bold leading-tight text-ink">
-                        {child.label}
-                      </span>
-                      {child.desc && (
-                        <span className="text-xs leading-snug text-body line-clamp-2">
-                          {child.desc}
-                        </span>
-                      )}
-                    </span>
-                    {/* Subtle arrow that appears on hover */}
-                    <ArrowRight
-                      aria-hidden
-                      className="ml-auto size-4 shrink-0 self-center text-brand opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 -translate-x-1"
-                    />
-                  </Link>
-                );
-              })}
+            {/* Top eyebrow strip — section name + count */}
+            <div
+              className="flex items-center justify-between px-5 py-3"
+              style={{
+                borderBottom: "1px solid rgba(245, 242, 236, 0.08)",
+              }}
+            >
+              <span
+                className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]"
+                style={{ color: copperSoft }}
+              >
+                {item.label}
+              </span>
+              <span
+                className="font-mono text-[10px] tracking-wider"
+                style={{ color: "rgba(245, 242, 236, 0.40)" }}
+              >
+                {String(children.length).padStart(2, "0")} entries
+              </span>
             </div>
 
-            {/* Footer — ORANGE brand gradient CTA strip */}
-            {item.footerCta && (
-              <div className="brand-gradient flex items-center justify-between gap-4 px-6 py-4 text-white">
-                <div className="flex min-w-0 items-center gap-3">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/15">
-                    <Sparkles className="size-4 text-white" aria-hidden />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-bold">
-                      {item.footerCta.label}
-                    </p>
-                    <p className="truncate text-xs text-white/70">
-                      A senior engineer replies in 1 business day.
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href={item.footerCta.href}
-                  onClick={() => onOpenChange(false)}
-                  className="btn-lift inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-white px-4 text-xs font-bold text-brand shadow-lg shadow-ink/10 hover:bg-shade"
+            {/* Single-column list — one item per row, hairline rules */}
+            <ul>
+              {children.map((child, i) => (
+                <motion.li
+                  key={child.href + i}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.22,
+                    delay: 0.04 + i * 0.035,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                 >
-                  {item.footerCta.button}
-                  <ArrowRight className="size-3.5" />
-                </Link>
-              </div>
-            )}
+                  <Link
+                    href={child.href}
+                    onClick={() => onOpenChange(false)}
+                    className="group relative block px-5 py-3.5 transition-colors duration-200"
+                    style={{
+                      backgroundColor: "transparent",
+                      borderTop:
+                        i === 0
+                          ? "none"
+                          : "1px solid rgba(245, 242, 236, 0.07)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = forestSoft;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }}
+                  >
+                    <div className="flex items-baseline gap-4">
+                      {/* Numbered marker — mono, copper */}
+                      <span
+                        className="font-mono text-xs font-semibold tabular-nums transition-colors duration-200 group-hover:text-[color:var(--copper-bright)]"
+                        style={{ color: copperSoft, minWidth: "1.75rem" }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+
+                      {/* Title + description */}
+                      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                        <span
+                          className="text-sm font-bold leading-tight transition-colors duration-200 group-hover:text-white"
+                          style={{ color: cream }}
+                        >
+                          {child.label}
+                        </span>
+                        {child.desc && (
+                          <span
+                            className="line-clamp-1 text-xs leading-snug"
+                            style={{ color: "rgba(245, 242, 236, 0.55)" }}
+                          >
+                            {child.desc}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Arrow — slides in from right on hover */}
+                      <ArrowRight
+                        aria-hidden
+                        className="size-4 shrink-0 self-center opacity-0 -translate-x-2 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                        style={{ color: copperSoft }}
+                      />
+                    </div>
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+
+            {/* NO footer CTA — clean end. Bottom hairline only. */}
+            <div
+              aria-hidden
+              style={{
+                height: "1px",
+                backgroundColor: "rgba(245, 242, 236, 0.10)",
+              }}
+            />
           </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
+
+// Expose palette to consumers if needed
+export const megaMenuPalette = { forest, forestSoft, cream, copper, copperSoft };
