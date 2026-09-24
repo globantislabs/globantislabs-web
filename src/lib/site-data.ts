@@ -1128,6 +1128,116 @@ export const aboutValues = [
   },
 ];
 
+// ===== About page — Company journey timeline =====
+export const companyTimeline = [
+  {
+    year: "2010",
+    title: "The Founding Idea",
+    desc: "A small group of engineers started Globantis with a single belief: software should be engineered, not assembled. The first engagements were custom software projects for early US clients.",
+  },
+  {
+    year: "2014",
+    title: "First Canada Office",
+    desc: "Opened our Laval, Québec delivery centre to serve North American clients across both US Eastern and Canadian Eastern time zones with follow-the-sun coverage.",
+  },
+  {
+    year: "2018",
+    title: "India Engineering Hub",
+    desc: "Established the Chennai engineering hub at RMZ Millenia — scaling to 30+ senior engineers and 24/5 delivery capability across the India Standard Time business window.",
+  },
+  {
+    year: "2021",
+    title: "AI Practice Launched",
+    desc: "Spun up a dedicated AI/ML practice — shipping our first production ML pipelines in healthcare diagnostics and financial fraud detection. Began investing in MLOps tooling.",
+  },
+  {
+    year: "2023",
+    title: "Cloud & DevOps Maturity",
+    desc: "Hit 99.99% platform uptime across the year. Standardised on Infrastructure-as-Code (Terraform), GitLab CI/CD, and full observability (Grafana + Prometheus + OpenTelemetry).",
+  },
+  {
+    year: "2026",
+    title: "250+ Projects Delivered",
+    desc: "Crossed 250 production projects delivered and 40+ enterprise clients across financial services, healthcare, education, logistics and e-commerce. Today we stand as a trusted global technology partner.",
+  },
+];
+
+// ===== About page — Leadership team =====
+export const leadershipTeam = [
+  {
+    name: "Arjun Mehta",
+    role: "Founder & Chief Executive",
+    bio: "Two decades shipping production software across financial services and healthcare. Arjun founded Globantis on the belief that engineering rigour should not be optional.",
+    initials: "AM",
+  },
+  {
+    name: "Sofia Renaud",
+    role: "VP, Engineering",
+    bio: "Leads our engineering practice across the US, Canada and India hubs. Sofia owns the architecture review board and the senior engineering hiring bar.",
+    initials: "SR",
+  },
+  {
+    name: "Vikram Iyer",
+    role: "Head of AI & Data",
+    bio: "Built and scaled the AI practice from a single PoC to 30+ production ML systems. Vikram's teams ship models with the same release discipline as application code.",
+    initials: "VI",
+  },
+  {
+    name: "Daniel Carter",
+    role: "VP, Delivery & Client Success",
+    bio: "Owns the delivery operating model — sprint cadence, client-facing status, and the post-launch SLA. Every Globantis engagement runs through Daniel's playbook.",
+    initials: "DC",
+  },
+];
+
+// ===== About page — Certifications & standards =====
+export const certifications = [
+  {
+    code: "SOC 2 Type II",
+    desc: "Annual third-party audit of our security, availability and confidentiality controls.",
+  },
+  {
+    code: "ISO 27001",
+    desc: "Certified information security management system across all delivery centres.",
+  },
+  {
+    code: "GDPR",
+    desc: "EU personal-data handling standards embedded into every product we ship.",
+  },
+  {
+    code: "HIPAA",
+    desc: "PHI handling, encryption, and audit trail patterns for healthcare engagements.",
+  },
+];
+
+// ===== About page — Office locations =====
+export const officeLocations = [
+  {
+    city: "Fall River, MA",
+    country: "United States",
+    address: "374 William S Canning Blvd, Fall River, MA 02721, USA",
+    tz: "US Eastern (UTC−5)",
+    image: "/images/wp/2026-01/pexels-sevenstormphotography-443383.jpg",
+    role: "Headquarters · Client engagement · Product",
+  },
+  {
+    city: "Laval, Québec",
+    country: "Canada",
+    address: "3992 Rue de la Seine, Laval, QC H7W 2S3, Canada",
+    tz: "Canada Eastern (UTC−5)",
+    image: "/images/wp/2026-01/2149595827.jpg",
+    role: "Delivery · Cloud & DevOps · AI research",
+  },
+  {
+    city: "Chennai",
+    country: "India",
+    address: "RMZ Millenia Business Park, Perungudi, Chennai, India",
+    tz: "India Standard (UTC+5:30)",
+    image: "/images/wp/2026-01/about-office-e1767452844756.jpg",
+    role: "Engineering hub · 24/5 follow-the-sun",
+  },
+];
+
 // ===== Why Choose Us page data =====
 export const whyChooseTop = [
   {
