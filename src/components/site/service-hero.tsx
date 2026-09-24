@@ -56,7 +56,7 @@ export function ServiceHero({
       <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
 
       {/* Content — minimal: breadcrumb + eyebrow + title only */}
-      <div className="container-site relative w-full pt-16 pb-10 lg:pt-24 lg:pb-14">
+      <div className="container-site relative w-full pt-16 pb-6 lg:pt-24 lg:pb-8">
         <div className="max-w-3xl">
           {/* Breadcrumb — text-only, no logo */}
           {trail.length > 0 && (
@@ -101,7 +101,7 @@ export function ServiceHero({
           )}
 
           {/* Title */}
-          <h1 className="mt-3 text-display-lg font-bold leading-[1.1] text-white">
+          <h1 className="mt-4 text-display-xl font-bold leading-[1.04] text-white">
             {service.title}
           </h1>
         </div>
