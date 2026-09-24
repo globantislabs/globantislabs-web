@@ -60,3 +60,20 @@ model ServiceView {
   slug     String @id
   views    Int    @default(0)
 }
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  status    String   @default("pending") // pending | confirmed | unsubscribed
+  source    String   @default("website")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LeadMagnetDownload {
+  id        String   @id @default(cuid())
+  email     String
+  slug      String   // which eBook / whitepaper / checklist
+  source    String   @default("lead-magnet")
+  createdAt DateTime @default(now())
+}

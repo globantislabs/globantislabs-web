@@ -9,9 +9,9 @@ import {
   Twitter,
   Facebook,
   Github,
-  Send,
 } from "lucide-react";
 import { Logo } from "./logo";
+import { NewsletterSignup } from "./newsletter-signup";
 import {
   company,
   footerCompany,
@@ -106,25 +106,14 @@ export function Footer() {
         <div className="mt-12 grid gap-8 border-t border-white/10 pt-8 lg:grid-cols-[1.3fr_1fr] lg:items-center">
           <div>
             <p className="text-sm font-semibold text-white">
-              Subscribe Newsletter
+              Subscribe to our monthly insights
             </p>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="mt-3 flex max-w-md items-center gap-2 rounded-full border border-white/15 bg-white/5 p-1.5 pl-4 focus-within:border-brand/50"
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="h-9 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/40"
-              />
-              <button
-                type="submit"
-                className="inline-flex h-9 items-center gap-1.5 rounded-full bg-brand px-4 text-xs font-medium text-white transition-colors hover:bg-brand-dark"
-              >
-                <Send className="size-3.5" />
-                Subscribe
-              </button>
-            </form>
+            <p className="mt-1 text-xs text-white/60">
+              Engineering notes, case studies, and what we&apos;re shipping. No spam, unsubscribe anytime.
+            </p>
+            <div className="mt-3">
+              <NewsletterSignup variant="inline" />
+            </div>
           </div>
 
           <div className="flex items-center gap-3 lg:justify-end">
@@ -152,15 +141,17 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto container-site flex flex-col items-center justify-between gap-2 px-6 py-5 text-xs text-white/45 sm:flex-row">
           <p>
-            Copyright © {company.founded}. Designed by{" "}
-            <span className="font-semibold text-white/70">Globantis Labs</span>.
+            Copyright © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            <Link href="#" className="transition-colors hover:text-white">
+            <Link href="/privacy" className="transition-colors hover:text-white">
               Privacy Policy
             </Link>
-            <Link href="#" className="transition-colors hover:text-white">
+            <Link href="/terms" className="transition-colors hover:text-white">
               Terms of Service
+            </Link>
+            <Link href="/contact" className="transition-colors hover:text-white">
+              Contact
             </Link>
           </div>
         </div>

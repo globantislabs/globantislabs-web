@@ -3,6 +3,8 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { CookieConsent } from "@/components/site/cookie-consent";
+import { AnalyticsScripts } from "@/components/site/analytics-scripts";
 import {
   OG_IMAGE,
   SITE_NAME,
@@ -100,6 +102,8 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <CookieConsent />
+          <AnalyticsScripts />
         </ThemeProvider>
       </body>
     </html>
