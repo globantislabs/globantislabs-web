@@ -1,0 +1,1246 @@
+     1→import type { LucideIcon } from "lucide-react";
+     2→import {
+     3→  Code2,
+     4→  Globe,
+     5→  PenTool,
+     6→  BrainCircuit,
+     7→  ServerCog,
+     8→  Boxes,
+     9→  LifeBuoy,
+    10→  Smartphone,
+    11→  ShieldCheck,
+    12→  Sparkles,
+    13→  Scale,
+    14→  Rocket,
+    15→  Cpu,
+    16→  Lock,
+    17→  Landmark,
+    18→  HeartPulse,
+    19→  GraduationCap,
+    20→  Truck,
+    21→  ShoppingCart,
+    22→  Workflow,
+    23→  Video,
+    24→  Dna,
+    25→  CalendarCheck,
+    26→  Microscope,
+    27→  PackageCheck,
+    28→  Warehouse,
+    29→  MapPin,
+    30→  LineChart,
+    31→  Cloud,
+    32→  Wifi,
+    33→  Link2,
+    34→  Network,
+    35→  Users,
+    36→  ShoppingBag,
+    37→  Share2,
+    38→  CreditCard,
+    39→  Mic,
+    40→  Bot,
+    41→  MonitorCheck,
+    42→  RefreshCw,
+    43→  Zap,
+    44→  Laptop,
+    45→  BarChart3,
+    46→  AppWindow,
+    47→} from "lucide-react";
+    48→
+    49→export const company = {
+    50→  name: "Globantis Labs",
+    51→  tagline: "Transforming Ideas Into IT Solutions",
+    52→  phone: "(+009) 155-69566",
+    53→  phoneHref: "tel:+00915569566",
+    54→  email: "sales@globantislabs.com",
+    55→  emailHref: "mailto:sales@globantislabs.com",
+    56→  usaAddress: "374 William S Canning Blvd, Fall River MA Road 2721, USA",
+    57→  canadaAddress: "3992 Rue de la Seine Laval, Québec H7W 2S3, Canada",
+    58→  indiaAddress: "RMZ Millenia Business Park, Perungudi, Chennai, India",
+    59→  founded: "2026",
+    60→};
+    61→
+    62→export type NavItem = {
+    63→  label: string;
+    64→  href: string;
+    65→  children?: { label: string; desc?: string; href: string }[];
+    66→};
+    67→
+    68→export const navItems: NavItem[] = [
+    69→  { label: "Home", href: "/" },
+    70→  {
+    71→    label: "About",
+    72→    href: "/about",
+    73→    children: [
+    74→      { label: "About Us", desc: "About Globantis", href: "/about" },
+    75→      { label: "Why Choose Us", desc: "Quality & Continuity", href: "/why-choose-us" },
+    76→      { label: "Work Process", desc: "Explore Process", href: "/work-process" },
+    77→      { label: "Technologies", desc: "Latest Technology", href: "/technologies" },
+    78→      { label: "Careers", desc: "Join Our Team", href: "/careers" },
+    79→      { label: "Appointment", desc: "Free Appointment", href: "/appointment" },
+    80→      { label: "Contact Us", href: "/contact" },
+    81→    ],
+    82→  },
+    83→  {
+    84→    label: "Services",
+    85→    href: "/services",
+    86→    children: [
+    87→      { label: "Software Development", href: "/services/software-development" },
+    88→      { label: "Web Development", href: "/services/web-development" },
+    89→      { label: "UI/UX Design", href: "/services/ui-ux-design" },
+    90→      { label: "Artificial Intelligence", href: "/services/artificial-intelligence" },
+    91→      { label: "CMS Development", href: "/services/cms-development" },
+    92→      { label: "DevOps Services", href: "/services/devops-services" },
+    93→      { label: "IT Support Services", href: "/services/it-support-services" },
+    94→    ],
+    95→  },
+    96→  {
+    97→    label: "Industries",
+    98→    href: "/industries",
+    99→    children: [
+   100→      { label: "Financial Services", href: "/industries/financial-services" },
+   101→      { label: "Healthcare", href: "/industries/healthcare" },
+   102→      { label: "Education", href: "/industries/education" },
+   103→      { label: "Automation", href: "/industries/automation" },
+   104→      { label: "Logistics", href: "/industries/logistics" },
+   105→      { label: "Cybersecurity", href: "/industries/cybersecurity" },
+   106→      { label: "E-commerce & Retail", href: "/industries/ecommerce" },
+   107→    ],
+   108→  },
+   109→  {
+   110→    label: "Product",
+   111→    href: "/#products",
+   112→    children: [
+   113→      { label: "Photolabs", href: "/#products" },
+   114→      { label: "TranscriptHQ", href: "/#products" },
+   115→      { label: "Try Before", href: "/#products" },
+   116→    ],
+   117→  },
+   118→  { label: "Contact", href: "/contact" },
+   119→];
+   120→
+   121→export const heroHighlights = [
+   122→  {
+   123→    title: "AI & Automation",
+   124→    desc: "AI and automation convert complex, repetitive work into intelligent, scalable workflows.",
+   125→  },
+   126→  {
+   127→    title: "Emerging Technologies",
+   128→    desc: "Emerging technologies are frontier innovations advancing how businesses operate globally.",
+   129→  },
+   130→];
+   131→
+   132→export const aboutTabs = [
+   133→  {
+   134→    key: "mission",
+   135→    label: "Our Mission",
+   136→    body: "Our mission is to empower businesses worldwide through innovative, scalable, and secure digital solutions. We strive to transform ideas into impactful technology by combining global expertise, advanced engineering, and a customer-centric approach that delivers measurable business value.",
+   137→  },
+   138→  {
+   139→    key: "vision",
+   140→    label: "Our Vision",
+   141→    body: "Our vision is to become a globally trusted technology partner, driving digital transformation across industries. We aim to shape the future through innovation, intelligence, and sustainability—enabling organizations to grow, adapt, and succeed in an ever-evolving digital world.",
+   142→  },
+   143→  {
+   144→    key: "history",
+   145→    label: "Our History",
+   146→    body: "Globantis was founded with a clear purpose: to deliver world-class software solutions that bridge technology and business needs across global markets. What began as a focused technology initiative has grown into a globally operating software company serving clients across diverse industries and geographies. From custom software development to AI, cloud, DevOps, and enterprise solutions, Globantis has continuously evolved by embracing innovation, adopting global best practices, and building strong partnerships. Today, Globantis stands as a trusted global technology partner, delivering scalable solutions and helping organizations achieve sustainable growth worldwide.",
+   147→  },
+   148→];
+   149→
+   150→export const aboutPills = [
+   151→  "Innovative Solutions",
+   152→  "Secure Transactions",
+   153→  "User-Friendly Interface",
+   154→  "Real-Time Analytics",
+   155→];
+   156→
+   157→/**
+   158→ * Tech logo image path helper.
+   159→ * The original WordPress site uses these PNG logos from
+   160→ * wp-content/uploads/2024/10/ (we copied them to /public/images/wp/2024-10/).
+   161→ */
+   162→const techImg = (filename: string) =>
+   163→  `/images/wp/2024-10/${filename}.png`;
+   164→
+   165→export type Service = {
+   166→  slug: string;
+   167→  icon: LucideIcon;
+   168→  title: string;
+   169→  shortTitle: string;
+   170→  desc: string;
+   171→  techs: { name: string; img: string }[];
+   172→  banner: {
+   173→    label?: string;
+   174→    image?: string;
+   175→  };
+   176→  overview?: {
+   177→    heading: string;
+   178→    paragraphs: string[];
+   179→  };
+   180→  benefits?: {
+   181→    label?: string;
+   182→    heading: string;
+   183→    intro?: string;
+   184→    features?: { title: string; desc: string }[];
+   185→    bullets?: string[];
+   186→    closing?: string;
+   187→    images?: string[];
+   188→  };
+   189→  subServices?: {
+   190→    label?: string;
+   191→    heading: string;
+   192→    intro?: string;
+   193→    items: { title: string; desc: string }[];
+   194→  };
+   195→  faq?: {
+   196→    label?: string;
+   197→    heading: string;
+   198→    image?: string;
+   199→    items: { q: string; a: string; image?: string }[];
+   200→  };
+   201→};
+   202→
+   203→export const services: Service[] = [
+   204→  {
+   205→    slug: "web-development",
+   206→    icon: Globe,
+   207→    title: "Web Development",
+   208→    shortTitle: "Web Development",
+   209→    desc: "Our web development services focus on performance, reliability, and user experience. We create modern web applications that are responsive, secure, and built to scale globally.",
+   210→    techs: [
+   211→      { name: "React", img: techImg("tek_02") },
+   212→      { name: "Angular", img: techImg("tek_03") },
+   213→      { name: "Node", img: techImg("tek_001") },
+   214→      { name: "Next", img: techImg("tek_01") },
+   215→    ],
+   216→    banner: {
+   217→      label: "Web Development",
+   218→      image: "/images/wp/2025-01/blog_new_02.jpg",
+   219→    },
+   220→    overview: {
+   221→      heading: "Business Intelligence Innovative Digital Solutions and Expert Technology Consulting.",
+   222→      paragraphs: [
+   223→        "At Globantis Labs, we create dynamic, responsive, and high-performance web applications that empower businesses to succeed in the digital world. Our solutions are designed for scalability, security, and seamless user experience, helping global clients enhance engagement and achieve measurable results.",
+   224→      ],
+   225→    },
+   226→    benefits: {
+   227→      label: "Benefits To Services",
+   228→      heading: "Expert Web Development Solutions for Modern Businesses",
+   229→      intro:
+   230→        "We specialize in creating innovative, scalable, and user-centric web solutions tailored to your business needs. From responsive websites to complex web applications, our expert developers leverage the latest technologies and best practices to deliver high-performance digital products that drive results.",
+   231→      features: [
+   232→        {
+   233→          title: "Industry Experience",
+   234→          desc: "Our experienced team brings years of web development expertise across diverse industries, ensuring robust and scalable solutions tailored to your unique requirements.",
+   235→        },
+   236→        {
+   237→          title: "24/7 Customer Support",
+   238→          desc: "Round-the-clock technical support to address any issues, resolve bugs quickly, and keep your web applications running smoothly without interruptions.",
+   239→        },
+   240→        {
+   241→          title: "Trust & Reliability",
+   242→          desc: "We build web applications with cutting-edge security measures, reliable infrastructure, and rigorous testing protocols to ensure your business can depend on us.",
+   243→        },
+   244→      ],
+   245→      images: ["/images/wp/2025-01/blog_new_05.jpg"],
+   246→    },
+   247→  },
+   248→  {
+   249→    slug: "devops-services",
+   250→    icon: ServerCog,
+   251→    title: "DevOps Services",
+   252→    shortTitle: "DevOps Services",
+   253→    desc: "We deliver end-to-end DevOps services that help organizations accelerate software delivery, improve reliability, and scale infrastructure globally.",
+   254→    techs: [
+   255→      { name: "GitLab", img: techImg("gitlab") },
+   256→      { name: "Juju", img: techImg("juju") },
+   257→      { name: "Git", img: techImg("git") },
+   258→      { name: "Puppet", img: techImg("puppet") },
+   259→    ],
+   260→    banner: {
+   261→      label: "DevOps Services",
+   262→    },
+   263→    overview: {
+   264→      heading: "Service Overview",
+   265→      paragraphs: [
+   266→        "Comprehensive DevOps transformation services encompassing continuous integration and deployment, infrastructure automation, containerization, and enterprise-grade monitoring solutions. We enable organizations to accelerate software delivery cycles, improve system reliability, and achieve operational excellence through automated workflows and intelligent infrastructure management.",
+   267→      ],
+   268→    },
+   269→    subServices: {
+   270→      label: "Our services",
+   271→      heading: "Complete DevOps Solutions & CI/CD Pipeline Automation",
+   272→      intro:
+   273→        "Streamline software delivery with automated CI/CD pipelines, infrastructure management, and continuous monitoring. Our DevOps expertise accelerates time-to-market while maintaining stability and reliability.",
+   274→      items: [
+   275→        {
+   276→          title: "Infrastructure as Code (IaC)",
+   277→          desc: "Manage infrastructure through code version control for consistency, reproducibility, and efficient provisioning across environments.",
+   278→        },
+   279→        {
+   280→          title: "CI/CD Pipeline Automation",
+   281→          desc: "Automate code integration, testing, and deployment with robust CI/CD pipelines for faster releases and reduced errors.",
+   282→        },
+   283→        {
+   284→          title: "Monitoring & Observability",
+   285→          desc: "Real-time insights into application and infrastructure health with comprehensive monitoring, logging, and alerting to enable rapid issue detection and resolution.",
+   286→        },
+   287→        {
+   288→          title: "IT Consulting & Strategy",
+   289→          desc: "Strategic guidance on cloud adoption, toolchain selection, and DevOps maturity assessment to align your engineering practices with long-term business objectives.",
+   290→        },
+   291→        {
+   292→          title: "Data & Analytics Services",
+   293→          desc: "Build reliable data pipelines, warehouses, and analytics dashboards that turn operational telemetry into actionable insight for smarter, faster decisions.",
+   294→        },
+   295→      ],
+   296→    },
+   297→  },
+   298→  {
+   299→    slug: "it-support-services",
+   300→    icon: LifeBuoy,
+   301→    title: "Maintenance & Support",
+   302→    shortTitle: "IT Support",
+   303→    desc: "We provide reliable global support services to ensure your software operates smoothly, securely, and efficiently at all times.",
+   304→    techs: [
+   305→      { name: "GitLab", img: techImg("gitlab") },
+   306→      { name: "Juju", img: techImg("juju") },
+   307→      { name: "Git", img: techImg("git") },
+   308→      { name: "Puppet", img: techImg("puppet") },
+   309→    ],
+   310→    banner: {
+   311→      label: "Core Features",
+   312→    },
+   313→    overview: {
+   314→      heading: "Transforming IT Support with Expertise and Innovation",
+   315→      paragraphs: [
+   316→        "In today's rapidly evolving digital landscape, organizations face numerous challenges, from maintaining system uptime to managing complex infrastructure and ensuring security. Our IT support services provide round-the-clock reliability so your business never stops.",
+   317→      ],
+   318→    },
+   319→    benefits: {
+   320→      heading: "Comprehensive IT Support & Maintenance",
+   321→      features: [
+   322→        {
+   323→          title: "24/7 Technical Support",
+   324→          desc: "Round-the-clock technical support to address IT issues, resolve system problems, and ensure minimal downtime for your critical business operations.",
+   325→        },
+   326→        {
+   327→          title: "Proactive System Monitoring",
+   328→          desc: "We continuously monitor systems to detect issues early, resolve them proactively, and keep your operations running smoothly without interruption.",
+   329→        },
+   330→        {
+   331→          title: "Security & Compliance",
+   332→          desc: "Leverage the latest in security technology with proactive monitoring, patching, and compliance management to protect your business around the clock.",
+   333→        },
+   334→      ],
+   335→    },
+   336→  },
+   337→  {
+   338→    slug: "ui-ux-design",
+   339→    icon: PenTool,
+   340→    title: "UI/UX Design",
+   341→    shortTitle: "UI/UX Design",
+   342→    desc: "We design intuitive and engaging digital experiences that align with global user expectations and business objectives.",
+   343→    techs: [
+   344→      { name: "Hotjar", img: techImg("hotjar") },
+   345→      { name: "Figma", img: techImg("figma") },
+   346→      { name: "Sketch", img: techImg("sketch") },
+   347→      { name: "Azure", img: techImg("azure") },
+   348→    ],
+   349→    banner: {
+   350→      label: "Overview",
+   351→      image: "/images/wp/2025-02/about_o01.jpg",
+   352→    },
+   353→    overview: {
+   354→      heading: "At Globantis Labs, we craft digital experiences that are intuitive, engaging, and user-centric.",
+   355→      paragraphs: [
+   356→        "We begin by understanding your users, their behavior, and pain points. Through surveys, interviews, and analytics, we create detailed user personas to guide the design process.",
+   357→        "We translate concepts into interactive wireframes and prototypes to visualize workflows, test ideas, and gather early feedback. Our team designs modern, visually appealing interfaces with clear navigation and consistent branding. We conduct usability testing to validate design effectiveness and create designs that work seamlessly across devices and screen sizes.",
+   358→      ],
+   359→    },
+   360→  },
+   361→  {
+   362→    slug: "cms-development",
+   363→    icon: Boxes,
+   364→    title: "CMS Development",
+   365→    shortTitle: "CMS Development",
+   366→    desc: "Our ERP and CRM solutions empower organizations to streamline operations, improve customer relationships, and drive data-driven growth.",
+   367→    techs: [
+   368→      { name: "Juju", img: techImg("juju") },
+   369→      { name: "Docker", img: techImg("tek_10") },
+   370→      { name: "InfluxDB", img: techImg("influxdb") },
+   371→      { name: "React", img: techImg("tek_02") },
+   372→    ],
+   373→    banner: {
+   374→      label: "About Services",
+   375→      image: "/images/wp/2025-01/blog_new_03.jpg",
+   376→    },
+   377→    overview: {
+   378→      heading: "ERP/CRM & CMS Solutions - Integrated Enterprise Management and Content Delivery Systems",
+   379→      paragraphs: [
+   380→        "Comprehensive ERP, CRM, and CMS solutions that empower enterprises to streamline operations, enhance customer relationships, and deliver exceptional content experiences. Our integrated platform brings together enterprise resource planning, customer relationship management, and content management capabilities into one unified system for maximum efficiency and scalability.",
+   381→      ],
+   382→    },
+   383→    benefits: {
+   384→      label: "Why Choose Services",
+   385→      heading: "Why Choose Our ERP/CRM & CMS Solutions",
+   386→      features: [
+   387→        {
+   388→          title: "Integrated Platform",
+   389→          desc: "Unified ERP, CRM, and CMS platform eliminating silos and enabling seamless data flow across your entire enterprise.",
+   390→        },
+   391→        {
+   392→          title: "Enterprise Scalability",
+   393→          desc: "Grow your business with a platform that scales from small operations to large enterprises without compromise.",
+   394→        },
+   395→        {
+   396→          title: "Channel Integration",
+   397→          desc: "Connect all your business channels through one unified ERP, CRM, and CMS platform for consistent customer experiences.",
+   398→        },
+   399→        {
+   400→          title: "Skilled Workforce",
+   401→          desc: "Our team is composed of highly qualified professionals with deep expertise across enterprise platforms and integrations.",
+   402→        },
+   403→      ],
+   404→    },
+   405→  },
+   406→  {
+   407→    slug: "it-support",
+   408→    icon: ShieldCheck,
+   409→    title: "IT Support and Services",
+   410→    shortTitle: "IT Support",
+   411→    desc: "We provide reliable, scalable, and proactive IT support services to ensure your business operations run smoothly, securely, and without interruption.",
+   412→    techs: [
+   413→      { name: "Juju", img: techImg("juju") },
+   414→      { name: "Docker", img: techImg("tek_10") },
+   415→      { name: "InfluxDB", img: techImg("influxdb") },
+   416→      { name: "React", img: techImg("tek_02") },
+   417→    ],
+   418→    banner: {
+   419→      label: "Core Features",
+   420→    },
+   421→  },
+   422→  {
+   423→    slug: "artificial-intelligence",
+   424→    icon: BrainCircuit,
+   425→    title: "Artificial Intelligence",
+   426→    shortTitle: "AI",
+   427→    desc: "We help organizations harness AI and Machine Learning to automate operations, enhance decision-making, and unlock new business opportunities.",
+   428→    techs: [
+   429→      { name: "Keras", img: techImg("keras") },
+   430→      { name: "Plotly", img: techImg("plotly") },
+   431→      { name: "Grafana", img: techImg("grafana") },
+   432→      { name: "InfluxDB", img: techImg("influxdb") },
+   433→    ],
+   434→    banner: {
+   435→      label: "Services",
+   436→    },
+   437→    overview: {
+   438→      heading: "AI-driven Services That Adopted Across Different Industries",
+   439→      paragraphs: [],
+   440→    },
+   441→    subServices: {
+   442→      heading: "AI-Powered Solutions for Every Industry",
+   443→      items: [
+   444→        {
+   445→          title: "AI-Powered Customer Support",
+   446→          desc: "Transform customer service with AI-powered chatbots and intelligent automation. Enhance support quality, reduce response times, and deliver 24/7 customer assistance.",
+   447→        },
+   448→        {
+   449→          title: "AI Solutions for Healthcare",
+   450→          desc: "Leverage AI technology to optimize patient care, improve diagnostic accuracy, and streamline healthcare operations with machine learning-driven insights.",
+   451→        },
+   452→        {
+   453→          title: "Predictive Analytics & Forecasting",
+   454→          desc: "Harness machine learning algorithms to identify trends and forecast future outcomes. Enable data-informed decision-making and strategic business planning.",
+   455→        },
+   456→        {
+   457→          title: "Fraud Detection & Cybersecurity",
+   458→          desc: "Protect your business with AI-driven fraud detection and real-time threat monitoring. Utilize advanced algorithms to identify suspicious patterns and prevent security breaches.",
+   459→        },
+   460→        {
+   461→          title: "Intelligent Automation & RPA",
+   462→          desc: "Automate repetitive tasks with robotic process automation and AI-driven workflows. Increase operational efficiency, reduce costs, and free up resources for strategic initiatives.",
+   463→        },
+   464→        {
+   465→          title: "Financial Planning & Investment",
+   466→          desc: "Optimize financial strategies with AI-powered investment insights and predictive market analysis. Make smarter decisions with algorithmic portfolio management and risk assessment.",
+   467→        },
+   468→      ],
+   469→    },
+   470→    benefits: {
+   471→      heading: "Key Benefits of AI Technology",
+   472→      intro:
+   473→        "Discover how artificial intelligence and machine learning technologies are revolutionizing business productivity, reducing operational costs, and driving innovation across every industry sector.",
+   474→      features: [
+   475→        {
+   476→          title: "Increased Efficiency & Productivity",
+   477→          desc: "Automate repetitive tasks and free your teams to focus on high-value strategic work, dramatically improving throughput.",
+   478→        },
+   479→        {
+   480→          title: "Smarter Decision-Making",
+   481→          desc: "Turn vast volumes of data into actionable, real-time insight with predictive models and AI-driven analytics.",
+   482→        },
+   483→        {
+   484→          title: "Reduced Operational Costs",
+   485→          desc: "Optimize resource allocation, minimize manual effort, and lower costs through intelligent automation at scale.",
+   486→        },
+   487→        {
+   488→          title: "Enhanced Customer Experience",
+   489→          desc: "Deliver personalized, context-aware experiences with AI recommendation engines and conversational interfaces.",
+   490→        },
+   491→        {
+   492→          title: "Continuous Innovation",
+   493→          desc: "Stay ahead of the market with AI that learns and adapts, unlocking new products, services, and revenue streams.",
+   494→        },
+   495→      ],
+   496→    },
+   497→  },
+   498→  {
+   499→    slug: "app-development",
+   500→    icon: Smartphone,
+   501→    title: "App Development",
+   502→    shortTitle: "App Development",
+   503→    desc: "We develop high-performance mobile applications that deliver consistent user experiences across Android and iOS devices worldwide.",
+   504→    techs: [
+   505→      { name: "Swift", img: techImg("tek_04") },
+   506→      { name: "Kotlin", img: techImg("tek_06") },
+   507→      { name: "Flutter", img: techImg("tek_05") },
+   508→      { name: "React Native", img: techImg("tek_07") },
+   509→    ],
+   510→    banner: {
+   511→      label: "Mobile Apps",
+   512→    },
+   513→    overview: {
+   514→      heading: "Cross-Platform Mobile Apps Built for Performance",
+   515→      paragraphs: [
+   516→        "We engineer native and cross-platform mobile applications that deliver consistent, high-performance experiences across iOS and Android. From concept to launch, our apps are designed for speed, security, and scalability.",
+   517→      ],
+   518→    },
+   519→  },
+   520→  {
+   521→    slug: "software-development",
+   522→    icon: Code2,
+   523→    title: "Custom Software Development",
+   524→    shortTitle: "Software Dev",
+   525→    desc: "We build enterprise-grade, custom software solutions designed to meet unique business requirements.",
+   526→    techs: [
+   527→      { name: "Java", img: techImg("tek_04") },
+   528→      { name: "Python", img: techImg("tek_06") },
+   529→      { name: "Go", img: techImg("tek_05") },
+   530→      { name: "C#", img: techImg("tek_07") },
+   531→    ],
+   532→    banner: {
+   533→      label: "Software Development",
+   534→      image: "/images/wp/2024-09/ser_details.jpg",
+   535→    },
+   536→    overview: {
+   537→      heading: "Service Overview",
+   538→      paragraphs: [
+   539→        "At Globantis Labs, we specialize in delivering end-to-end software development services that transform ideas into high-quality digital solutions. Our expertise spans custom software, web and mobile applications, cloud-based systems, enterprise solutions, and AI-driven platforms, ensuring that every product is designed to meet the unique needs of our global clients.",
+   540→        "We follow agile methodologies and best industry practices to deliver projects efficiently while maintaining flexibility to adapt to changing requirements. Our development process emphasizes scalability, security, and performance, enabling businesses to grow without technical constraints.",
+   541→      ],
+   542→    },
+   543→    benefits: {
+   544→      heading: "Benefits Our Services",
+   545→      intro:
+   546→        "Partnering with Globantis Labs means gaining a reliable technology partner who understands international business standards, compliance requirements, and global market dynamics. We not only deliver software solutions but also provide ongoing support, enhancements, and strategic guidance to help clients stay ahead in an ever-evolving digital landscape.",
+   547→      bullets: [
+   548→        "Big Data Consulting",
+   549→        "Managed IT Services",
+   550→        "Best Value Solutions",
+   551→        "Digital Transformation",
+   552→        "Digital Innovation",
+   553→        "Cutting-Edge IT",
+   554→      ],
+   555→      closing:
+   556→        "From conceptualization and prototyping to development, testing, and deployment, we ensure each stage is handled with precision, transparency, and collaboration. Our teams focus on creating intuitive user experiences, robust architectures, and maintainable code that supports long-term business objectives.",
+   557→      images: [
+   558→        "/images/wp/2025-01/project_new_05.jpg",
+   559→        "/images/wp/2025-01/project_new_02.jpg",
+   560→        "/images/wp/2025-01/project_new_06.jpg",
+   561→      ],
+   562→    },
+   563→  },
+   564→];
+   565→
+   566→export type WhyFeature = {
+   567→  icon: LucideIcon;
+   568→  title: string;
+   569→  desc: string;
+   570→};
+   571→
+   572→export const whyFeatures: WhyFeature[] = [
+   573→  {
+   574→    icon: Cpu,
+   575→    title: "Expertise & Specialization",
+   576→    desc: "We bring deep technical expertise and industry-focused specialization to deliver innovative digital solutions at a global scale.",
+   577→  },
+   578→  {
+   579→    icon: Rocket,
+   580→    title: "Cutting-Edge Technology",
+   581→    desc: "We leverage cutting-edge technologies to build intelligent, scalable, and future-ready digital solutions.",
+   582→  },
+   583→  {
+   584→    icon: Lock,
+   585→    title: "Security & Risk Management",
+   586→    desc: "Security and risk management are integral to everything we build. We adopt a proactive, security-first approach to protect digital assets, ensure data privacy, and mitigate risks across the entire technology lifecycle—enabling our global clients to operate with confidence.",
+   587→  },
+   588→  {
+   589→    icon: Scale,
+   590→    title: "Scalability & Flexibility",
+   591→    desc: "We design software solutions that grow with your business. Our scalable and flexible architectures ensure that applications adapt seamlessly to changing demands, enabling organizations to expand, innovate, and respond quickly in dynamic global markets.",
+   592→  },
+   593→];
+   594→
+   595→export const stats = [
+   596→  { value: "15+", label: "Years of Experience" },
+   597→  { value: "250+", label: "Projects Delivered" },
+   598→  { value: "40+", label: "Global Clients" },
+   599→  { value: "30+", label: "Tech Experts" },
+   600→];
+   601→
+   602→export const techLogos = [
+   603→  "React",
+   604→  "Next.js",
+   605→  "Node.js",
+   606→  "TypeScript",
+   607→  "AWS",
+   608→  "Docker",
+   609→  "Kubernetes",
+   610→  "Python",
+   611→  "TensorFlow",
+   612→  "Figma",
+   613→  "GitLab",
+   614→  "Azure",
+   615→];
+   616→
+   617→export const footerCompany = [
+   618→  { label: "About", href: "/about" },
+   619→  { label: "Work Process", href: "/work-process" },
+   620→  { label: "Contact", href: "/contact" },
+   621→  { label: "Careers", href: "/careers" },
+   622→];
+   623→
+   624→export const footerIndustries = [
+   625→  { label: "Automation", href: "/industries/automation" },
+   626→  { label: "Education", href: "/industries/education" },
+   627→  { label: "Financial Services", href: "/industries/financial-services" },
+   628→  { label: "Healthcare", href: "/industries/healthcare" },
+   629→  { label: "Logistics", href: "/industries/logistics" },
+   630→];
+   631→
+   632→// ===== Industries data =====
+   633→
+   634→export type Industry = {
+   635→  slug: string;
+   636→  title: string;
+   637→  label?: string;
+   638→  bannerImage?: string;
+   639→  heroHeading?: string;
+   640→  intro?: string;
+   641→  /** Lucide icon used on the industries landing cards + the "other industries" footer strip */
+   642→  icon?: LucideIcon;
+   643→  /** Short marketing tagline for the landing card */
+   644→  tagline?: string;
+   645→  /** 3 mini "focus area" tags rendered on the landing card */
+   646→  focusAreas?: string[];
+   647→  /** Stats counter row — financial-services showcase */
+   648→  stats?: { value: string; label: string }[];
+   649→  /** Care pillars grid — healthcare showcase */
+   650→  pillars?: { icon: LucideIcon; title: string; desc: string }[];
+   651→  /** Patient journey horizontal strip — healthcare showcase */
+   652→  journey?: { icon: LucideIcon; title: string; desc: string }[];
+   653→  /** Numbered learning pathway steps (01→05) — education showcase */
+   654→  pathway?: { title: string; desc: string }[];
+   655→  /** Platform features 3-column grid — education showcase */
+   656→  platformFeatures?: { icon: LucideIcon; title: string; desc: string }[];
+   657→  /** Horizontal supply-chain flow nodes — logistics showcase */
+   658→  flow?: { icon: LucideIcon; label: string; desc: string }[];
+   659→  /** Tech-enabler chips strip — logistics showcase */
+   660→  techEnablers?: { icon: LucideIcon; name: string; desc: string }[];
+   661→  /** Security layers stack — cybersecurity showcase */
+   662→  layers?: {
+   663→    icon: LucideIcon;
+   664→    title: string;
+   665→    desc: string;
+   666→    coverage: number;
+   667→  }[];
+   668→  /** Omnichannel chips — ecommerce showcase */
+   669→  channels?: { icon: LucideIcon; label: string }[];
+   670→  /** Commerce KPI strip — ecommerce showcase */
+   671→  ecommerceMetrics?: { value: string; label: string; trend?: string }[];
+   672→  /** Workflow diagram steps — automation showcase */
+   673→  workflow?: { icon: LucideIcon; label: string; desc: string }[];
+   674→  sections?: {
+   675→    label?: string;
+   676→    heading: string;
+   677→    paragraphs?: string[];
+   678→    image?: string;
+   679→  }[];
+   680→  subIndustries?: {
+   681→    heading: string;
+   682→    image?: string;
+   683→    items: { title: string; desc: string; image?: string }[];
+   684→  };
+   685→  /** True when the unique showcase module already renders every
+   686→   *  subIndustries item (e.g. financial-services tabs) — the generic
+   687→   *  grid on the detail page is skipped to avoid duplicate content. */
+   688→  showcaseCoversSubIndustries?: boolean;
+   689→  faq?: {
+   690→    label?: string;
+   691→    heading: string;
+   692→    image?: string;
+   693→    items: { q: string; a: string; image?: string }[];
+   694→  };
+   695→  cta?: {
+   696→    label?: string;
+   697→    heading?: string;
+   698→    paragraphs?: string[];
+   699→    button?: string;
+   700→    image?: string;
+   701→  };
+   702→};
+   703→
+   704→export const industries: Industry[] = [
+   705→  {
+   706→    slug: "financial-services",
+   707→    title: "Financial Services",
+   708→    label: "Financial Services",
+   709→    icon: Landmark,
+   710→    tagline: "Banking, capital markets & fintech — modernized end-to-end.",
+   711→    focusAreas: ["Banking", "Capital Markets", "Fintech"],
+   712→    heroHeading: "Shaping the Next Era of Financial Services with AI at the Core",
+   713→    intro:
+   714→      "In financial services, transformation is no longer a choice—it is a continuous necessity. Institutions face rising customer expectations, evolving risk landscapes, regulatory complexity, and the urgent need to modernize legacy systems.",
+   715→    stats: [
+   716→      { value: "$12T+", label: "Assets processed annually" },
+   717→      { value: "40%", label: "Operational cost reduction" },
+   718→      { value: "99.99%", label: "Platform uptime" },
+   719→      { value: "12+", label: "Countries served" },
+   720→    ],
+   721→    // The financial showcase renders all three subIndustries as tabs,
+   722→    // so the generic "Areas We Serve" grid would duplicate them.
+   723→    showcaseCoversSubIndustries: true,
+   724→    subIndustries: {
+   725→      heading: "Areas We Serve",
+   726→      items: [
+   727→        {
+   728→          title: "Insurance",
+   729→          desc: "Embrace the future of insurance by protecting what matters most to your customers through our technology, expertise, and ecosystem.",
+   730→          image: "/images/wp/2025-01/blog_new_02.jpg",
+   731→        },
+   732→        {
+   733→          title: "Capital Market",
+   734→          desc: "Cultivate sustainable, long-term growth and resilience with a comprehensive suite of digital tools and technologies.",
+   735→          image: "/images/wp/2025-01/blog_new_03.jpg",
+   736→        },
+   737→        {
+   738→          title: "Fintech",
+   739→          desc: "Combine the strengths of traditional and neo banking to deliver innovative experiences while achieving significant cost efficiencies.",
+   740→          image: "/images/wp/2025-01/blog_new_05.jpg",
+   741→        },
+   742→      ],
+   743→    },
+   744→  },
+   745→  {
+   746→    slug: "healthcare",
+   747→    title: "Healthcare",
+   748→    icon: HeartPulse,
+   749→    tagline: "Patient-centric care, empowered by AI, data & genomics.",
+   750→    focusAreas: ["Telemedicine", "AI Diagnostics", "Genomics"],
+   751→    bannerImage: "/images/wp/2025-02/about_o01.jpg",
+   752→    pillars: [
+   753→      {
+   754→        icon: Video,
+   755→        title: "Telemedicine",
+   756→        desc: "Secure, HIPAA-ready virtual care platforms that extend clinician reach and put patients at the center of every encounter.",
+   757→      },
+   758→      {
+   759→        icon: BrainCircuit,
+   760→        title: "AI Diagnostics",
+   761→        desc: "Machine-learning models that flag anomalies in imaging, labs and vitals earlier — augmenting clinician accuracy and speed.",
+   762→      },
+   763→      {
+   764→        icon: Dna,
+   765→        title: "Genomics",
+   766→        desc: "Bioinformatics pipelines & personalized medicine platforms that translate genomic data into targeted, evidence-based therapies.",
+   767→      },
+   768→      {
+   769→        icon: ShieldCheck,
+   770→        title: "Data Security",
+   771→        desc: "Zero-trust architecture for PHI — encryption, identity governance and audit trails that keep sensitive records safe.",
+   772→      },
+   773→    ],
+   774→    journey: [
+   775→      {
+   776→        icon: CalendarCheck,
+   777→        title: "Schedule",
+   778→        desc: "Smart appointment matching across providers, time zones and modalities.",
+   779→      },
+   780→      {
+   781→        icon: Video,
+   782→        title: "Consult",
+   783→        desc: "HD virtual visits with collaborative notes and device integration.",
+   784→      },
+   785→      {
+   786→        icon: Microscope,
+   787→        title: "Diagnose",
+   788→        desc: "AI-assisted review of imaging, labs and patient history.",
+   789→      },
+   790→      {
+   791→        icon: HeartPulse,
+   792→        title: "Recover",
+   793→        desc: "Remote monitoring and follow-ups that close the care loop.",
+   794→      },
+   795→    ],
+   796→    sections: [
+   797→      {
+   798→        heading: "Technology Driving the Future of Patient Care",
+   799→        paragraphs: [
+   800→          "Personalized healthcare, innovative care delivery models, rising cost pressures, and evolving regulatory requirements are reshaping the healthcare landscape. In this dynamic environment, technology is playing a critical role in advancing patient outcomes and operational efficiency.",
+   801→          "From telemedicine to AI-powered diagnostics, technological innovation is redefining how care is delivered and how diseases are detected. Breakthroughs in genomic research are unlocking the potential of personalized medicine, while advances in biotechnology are enabling the development of next-generation therapies.",
+   802→          "Despite this progress, challenges around affordability, accessibility, and data security remain at the forefront.",
+   803→          "We help healthcare organizations modernize their digital ecosystems, integrate fragmented systems, and align processes, technology, and people—empowering them to deliver smarter, safer, and more patient-centric care.",
+   804→        ],
+   805→      },
+   806→    ],
+   807→  },
+   808→  {
+   809→    slug: "education",
+   810→    title: "Education",
+   811→    icon: GraduationCap,
+   812→    tagline: "Scalable, accessible, personalized learning pathways.",
+   813→    focusAreas: ["Virtual Classrooms", "AI Learning", "Cloud LMS"],
+   814→    pathway: [
+   815→      {
+   816→        title: "Learner Onboarding",
+   817→        desc: "Adaptive profiles, skill diagnostics and goal-setting that tailor the journey to each learner from day one.",
+   818→      },
+   819→      {
+   820→        title: "Personalized Learning",
+   821→        desc: "AI-curated content paths adjust pace, modality and difficulty in real time based on engagement signals.",
+   822→      },
+   823→      {
+   824→        title: "Live & Async Delivery",
+   825→        desc: "Virtual classrooms, breakout rooms and async micro-lessons unified into a single collaboration surface.",
+   826→      },
+   827→      {
+   828→        title: "Continuous Assessment",
+   829→        desc: "Formative analytics, proctored exams and competency maps that make mastery visible and measurable.",
+   830→      },
+   831→      {
+   832→        title: "Outcome & Career Path",
+   833→        desc: "Credentialing, employer pathways and alumni networks that connect learning to lifelong opportunity.",
+   834→      },
+   835→    ],
+   836→    platformFeatures: [
+   837→      {
+   838→        icon: Laptop,
+   839→        title: "Cloud-Native LMS",
+   840→        desc: "Multi-tenant, scalable learning management built on cloud infrastructure — resilient across regions and devices.",
+   841→      },
+   842→      {
+   843→        icon: BarChart3,
+   844→        title: "Learning Analytics",
+   845→        desc: "Real-time engagement, dropout risk and mastery dashboards that turn learning data into action.",
+   846→      },
+   847→      {
+   848→        icon: ShieldCheck,
+   849→        title: "Student Data Privacy",
+   850→        desc: "FERPA / GDPR-aligned controls, SSO and encryption that protect minors, families and institutions.",
+   851→      },
+   852→    ],
+   853→    sections: [
+   854→      {
+   855→        heading: "Transforming Education Through Technology",
+   856→        paragraphs: [
+   857→          "The education sector is evolving rapidly, driven by digital learning, changing student expectations, and the need for scalable, accessible education models. Institutions are balancing innovation with affordability, data privacy, and regulatory compliance—all while striving to deliver meaningful learning experiences.",
+   858→        ],
+   859→        image: "/images/wp/2025-04/testimonials.jpg",
+   860→      },
+   861→      {
+   862→        label: "Approach",
+   863→        heading: "Future-Ready, Inclusive & Secure Digital Campuses",
+   864→        paragraphs: [
+   865→          "Technology is reshaping education through virtual classrooms, AI-powered learning platforms, learning analytics, and personalized education pathways. Cloud-based systems and digital collaboration tools are enabling institutions to expand access, improve engagement, and enhance academic outcomes. Despite these advancements, challenges such as digital inequality, system integration, cybersecurity risks, and data protection continue to impact educational environments. We help educational institutions modernize their digital infrastructure, integrate learning systems, secure sensitive data, and align technology with educators and learners—empowering smarter, more inclusive, and future-ready education.",
+   866→        ],
+   867→      },
+   868→    ],
+   869→  },
+   870→  {
+   871→    slug: "logistics",
+   872→    title: "Logistics",
+   873→    icon: Truck,
+   874→    tagline: "End-to-end supply chain visibility, velocity & resilience.",
+   875→    focusAreas: ["Supply Chain", "5G & Cloud", "Blockchain"],
+   876→    flow: [
+   877→      {
+   878→        icon: PackageCheck,
+   879→        label: "Source",
+   880→        desc: "Supplier onboarding, contracts, ESG screening & demand-sensing that start the chain right.",
+   881→      },
+   882→      {
+   883→        icon: Truck,
+   884→        label: "Move",
+   885→        desc: "Fleet telematics, route optimization and carrier collaboration across modes and borders.",
+   886→      },
+   887→      {
+   888→        icon: Warehouse,
+   889→        label: "Store",
+   890→        desc: "Smart warehouses with WMS, slotting AI and robotics for accurate, low-latency fulfillment.",
+   891→      },
+   892→      {
+   893→        icon: MapPin,
+   894→        label: "Deliver",
+   895→        desc: "Last-mile orchestration with real-time ETA, proof-of-delivery and customer self-service.",
+   896→      },
+   897→      {
+   898→        icon: LineChart,
+   899→        label: "Optimize",
+   900→        desc: "Continuous tuning via digital twin simulations, KPI dashboards and GenAI co-pilots.",
+   901→      },
+   902→    ],
+   903→    techEnablers: [
+   904→      { icon: Cloud, name: "Cloud", desc: "Elastic control towers" },
+   905→      { icon: Wifi, name: "5G", desc: "Real-time telematics" },
+   906→      { icon: Sparkles, name: "GenAI", desc: "Conversational planning" },
+   907→      { icon: Link2, name: "Blockchain", desc: "Provenance & trust" },
+   908→    ],
+   909→    sections: [
+   910→      {
+   911→        heading: "IT Solution for Travel, Transportation, Logistics and Hospitality",
+   912→        paragraphs: [
+   913→          "AI-powered engagement, hyper-personalized and connected experiences, and increasing supply chain pressures are redefining the travel, transportation, logistics, and hospitality industries.",
+   914→        ],
+   915→        image: "/images/wp/2025-01/why_choose01.jpg",
+   916→      },
+   917→      {
+   918→        label: "Overview",
+   919→        heading: "Making digital work for real people",
+   920→        paragraphs: [
+   921→          "Modern travel and logistics technologies are transforming business outcomes. From hospitality IT solutions that elevate guest experiences to end-to-end logistics management platforms that improve efficiency and reliability, the industry is evolving rapidly. Our deep travel and logistics expertise—combined with advanced technology capabilities—helps organizations optimize operations while driving sustainable digital transformation.",
+   922→          "At the same time, technology is accelerating supply chain velocity. Advanced transportation solutions are helping organizations reduce costs by enabling real-time visibility and seamless information sharing between trading partners and service providers. Now is the time to rethink traditional frameworks, processes, and systems. Targeted investments in cloud platforms, 5G connectivity, Generative AI, and blockchain enable organizations to deliver the seamless, personalized experiences today's customers expect.",
+   923→        ],
+   924→      },
+   925→    ],
+   926→  },
+   927→  {
+   928→    slug: "cybersecurity",
+   929→    title: "Cybersecurity",
+   930→    label: "Cybersecurity",
+   931→    icon: ShieldCheck,
+   932→    tagline: "Defense-in-depth — from network edge to human firewall.",
+   933→    focusAreas: ["Network", "Application", "Data", "Human"],
+   934→    bannerImage: "/images/wp/2025-02/about_mna00n.jpg",
+   935→    layers: [
+   936→      {
+   937→        icon: Network,
+   938→        title: "Network Security",
+   939→        desc: "Zero-trust segmentation, next-gen firewalls, SASE and continuous east-west traffic monitoring.",
+   940→        coverage: 98,
+   941→      },
+   942→      {
+   943→        icon: AppWindow,
+   944→        title: "Application Security",
+   945→        desc: "Shift-left SAST/DAST, SCA, RASP and runtime API protection across the SDLC.",
+   946→        coverage: 95,
+   947→      },
+   948→      {
+   949→        icon: Lock,
+   950→        title: "Data Protection",
+   951→        desc: "Encryption everywhere, tokenization, DLP and immutable backup for resilience & compliance.",
+   952→        coverage: 99,
+   953→      },
+   954→      {
+   955→        icon: Users,
+   956→        title: "Human Firewall",
+   957→        desc: "Phishing simulations, security awareness training and behavioral analytics for every employee.",
+   958→        coverage: 92,
+   959→      },
+   960→    ],
+   961→    sections: [
+   962→      {
+   963→        heading: "Comprehensive Cybersecurity Solutions for Modern Enterprises",
+   964→        paragraphs: [
+   965→          "In an era of increasing cyber threats and digital transformation, Globantis delivers advanced cybersecurity solutions that protect businesses from complex and evolving risks. Our security-first approach ensures confidentiality, integrity, and availability of critical systems while enabling organizations to scale securely.",
+   966→        ],
+   967→      },
+   968→    ],
+   969→    faq: {
+   970→      label: "What We Secure",
+   971→      heading: "What We Secure",
+   972→      image: "/images/wp/2025-02/faq00.jpg",
+   973→      items: [
+   974→        {
+   975→          q: "What Cybersecurity Solutions Do You Offer?",
+   976→          a: "We provide comprehensive cybersecurity solutions including threat assessment, penetration testing, security infrastructure design, incident response planning, and employee security awareness training. Our team of certified security experts ensures your organization is protected against evolving cyber threats.",
+   977→          image: "/images/wp/2025-02/technology1.png",
+   978→        },
+   979→        {
+   980→          q: "How Do You Identify Weaknesses in Our Network?",
+   981→          a: "Our certified ethical hackers conduct rigorous penetration testing to simulate real-world cyberattacks. We perform deep-layer scans of your applications and infrastructure to uncover hidden vulnerabilities, providing you with a prioritized remediation roadmap to close security gaps before they are exploited.",
+   982→          image: "/images/wp/2025-02/concept.png",
+   983→        },
+   984→        {
+   985→          q: "Can You Help Us Meet Regulatory Standards (ISO, SOC2, GDPR)?",
+   986→          a: "Yes. We streamline the path to compliance by conducting thorough gap analyses and implementing the necessary technical and administrative controls. Our team ensures your organization meets industry-specific standards, reducing legal liability and building trust with your global clients.",
+   987→          image: "/images/wp/2025-02/start-up.png",
+   988→        },
+   989→        {
+   990→          q: "How Do You Protect Against Human-Error and Phishing?",
+   991→          a: "We transform your employees into your strongest line of defense. Our program includes simulated phishing campaigns, interactive security training modules, and ongoing behavioral analysis to ensure your team can recognize and report sophisticated social engineering attacks.",
+   992→          image: "/images/wp/2025-02/technology.png",
+   993→        },
+   994→      ],
+   995→    },
+   996→  },
+   997→  {
+   998→    slug: "ecommerce",
+   999→    title: "E-commerce & Retail",
+  1000→    label: "E-commerce & Retail",
+  1001→    icon: ShoppingCart,
+  1002→    tagline: "Omnichannel commerce that converts on every touchpoint.",
+  1003→    focusAreas: ["Omnichannel", "Personalization", "Payments"],
+  1004→    heroHeading: "Trustworthy, Scalable, & Optimized E-commerce & Retail Development.",
+  1005→    channels: [
+  1006→      { icon: Globe, label: "Web" },
+  1007→      { icon: Smartphone, label: "Mobile App" },
+  1008→      { icon: ShoppingBag, label: "Marketplaces" },
+  1009→      { icon: Share2, label: "Social" },
+  1010→      { icon: CreditCard, label: "POS" },
+  1011→      { icon: Mic, label: "Voice" },
+  1012→    ],
+  1013→    ecommerceMetrics: [
+  1014→      { value: "+38%", label: "Conversion Uplift", trend: "vs. baseline" },
+  1015→      { value: "0.8s", label: "Page Speed (LCP)" },
+  1016→      { value: "-27%", label: "Cart Abandonment" },
+  1017→    ],
+  1018→    cta: {
+  1019→      paragraphs: [
+  1020→        "Increased automation, experience-driven engagement, and data-powered decision-making are redefining modern retail. As customer expectations continue to rise, retailers must deliver seamless, personalized experiences across every touchpoint.",
+  1021→        "To succeed in this evolving landscape, you need a retail solutions partner who can guide you through emerging digital technologies and help maximize return on investment by adopting the right platforms at the right time.",
+  1022→      ],
+  1023→      button: "Let's Talk Project",
+  1024→      image: "/images/wp/2024-10/web.gif",
+  1025→    },
+  1026→    sections: [
+  1027→      {
+  1028→        label: "Digital Commerce",
+  1029→        heading: "Powering the future of Digital Commerce",
+  1030→        paragraphs: [
+  1031→          "E-commerce continues to evolve at speed, driven by changing customer behaviors, rising expectations for seamless experiences, and increasing competition across digital marketplaces. To succeed, businesses must deliver fast, secure, and personalized commerce experiences at scale.",
+  1032→          "Technology is at the heart of this transformation. From AI-driven personalization and data-led decision-making to automation, cloud platforms, and secure digital payments, modern e-commerce ecosystems demand agility and resilience.",
+  1033→        ],
+  1034→      },
+  1035→    ],
+  1036→  },
+  1037→  {
+  1038→    slug: "automation",
+  1039→    title: "Automation",
+  1040→    label: "Overview",
+  1041→    icon: Workflow,
+  1042→    tagline: "Eliminate manual effort & optimize operations intelligently.",
+  1043→    focusAreas: ["Intelligent", "Process", "RPA"],
+  1044→    heroHeading:
+  1045→      "Automation solutions designed to eliminate manual effort and optimize business operations.",
+  1046→    workflow: [
+  1047→      {
+  1048→        icon: Zap,
+  1049→        label: "Trigger",
+  1050→        desc: "Event, schedule or API signal kicks off the workflow.",
+  1051→      },
+  1052→      {
+  1053→        icon: BrainCircuit,
+  1054→        label: "AI Decision",
+  1055→        desc: "Models classify intent, score risk & route the request.",
+  1056→      },
+  1057→      {
+  1058→        icon: Bot,
+  1059→        label: "Bot Action",
+  1060→        desc: "RPA bots execute tasks across legacy & SaaS systems.",
+  1061→      },
+  1062→      {
+  1063→        icon: MonitorCheck,
+  1064→        label: "Monitor",
+  1065→        desc: "Live observability, alerts & exception handling.",
+  1066→      },
+  1067→      {
+  1068→        icon: RefreshCw,
+  1069→        label: "Optimize",
+  1070→        desc: "Loop telemetry back into the model for continuous tuning.",
+  1071→      },
+  1072→    ],
+  1073→    subIndustries: {
+  1074→      heading: "Our Automation Services",
+  1075→      items: [
+  1076→        {
+  1077→          title: "Intelligent Automation Powering the Future of Business",
+  1078→          desc: "Automation is no longer about task efficiency alone—it is about building intelligent, adaptive, and scalable enterprises. Organizations today are leveraging automation to simplify complexity, accelerate innovation, and respond faster to changing market demands.",
+  1079→          image: "/images/wp/2025-04/services_01.jpg",
+  1080→        },
+  1081→        {
+  1082→          title: "Intelligent Automation",
+  1083→          desc: "By combining AI, machine learning, and automation, we build smart systems that can analyze data, make decisions, and adapt over time. This enables predictive insights, automated decision-making, and enhanced operational intelligence.",
+  1084→          image: "/images/wp/2025-04/services_04.jpg",
+  1085→        },
+  1086→        {
+  1087→          title: "Process Automation",
+  1088→          desc: "We automate end-to-end business processes to improve speed, consistency, and productivity. From data entry and reporting to approval workflows, our solutions minimize human intervention and reduce errors.",
+  1089→          image: "/images/wp/2025-04/services_02.jpg",
+  1090→        },
+  1091→        {
+  1092→          title: "Robotic Process Automation (RPA)",
+  1093→          desc: "Our RPA solutions use software bots to handle repetitive, rule-based tasks across applications—such as billing, payroll processing, invoice handling, and customer onboarding—without disrupting existing systems.",
+  1094→          image: "/images/wp/2025-04/services_05.jpg",
+  1095→        },
+  1096→      ],
+  1097→    },
+  1098→  },
+  1099→];
+  1100→
+  1101→// ===== Values tag widget (shared on About, Web Dev, CMS pages) =====
+  1102→export const valueTags = [
+  1103→  "Best Value Solutions",
+  1104→  "Trusted IT Partner",
+  1105→  "Driving IT Excellence",
+  1106→  "Digital Transformation",
+  1107→  "Digital Innovation",
+  1108→  "Cutting-Edge IT",
+  1109→];
+  1110→
+  1111→// ===== About page values (Living Our Values) =====
+  1112→export const aboutValues = [
+  1113→  {
+  1114→    title: "Industry Experience",
+  1115→    desc: "We build trust through ethical conduct, transparency, and a steadfast commitment to our clients and partners.",
+  1116→  },
+  1117→  {
+  1118→    title: "Inclusion",
+  1119→    desc: "We foster an inclusive culture where diverse perspectives are valued, and everyone is empowered with equal opportunities to succeed and grow.",
+  1120→  },
+  1121→  {
+  1122→    title: "Value Creation",
+  1123→    desc: "We are deeply committed to delivering measurable value for our clients by building secure, high-impact solutions and consistently exceeding expectations.",
+  1124→  },
+  1125→  {
+  1126→    title: "Trust & Reliability",
+  1127→    desc: "We build trust through transparency, consistent delivery, and accountability. Our clients rely on us for secure, stable, and dependable solutions. Every commitment we make is honored with precision and integrity.",
+  1128→  },
+  1129→];
+  1130→
+  1131→// ===== Why Choose Us page data =====
+  1132→export const whyChooseTop = [
+  1133→  {
+  1134→    title: "Trusted & Reliable",
+  1135→    desc: "We build long-term partnerships through transparency, accountability, and consistent delivery—earning trust at every stage of engagement.",
+  1136→  },
+  1137→  {
+  1138→    title: "24/7 Customer Support",
+  1139→    desc: "We continuously monitor systems to ensure performance and security. Issues are identified and resolved proactively to keep operations running smoothly.",
+  1140→  },
+  1141→  {
+  1142→    title: "Global Client Experience",
+  1143→    desc: "We work with clients across the USA, Canada, and the UAE, understanding international business expectations, compliance needs, and delivery standards.",
+  1144→  },
+  1145→];
+  1146→
+  1147→export const whyChooseGrid = [
+  1148→  {
+  1149→    title: "Skilled & Agile Teams",
+  1150→    desc: "Our experienced engineers and consultants follow agile methodologies to deliver flexible, high-quality solutions with faster time-to-market.",
+  1151→  },
+  1152→  {
+  1153→    title: "Latest Technology",
+  1154→    desc: "We use modern, cutting-edge technologies to build secure and future-ready solutions. Our focus on innovation ensures high performance, scalability, and long-term value.",
+  1155→  },
+  1156→  {
+  1157→    title: "Secure & Scalable Solutions",
+  1158→    desc: "Security, performance, and scalability are built into everything we deliver, ensuring solutions grow with your business.",
+  1159→  },
+  1160→  {
+  1161→    title: "Cost-Effectiveness",
+  1162→    desc: "We deliver high-quality, secure solutions at optimized costs. Our efficient processes and transparent pricing ensure maximum value and ROI.",
+  1163→  },
+  1164→  {
+  1165→    title: "Clear Communication & On-Time Delivery",
+  1166→    desc: "We maintain open communication, predictable timelines, and proactive reporting across time zones.",
+  1167→  },
+  1168→  {
+  1169→    title: "Enhanced Security",
+  1170→    desc: "Security is embedded into every solution we build at Globantis Labs. We follow global security standards and best practices to protect data, systems, and applications. Our proactive approach ensures reliability, compliance, and peace of mind for our clients.",
+  1171→  },
+  1172→];
+  1173→
+  1174→// ===== Work Process steps =====
+  1175→export const workProcessSteps = [
+  1176→  {
+  1177→    title: "Discovery & Requirement Analysis",
+  1178→    desc: "We begin by understanding your business objectives, technical requirements, and market challenges. Through detailed discussions and analysis, we define a clear project scope aligned with your goals.",
+  1179→  },
+  1180→  {
+  1181→    title: "Planning & Strategy",
+  1182→    desc: "Our team creates a well-defined project roadmap, architecture, and delivery plan. Timelines, milestones, and risk factors are identified to ensure predictable and efficient execution.",
+  1183→  },
+  1184→  {
+  1185→    title: "Design & Prototyping",
+  1186→    desc: "We design intuitive user experiences and robust system architectures. Prototypes and design mockups are shared early to gather feedback and ensure alignment before development begins.",
+  1187→  },
+  1188→  {
+  1189→    title: "Development & Implementation",
+  1190→    desc: "Using agile methodologies, our engineers build secure, scalable, and high-performance solutions. Regular updates and sprint reviews keep clients informed throughout the development lifecycle.",
+  1191→  },
+  1192→  {
+  1193→    title: "Testing & Quality Assurance",
+  1194→    desc: "Every solution undergoes rigorous testing for functionality, performance, security, and compliance. We ensure the final product meets international quality standards.",
+  1195→  },
+  1196→  {
+  1197→    title: "Deployment & Launch",
+  1198→    desc: "We manage seamless deployment with minimal disruption, including infrastructure setup, data migration, and production rollout—ensuring a smooth go-live for your team and users.",
+  1199→  },
+  1200→  {
+  1201→    title: "Support & Continuous Improvement",
+  1202→    desc: "Post-launch, we provide ongoing support, maintenance, and enhancements to ensure long-term reliability and continuous improvement.",
+  1203→  },
+  1204→];
+  1205→
+  1206→// ===== Technologies page — full tech logo grid =====
+  1207→export const technologiesGrid = [
+  1208→  { name: "React", img: "/images/wp/2024-10/React.png" },
+  1209→  { name: "Angular", img: "/images/wp/2024-10/angular.png" },
+  1210→  { name: "Vue", img: "/images/wp/2024-10/vue.png" },
+  1211→  { name: "WordPress", img: "/images/wp/2024-10/wordpress.png" },
+  1212→  { name: "Webflow", img: "/images/wp/2024-10/webflow.png" },
+  1213→  { name: "Laravel", img: "/images/wp/2024-10/laravel.png" },
+  1214→  { name: "Node.js", img: "/images/wp/2024-09/1.png" },
+  1215→  { name: "Docker", img: "/images/wp/2024-09/2.png" },
+  1216→  { name: "Kubernetes", img: "/images/wp/2024-09/3-1.png" },
+  1217→  { name: "AWS", img: "/images/wp/2024-09/5.png" },
+  1218→  { name: "Jenkins", img: "/images/wp/2024-09/6.png" },
+  1219→  { name: "GitLab", img: "/images/wp/2024-09/8.png" },
+  1220→  { name: "Python", img: "/images/wp/2024-09/9.png" },
+  1221→  { name: "TensorFlow", img: "/images/wp/2024-09/12.png" },
+  1222→  { name: "Figma", img: "/images/wp/2024-09/13.png" },
+  1223→  { name: "Azure", img: "/images/wp/2024-09/14.png" },
+  1224→  { name: "GraphQL", img: "/images/wp/2024-09/19.png" },
+  1225→  { name: "MongoDB", img: "/images/wp/2024-09/22.png" },
+  1226→  { name: "PostgreSQL", img: "/images/wp/2024-09/23.png" },
+  1227→  { name: "Redis", img: "/images/wp/2024-09/24.png" },
+  1228→  { name: "Kafka", img: "/images/wp/2024-09/25.png" },
+  1229→  { name: "Terraform", img: "/images/wp/2024-09/26.png" },
+  1230→  { name: "Elasticsearch", img: "/images/wp/2024-09/29.png" },
+  1231→  { name: "Puppet", img: "/images/wp/2024-09/34.png" },
+  1232→];
+  1233→
+  1234→// ===== Job openings (Careers page) =====
+  1235→export const jobOpenings = [
+  1236→  {
+  1237→    id: "01",
+  1238→    title: "AI / Software Developer Intern",
+  1239→    meta: "Last Date: April 4, 2026  |  Remote / Chennai / Hybrid",
+  1240→    desc: "We are looking for an AI / Software Developer Intern who is passionate about building intelligent systems. This role offers hands-on experience in developing and deploying AI models along with software development.",
+  1241→    href: "https://careers.globantislabs.com/",
+  1242→  },
+  1243→];
+  1244→
+  1245→export { Sparkles };
+  1246→
