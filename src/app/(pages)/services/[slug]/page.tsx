@@ -55,7 +55,10 @@ export default async function ServiceDetailPage({
   return (
     <>
       <ServiceHero
-        service={service}
+        service={{
+          title: service.title,
+          banner: service.banner,
+        }}
         crumbs={[
           { label: "Services", href: "/services" },
           { label: service.shortTitle },
