@@ -17,6 +17,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import {
@@ -55,10 +56,11 @@ const tabIcons: Record<string, typeof Target> = {
 export default function AboutPage() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="About Globantis Labs"
-        label="[ About company ]"
-        crumbs={[{ label: "About Us" }]}
+        label="About company"
+        image="/images/wp/2025-01/about.jpg"
+        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
       {/* ============ 1. Company intro — editorial two-column ============ */}

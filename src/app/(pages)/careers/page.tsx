@@ -17,6 +17,7 @@ import {
   Heart,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import {
@@ -45,10 +46,11 @@ const benefitsIcons = [Globe2, Cpu, ShieldCheck, Rocket, Users, Sparkles];
 export default function CareersPage() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Engineering, on purpose."
-        label="[ Careers ]"
-        crumbs={[{ label: "Careers" }]}
+        label="Careers"
+        image="/images/wp/2026-01/about-office-e1767452844756.jpg"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
       />
 
       {/* ============ 1. Intro — narrative + image ============ */}

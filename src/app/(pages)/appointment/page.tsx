@@ -16,6 +16,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { appointmentSlots, consultationTopics, company, appointmentFAQ } from "@/lib/site-data";
 import { useToast } from "@/hooks/use-toast";
@@ -72,10 +73,11 @@ export default function AppointmentPage() {
 
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Book a 30-minute call."
-        label="[ Free consultation ]"
-        crumbs={[{ label: "Appointment" }]}
+        label="Free consultation"
+        image="/images/wp/2025-02/vrhm2.jpg"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Appointment" }]}
       />
 
       {/* ============ 1. What to expect — narrative + steps ============ */}

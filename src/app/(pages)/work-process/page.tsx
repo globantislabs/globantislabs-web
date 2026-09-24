@@ -14,6 +14,7 @@ import {
   Clock,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { workProcessPhases } from "@/lib/site-data";
@@ -44,10 +45,11 @@ const phaseIcons = [
 export default function WorkProcessPage() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Seven stages, one engineering loop."
-        label="[ Work process ]"
-        crumbs={[{ label: "Work Process" }]}
+        label="Work process"
+        image="/images/wp/2025-02/about_mna00n.jpg"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Work Process" }]}
       />
 
       {/* ============ 1. Intro — narrative + image ============ */}

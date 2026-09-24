@@ -15,6 +15,7 @@ import {
   Scale,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import {
@@ -46,10 +47,11 @@ const topIcons = [ShieldCheck, Clock, Globe2];
 export default function WhyChooseUsPage() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Reliability you can audit."
-        label="[ Why choose us ]"
-        crumbs={[{ label: "Why Choose Us" }]}
+        label="Why choose us"
+        image="/images/wp/2025-01/why_choose01.jpg"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Why Choose Us" }]}
       />
 
       {/* ============ 1. Top three reasons — premium cards ============ */}

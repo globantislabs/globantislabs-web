@@ -18,6 +18,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
 import {
   company,
@@ -64,10 +65,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Tell us what you're building."
-        label="[ Contact ]"
-        crumbs={[{ label: "Contact" }]}
+        label="Contact"
+        image="/images/wp/2025-02/contact-zman.png"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
       {/* ============ 1. Intro + Response SLA strip ============ */}

@@ -11,6 +11,7 @@ import {
   PenTool,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { technologiesGrid, technologyCategories } from "@/lib/site-data";
@@ -35,10 +36,11 @@ const categoryIcons = [PenTool, Server, Database, Cloud, BrainCircuit];
 export default function TechnologiesPage() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Our engineering stack, in the open."
-        label="[ Technologies ]"
-        crumbs={[{ label: "Technologies" }]}
+        label="Technologies"
+        image="/images/wp/2025-02/technology1.png"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
       />
 
       {/* ============ 1. Intro — narrative ============ */}
