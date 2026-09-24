@@ -25,7 +25,7 @@ export function ServiceHero({
   const trail = crumbs ?? [];
 
   return (
-    <section className="relative flex min-h-[460px] items-center overflow-hidden bg-ink lg:min-h-[560px]">
+    <section className="relative flex min-h-[280px] items-center overflow-hidden bg-ink lg:min-h-[340px]">
       {/* Background image */}
       <Image
         src={heroImage}
@@ -56,13 +56,13 @@ export function ServiceHero({
       <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
 
       {/* Content — minimal: breadcrumb + eyebrow + title only */}
-      <div className="container-site relative w-full py-20 lg:py-28">
+      <div className="container-site relative w-full py-10 lg:py-14">
         <div className="max-w-3xl">
           {/* Breadcrumb — text-only, no logo */}
           {trail.length > 0 && (
             <nav
               aria-label="Breadcrumb"
-              className="mb-6 flex flex-wrap items-center gap-1.5 text-xs text-white/60"
+              className="mb-3 flex flex-wrap items-center gap-1.5 text-xs text-white/60"
             >
               {trail.map((c, i) => (
                 <span key={i} className="inline-flex items-center gap-1.5">
@@ -89,19 +89,19 @@ export function ServiceHero({
 
           {/* Eyebrow */}
           {service.banner?.label && (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <span
                 aria-hidden
-                className="h-[3px] w-11 rounded-full bg-gradient-to-r from-flame to-flame-soft"
+                className="h-[2px] w-8 rounded-full bg-gradient-to-r from-flame to-flame-soft"
               />
-              <span className="text-sm font-semibold tracking-[0.08em] text-flame sm:text-base">
+              <span className="text-xs font-semibold tracking-[0.08em] text-flame sm:text-sm">
                 {service.banner.label}
               </span>
             </div>
           )}
 
           {/* Title */}
-          <h1 className="mt-5 text-display-xl font-bold leading-[1.05] text-white">
+          <h1 className="mt-3 text-display-lg font-bold leading-[1.1] text-white">
             {service.title}
           </h1>
         </div>
