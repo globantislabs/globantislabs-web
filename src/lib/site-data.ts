@@ -46,6 +46,9 @@ import {
   BarChart3,
   AppWindow,
   Mail,
+  FileText,
+  Briefcase,
+  Watch,
 } from "lucide-react";
 
 export const company = {
@@ -227,6 +230,7 @@ export type Service = {
   title: string;
   shortTitle: string;
   desc: string;
+  tagline?: string;
   techs: { name: string; img: string }[];
   banner: {
     label?: string;
@@ -236,6 +240,20 @@ export type Service = {
     heading: string;
     paragraphs: string[];
   };
+  stats?: { value: string; label: string }[];
+  processSteps?: {
+    label?: string;
+    heading: string;
+    intro?: string;
+    steps: { phase: string; title: string; duration: string; desc: string; deliverables: string[] }[];
+  };
+  useCases?: {
+    label?: string;
+    heading: string;
+    intro?: string;
+    items: { title: string; desc: string; icon?: LucideIcon }[];
+  };
+  deliverables?: string[];
   benefits?: {
     label?: string;
     heading: string;
@@ -244,6 +262,12 @@ export type Service = {
     bullets?: string[];
     closing?: string;
     images?: string[];
+  };
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+    company?: string;
   };
   subServices?: {
     label?: string;
@@ -280,7 +304,46 @@ export const services: Service[] = [
       heading: "Business Intelligence Innovative Digital Solutions and Expert Technology Consulting.",
       paragraphs: [
         "At Globantis Labs, we create dynamic, responsive, and high-performance web applications that empower businesses to succeed in the digital world. Our solutions are designed for scalability, security, and seamless user experience, helping global clients enhance engagement and achieve measurable results.",
+        "We treat every web property like a product — instrumented from day one with analytics, performance budgets and observability. Whether it's a high-traffic marketing site, a multi-tenant SaaS dashboard, or a complex internal tool, our engineering teams ship code that's tested, reviewed and ready for production.",
       ],
+    },
+    stats: [
+      { value: "0.8s", label: "Average LCP" },
+      { value: "99.99%", label: "Uptime SLA" },
+      { value: "85+", label: "Lighthouse score" },
+      { value: "WCAG 2.2", label: "Accessibility AA" },
+    ],
+    processSteps: {
+      label: "Delivery process",
+      heading: "From sprint zero to production — every Friday.",
+      intro: "Our web engagements run on two-week sprints with weekly client reviews. Every phase below produces a tangible artifact you can see, click and review.",
+      steps: [
+        { phase: "01", title: "Discovery & audit", duration: "1 week", desc: "Stakeholder interviews, current-state audit, analytics review, competitor benchmark and a written technical recommendation.", deliverables: ["Stakeholder interview notes", "Current-state audit report", "Technical recommendation doc"] },
+        { phase: "02", title: "Design & prototype", duration: "2–4 weeks", desc: "Wireframes, clickable Figma prototype, design system tokens and a QA checklist before any production code is written.", deliverables: ["Wireframes", "Figma prototype", "Design system tokens", "QA checklist"] },
+        { phase: "03", title: "Build sprint zero", duration: "1 week", desc: "Repo scaffolding, CI/CD pipeline, observability stack, staging environment and a hello-world deploy before feature work begins.", deliverables: ["Git repo + branch strategy", "CI/CD pipeline", "Staging URL", "Observability dashboard"] },
+        { phase: "04", title: "Feature sprints", duration: "2-week cycles", desc: "Feature development in two-week sprints. Every Friday we demo what shipped, what's next, and what's blocked.", deliverables: ["Working software", "Sprint demo recording", "Burndown chart", "Release notes"] },
+        { phase: "05", title: "Launch & handover", duration: "1 week", desc: "Production deploy, runbook, knowledge transfer to your team and a 30-day hyper-care window where we hold the pager.", deliverables: ["Production deploy", "Runbook", "Knowledge-transfer session", "30-day hyper-care"] },
+      ],
+    },
+    useCases: {
+      label: "What we build",
+      heading: "Five web products we ship repeatedly.",
+      intro: "We've shipped these patterns enough times that the architecture is a known quantity — the engagement becomes about your business logic, not plumbing.",
+      items: [
+        { title: "Marketing sites & landing pages", desc: "High-conversion, SEO-tuned, CMS-backed marketing sites with sub-second LCP and analytics baked in.", icon: Globe },
+        { title: "SaaS dashboards", desc: "Multi-tenant, role-aware admin dashboards with realtime data, RBAC and audit trails.", icon: BarChart3 },
+        { title: "E-commerce storefronts", desc: "Headless commerce with checkout, payments, inventory sync and A/B testing built in.", icon: ShoppingCart },
+        { title: "Internal tools & admin", desc: "Operations tools, customer-support consoles and back-office apps that replace spreadsheets.", icon: AppWindow },
+        { title: "Public-facing portals", desc: "Customer portals, partner portals and self-service flows with strong auth and identity.", icon: Users },
+        { title: "Documentation & content sites", desc: "Docs portals, blogs, knowledge bases — versioned, searchable and fast.", icon: FileText },
+      ],
+    },
+    deliverables: ["Production-ready source code in your git", "CI/CD pipeline (GitLab / GitHub Actions)", "Staging + production environments", "Observability dashboard (Grafana)", "Runbook + on-call rotation", "30-day hyper-care", "Architecture decision records"],
+    testimonial: {
+      quote: "They shipped our SaaS dashboard in 12 weeks. Sub-second LCP, 99.99% uptime, and our support load dropped 40% overnight.",
+      author: "VP of Product",
+      role: "Healthcare SaaS",
+      company: "Confidential client",
     },
     benefits: {
       label: "Benefits To Services",
@@ -323,7 +386,46 @@ export const services: Service[] = [
       heading: "Service Overview",
       paragraphs: [
         "Comprehensive DevOps transformation services encompassing continuous integration and deployment, infrastructure automation, containerization, and enterprise-grade monitoring solutions. We enable organizations to accelerate software delivery cycles, improve system reliability, and achieve operational excellence through automated workflows and intelligent infrastructure management.",
+        "Every DevOps engagement starts with a maturity assessment — we don't ship a CI/CD pipeline and walk away. We measure your current deployment frequency, lead time, change-failure rate and recovery time, then ship improvements that move the needle on those four metrics over 90 days.",
       ],
+    },
+    stats: [
+      { value: "30+", label: "Deploys / day" },
+      { value: "99.99%", label: "Platform uptime" },
+      { value: "<5min", label: "Mean time to recover" },
+      { value: "DORA", label: "Elite-tier metrics" },
+    ],
+    processSteps: {
+      label: "Engagement phases",
+      heading: "Five phases to DevOps maturity.",
+      intro: "We follow the DORA framework. Every phase moves at least one of the four key metrics — deploy frequency, lead time, change-failure rate, recovery time.",
+      steps: [
+        { phase: "01", title: "Maturity assessment", duration: "1 week", desc: "We measure your current DORA metrics, audit your pipeline, scan infra for drift, and produce a 90-day improvement plan with priorities.", deliverables: ["DORA baseline report", "Pipeline audit", "Infra drift scan", "90-day roadmap"] },
+        { phase: "02", title: "Pipeline foundation", duration: "2 weeks", desc: "CI/CD pipeline with automated tests, security scans, artifact registry and one-click rollbacks. Trunk-based or git-flow — your call.", deliverables: ["CI/CD pipeline", "Test automation suite", "Security scanning", "Rollback playbook"] },
+        { phase: "03", title: "Infrastructure as Code", duration: "2–3 weeks", desc: "Terraform modules for every environment, drift detection, policy-as-code and a self-service portal for devs to spin up infra.", deliverables: ["Terraform modules", "Environment parity", "Policy-as-code", "Self-service portal"] },
+        { phase: "04", title: "Observability stack", duration: "1–2 weeks", desc: "Metrics, logs, traces — unified in Grafana or Datadog. SLOs defined per service with alerting wired to your on-call.", deliverables: ["Grafana / Datadog dashboards", "SLO definitions", "Alert runbook", "On-call rotation"] },
+        { phase: "05", title: "Continuous improvement", duration: "Ongoing", desc: "Quarterly DORA re-measurement, chaos engineering days, game-days, and incident retrospectives that close the loop.", deliverables: ["Quarterly DORA report", "Chaos test results", "Retro action items", "Updated roadmap"] },
+      ],
+    },
+    useCases: {
+      label: "Where we apply it",
+      heading: "Six DevOps patterns we ship repeatedly.",
+      intro: "These are the engagements that land most often. Each one is a known quantity — we've shipped it enough times to know the failure modes in advance.",
+      items: [
+        { title: "CI/CD greenfield", desc: "Net-new pipeline for a new product or repo — GitLab / GitHub Actions / Jenkins, your call.", icon: RefreshCw },
+        { title: "Kubernetes migration", desc: "Lift workloads from VMs / bare metal onto managed K8s, with autoscaling and ingress.", icon: Boxes },
+        { title: "Observability uplift", desc: "Replace ad-hoc monitoring with metrics + logs + traces in a unified pane.", icon: BarChart3 },
+        { title: "Multi-region failover", desc: "Active-active or active-passive multi-region setup with DNS-level failover.", icon: Globe2 },
+        { title: "Cost optimization", desc: "Right-size instances, kill zombie resources, switch to spot/preemptible where possible.", icon: Cpu },
+        { title: "Compliance automation", desc: "SOC2 / ISO / HIPAA control automation with continuous evidence collection.", icon: ShieldCheck },
+      ],
+    },
+    deliverables: ["Production CI/CD pipeline", "Terraform module library", "Observability dashboards", "SLO definitions", "On-call runbook", "DORA baseline + 90-day report", "Knowledge-transfer session"],
+    testimonial: {
+      quote: "They cut our deploy frequency from weekly to daily in 6 weeks. Lead time went from 4 days to 90 minutes.",
+      author: "Director of Engineering",
+      role: "Fintech",
+      company: "Confidential client",
     },
     subServices: {
       label: "Our services",
@@ -373,7 +475,46 @@ export const services: Service[] = [
       heading: "Transforming IT Support with Expertise and Innovation",
       paragraphs: [
         "In today's rapidly evolving digital landscape, organizations face numerous challenges, from maintaining system uptime to managing complex infrastructure and ensuring security. Our IT support services provide round-the-clock reliability so your business never stops.",
+        "We don't just hold the pager — we own the SLA. Every engagement starts with an on-call playbook, an observability dashboard and a quarterly business review where we report against the metrics that matter to your team: uptime, MTTR, security posture and customer-reported issues.",
       ],
+    },
+    stats: [
+      { value: "99.95%", label: "SLA uptime target" },
+      { value: "<15min", label: "P1 ack time" },
+      { value: "<2h", label: "MTTR (P1)" },
+      { value: "24/5", label: "Follow-the-sun coverage" },
+    ],
+    processSteps: {
+      label: "Operations process",
+      heading: "How we run production for you.",
+      intro: "Our support engagements run on documented playbooks, not heroics. Every step below is auditable inside the on-call dashboard.",
+      steps: [
+        { phase: "01", title: "Onboarding & runbook", duration: "1 week", desc: "We shadow your team for a week, document the runbook, set up alerting, and own the on-call rotation end-to-end.", deliverables: ["Runbook v1", "Alert routing", "On-call schedule", "Escalation tree"] },
+        { phase: "02", title: "Steady-state operations", duration: "Ongoing", desc: "24/5 coverage of your production stack. Every alert triaged, every incident documented, every retro action item tracked to closure.", deliverables: ["24/5 on-call", "Incident reports", "Retro action items", "Monthly SLA report"] },
+        { phase: "03", title: "Patch & vulnerability", duration: "Weekly", desc: "Weekly patch window, dependency CVE scanning, and a security dashboard showing every vulnerability and its SLA.", deliverables: ["Patch schedule", "CVE dashboard", "Vulnerability SLA report"] },
+        { phase: "04", title: "Quarterly business review", duration: "Quarterly", desc: "Every 90 days we sit with your leadership team to review uptime, MTTR, security posture and customer-reported issues against targets.", deliverables: ["QBR deck", "Metric trends", "Roadmap recommendations"] },
+        { phase: "05", title: "Continuous improvement", duration: "Ongoing", desc: "We close the loop — every incident produces a documented fix, every recurring alert produces an automation, every manual runbook step produces a script.", deliverables: ["Auto-remediation scripts", "Alert-noise reduction", "Updated runbooks"] },
+      ],
+    },
+    useCases: {
+      label: "What we operate",
+      heading: "Five support engagements we run repeatedly.",
+      intro: "These are the patterns we run day-in, day-out. Every one ships with a documented SLA and a quarterly business review.",
+      items: [
+        { title: "Application L2/L3 support", desc: "Production application support — bug triage, hotfixes, release management, customer-facing comms.", icon: LifeBuoy },
+        { title: "Infrastructure operations", desc: "Cloud infra, databases, networking — patching, scaling, cost optimization and on-call.", icon: ServerCog },
+        { title: "Security operations", desc: "SIEM monitoring, threat hunting, vulnerability management, incident response.", icon: ShieldCheck },
+        { title: "Data platform ops", desc: "Pipeline health, warehouse performance, data quality monitoring and SLA on freshness.", icon: BarChart3 },
+        { title: "End-user IT support", desc: "Employee onboarding, device management, internal helpdesk with documented SLAs.", icon: Users },
+        { title: "Compliance & audit", desc: "Evidence collection for SOC2/ISO/HIPAA — automated, continuous, audit-ready.", icon: FileText },
+      ],
+    },
+    deliverables: ["24/5 on-call rotation", "Runbook (living document)", "Alert routing + escalation tree", "Monthly SLA report", "Quarterly business review", "Auto-remediation scripts", "Patch schedule + CVE dashboard"],
+    testimonial: {
+      quote: "They've held our pager for 18 months. Uptime 99.97%, MTTR down from 6h to 90min, and we sleep through the night.",
+      author: "CTO",
+      role: "B2B SaaS",
+      company: "Confidential client",
     },
     benefits: {
       heading: "Comprehensive IT Support & Maintenance",
@@ -416,6 +557,44 @@ export const services: Service[] = [
         "We translate concepts into interactive wireframes and prototypes to visualize workflows, test ideas, and gather early feedback. Our team designs modern, visually appealing interfaces with clear navigation and consistent branding. We conduct usability testing to validate design effectiveness and create designs that work seamlessly across devices and screen sizes.",
       ],
     },
+    stats: [
+      { value: "+38%", label: "Avg conversion uplift" },
+      { value: "85+", label: "Lighthouse a11y" },
+      { value: "<3", label: "Taps to action" },
+      { value: "5-day", label: "Design sprint" },
+    ],
+    processSteps: {
+      label: "Design process",
+      heading: "From research to handoff in five phases.",
+      intro: "Our design process is research-led and ship-ready. Every phase produces a documented artifact your team can review and reuse.",
+      steps: [
+        { phase: "01", title: "Discovery & research", duration: "1 week", desc: "Stakeholder interviews, user interviews, analytics review, competitive scan and a written research summary.", deliverables: ["Research plan", "User personas", "Journey map", "Research summary"] },
+        { phase: "02", title: "Design sprint", duration: "5 days", desc: "A Google-Variant design sprint: map, sketch, decide, prototype, test. We ship a clickable prototype in one week.", deliverables: ["Sprint agenda", "Sketches", "Clickable prototype", "User test results"] },
+        { phase: "03", title: "High-fidelity design", duration: "2–4 weeks", desc: "Pixel-perfect Figma files with components, variants, auto-layout and a design-system token doc.", deliverables: ["Figma source files", "Design system", "Token doc", "Asset library"] },
+        { phase: "04", title: "Prototype & test", duration: "1 week", desc: "Usability tests with 5–8 participants. We synthesize findings into a prioritized fix list.", deliverables: ["Test plan", "Session recordings", "Findings report", "Prioritized fixes"] },
+        { phase: "05", title: "Dev handoff", duration: "1–2 days", desc: "Hand-off session with engineering. Spec doc, redline annotations, edge-case states and an open Q&A channel.", deliverables: ["Hand-off doc", "Redline annotations", "Edge-case states", "Q&A log"] },
+      ],
+    },
+    useCases: {
+      label: "What we design",
+      heading: "Six design engagements we ship repeatedly.",
+      intro: "These are the design patterns we know cold. The engagement becomes about your brand and content, not the layout system.",
+      items: [
+        { title: "Marketing site redesign", desc: "Conversion-led, SEO-tuned, CMS-backed marketing sites with a design system.", icon: Globe },
+        { title: "SaaS product UX", desc: "Onboarding flows, dashboards, settings, role-based experiences for B2B SaaS.", icon: AppWindow },
+        { title: "Mobile app design", desc: "iOS/Android design with native patterns, accessibility, and offline states.", icon: Smartphone },
+        { title: "Design systems", desc: "Component libraries, tokens, documentation sites and contribution workflows.", icon: Boxes },
+        { title: "Design ops", desc: "Figma workspace setup, plugin stack, design linting, and contributor onboarding.", icon: Cpu },
+        { title: "Brand & visual identity", desc: "Logo systems, color, typography, voice and a brand guidelines doc.", icon: Sparkles },
+      ],
+    },
+    deliverables: ["Figma source files", "Design system + tokens", "Clickable prototype", "Usability test report", "Dev hand-off doc", "Asset library", "QA checklist"],
+    testimonial: {
+      quote: "The design sprint alone saved us 6 weeks. We tested the prototype with 8 users and killed two bad features before writing any code.",
+      author: "Head of Product",
+      role: "Fintech",
+      company: "Confidential client",
+    },
   },
   {
     slug: "cms-development",
@@ -437,7 +616,46 @@ export const services: Service[] = [
       heading: "ERP/CRM & CMS Solutions - Integrated Enterprise Management and Content Delivery Systems",
       paragraphs: [
         "Comprehensive ERP, CRM, and CMS solutions that empower enterprises to streamline operations, enhance customer relationships, and deliver exceptional content experiences. Our integrated platform brings together enterprise resource planning, customer relationship management, and content management capabilities into one unified system for maximum efficiency and scalability.",
+        "We don't ship a one-size-fits-all platform. Every CMS/ERP engagement starts with a workflow discovery — we map your actual operating processes, then configure the platform (or build a custom one) to fit. Code ownership is always yours.",
       ],
+    },
+    stats: [
+      { value: "-40%", label: "Operational cost reduction" },
+      { value: "3x", label: "Faster reporting" },
+      { value: "100%", label: "Audit trail coverage" },
+      { value: "365/24/7", label: "System availability" },
+    ],
+    processSteps: {
+      label: "Implementation process",
+      heading: "Five phases to a unified platform.",
+      intro: "Our CMS/ERP engagements follow a documented implementation methodology. Every phase produces a deliverable your ops team can review.",
+      steps: [
+        { phase: "01", title: "Workflow discovery", duration: "1–2 weeks", desc: "We shadow your ops team, document every workflow, and produce a process map with bottlenecks highlighted.", deliverables: ["Process map", "Bottleneck report", "Requirements doc"] },
+        { phase: "02", title: "Platform fit analysis", duration: "1 week", desc: "We evaluate build-vs-buy for each module: off-the-shelf vs configured vs custom. You get a written recommendation with TCO.", deliverables: ["Build-vs-buy matrix", "TCO comparison", "Recommendation"] },
+        { phase: "03", title: "Configuration & build", duration: "4–12 weeks", desc: "We configure the platform (or build custom modules), migrate data, and integrate with your stack. Weekly demos.", deliverables: ["Configured platform", "Data migration", "Integrations", "Weekly demos"] },
+        { phase: "04", title: "User training", duration: "1 week", desc: "Role-based training sessions, recorded videos, a self-service knowledge base and a power-user program.", deliverables: ["Training sessions", "Video library", "Knowledge base", "Power-user program"] },
+        { phase: "05", title: "Go-live & hyper-care", duration: "30 days", desc: "Production go-live, 30-day hyper-care with daily check-ins, then transition to steady-state operations.", deliverables: ["Go-live runbook", "30-day hyper-care", "Quarterly roadmap"] },
+      ],
+    },
+    useCases: {
+      label: "What we build",
+      heading: "Six enterprise platform patterns we ship.",
+      intro: "These are the platform engagements we know cold. Every one ships with code ownership transferred to your team.",
+      items: [
+        { title: "Headless CMS", desc: "Contentful / Sanity / Strapi / custom — headless CMS with a design system and preview.", icon: Boxes },
+        { title: "Custom CRM", desc: "Custom CRM built around your sales process, with pipeline, automation and reporting.", icon: Users },
+        { title: "ERP modules", desc: "Inventory, orders, billing, HR, finance — built or configured to your operating model.", icon: BarChart3 },
+        { title: "Workflow automation", desc: "Approval flows, document routing, notifications — automated and audit-logged.", icon: Workflow },
+        { title: "Reporting & BI", desc: "Real-time dashboards, scheduled reports, exports — built on your data warehouse.", icon: LineChart },
+        { title: "Integration layer", desc: "API gateway, ETL, webhooks — connect your stack into one platform.", icon: Network },
+      ],
+    },
+    deliverables: ["Configured/custom platform", "Source code in your git", "Data migration scripts", "Integration layer", "Training materials", "Knowledge base", "30-day hyper-care"],
+    testimonial: {
+      quote: "We replaced a $2M/yr SaaS contract with a custom CRM Globantis built in 14 weeks. Payback in 11 months.",
+      author: "VP Operations",
+      role: "B2B logistics",
+      company: "Confidential client",
     },
     benefits: {
       label: "Why Choose Services",
@@ -495,9 +713,51 @@ export const services: Service[] = [
     },
     overview: {
       heading: "AI-driven Services That Adopted Across Different Industries",
-      paragraphs: [],
+      paragraphs: [
+        "From AI-powered customer support to predictive analytics and intelligent automation, our AI services are deployed across financial services, healthcare, retail and logistics. We design, train and operate models that compound value — and ship them with the observability and governance that production systems require.",
+        "Every AI engagement starts with a feasibility study: data audit, business-value mapping, build-vs-buy on models, and a written ROI projection. We ship to production only when the model earns its keep — and we operate it like any other production system, with versioning, monitoring and rollback.",
+      ],
+    },
+    stats: [
+      { value: "30+", label: "Production ML systems" },
+      { value: "92%", label: "Avg model precision" },
+      { value: "<200ms", label: "Inference latency" },
+      { value: "MLOps", label: "CI/CD for models" },
+    ],
+    processSteps: {
+      label: "AI delivery process",
+      heading: "From feasibility to production model — five phases.",
+      intro: "We follow an MLOps discipline. Models are versioned, monitored and rolled back like any other production artifact.",
+      steps: [
+        { phase: "01", title: "Feasibility & data audit", duration: "1–2 weeks", desc: "We audit your data, map business value, evaluate build-vs-buy on models, and produce a written ROI projection.", deliverables: ["Data audit", "ROI projection", "Build-vs-buy matrix", "Feasibility report"] },
+        { phase: "02", title: "Pilot & proof", duration: "2–4 weeks", desc: "We train a baseline model on real data, evaluate precision/recall, and ship a working pilot you can poke at.", deliverables: ["Baseline model", "Evaluation report", "Pilot UI", "Pilot demo"] },
+        { phase: "03", title: "Production build", duration: "4–8 weeks", desc: "Production model + inference API + monitoring + drift detection + rollback. Models versioned like code.", deliverables: ["Model artifact", "Inference API", "Drift dashboard", "Rollback playbook"] },
+        { phase: "04", title: "Operations & monitoring", duration: "Ongoing", desc: "24/5 monitoring of model health, drift, latency, precision. Quarterly model retraining cadence.", deliverables: ["Model SLOs", "Drift alerts", "Quarterly retraining", "Quarterly model report"] },
+        { phase: "05", title: "Continuous improvement", duration: "Ongoing", desc: "A/B tests against the production model, new feature engineering, periodic re-evaluation of build-vs-buy.", deliverables: ["A/B test results", "Feature engineering", "Updated model", "Updated roadmap"] },
+      ],
+    },
+    useCases: {
+      label: "What we ship",
+      heading: "Six AI patterns we ship repeatedly.",
+      intro: "These are the AI engagements we know cold. Every one ships with MLOps — versioning, monitoring, rollback.",
+      items: [
+        { title: "AI customer support", desc: "Chatbots and assistants that handle L1 tickets end-to-end, with human handoff.", icon: Bot },
+        { title: "Predictive analytics", desc: "Forecast demand, churn, risk — production models with feature stores and retraining.", icon: BarChart3 },
+        { title: "Computer vision", desc: "Defect detection, OCR, medical imaging — models deployed at edge or cloud.", icon: Microscope },
+        { title: "NLP & document AI", desc: "Document classification, extraction, summarization — RAG pipelines with audit logs.", icon: FileText },
+        { title: "Fraud detection", desc: "Real-time scoring of transactions with explainability for compliance.", icon: ShieldCheck },
+        { title: "RPA & automation", desc: "Bots that handle repetitive workflows across legacy + SaaS systems.", icon: Bot },
+      ],
+    },
+    deliverables: ["Production model artifact", "Inference API", "Feature store", "Drift monitoring", "MLOps pipeline", "Model SLOs", "Quarterly retraining cadence"],
+    testimonial: {
+      quote: "They shipped our fraud-detection model in 10 weeks. Precision 94%, false-positive rate cut by 60%, ROI in 5 months.",
+      author: "Head of Risk",
+      role: "Fintech",
+      company: "Confidential client",
     },
     subServices: {
+      label: "Our services",
       heading: "AI-Powered Solutions for Every Industry",
       items: [
         {
@@ -573,7 +833,46 @@ export const services: Service[] = [
       heading: "Cross-Platform Mobile Apps Built for Performance",
       paragraphs: [
         "We engineer native and cross-platform mobile applications that deliver consistent, high-performance experiences across iOS and Android. From concept to launch, our apps are designed for speed, security, and scalability.",
+        "Every mobile engagement ships with a documented release process: CI/CD to TestFlight + Play Store internal, automated screenshots, beta channels, staged rollout, and instant rollback. We treat mobile like production software — because it is.",
       ],
+    },
+    stats: [
+      { value: "<1.5s", label: "Cold-start time" },
+      { value: "60fps", label: "Animation target" },
+      { value: "4.8★", label: "Avg store rating" },
+      { value: "99.5%", label: "Crash-free sessions" },
+    ],
+    processSteps: {
+      label: "Mobile delivery process",
+      heading: "Five phases from concept to App Store.",
+      intro: "Our mobile engagements follow an MLOps-like discipline. Every release is versioned, tested, staged and rollback-ready.",
+      steps: [
+        { phase: "01", title: "Discovery & UX", duration: "1–2 weeks", desc: "User research, wireframes, clickable prototype, platform guidelines audit.", deliverables: ["User research", "Wireframes", "Clickable prototype", "Platform audit"] },
+        { phase: "02", title: "Build sprint zero", duration: "1 week", desc: "Repo scaffolding, CI/CD to TestFlight + Play Internal, observability, beta channel.", deliverables: ["Git repo", "CI/CD pipeline", "Beta channel", "Observability SDK"] },
+        { phase: "03", title: "Feature sprints", duration: "2-week cycles", desc: "Feature development with weekly TestFlight builds. Every Friday demo what shipped.", deliverables: ["Weekly TestFlight", "Sprint demo", "Burndown", "Release notes"] },
+        { phase: "04", title: "Beta & polish", duration: "2 weeks", desc: "Closed beta with 50–200 users, crash reporting, performance budgets, store assets.", deliverables: ["Beta program", "Crash report", "Store assets", "Performance report"] },
+        { phase: "05", title: "Launch & operate", duration: "1 week + ongoing", desc: "Staged rollout (1% → 10% → 50% → 100%), instant rollback, monthly ops review.", deliverables: ["Staged rollout", "Rollback playbook", "Monthly ops report"] },
+      ],
+    },
+    useCases: {
+      label: "What we build",
+      heading: "Six mobile patterns we ship repeatedly.",
+      intro: "These are the mobile engagements we know cold. Every one ships with CI/CD, staged rollout, and instant rollback.",
+      items: [
+        { title: "Consumer iOS / Android", desc: "Native Swift / Kotlin apps for consumer audiences with strong brand presence.", icon: Smartphone },
+        { title: "Cross-platform (React Native / Flutter)", desc: "One codebase, both platforms — for when speed-to-market beats pure native.", icon: AppWindow },
+        { title: "Enterprise mobile", desc: "Internal apps for field teams, sales, operations — with offline-first and MDM.", icon: Briefcase },
+        { title: "Wearable & watchOS", desc: "Companion apps for Apple Watch, Wear OS — sensor data, notifications, complications.", icon: Watch },
+        { title: "Mobile commerce", desc: "Shopping apps with checkout, payments, push, deep-linking and AR try-on.", icon: ShoppingCart },
+        { title: "IoT companion apps", desc: "Apps that pair with hardware over BLE / Wi-Fi — onboarding, control, OTA updates.", icon: Cpu },
+      ],
+    },
+    deliverables: ["Production app in App Store + Play Store", "Source code in your git", "CI/CD to TestFlight + Play Internal", "Crash + analytics SDK", "Staged rollout playbook", "Instant rollback capability", "Monthly ops report"],
+    testimonial: {
+      quote: "They shipped our cross-platform app in 16 weeks. 4.8★ on both stores, 99.6% crash-free, instant rollback saved us twice.",
+      author: "VP Mobile",
+      role: "Retail",
+      company: "Confidential client",
     },
   },
   {
@@ -597,9 +896,49 @@ export const services: Service[] = [
       paragraphs: [
         "At Globantis Labs, we specialize in delivering end-to-end software development services that transform ideas into high-quality digital solutions. Our expertise spans custom software, web and mobile applications, cloud-based systems, enterprise solutions, and AI-driven platforms, ensuring that every product is designed to meet the unique needs of our global clients.",
         "We follow agile methodologies and best industry practices to deliver projects efficiently while maintaining flexibility to adapt to changing requirements. Our development process emphasizes scalability, security, and performance, enabling businesses to grow without technical constraints.",
+        "Every custom software engagement starts with an architecture review — we don't write a line of production code until we've documented the trade-offs, the alternatives, and the failure modes. You get the architecture decision records (ADRs) in writing, signed off, before the first commit.",
       ],
     },
+    stats: [
+      { value: "250+", label: "Projects delivered" },
+      { value: "12+", label: "Countries served" },
+      { value: "92%", label: "On-time delivery" },
+      { value: "100%", label: "Code ownership transfer" },
+    ],
+    processSteps: {
+      label: "Delivery process",
+      heading: "Five phases from architecture to handover.",
+      intro: "Our custom software engagements follow a documented delivery methodology. Every phase produces a tangible artifact your team can review.",
+      steps: [
+        { phase: "01", title: "Architecture review", duration: "1–2 weeks", desc: "We document the architecture, alternatives, failure modes, and ADRs. You sign off before code is written.", deliverables: ["Architecture diagram", "ADR docs", "Risk register", "Tech stack recommendation"] },
+        { phase: "02", title: "Sprint zero", duration: "1 week", desc: "Repo scaffolding, CI/CD pipeline, observability, staging environment, hello-world deploy.", deliverables: ["Git repo", "CI/CD pipeline", "Staging URL", "Observability stack"] },
+        { phase: "03", title: "Feature sprints", duration: "2-week cycles", desc: "Feature development in two-week sprints. Every Friday demo, every sprint review with your team.", deliverables: ["Working software", "Sprint demos", "Burndown", "Release notes"] },
+        { phase: "04", title: "Hardening & UAT", duration: "2 weeks", desc: "Performance testing, security scan, UAT with your team, bug bash, and a documented go/no-go decision.", deliverables: ["Perf test report", "Security scan", "UAT sign-off", "Go/no-go decision"] },
+        { phase: "05", title: "Launch & handover", duration: "1 week + 30 days", desc: "Production deploy, runbook, knowledge transfer to your team, 30-day hyper-care with daily check-ins.", deliverables: ["Production deploy", "Runbook", "KT session", "30-day hyper-care"] },
+      ],
+    },
+    useCases: {
+      label: "What we build",
+      heading: "Six custom software patterns we ship.",
+      intro: "These are the engagements we know cold. Every one ships with ADRs, code ownership transferred, and a 30-day hyper-care window.",
+      items: [
+        { title: "Greenfield product", desc: "0→1 product engineering — from idea to production in 12–24 weeks.", icon: Rocket },
+        { title: "Legacy modernization", desc: "Replace aging systems with modern, cloud-native architectures — feature parity, no disruption.", icon: RefreshCw },
+        { title: "Enterprise platforms", desc: "Multi-tenant B2B platforms with RBAC, audit, compliance — built to scale to 10M+ users.", icon: AppWindow },
+        { title: "API & integration layer", desc: "API gateways, ETL, webhooks, event streams — connect your stack into one platform.", icon: Network },
+        { title: "Real-time systems", desc: "Chat, collaboration, dashboards — WebSockets, event sourcing, live updates at scale.", icon: Zap },
+        { title: "Compliance-heavy systems", desc: "Healthcare (HIPAA), fintech (SOC2), public sector — built with audit trails from day one.", icon: ShieldCheck },
+      ],
+    },
+    deliverables: ["Source code in your git", "ADRs (architecture decision records)", "CI/CD pipeline", "Staging + production environments", "Runbook + on-call rotation", "30-day hyper-care", "Knowledge-transfer session"],
+    testimonial: {
+      quote: "They shipped our enterprise platform in 18 weeks. 92% on-time, 100% code ownership transferred. The ADRs alone were worth the engagement.",
+      author: "VP Engineering",
+      role: "B2B SaaS",
+      company: "Confidential client",
+    },
     benefits: {
+      label: "Benefits",
       heading: "Benefits Our Services",
       intro:
         "Partnering with Globantis Labs means gaining a reliable technology partner who understands international business standards, compliance requirements, and global market dynamics. We not only deliver software solutions but also provide ongoing support, enhancements, and strategic guidance to help clients stay ahead in an ever-evolving digital landscape.",
