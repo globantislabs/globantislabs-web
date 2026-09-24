@@ -25,7 +25,7 @@ export function ServiceHero({
   const trail = crumbs ?? [];
 
   return (
-    <section className="relative flex min-h-[280px] items-center overflow-hidden bg-ink lg:min-h-[340px]">
+    <section className="relative flex min-h-[340px] items-center overflow-hidden bg-ink lg:min-h-[420px]">
       {/* Background image */}
       <Image
         src={heroImage}
@@ -56,7 +56,7 @@ export function ServiceHero({
       <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
 
       {/* Content — minimal: breadcrumb + eyebrow + title only */}
-      <div className="container-site relative w-full py-10 lg:py-14">
+      <div className="container-site relative w-full pt-16 pb-10 lg:pt-24 lg:pb-14">
         <div className="max-w-3xl">
           {/* Breadcrumb — text-only, no logo */}
           {trail.length > 0 && (
