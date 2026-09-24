@@ -177,6 +177,8 @@ export const navItems: NavItem[] = [
       href: "/contact",
     },
   },
+  { label: "Insights", href: "/blog" },
+  { label: "Case studies", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -1019,6 +1021,8 @@ export const techLogos = [
 export const footerCompany = [
   { label: "About", href: "/about" },
   { label: "Work Process", href: "/work-process" },
+  { label: "Case studies", href: "/case-studies" },
+  { label: "Insights", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Careers", href: "/careers" },
 ];
