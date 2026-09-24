@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2, Quote, Clock, Users } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { caseStudies } from "@/lib/content-data";
@@ -58,6 +60,7 @@ export default async function CaseStudyDetailPage({
   };
 
   return (
+    <PageShell>
     <>
       <script
         type="application/ld+json"
@@ -272,6 +275,7 @@ export default async function CaseStudyDetailPage({
         tone="ink"
       />
     </>
+    </PageShell>
   );
 }
 

@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Loader2, Download, Sparkles, BrainCircuit, BarChart3 } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal } from "@/components/site/primitives";
 import { useToast } from "@/hooks/use-toast";
 import { company } from "@/lib/site-data";
@@ -42,6 +44,7 @@ export default function EbookPage() {
   }
 
   return (
+    <PageShell>
     <>
       <PageHero
         title="The 2026 State of AI in Enterprise"
@@ -302,5 +305,6 @@ export default function EbookPage() {
         </div>
       </section>
     </>
+    </PageShell>
   );
 }

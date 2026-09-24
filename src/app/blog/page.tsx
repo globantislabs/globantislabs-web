@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { NewsletterSignup } from "@/components/site/newsletter-signup";
 import { buildMetadata } from "@/lib/seo";
@@ -24,6 +26,7 @@ export default function BlogPage() {
   const categories = Array.from(new Set(blogPosts.map((p) => p.category)));
 
   return (
+    <PageShell>
     <>
       <PageHero
         title="Insights"
@@ -181,5 +184,6 @@ export default function BlogPage() {
         </div>
       </section>
     </>
+    </PageShell>
   );
 }

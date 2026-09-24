@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { company } from "@/lib/site-data";
@@ -16,6 +18,7 @@ const lastUpdated = "September 24, 2026";
 
 export default function TermsPage() {
   return (
+    <PageShell>
     <>
       <PageHero
         title="Terms of Service"
@@ -181,6 +184,7 @@ export default function TermsPage() {
         </div>
       </section>
     </>
+    </PageShell>
   );
 }
 

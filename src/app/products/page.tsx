@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Bell } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal } from "@/components/site/primitives";
 import { NewsletterSignup } from "@/components/site/newsletter-signup";
 import { buildMetadata } from "@/lib/seo";
@@ -16,6 +18,7 @@ export const metadata = buildMetadata({
 
 export default function ProductsPage() {
   return (
+    <PageShell>
     <>
       <PageHero
         title="Products"
@@ -166,5 +169,6 @@ export default function ProductsPage() {
         </div>
       </section>
     </>
+    </PageShell>
   );
 }

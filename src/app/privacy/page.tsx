@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { company } from "@/lib/site-data";
@@ -17,6 +19,7 @@ const lastUpdated = "September 24, 2026";
 
 export default function PrivacyPage() {
   return (
+    <PageShell>
     <>
       <PageHero
         title="Privacy Policy"
@@ -195,6 +198,7 @@ export default function PrivacyPage() {
         </div>
       </section>
     </>
+    </PageShell>
   );
 }
 

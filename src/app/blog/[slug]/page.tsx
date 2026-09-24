@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Clock, ArrowLeft } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { blogPosts } from "@/lib/content-data";
@@ -61,6 +63,7 @@ export default async function BlogPostPage({
   };
 
   return (
+    <PageShell>
     <>
       <script
         type="application/ld+json"
@@ -250,5 +253,6 @@ export default async function BlogPostPage({
         tone="ink"
       />
     </>
+    </PageShell>
   );
 }

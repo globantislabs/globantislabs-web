@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
+import { PageShell } from "@/components/site/page-shell";
+
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { caseStudies } from "@/lib/content-data";
@@ -17,6 +19,7 @@ export const metadata = buildMetadata({
 
 export default function CaseStudiesPage() {
   return (
+    <PageShell>
     <>
       <PageHero
         title="Case studies"
@@ -135,5 +138,6 @@ export default function CaseStudiesPage() {
         tone="brand"
       />
     </>
+    </PageShell>
   );
 }
