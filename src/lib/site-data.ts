@@ -165,17 +165,7 @@ export const navItems: NavItem[] = [
   },
   {
     label: "Product",
-    href: "/#products",
-    children: [
-      { label: "Photolabs", desc: "AI-powered photo editing studio", href: "/#products", icon: Sparkles, image: "/images/wp/2025-02/vr-girl.jpg" },
-      { label: "TranscriptHQ", desc: "Enterprise transcription & QA", href: "/#products", icon: BrainCircuit, image: "/images/wp/2025-02/technology1.png" },
-      { label: "Try Before", desc: "Pre-purchase product experience", href: "/#products", icon: ShoppingCart, image: "/images/wp/2025-02/start-up.png" },
-    ],
-    footerCta: {
-      label: "Want to see these in action?",
-      button: "Book a demo",
-      href: "/contact",
-    },
+    href: "/products",
   },
   { label: "Insights", href: "/blog" },
   { label: "Case studies", href: "/case-studies" },

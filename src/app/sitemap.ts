@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/services`, priority: 0.9 },
     { url: `${SITE_URL}/industries`, priority: 0.9 },
     { url: `${SITE_URL}/case-studies`, priority: 0.9 },
+    { url: `${SITE_URL}/products`, priority: 0.5 },
+    { url: `${SITE_URL}/ebook`, priority: 0.7 },
     { url: `${SITE_URL}/blog`, priority: 0.8 },
     { url: `${SITE_URL}/why-choose-us`, priority: 0.7 },
     { url: `${SITE_URL}/work-process`, priority: 0.7 },

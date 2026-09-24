@@ -1,5 +1,6 @@
 import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
+import { TrustStrip } from "@/components/site/trust-strip";
 import { WhoWeAre } from "@/components/site/who-we-are";
 import { Services } from "@/components/site/services";
 import { WhyGlobantis } from "@/components/site/why-globantis";
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <TrustStrip />
         <WhoWeAre />
         <Services />
         <WhyGlobantis />
