@@ -54,7 +54,6 @@ export default function TermsPage() {
                   {company.name} is a global software engineering firm with offices at:
                 </p>
                 <ul className="mt-3 space-y-1.5 pl-5">
-                  <li>{company.usaAddress}</li>
                   <li>{company.canadaAddress}</li>
                   <li>{company.indiaAddress}</li>
                 </ul>

@@ -54,24 +54,13 @@ import {
 export const company = {
   name: "Globantis Labs",
   tagline: "Transforming Ideas Into IT Solutions",
-  phone: "(+009) 155-69566",
-  phoneHref: "tel:+00915569566",
   email: "sales@globantislabs.com",
   emailHref: "mailto:sales@globantislabs.com",
   careersEmail: "careers@globantislabs.com",
-  usaAddress: "374 William S Canning Blvd, Fall River MA Road 2721, USA",
   canadaAddress: "3992 Rue de la Seine Laval, Québec H7W 2S3, Canada",
   indiaAddress: "RMZ Millenia Business Park, Perungudi, Chennai, India",
   founded: "2026",
   offices: [
-    {
-      city: "Fall River, MA",
-      country: "United States",
-      address: "374 William S Canning Blvd, Fall River, MA 02721, USA",
-      tz: "US Eastern (UTC−5)",
-      image: "/images/wp/2026-01/pexels-sevenstormphotography-443383.jpg",
-      role: "Headquarters · Client engagement · Product",
-    },
     {
       city: "Laval, Québec",
       country: "Canada",
@@ -1613,14 +1602,6 @@ export const certifications = [
 
 // ===== About page — Office locations =====
 export const officeLocations = [
-  {
-    city: "Fall River, MA",
-    country: "United States",
-    address: "374 William S Canning Blvd, Fall River, MA 02721, USA",
-    tz: "US Eastern (UTC−5)",
-    image: "/images/wp/2026-01/pexels-sevenstormphotography-443383.jpg",
-    role: "Headquarters · Client engagement · Product",
-  },
   {
     city: "Laval, Québec",
     country: "Canada",

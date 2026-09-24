@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Mail,
-  Phone,
   Clock,
   MapPin,
   Send,
@@ -151,20 +150,6 @@ export default function ContactPage() {
                     <p className="truncate text-sm font-semibold text-white">
                       {company.email}
                     </p>
-                  </div>
-                </a>
-                <a
-                  href={company.phoneHref}
-                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur transition-colors duration-200 hover:border-flame/40 hover:bg-white/[0.07]"
-                >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand text-white">
-                    <Phone className="size-5" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wider text-white/60">
-                      Phone
-                    </p>
-                    <p className="text-sm font-semibold text-white">{company.phone}</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur">

@@ -358,16 +358,10 @@ export default function CareersPage() {
             />
           </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {company.offices?.length ? (
               <>
                 {[
-                  {
-                    city: "Fall River, MA",
-                    country: "United States",
-                    role: "Headquarters",
-                    icon: MapPin,
-                  },
                   {
                     city: "Laval, Québec",
                     country: "Canada",
