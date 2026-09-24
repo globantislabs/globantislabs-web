@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { industries } from "@/lib/site-data";
@@ -25,10 +26,11 @@ export const metadata: Metadata = buildMetadata({
 export default function IndustriesPage() {
   return (
     <>
-      <PageBanner
+      <PageHero
         title="Industries"
-        label="[ Industries ]"
-        crumbs={[{ label: "Industries" }]}
+        label="Industries"
+        image="/images/wp/2025-01/blog_new_03.jpg"
+        crumbs={[{ label: "Home", href: "/" }, { label: "Industries" }]}
       />
 
       <section className="bg-shade py-section-md">

@@ -1108,6 +1108,7 @@ export const industries: Industry[] = [
     slug: "financial-services",
     title: "Financial Services",
     label: "Financial Services",
+    bannerImage: "/images/wp/2025-01/blog_new_02.jpg",
     icon: Landmark,
     tagline: "Banking, capital markets & fintech — modernized end-to-end.",
     focusAreas: ["Banking", "Capital Markets", "Fintech"],
@@ -1147,10 +1148,10 @@ export const industries: Industry[] = [
   {
     slug: "healthcare",
     title: "Healthcare",
+    bannerImage: "/images/wp/2025-02/about_o01.jpg",
     icon: HeartPulse,
     tagline: "Patient-centric care, empowered by AI, data & genomics.",
     focusAreas: ["Telemedicine", "AI Diagnostics", "Genomics"],
-    bannerImage: "/images/wp/2025-02/about_o01.jpg",
     pillars: [
       {
         icon: Video,
@@ -1210,6 +1211,7 @@ export const industries: Industry[] = [
   {
     slug: "education",
     title: "Education",
+    bannerImage: "/images/wp/2025-04/testimonials.jpg",
     icon: GraduationCap,
     tagline: "Scalable, accessible, personalized learning pathways.",
     focusAreas: ["Virtual Classrooms", "AI Learning", "Cloud LMS"],
@@ -1272,6 +1274,7 @@ export const industries: Industry[] = [
   {
     slug: "logistics",
     title: "Logistics",
+    bannerImage: "/images/wp/2025-01/why_choose01.jpg",
     icon: Truck,
     tagline: "End-to-end supply chain visibility, velocity & resilience.",
     focusAreas: ["Supply Chain", "5G & Cloud", "Blockchain"],
@@ -1330,10 +1333,10 @@ export const industries: Industry[] = [
     slug: "cybersecurity",
     title: "Cybersecurity",
     label: "Cybersecurity",
+    bannerImage: "/images/wp/2025-02/faq00.jpg",
     icon: ShieldCheck,
     tagline: "Defense-in-depth — from network edge to human firewall.",
     focusAreas: ["Network", "Application", "Data", "Human"],
-    bannerImage: "/images/wp/2025-02/about_mna00n.jpg",
     layers: [
       {
         icon: Network,
@@ -1400,6 +1403,7 @@ export const industries: Industry[] = [
     slug: "ecommerce",
     title: "E-commerce & Retail",
     label: "E-commerce & Retail",
+    bannerImage: "/images/wp/2025-02/concept.png",
     icon: ShoppingCart,
     tagline: "Omnichannel commerce that converts on every touchpoint.",
     focusAreas: ["Omnichannel", "Personalization", "Payments"],
@@ -1440,6 +1444,7 @@ export const industries: Industry[] = [
     slug: "automation",
     title: "Automation",
     label: "Overview",
+    bannerImage: "/images/wp/2025-02/why-choose-24.jpg",
     icon: Workflow,
     tagline: "Eliminate manual effort & optimize operations intelligently.",
     focusAreas: ["Intelligent", "Process", "RPA"],

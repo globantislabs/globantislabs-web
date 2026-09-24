@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { IndustryShowcase } from "@/components/site/industry-showcase";
 import { OG_IMAGE, SITE_NAME } from "@/lib/seo";
@@ -79,11 +80,12 @@ export default async function IndustryDetailPage({
 
   return (
     <>
-      <PageBanner
+      <PageHero
         title={ind.title}
-        label={ind.label ? `[ ${ind.label} ]` : undefined}
+        label={ind.label ?? ind.title}
         image={ind.bannerImage}
         crumbs={[
+          { label: "Home", href: "/" },
           { label: "Industries", href: "/industries" },
           { label: ind.title },
         ]}
