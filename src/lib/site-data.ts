@@ -2,6 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   Code2,
   Globe,
+  Globe2,
   PenTool,
   BrainCircuit,
   ServerCog,
@@ -44,6 +45,7 @@ import {
   Laptop,
   BarChart3,
   AppWindow,
+  Mail,
 } from "lucide-react";
 
 export const company = {
@@ -86,10 +88,20 @@ export const company = {
   ],
 };
 
+export type NavChild = {
+  label: string;
+  desc?: string;
+  href: string;
+  icon?: LucideIcon;
+  image?: string;
+};
+
 export type NavItem = {
   label: string;
   href: string;
-  children?: { label: string; desc?: string; href: string }[];
+  children?: NavChild[];
+  /** Footer CTA inside the dropdown — navy ink strip */
+  footerCta?: { label: string; button: string; href: string };
 };
 
 export const navItems: NavItem[] = [
@@ -98,49 +110,69 @@ export const navItems: NavItem[] = [
     label: "About",
     href: "/about",
     children: [
-      { label: "About Us", desc: "About Globantis", href: "/about" },
-      { label: "Why Choose Us", desc: "Quality & Continuity", href: "/why-choose-us" },
-      { label: "Work Process", desc: "Explore Process", href: "/work-process" },
-      { label: "Technologies", desc: "Latest Technology", href: "/technologies" },
-      { label: "Careers", desc: "Join Our Team", href: "/careers" },
-      { label: "Appointment", desc: "Free Appointment", href: "/appointment" },
-      { label: "Contact Us", href: "/contact" },
+      { label: "About Us", desc: "Our story, leadership and offices", href: "/about", icon: Globe2, image: "/images/wp/2025-01/about.jpg" },
+      { label: "Why Choose Us", desc: "Six engineering disciplines we don't compromise", href: "/why-choose-us", icon: ShieldCheck, image: "/images/wp/2025-01/why_choose01.jpg" },
+      { label: "Work Process", desc: "Seven-stage delivery loop with deliverables", href: "/work-process", icon: Workflow, image: "/images/wp/2025-02/about_mna00n.jpg" },
+      { label: "Technologies", desc: "Our engineering stack, in the open", href: "/technologies", icon: Code2, image: "/images/wp/2025-02/technology1.png" },
+      { label: "Careers", desc: "Open roles, hiring process, culture", href: "/careers", icon: Users, image: "/images/wp/2026-01/about-office-e1767452844756.jpg" },
+      { label: "Appointment", desc: "Book a free 30-minute call", href: "/appointment", icon: CalendarCheck, image: "/images/wp/2025-02/vrhm2.jpg" },
+      { label: "Contact Us", desc: "A senior engineer replies in 1 business day", href: "/contact", icon: Mail, image: "/images/wp/2025-02/contact-zman.png" },
     ],
+    footerCta: {
+      label: "Not sure where to start?",
+      button: "Book consultation",
+      href: "/contact",
+    },
   },
   {
     label: "Services",
     href: "/services",
     children: [
-      { label: "Software Development", href: "/services/software-development" },
-      { label: "Web Development", href: "/services/web-development" },
-      { label: "UI/UX Design", href: "/services/ui-ux-design" },
-      { label: "Artificial Intelligence", href: "/services/artificial-intelligence" },
-      { label: "CMS Development", href: "/services/cms-development" },
-      { label: "DevOps Services", href: "/services/devops-services" },
-      { label: "IT Support Services", href: "/services/it-support-services" },
+      { label: "Software Development", desc: "Enterprise-grade custom software", href: "/services/software-development", icon: Code2, image: "/images/wp/2024-09/ser_details.jpg" },
+      { label: "Web Development", desc: "Modern web apps at global scale", href: "/services/web-development", icon: Globe, image: "/images/wp/2025-01/blog_new_02.jpg" },
+      { label: "UI/UX Design", desc: "Research-led product design", href: "/services/ui-ux-design", icon: PenTool, image: "/images/wp/2025-01/blog_new_03.jpg" },
+      { label: "Artificial Intelligence", desc: "ML, agents, RPA in production", href: "/services/artificial-intelligence", icon: BrainCircuit, image: "/images/wp/2025-01/blog_new_05.jpg" },
+      { label: "CMS Development", desc: "ERP, CRM and content systems", href: "/services/cms-development", icon: Boxes, image: "/images/wp/2025-01/blog_new_02.jpg" },
+      { label: "DevOps Services", desc: "CI/CD, IaC, observability", href: "/services/devops-services", icon: ServerCog, image: "/images/wp/2025-01/project_new_02.jpg" },
+      { label: "IT Support", desc: "Maintenance and 24/5 operations", href: "/services/it-support-services", icon: LifeBuoy, image: "/images/wp/2025-01/project_new_06.jpg" },
     ],
+    footerCta: {
+      label: "Not sure where to start?",
+      button: "Book consultation",
+      href: "/contact",
+    },
   },
   {
     label: "Industries",
     href: "/industries",
     children: [
-      { label: "Financial Services", href: "/industries/financial-services" },
-      { label: "Healthcare", href: "/industries/healthcare" },
-      { label: "Education", href: "/industries/education" },
-      { label: "Automation", href: "/industries/automation" },
-      { label: "Logistics", href: "/industries/logistics" },
-      { label: "Cybersecurity", href: "/industries/cybersecurity" },
-      { label: "E-commerce & Retail", href: "/industries/ecommerce" },
+      { label: "Financial Services", desc: "Banking, capital markets, fintech", href: "/industries/financial-services", icon: Landmark, image: "/images/wp/2025-01/blog_new_02.jpg" },
+      { label: "Healthcare", desc: "Patient-centric care, AI diagnostics", href: "/industries/healthcare", icon: HeartPulse, image: "/images/wp/2025-02/about_o01.jpg" },
+      { label: "Education", desc: "Scalable, accessible learning", href: "/industries/education", icon: GraduationCap, image: "/images/wp/2025-04/testimonials.jpg" },
+      { label: "Automation", desc: "Intelligent process automation", href: "/industries/automation", icon: Workflow, image: "/images/wp/2025-02/why-choose-24.jpg" },
+      { label: "Logistics", desc: "End-to-end supply chain", href: "/industries/logistics", icon: Truck, image: "/images/wp/2025-01/why_choose01.jpg" },
+      { label: "Cybersecurity", desc: "Defense-in-depth from edge to human", href: "/industries/cybersecurity", icon: ShieldCheck, image: "/images/wp/2025-02/faq00.jpg" },
+      { label: "E-commerce & Retail", desc: "Omnichannel commerce that converts", href: "/industries/ecommerce", icon: ShoppingCart, image: "/images/wp/2025-02/concept.png" },
     ],
+    footerCta: {
+      label: "Not sure where to start?",
+      button: "Book consultation",
+      href: "/contact",
+    },
   },
   {
     label: "Product",
     href: "/#products",
     children: [
-      { label: "Photolabs", href: "/#products" },
-      { label: "TranscriptHQ", href: "/#products" },
-      { label: "Try Before", href: "/#products" },
+      { label: "Photolabs", desc: "AI-powered photo editing studio", href: "/#products", icon: Sparkles, image: "/images/wp/2025-02/vr-girl.jpg" },
+      { label: "TranscriptHQ", desc: "Enterprise transcription & QA", href: "/#products", icon: BrainCircuit, image: "/images/wp/2025-02/technology1.png" },
+      { label: "Try Before", desc: "Pre-purchase product experience", href: "/#products", icon: ShoppingCart, image: "/images/wp/2025-02/start-up.png" },
     ],
+    footerCta: {
+      label: "Want to see these in action?",
+      button: "Book a demo",
+      href: "/contact",
+    },
   },
   { label: "Contact", href: "/contact" },
 ];
