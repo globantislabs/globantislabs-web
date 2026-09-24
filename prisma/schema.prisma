@@ -30,3 +30,32 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  topic     String?
+  message   String
+  source    String   @default("contact-form")
+  createdAt DateTime @default(now())
+}
+
+model Appointment {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  date      String
+  time      String
+  topic     String?
+  notes     String?
+  source    String   @default("appointment-form")
+  createdAt DateTime @default(now())
+}
+
+model ServiceView {
+  slug     String @id
+  views    Int    @default(0)
+}

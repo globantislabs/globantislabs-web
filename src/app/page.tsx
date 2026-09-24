@@ -1,31 +1,20 @@
-'use client'
+import { PageShell } from "@/components/site/page-shell";
+import { Hero } from "@/components/site/sections/hero";
+import { WhoWeAre } from "@/components/site/sections/who-we-are";
+import { Services } from "@/components/site/sections/services-grid";
+import { IndustriesStrip } from "@/components/site/sections/industries-strip";
+import { WhyGlobantis } from "@/components/site/sections/why-globantis";
+import { Consultation } from "@/components/site/sections/consultation";
 
 export default function Home() {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      gap: '2rem',
-      padding: '1rem'
-    }}>
-      <div style={{
-        position: 'relative',
-        width: '6rem',
-        height: '6rem'
-      }}>
-        <img
-          src="/logo.svg"
-          alt="Z.ai Logo"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain'
-          }}
-        />
-      </div>
-    </div>
-  )
+    <PageShell>
+      <Hero />
+      <WhoWeAre />
+      <Services />
+      <IndustriesStrip />
+      <WhyGlobantis />
+      <Consultation />
+    </PageShell>
+  );
 }
