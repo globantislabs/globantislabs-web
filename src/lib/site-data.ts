@@ -381,6 +381,7 @@ export const services: Service[] = [
     ],
     banner: {
       label: "DevOps Services",
+      image: "/images/wp/2025-01/project_new_02.jpg",
     },
     overview: {
       heading: "Service Overview",
@@ -470,6 +471,7 @@ export const services: Service[] = [
     ],
     banner: {
       label: "Core Features",
+      image: "/images/wp/2025-01/project_new_06.jpg",
     },
     overview: {
       heading: "Transforming IT Support with Expertise and Innovation",
@@ -710,6 +712,7 @@ export const services: Service[] = [
     ],
     banner: {
       label: "Services",
+      image: "/images/wp/2025-01/blog_new_05.jpg",
     },
     overview: {
       heading: "AI-driven Services That Adopted Across Different Industries",
@@ -828,6 +831,7 @@ export const services: Service[] = [
     ],
     banner: {
       label: "Mobile Apps",
+      image: "/images/wp/2025-02/vrhm2.jpg",
     },
     overview: {
       heading: "Cross-Platform Mobile Apps Built for Performance",

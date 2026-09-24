@@ -13,6 +13,7 @@ import {
   PackageCheck,
 } from "lucide-react";
 import { PageBanner } from "@/components/site/page-banner";
+import { ServiceHero } from "@/components/site/service-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { services } from "@/lib/site-data";
@@ -53,10 +54,8 @@ export default async function ServiceDetailPage({
 
   return (
     <>
-      <PageBanner
-        title={service.title}
-        label={service.banner?.label ? `[ ${service.banner.label} ]` : undefined}
-        image={service.banner?.image}
+      <ServiceHero
+        service={service}
         crumbs={[
           { label: "Services", href: "/services" },
           { label: service.shortTitle },
