@@ -119,6 +119,13 @@ const industries = [
   "Logistics", "Cybersecurity", "E-commerce & Retail", "Automotive",
 ];
 
+// Image breaks between groups of 2 phases — full-width images with overlay text
+const imageBreaks = [
+  { src: "/images/wp/2025-02/about_mna00n.jpg", text: "Strategy becomes structure.", sub: "Discovery and strategy give shape to what we build next." },
+  { src: "/images/wp/2025-02/about_o01.jpg", text: "Design becomes product.", sub: "Design and development turn vision into a living system." },
+  { src: "/images/wp/2025-02/technology1.png", text: "Quality becomes trust.", sub: "Testing and deployment earn the right to go live." },
+];
+
 /* -------------------------------------------------------------------------- */
 /* Page                                                                       */
 /* -------------------------------------------------------------------------- */
@@ -374,7 +381,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ 5. Our Work Process — horizontal connected stepper ============ */}
+      {/* ============ 5. Our Work Process — editorial scroll with image breaks ============ */}
       <section className="bg-white py-section-md">
         <div className="container-site">
           <Reveal>
@@ -392,60 +399,80 @@ export default function AboutPage() {
               solutions.
             </p>
           </Reveal>
+        </div>
 
-          {/* Horizontal connected stepper — circle icons + arrows between cards */}
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {phases.map((p, i) => {
-              const Icon = p.icon;
-              const isLastInRow = (i + 1) % 4 === 0;
-              return (
-                <Reveal
-                  key={p.num}
-                  delay={Math.min(i * 0.05, 0.25)}
-                  className="relative"
-                >
-                  {/* Arrow connector — only on desktop, not on last card of each row */}
-                  {!isLastInRow && (
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute -right-3 top-12 z-10 hidden lg:flex size-6 items-center justify-center rounded-full border border-line bg-white text-brand shadow-sm"
-                    >
-                      <ArrowRight className="size-3" aria-hidden />
-                    </span>
-                  )}
-
-                  <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift sm:p-6">
-                    {/* Signature flame top-bar */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
-                    />
-
-                    {/* Circle icon — branded gradient, different from square tiles elsewhere */}
-                    <div className="flex items-center gap-3">
-                      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-gradient text-white shadow-lg shadow-brand/30 transition-transform duration-300 ease-out-quart group-hover:scale-110">
-                        <Icon className="size-5" aria-hidden />
-                      </span>
-                      <span className="font-mono text-2xl font-bold text-ink/10 transition-colors duration-300 group-hover:text-flame/30">
-                        {p.num}
-                      </span>
+        {/* Numbered rows with image breaks — editorial scroll pattern */}
+        <div className="mt-16">
+          {phases.map((p, i) => {
+            const Icon = p.icon;
+            const showImageBreak = i > 0 && i % 2 === 0 && i < phases.length;
+            const imageBreak = imageBreaks[(i / 2 - 1) | 0];
+            return (
+              <div key={p.num}>
+                {/* Image break — full-width with overlay text, between every 2 phases */}
+                {showImageBreak && imageBreak && (
+                  <Reveal>
+                    <div className="relative my-12 h-48 overflow-hidden sm:h-64 lg:h-72">
+                      <Image
+                        src={imageBreak.src}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                      />
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 bg-gradient-to-r from-ink-deep/90 via-ink-deep/50 to-transparent"
+                      />
+                      <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center gap-2 p-8 sm:p-12">
+                        <span aria-hidden className="rule-flame" />
+                        <p className="font-display text-xl font-bold text-white sm:text-2xl lg:text-3xl">
+                          {imageBreak.text}
+                        </p>
+                        <p className="text-sm text-white/70">{imageBreak.sub}</p>
+                      </div>
                     </div>
+                  </Reveal>
+                )}
 
+                {/* Phase row — full-width horizontal, NOT a card */}
+                <Reveal>
+                  <div className="group relative flex items-start gap-4 border-b border-line px-6 py-6 transition-colors duration-300 hover:bg-shade sm:gap-6 sm:px-12 lg:px-20">
+                    {/* Hover flame bar on left */}
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gradient-to-b from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-y-100"
+                    />
+                    {/* Oversized number */}
+                    <span className="font-mono text-3xl font-bold leading-none text-flame/30 sm:text-5xl lg:text-6xl">
+                      {p.num}
+                    </span>
+                    {/* Icon circle */}
+                    <span className="mt-1 flex size-11 shrink-0 items-center justify-center rounded-full border border-brand/20 bg-cream text-brand transition-all duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-white sm:size-14">
+                      <Icon className="size-5 sm:size-6" aria-hidden />
+                    </span>
                     {/* Title + subtitle + description */}
-                    <h3 className="mt-4 text-base font-bold text-ink">
-                      {p.title}
-                    </h3>
-                    <p className="mt-0.5 text-xs font-semibold text-brand">
-                      {p.subtitle}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-body">
-                      {p.desc}
-                    </p>
+                    <div className="flex-1">
+                      <h3 className="text-base font-bold text-ink sm:text-lg lg:text-xl">
+                        {p.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs font-semibold text-brand sm:text-sm">
+                        {p.subtitle}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-body sm:text-[15px]">
+                        {p.desc}
+                      </p>
+                    </div>
+                    {/* Arrow on the right — appears on hover */}
+                    <ArrowRight
+                      aria-hidden
+                      className="mt-2 hidden size-5 shrink-0 text-ink/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand sm:block lg:size-6"
+                    />
                   </div>
                 </Reveal>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
