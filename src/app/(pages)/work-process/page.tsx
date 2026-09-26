@@ -224,56 +224,13 @@ export default function WorkProcessPage() {
         </div>
       </section>
 
-      {/* ============ 3. Rituals — 3 cards on white ============ */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ Engineering rituals ]"
-              title="Three rituals that make the loop stick."
-              lead="The eight phases describe what we do. These rituals describe how we keep doing it — every week, every quarter, without exception."
-              align="center"
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {rituals.map((r, i) => {
-              const Icon = r.icon;
-              return (
-                <Reveal
-                  key={r.title}
-                  delay={Math.min(i * 0.08, 0.24)}
-                  className="h-full"
-                >
-                  <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-shade p-7 hover:border-flame/40 hover:shadow-lift">
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
-                    />
-                    <div className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 group-hover:bg-brand group-hover:text-white">
-                      <Icon className="size-6" aria-hidden />
-                    </div>
-                    <h3 className="mt-5 text-display-sm font-bold text-ink">
-                      {r.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-body">
-                      {r.desc}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ 4. CTA — ink ============ */}
+      {/* ============ CTA — ink ============ */}
       <CTABand
-        label="[ See it in motion ]"
-        title="See it applied to a real engagement."
-        desc="We'll walk you through a recent delivery — what we shipped, what we cut, and what we'd do differently next time."
+        label="[ Let's build ]"
+        title="Want to see how we work?"
+        desc="Reach out and discover how Globantis Labs can engineer your next big thing."
         ctaHref="/contact"
-        ctaLabel="Start a project"
+        ctaLabel="Get in touch"
         tone="ink"
       />
     </>
