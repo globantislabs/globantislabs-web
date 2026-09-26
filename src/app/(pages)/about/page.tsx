@@ -119,13 +119,6 @@ const industries = [
   "Logistics", "Cybersecurity", "E-commerce & Retail", "Automotive",
 ];
 
-// Image breaks between groups of 2 phases — full-width images with overlay text
-const imageBreaks = [
-  { src: "/images/wp/2025-02/about_mna00n.jpg", text: "Strategy becomes structure.", sub: "Discovery and strategy give shape to what we build next." },
-  { src: "/images/wp/2025-02/about_o01.jpg", text: "Design becomes product.", sub: "Design and development turn vision into a living system." },
-  { src: "/images/wp/2025-02/technology1.png", text: "Quality becomes trust.", sub: "Testing and deployment earn the right to go live." },
-];
-
 /* -------------------------------------------------------------------------- */
 /* Page                                                                       */
 /* -------------------------------------------------------------------------- */
@@ -381,64 +374,97 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ 5. Our Work Process — clean 2-col split ============ */}
-      <section className="bg-shade py-section-md">
+      {/* ============ 5. Our Work Process — vertical timeline (different from card grid) ============ */}
+      <section className="bg-white py-section-md">
         <div className="container-site">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            {/* Left — sticky heading */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
-              <Reveal>
-                <span className="section-label">[ How we work ]</span>
-                <h2 className="mt-3 text-display-lg font-bold text-ink">
-                  Our Work Process
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-body md:text-lg">
-                  From Vision to Value — A Structured Approach to Digital Excellence.
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-body">
-                  We follow a collaborative and transparent process that
-                  transforms ideas into scalable, reliable, and high-performing
-                  digital solutions.
-                </p>
-                <div aria-hidden className="rule-flame mt-8" />
-                <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/45">
-                  8 phases · 2-week sprints · Weekly client reviews
-                </p>
-              </Reveal>
-            </div>
+          <Reveal>
+            <SectionHeading
+              label="[ How we work ]"
+              title="Our Work Process"
+              lead="From Vision to Value — A Structured Approach to Digital Excellence"
+              align="center"
+            />
+          </Reveal>
+          <Reveal delay={0.07}>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-body md:text-base">
+              We follow a collaborative and transparent process that transforms
+              ideas into scalable, reliable, and high-performing digital
+              solutions.
+            </p>
+          </Reveal>
 
-            {/* Right — clean phase list */}
-            <div>
+          {/* Vertical timeline with alternating left/right cards */}
+          <div className="relative mt-16">
+            {/* Center line */}
+            <div
+              aria-hidden
+              className="absolute left-[2.5rem] top-0 h-full w-px bg-gradient-to-b from-flame via-flame/40 to-transparent sm:left-1/2 sm:-translate-x-1/2"
+            />
+            <ol className="space-y-8 sm:space-y-12">
               {phases.map((p, i) => {
+                const isLeft = i % 2 === 0;
                 const Icon = p.icon;
                 return (
                   <Reveal key={p.num} delay={Math.min(i * 0.04, 0.2)}>
-                    <div className="group flex items-start gap-5 border-b border-line py-6 transition-colors duration-300 last:border-0 hover:bg-white/50 sm:px-4 sm:py-7">
-                      {/* Number */}
-                      <span className="font-mono text-sm font-bold text-brand sm:text-base">
-                        {p.num}
+                    <li
+                      className={`relative flex flex-col gap-4 sm:flex-row sm:items-center ${
+                        isLeft ? "" : "sm:flex-row-reverse"
+                      }`}
+                    >
+                      {/* Marker dot */}
+                      <span
+                        aria-hidden
+                        className="absolute left-[2.5rem] top-1.5 z-10 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border-2 border-flame bg-white shadow-md sm:left-1/2"
+                      >
+                        <span className="size-2 rounded-full bg-flame" />
                       </span>
-                      {/* Icon */}
-                      <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-lg border border-brand/15 bg-white text-brand transition-colors duration-300 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                        <Icon className="size-5" aria-hidden />
-                      </span>
-                      {/* Content */}
-                      <div className="flex-1">
-                        <div className="flex items-baseline gap-2">
-                          <h3 className="text-base font-bold text-ink sm:text-lg">
-                            {p.title}
-                          </h3>
-                          <span className="text-xs text-body">— {p.subtitle}</span>
-                        </div>
-                        <p className="mt-2 text-sm leading-relaxed text-body">
-                          {p.desc}
-                        </p>
+
+                      {/* Year/number side */}
+                      <div
+                        className={`hidden w-1/2 shrink-0 sm:block ${
+                          isLeft ? "pr-12 text-right" : "pl-12"
+                        }`}
+                      >
+                        <span className="font-mono text-5xl font-bold leading-none text-flame/30">
+                          {p.num}
+                        </span>
                       </div>
-                    </div>
+
+                      {/* Content card */}
+                      <div
+                        className={`ml-12 w-full sm:ml-0 sm:w-1/2 ${
+                          isLeft ? "sm:pl-12" : "sm:pr-12"
+                        }`}
+                      >
+                        <div className="group card-lift rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift">
+                          <span
+                            aria-hidden
+                            className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 rounded-t-2xl bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
+                          />
+                          <p className="text-xs font-semibold text-brand sm:hidden">
+                            {p.num}
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand">
+                              <Icon className="size-5" />
+                            </span>
+                            <h3 className="text-display-sm font-bold text-ink">
+                              {p.title}
+                            </h3>
+                          </div>
+                          <p className="mt-2 text-sm font-semibold text-brand">
+                            {p.subtitle}
+                          </p>
+                          <p className="mt-2 text-sm leading-relaxed text-body">
+                            {p.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
                   </Reveal>
                 );
               })}
-            </div>
+            </ol>
           </div>
         </div>
       </section>
