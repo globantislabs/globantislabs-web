@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight,
-  ArrowUpRight,
   Layers,
   Server,
-  Database,
-  Cloud,
+  Smartphone,
   BrainCircuit,
-  PenTool,
+  Cloud,
+  Database,
+  Boxes,
+  ArrowRight,
+  ArrowUpRight,
 } from "lucide-react";
-import { PageBanner } from "@/components/site/page-banner";
 import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
@@ -19,19 +19,47 @@ import { technologiesGrid, technologyCategories } from "@/lib/site-data";
 export const metadata = buildMetadata({
   title: "Technologies | Globantis Labs",
   description:
-    "Our engineering stack — frontend, backend, data, cloud, AI/ML. We pick boring, proven technology for production and adopt frontier tools only when they earn their keep.",
+    "Seven engineering categories — frontend, backend, mobile, AI & data, cloud, database and DevOps — under one roof. We pick boring, proven technology for production and adopt frontier tools only when they earn their keep.",
   path: "/technologies",
   keywords: [
     "software technologies",
     "tech stack",
-    "React",
-    "AWS",
-    "Kubernetes",
+    "frontend engineering",
+    "backend engineering",
+    "mobile development",
     "AI ML",
+    "cloud infrastructure",
+    "database",
+    "DevOps",
   ],
 });
 
-const categoryIcons = [PenTool, Server, Database, Cloud, BrainCircuit];
+/** Icon per category — 1:1 with the 7 entries in `technologyCategories`
+ *  (Frontend, Backend, Mobile, AI & Data, Cloud, Database, DevOps). */
+const categoryIcons = [
+  Layers,
+  Server,
+  Smartphone,
+  BrainCircuit,
+  Cloud,
+  Database,
+  Boxes,
+];
+
+const principles = [
+  {
+    title: "Boring technology first",
+    desc: "We pick proven tools for production — and reach for frontier tools only when they earn their keep.",
+  },
+  {
+    title: "Owned, not rented",
+    desc: "Every tool we use, we operate ourselves. No 'we'll figure out Kubernetes later' — we run it daily.",
+  },
+  {
+    title: "Versioned, observed, repeatable",
+    desc: "Code, infra and ML models all versioned. Observability from day one. Every change rolls back in one command.",
+  },
+];
 
 export default function TechnologiesPage() {
   return (
@@ -43,47 +71,21 @@ export default function TechnologiesPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
       />
 
-      {/* ============ 1. Intro — narrative ============ */}
+      {/* ============ 1. Intro — narrative (2-col) ============ */}
       <section className="bg-white py-section-md">
         <div className="container-site">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
             <Reveal>
               <SectionHeading
-                label="[ Toolchain ]"
-                title={
-                  <>
-                    We pick boring, proven technology for{" "}
-                    <span className="text-flame">production.</span>
-                  </>
-                }
-                lead="Our engineers use these tools every day. We adopt frontier tools only when they earn their keep — meaning: a real workload, a clear win, and a documented trade-off."
+                label="[ Tech stack ]"
+                title="Technologies"
+                lead="Technology That Drives Digital Excellence"
               />
-              <p className="mt-4 text-[15px] leading-relaxed text-body">
-                Every entry below has shipped production code for at least one
-                of our clients. We don't list technologies because they're
-                trendy — we list them because we've operated them at scale.
+              <p className="mt-5 text-[15px] leading-relaxed text-body">
+                We combine modern technologies, intelligent engineering, and
+                scalable architectures to build secure, high-performance
+                digital solutions for businesses worldwide.
               </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                {[
-                  { label: "Active technologies", value: "30+" },
-                  { label: "Categories", value: "5" },
-                  { label: "Production deploys / wk", value: "200+" },
-                  { label: "Uptime SLA", value: "99.99%" },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-xl border border-line bg-shade p-3"
-                  >
-                    <p className="font-mono text-lg font-bold text-ink">
-                      {s.value}
-                    </p>
-                    <p className="mt-0.5 text-[10px] uppercase tracking-wider text-ink/45">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
@@ -103,6 +105,7 @@ export default function TechnologiesPage() {
               </div>
             </Reveal>
 
+            {/* Right — editorial image with offset cream frame */}
             <Reveal delay={0.1} className="relative">
               <div
                 aria-hidden
@@ -122,7 +125,7 @@ export default function TechnologiesPage() {
         </div>
       </section>
 
-      {/* ============ 2. Tech logos marquee — proof of stack ============ */}
+      {/* ============ 2. Tech logos — proof of stack (navy) ============ */}
       <section className="relative overflow-hidden bg-ink py-section-sm text-white">
         <div aria-hidden className="absolute inset-0 grid-pattern opacity-30" />
         <div
@@ -132,13 +135,15 @@ export default function TechnologiesPage() {
         <div className="container-site relative">
           <Reveal>
             <div className="mb-10 text-center">
-              <span className="section-label !text-brand-light">[ Stack proof ]</span>
+              <span className="section-label !text-brand-light">
+                [ Stack proof ]
+              </span>
               <h2 className="mt-3 text-display-md font-bold text-white">
-                The logos our engineers reach for.
+                The tools our engineers reach for.
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-white/65 sm:text-base">
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/65 sm:text-base">
                 Real tools, used in real production environments — across 250+
-                shipped projects.
+                shipped projects and three offices worldwide.
               </p>
             </div>
           </Reveal>
@@ -157,7 +162,9 @@ export default function TechnologiesPage() {
                     className="size-5 object-contain"
                     unoptimized
                   />
-                  <span className="text-sm font-medium text-white/85">{t.name}</span>
+                  <span className="text-sm font-medium text-white/85">
+                    {t.name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -165,45 +172,57 @@ export default function TechnologiesPage() {
         </div>
       </section>
 
-      {/* ============ 3. Categories — detailed sections ============ */}
+      {/* ============ 3. Categories — 7 cards (shade) ============ */}
       <section className="bg-shade py-section-md">
         <div className="container-site">
           <Reveal>
             <SectionHeading
               label="[ By category ]"
-              title="Five disciplines. One engineering culture."
+              title="Seven categories. One engineering culture."
               lead="Filter by category to see what we'd reach for on day one of a new engagement. Each category below maps to a specific team inside Globantis."
               align="center"
             />
           </Reveal>
 
-          <div className="mt-14 space-y-8">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {technologyCategories.map((cat, i) => {
               const Icon = categoryIcons[i] ?? Layers;
               return (
-                <Reveal key={cat.name} delay={Math.min(i * 0.05, 0.2)}>
-                  <div className="group grid gap-6 rounded-2xl border border-line bg-white p-6 hover:border-flame/30 hover:shadow-lift md:grid-cols-[16rem_1fr] md:items-center md:p-8">
-                    {/* Left — category head */}
-                    <div className="flex items-start gap-4">
-                      <div className="flex size-14 shrink-0 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 group-hover:bg-brand group-hover:text-white">
-                        <Icon className="size-7" />
-                      </div>
-                      <div>
-                        <span className="font-mono text-xs text-ink/45">
-                          {String(i + 1).padStart(2, "0")} / 05
-                        </span>
-                        <h3 className="mt-0.5 text-display-sm font-bold text-ink">
-                          {cat.name}
-                        </h3>
+                <Reveal
+                  key={cat.name}
+                  className="h-full"
+                  delay={Math.min(i * 0.07, 0.35)}
+                >
+                  <div className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift lg:p-8">
+                    {/* Signature flame top-bar */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+                    />
+                    {/* Soft cream glow in top-right corner — appears on hover */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-flame/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                    />
+
+                    {/* Header — icon tile only, NO numbered marker */}
+                    <div className="relative">
+                      <div className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                        <Icon className="size-7" aria-hidden />
                       </div>
                     </div>
 
-                    {/* Right — desc + items */}
-                    <div>
-                      <p className="text-sm leading-relaxed text-body md:text-[15px]">
-                        {cat.desc}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-2">
+                    {/* Title + description */}
+                    <h3 className="relative mt-6 text-display-sm font-bold text-ink">
+                      {cat.name}
+                    </h3>
+                    <p className="relative mt-3 text-sm leading-relaxed text-body md:text-[15px]">
+                      {cat.desc}
+                    </p>
+
+                    {/* Tech items as chips — pinned to card bottom */}
+                    <div className="relative mt-auto pt-6">
+                      <div className="flex flex-wrap gap-2">
                         {cat.items.map((item) => (
                           <span
                             key={item}
@@ -222,50 +241,49 @@ export default function TechnologiesPage() {
         </div>
       </section>
 
-      {/* ============ 4. Engineering principles strip ============ */}
+      {/* ============ 4. Engineering principles strip (white) ============ */}
       <section className="bg-white py-section-md">
         <div className="container-site">
           <Reveal>
-            <div className="grid gap-6 rounded-2xl border border-line bg-shade p-6 md:grid-cols-3 md:p-8">
-              {[
-                {
-                  title: "Boring technology first",
-                  desc: "We pick proven tools for production — and reach for frontier tools only when they earn their keep.",
-                },
-                {
-                  title: "Owned, not rented",
-                  desc: "Every tool we use, we operate ourselves. No 'we'll figure out Kubernetes later' — we run it daily.",
-                },
-                {
-                  title: "Versioned, observed, repeatable",
-                  desc: "Code, infra and ML models all versioned. Observability from day one. Every change rolls back in one command.",
-                },
-              ].map((p, i) => (
-                <Reveal key={p.title} delay={Math.min(i * 0.07, 0.2)}>
-                  <div className="flex flex-col gap-2">
-                    <div aria-hidden className="rule-flame" />
-                    <h3 className="mt-3 text-base font-bold text-ink">
-                      {p.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-body">
-                      {p.desc}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+            <SectionHeading
+              label="[ Engineering principles ]"
+              title="How we choose what makes the cut."
+              lead="Three rules govern every technology decision we make — from the frameworks in our stack to the tools we operate in production."
+              align="center"
+            />
           </Reveal>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
+            {principles.map((p, i) => (
+              <Reveal
+                key={p.title}
+                className="h-full"
+                delay={Math.min(i * 0.07, 0.21)}
+              >
+                <div className="card-lift group flex h-full flex-col rounded-2xl border border-line bg-shade p-7 hover:border-flame/30 hover:shadow-lift lg:p-8">
+                  {/* Signature flame rule */}
+                  <div aria-hidden className="rule-flame" />
+                  <h3 className="mt-4 text-display-sm font-bold text-ink">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-body md:text-[15px]">
+                    {p.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ============ 5. CTA ============ */}
+      {/* ============ 5. CTA (ink) ============ */}
       <CTABand
         label="[ Stack match ]"
         title="Want engineers who know your stack?"
         desc="Tell us what you're running today. We'll match you with senior engineers who have shipped production code on the same technology."
         ctaHref="/contact"
         ctaLabel="Start a project"
-        tone="brand"
+        tone="ink"
       />
     </>
   );
