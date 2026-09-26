@@ -22,7 +22,7 @@ import { workProcessPhases } from "@/lib/site-data";
 export const metadata = buildMetadata({
   title: "Work Process | Globantis Labs",
   description:
-    "Eight delivery phases from discovery to continuous improvement — a structured, transparent engineering loop that turns vision into value.",
+    "A collaborative and transparent process that transforms ideas into scalable, reliable, and high-performing digital solutions.",
   path: "/work-process",
   keywords: [
     "software delivery process",
@@ -100,17 +100,16 @@ export default function WorkProcessPage() {
               <Reveal>
                 <div aria-hidden className="rule-flame" />
                 <span className="section-label mt-5 block">
-                  [ The delivery loop ]
+                  [ How we deliver ]
                 </span>
                 <h2 className="text-display-lg font-bold text-ink">
-                  Eight phases, one{" "}
-                  <span className="text-flame">engineering loop.</span>
+                  From vision to{" "}
+                  <span className="text-flame">value.</span>
                 </h2>
                 <p className="mt-5 text-[17px] leading-relaxed text-body">
-                  Discovery doesn&apos;t end at kickoff. Design doesn&apos;t end
-                  at hand-off. Each phase below feeds the next and feeds back
-                  into the one before — so improvement is structural, not
-                  occasional.
+                  We follow a collaborative and transparent process that
+                  transforms ideas into scalable, reliable, and
+                  high-performing digital solutions.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-ink/60">
@@ -120,7 +119,7 @@ export default function WorkProcessPage() {
                   </span>
                   <span className="inline-flex items-center gap-2">
                     <RefreshCw className="size-4 text-brand" aria-hidden />
-                    Continuous loop
+                    Weekly client reviews
                   </span>
                 </div>
 
@@ -142,14 +141,9 @@ export default function WorkProcessPage() {
                 return (
                 <div key={phase.phase}>
                   <Reveal delay={Math.min(i * 0.04, 0.24)}>
-                    <div className="grid gap-4 border-t border-line py-6 sm:grid-cols-[2.75rem_3rem_1fr] sm:items-start sm:gap-5 sm:py-7">
-                      {/* Mono number — small, never oversized */}
-                      <span className="font-mono text-sm font-semibold text-ink/45">
-                        {phase.phase}
-                      </span>
-
+                    <div className="flex items-start gap-4 border-t border-line py-6 sm:gap-5 sm:py-7">
                       {/* Icon tile */}
-                      <div className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
                         <Icon className="size-5" aria-hidden />
                       </div>
 
@@ -170,64 +164,50 @@ export default function WorkProcessPage() {
                     </div>
                   </Reveal>
 
-                  {/* Image break after phase 03 — between Design and Develop */}
+                  {/* Image break after phase 03 */}
                   {i === 2 && (
                     <Reveal delay={0.1}>
                       <div className="relative my-2 overflow-hidden rounded-2xl border border-line">
                         <Image
-                          src="/images/wp/2025-02/technology1.png"
+                          src="/images/wp/2025-01/project_new_02.jpg"
                           alt=""
                           width={960}
                           height={420}
-                          className="h-56 w-full object-cover sm:h-64"
+                          className="h-48 w-full object-cover sm:h-56"
                         />
                         <div
                           aria-hidden
-                          className="absolute inset-0 bg-gradient-to-r from-ink-deep/90 via-ink-deep/55 to-ink-deep/20"
+                          className="absolute inset-0 bg-gradient-to-r from-ink-deep/85 via-ink-deep/40 to-transparent"
                         />
-                        <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center gap-2 p-6 sm:p-8">
-                          <span className="section-label !text-brand-light !mb-0">
-                            [ Design &rarr; Develop ]
-                          </span>
-                          <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
-                            
-                          </p>
-                          <p className="text-sm leading-relaxed text-white/75">
-                            Design hands off a documented system — not a Figma
-                            file — so engineering starts with intent, not
-                            interpretation.
+                        <div className="absolute inset-y-0 left-0 flex max-w-sm flex-col justify-center gap-2 p-6 sm:p-8">
+                          <span aria-hidden className="rule-flame" />
+                          <p className="text-base font-bold text-white sm:text-lg">
+                            Strategy becomes structure.
                           </p>
                         </div>
                       </div>
                     </Reveal>
                   )}
 
-                  {/* Image break after phase 06 — between Deploy and Monitor */}
+                  {/* Image break after phase 06 */}
                   {i === 5 && (
                     <Reveal delay={0.1}>
                       <div className="relative my-2 overflow-hidden rounded-2xl border border-line">
                         <Image
-                          src="/images/wp/2025-01/project_new_02.jpg"
-                          alt="From deployment to monitoring at Globantis Labs"
+                          src="/images/wp/2025-01/blog_new_03.jpg"
+                          alt=""
                           width={960}
                           height={420}
-                          className="h-56 w-full object-cover sm:h-64"
+                          className="h-48 w-full object-cover sm:h-56"
                         />
                         <div
                           aria-hidden
-                          className="absolute inset-0 bg-gradient-to-r from-ink-deep/90 via-ink-deep/55 to-ink-deep/20"
+                          className="absolute inset-0 bg-gradient-to-r from-ink-deep/85 via-ink-deep/40 to-transparent"
                         />
-                        <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center gap-2 p-6 sm:p-8">
-                          <span className="section-label !text-brand-light !mb-0">
-                            [ Deploy &rarr; Monitor ]
-                          </span>
-                          <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
-                            Launch day is a checkpoint, not a finish line.
-                          </p>
-                          <p className="text-sm leading-relaxed text-white/75">
-                            Production telemetry, SLA dashboards and an on-call
-                            rotation come online the moment code reaches the live
-                            environment.
+                        <div className="absolute inset-y-0 left-0 flex max-w-sm flex-col justify-center gap-2 p-6 sm:p-8">
+                          <span aria-hidden className="rule-flame" />
+                          <p className="text-base font-bold text-white sm:text-lg">
+                            Quality becomes trust.
                           </p>
                         </div>
                       </div>
