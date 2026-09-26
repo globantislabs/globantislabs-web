@@ -68,7 +68,7 @@ export default function WorkProcessPage() {
       <PageHero
         title="Our Work Process"
         label="Work process"
-        image="/images/wp/2025-02/about_mna00n.jpg"
+        image="/images/wp/2025-01/blog_new_05.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Work Process" }]}
       />
 
@@ -176,7 +176,7 @@ export default function WorkProcessPage() {
                       <div className="relative my-2 overflow-hidden rounded-2xl border border-line">
                         <Image
                           src="/images/wp/2025-02/technology1.png"
-                          alt="From design to development at Globantis Labs"
+                          alt=""
                           width={960}
                           height={420}
                           className="h-56 w-full object-cover sm:h-64"
@@ -190,7 +190,7 @@ export default function WorkProcessPage() {
                             [ Design &rarr; Develop ]
                           </span>
                           <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
-                            Where pixels become production code.
+                            
                           </p>
                           <p className="text-sm leading-relaxed text-white/75">
                             Design hands off a documented system — not a Figma
@@ -207,7 +207,7 @@ export default function WorkProcessPage() {
                     <Reveal delay={0.1}>
                       <div className="relative my-2 overflow-hidden rounded-2xl border border-line">
                         <Image
-                          src="/images/wp/2025-02/concept.png"
+                          src="/images/wp/2025-01/project_new_02.jpg"
                           alt="From deployment to monitoring at Globantis Labs"
                           width={960}
                           height={420}

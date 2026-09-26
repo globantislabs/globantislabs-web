@@ -46,6 +46,38 @@ const categoryIcons = [
   Boxes,
 ];
 
+// Map tech names to their logo images from technologiesGrid
+const techLogoMap: Record<string, string> = {
+  "React": "/images/wp/2024-10/React.png",
+  "React.js": "/images/wp/2024-10/React.png",
+  "Angular": "/images/wp/2024-10/angular.png",
+  "Vue.js": "/images/wp/2024-10/vue.png",
+  "Vue": "/images/wp/2024-10/vue.png",
+  "Node.js": "/images/wp/2024-09/1.png",
+  "Python": "/images/wp/2024-09/9.png",
+  "Java": "/images/wp/2024-09/13.png",
+  "Figma": "/images/wp/2024-10/figma.png",
+  "AWS": "/images/wp/2024-09/5.png",
+  "Azure": "/images/wp/2024-10/azure.png",
+  "Docker": "/images/wp/2024-09/2.png",
+  "Kubernetes": "/images/wp/2024-09/3-1.png",
+  "GitLab": "/images/wp/2024-09/8.png",
+  "TensorFlow": "/images/wp/2024-09/12.png",
+  "GraphQL": "/images/wp/2024-09/19.png",
+  "PostgreSQL": "/images/wp/2024-09/23.png",
+  "MongoDB": "/images/wp/2024-09/22.png",
+  "Redis": "/images/wp/2024-09/24.png",
+  "Kafka": "/images/wp/2024-09/25.png",
+  "Terraform": "/images/wp/2024-09/26.png",
+  "Elasticsearch": "/images/wp/2024-09/29.png",
+  "Puppet": "/images/wp/2024-09/34.png",
+};
+
+function getTechLogo(name: string): string | null {
+  return techLogoMap[name] ?? null;
+}
+
+
 const principles = [
   {
     title: "Boring technology first",
@@ -67,7 +99,7 @@ export default function TechnologiesPage() {
       <PageHero
         title="Technologies"
         label="Technologies"
-        image="/images/wp/2025-02/technology1.png"
+        image="/images/wp/2025-01/blog_new_02.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
       />
 
@@ -113,7 +145,7 @@ export default function TechnologiesPage() {
               />
               <div className="relative overflow-hidden rounded-2xl shadow-float">
                 <Image
-                  src="/images/wp/2025-02/technology1.png"
+                  src="/images/wp/2025-01/blog_new_02.jpg"
                   alt="Globantis Labs technology workspace"
                   width={720}
                   height={560}
