@@ -202,7 +202,7 @@ export default function WhyChooseUsPage() {
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {featureCards.map((card, i) => {
               const Icon = card.icon;
               const { subtitle, description } = splitCardCopy(card.desc);
