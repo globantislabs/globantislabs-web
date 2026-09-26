@@ -71,52 +71,6 @@ export default function ContactPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
-      {/* ============ 1. Intro + Response SLA strip ============ */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ What happens next ]"
-              title="From enquiry to proposal — in three steps."
-              lead="We treat every inbound enquiry like an engineering ticket: triaged, owned by a named engineer, and closed within a documented SLA."
-              align="center"
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {contactResponseSLA.map((s, i) => (
-              <Reveal
-                key={s.label}
-                delay={Math.min(i * 0.08, 0.32)}
-                className="h-full"
-              >
-                <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift md:p-8">
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
-                  />
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-5xl font-bold text-ink/10 transition-colors duration-300 group-hover:text-flame/30">
-                      0{i + 1}
-                    </span>
-                    <Sparkles className="size-6 text-brand" aria-hidden />
-                  </div>
-                  <h3 className="mt-4 text-base font-bold text-ink">
-                    {s.label}
-                  </h3>
-                  <p className="mt-1 font-mono text-2xl font-bold text-brand">
-                    {s.value}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-body">
-                    {s.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============ 2. Direct channels + form ============ */}
       <section className="relative overflow-hidden bg-ink py-section-md text-white">
         <div aria-hidden className="absolute inset-0 grid-pattern opacity-30" />
@@ -335,87 +289,7 @@ export default function ContactPage() {
             </div>
           </Reveal>
         </div>
-      </section>
-
-      {/* ============ 4. FAQ ============ */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ FAQ ]"
-              title="Common questions, real answers."
-              lead="If your question isn't here, ask us on the next call — we'll answer it directly."
-              align="center"
-            />
-          </Reveal>
-
-          <div className="mx-auto mt-10 max-w-3xl space-y-3">
-            {contactFAQ.map((item, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <Reveal key={item.q} delay={Math.min(i * 0.04, 0.2)}>
-                  <div
-                    className={cn(
-                      "card-lift rounded-2xl border bg-shade transition-colors",
-                      isOpen ? "border-flame/40 bg-white shadow-lift" : "border-line"
-                    )}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(isOpen ? null : i)}
-                      className="flex w-full items-center justify-between gap-4 p-5 text-left"
-                    >
-                      <span className="text-base font-bold text-ink">{item.q}</span>
-                      <ArrowRight
-                        aria-hidden
-                        className={cn(
-                          "size-4 shrink-0 text-brand transition-transform duration-300",
-                          isOpen && "rotate-45"
-                        )}
-                      />
-                    </button>
-                    {isOpen && (
-                      <p className="border-t border-line px-5 py-4 text-sm leading-relaxed text-body">
-                        {item.a}
-                      </p>
-                    )}
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ 5. Final CTA strip ============ */}
-      <section className="bg-ink py-section-sm text-white">
-        <div className="container-site">
-          <Reveal>
-            <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
-              <div className="max-w-2xl">
-                <span className="section-label !text-brand-light">
-                  [ Ready when you are ]"
-                </span>
-                <h2 className="mt-3 text-display-md font-bold text-white">
-                  Not sure if we're the right fit?
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
-                  Book a free 30-minute consultation. We'll review your
-                  situation, share a written recommendation, and let you decide.
-                </p>
-              </div>
-              <Link
-                href="/appointment"
-                className="btn-lift inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
-              >
-                Book a call
-                <ArrowRight className="size-4" aria-hidden />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-    </>
+      </section>    </>
   );
 }
 

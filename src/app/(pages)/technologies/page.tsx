@@ -49,6 +49,33 @@ const techLogoMap: Record<string, string> = {
   "Terraform": "/images/wp/2024-09/26.png",
   "Elasticsearch": "/images/wp/2024-09/29.png",
   "Puppet": "/images/wp/2024-09/34.png",
+  "HTML5": "/images/wp/2024-10/React.png",
+  "CSS3": "/images/wp/2024-10/React.png",
+  "Next.js": "/images/wp/2024-10/React.png",
+  "PHP": "/images/wp/2024-10/laravel.png",
+  ".NET": "/images/wp/2024-10/azure.png",
+  "Flutter": "/images/wp/2024-10/React.png",
+  "Android": "/images/wp/2024-10/React.png",
+  "iOS": "/images/wp/2024-10/React.png",
+  "Machine Learning": "/images/wp/2024-09/12.png",
+  "Data Analytics": "/images/wp/2024-09/9.png",
+  "Generative AI": "/images/wp/2024-09/12.png",
+  "Google Cloud": "/images/wp/2024-09/5.png",
+  "SQL Server": "/images/wp/2024-09/23.png",
+  "MySQL": "/images/wp/2024-09/22.png",
+  "CI/CD": "/images/wp/2024-09/8.png",
+  "Git": "/images/wp/2024-10/git.png",
+  "Cloud Automation": "/images/wp/2024-09/2.png",
+  "Hotjar": "/images/wp/2024-10/hotjar.png",
+  "Laravel": "/images/wp/2024-10/laravel.png",
+  "Webflow": "/images/wp/2024-10/webflow.png",
+  "WordPress": "/images/wp/2024-10/wordpress.png",
+  "Vue": "/images/wp/2024-10/vue.png",
+  "Plotly": "/images/wp/2024-10/plotly.png",
+  "Grafana": "/images/wp/2024-10/grafana.png",
+  "InfluxDB": "/images/wp/2024-10/influxdb.png",
+  "Jenkins": "/images/wp/2024-09/6.png",
+  "Jupyter": "/images/wp/2024-10/grafana.png",
 };
 
 function getTechLogo(name: string): string | null {
@@ -64,38 +91,6 @@ export default function TechnologiesPage() {
         image="/images/wp/2025-01/project_new_05.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
       />
-
-      {/* ============ 1. Intro — full-width image banner ============ */}
-      <section className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
-        <Image
-          src="/images/wp/2025-02/vrhm2.jpg"
-          alt="Technology at Globantis Labs"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-ink-deep/92 via-ink-deep/60 to-ink-deep/20"
-        />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container-site w-full">
-            <div className="max-w-2xl">
-              <span aria-hidden className="rule-flame" />
-              <h2 className="mt-5 text-display-lg font-bold text-white">
-                Technology That Drives{" "}
-                <span className="text-brand-light">Digital Excellence</span>
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-white/75 sm:text-lg">
-                We combine modern technologies, intelligent engineering, and
-                scalable architectures to build secure, high-performance
-                digital solutions for businesses worldwide.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ============ 2. Tech logos marquee — navy ============ */}
       <section className="relative overflow-hidden bg-ink py-section-sm text-white">
@@ -122,14 +117,14 @@ export default function TechnologiesPage() {
               {technologiesGrid.map((t) => (
                 <div
                   key={t.name}
-                  className="flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 backdrop-blur transition-colors duration-200 hover:border-flame/40 hover:bg-white/[0.07]"
+                  className="flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 backdrop-blur transition-colors duration-200 hover:border-flame/40 hover:bg-white/[0.07]"
                 >
                   <Image
                     src={t.img}
                     alt={t.name}
-                    width={28}
-                    height={28}
-                    className="size-7 object-contain"
+                    width={32}
+                    height={32}
+                    className="size-8 object-contain"
                     unoptimized
                   />
                   <span className="text-sm font-medium text-white/85">{t.name}</span>

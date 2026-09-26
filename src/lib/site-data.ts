@@ -107,7 +107,6 @@ export const navItems: NavItem[] = [
       { label: "Work Process", desc: "Seven-stage delivery loop with deliverables", href: "/work-process", icon: Workflow, image: "/images/wp/2025-02/about_mna00n.jpg" },
       { label: "Technologies", desc: "Our engineering stack, in the open", href: "/technologies", icon: Code2, image: "/images/wp/2025-02/technology1.png" },
       { label: "Careers", desc: "Open roles, hiring process, culture", href: "/careers", icon: Users, image: "/images/wp/2026-01/about-office-e1767452844756.jpg" },
-      { label: "Appointment", desc: "Book a free 30-minute call", href: "/appointment", icon: CalendarCheck, image: "/images/wp/2025-02/vrhm2.jpg" },
       { label: "Contact Us", desc: "A senior engineer replies in 1 business day", href: "/contact", icon: Mail, image: "/images/wp/2025-02/contact-zman.png" },
     ],
     footerCta: {
