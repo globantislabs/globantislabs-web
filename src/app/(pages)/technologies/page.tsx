@@ -92,6 +92,27 @@ export default function TechnologiesPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
       />
 
+      {/* ============ 1. Intro — white section after banner ============ */}
+      <section className="bg-white py-section-md">
+        <div className="container-site">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <span className="section-label">[ Our stack ]</span>
+              <h2 className="mt-3 text-display-lg font-bold text-ink">
+                Technology That Drives{" "}
+                <span className="text-flame">Digital Excellence</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body md:text-lg">
+                We combine modern technologies, intelligent engineering, and
+                scalable architectures to build secure, high-performance digital
+                solutions for businesses worldwide.
+              </p>
+              <div aria-hidden className="rule-flame mx-auto mt-8" />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ============ 2. Tech logos marquee — navy ============ */}
       <section className="relative overflow-hidden bg-ink py-section-sm text-white">
         <div aria-hidden className="absolute inset-0 grid-pattern opacity-30" />
