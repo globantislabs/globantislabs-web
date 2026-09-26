@@ -955,23 +955,23 @@ export type WhyFeature = {
 export const whyFeatures: WhyFeature[] = [
   {
     icon: Cpu,
-    title: "Expertise & Specialization",
-    desc: "We bring deep technical expertise and industry-focused specialization to deliver innovative digital solutions at a global scale.",
+    title: "Deep Expertise",
+    desc: "Senior engineers on every engagement. No juniors learning on your dime — every line of code is written by someone who's shipped production systems before.",
   },
   {
     icon: Rocket,
-    title: "Cutting-Edge Technology",
-    desc: "We leverage cutting-edge technologies to build intelligent, scalable, and future-ready digital solutions.",
+    title: "Modern Engineering",
+    desc: "We pick proven technology for production and adopt frontier tools only when they earn their keep. Boring where it matters, bold where it counts.",
   },
   {
     icon: Lock,
-    title: "Security & Risk Management",
-    desc: "Security and risk management are integral to everything we build. We adopt a proactive, security-first approach to protect digital assets, ensure data privacy, and mitigate risks across the entire technology lifecycle—enabling our global clients to operate with confidence.",
+    title: "Security-First Culture",
+    desc: "Threat modelling, secure code review, and dependency hygiene are part of every PR — not a separate security audit phase bolted on at the end.",
   },
   {
     icon: Scale,
-    title: "Scalability & Flexibility",
-    desc: "We design software solutions that grow with your business. Our scalable and flexible architectures ensure that applications adapt seamlessly to changing demands, enabling organizations to expand, innovate, and respond quickly in dynamic global markets.",
+    title: "Built to Scale",
+    desc: "Architecture decisions are documented in ADRs. Code ownership transfers to your team. Every system we ship is designed to outlive our engagement.",
   },
 ];
 
