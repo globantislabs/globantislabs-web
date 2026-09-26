@@ -86,13 +86,10 @@ export default function WhyChooseUsPage() {
                       aria-hidden
                       className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
                     />
-                    {/* Number */}
-                    <div className="flex items-center justify-between">
+                    {/* Icon */}
+                    <div>
                       <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 group-hover:bg-brand group-hover:text-white">
                         <Icon className="size-7" />
-                      </span>
-                      <span className="font-mono text-5xl font-bold text-ink/10 transition-colors duration-500 group-hover:text-flame/30">
-                        {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
                     <h3 className="mt-5 text-display-sm font-bold text-ink">

@@ -154,9 +154,6 @@ export default function WorkProcessPage() {
                       <div className="flex size-14 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
                         <Icon className="size-6" />
                       </div>
-                      <span className="font-mono text-3xl font-bold leading-none text-ink/15 transition-colors duration-300 group-hover:text-flame/30">
-                        {phase.phase}
-                      </span>
                     </div>
 
                     {/* Body */}
