@@ -381,98 +381,65 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ 5. Our Work Process — editorial scroll with image breaks ============ */}
-      <section className="bg-white py-section-md">
+      {/* ============ 5. Our Work Process — clean 2-col split ============ */}
+      <section className="bg-shade py-section-md">
         <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ How we work ]"
-              title="Our Work Process"
-              lead="From Vision to Value — A Structured Approach to Digital Excellence"
-              align="center"
-            />
-          </Reveal>
-          <Reveal delay={0.07}>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-body md:text-base">
-              We follow a collaborative and transparent process that transforms
-              ideas into scalable, reliable, and high-performing digital
-              solutions.
-            </p>
-          </Reveal>
-        </div>
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            {/* Left — sticky heading */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <Reveal>
+                <span className="section-label">[ How we work ]</span>
+                <h2 className="mt-3 text-display-lg font-bold text-ink">
+                  Our Work Process
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-body md:text-lg">
+                  From Vision to Value — A Structured Approach to Digital Excellence.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-body">
+                  We follow a collaborative and transparent process that
+                  transforms ideas into scalable, reliable, and high-performing
+                  digital solutions.
+                </p>
+                <div aria-hidden className="rule-flame mt-8" />
+                <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/45">
+                  8 phases · 2-week sprints · Weekly client reviews
+                </p>
+              </Reveal>
+            </div>
 
-        {/* Numbered rows with image breaks — editorial scroll pattern */}
-        <div className="mt-16">
-          {phases.map((p, i) => {
-            const Icon = p.icon;
-            const showImageBreak = i > 0 && i % 2 === 0 && i < phases.length;
-            const imageBreak = imageBreaks[(i / 2 - 1) | 0];
-            return (
-              <div key={p.num}>
-                {/* Image break — full-width with overlay text, between every 2 phases */}
-                {showImageBreak && imageBreak && (
-                  <Reveal>
-                    <div className="relative my-12 h-48 overflow-hidden sm:h-64 lg:h-72">
-                      <Image
-                        src={imageBreak.src}
-                        alt=""
-                        fill
-                        className="object-cover"
-                        sizes="100vw"
-                      />
-                      <div
-                        aria-hidden
-                        className="absolute inset-0 bg-gradient-to-r from-ink-deep/90 via-ink-deep/50 to-transparent"
-                      />
-                      <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center gap-2 p-8 sm:p-12">
-                        <span aria-hidden className="rule-flame" />
-                        <p className="font-display text-xl font-bold text-white sm:text-2xl lg:text-3xl">
-                          {imageBreak.text}
+            {/* Right — clean phase list */}
+            <div>
+              {phases.map((p, i) => {
+                const Icon = p.icon;
+                return (
+                  <Reveal key={p.num} delay={Math.min(i * 0.04, 0.2)}>
+                    <div className="group flex items-start gap-5 border-b border-line py-6 transition-colors duration-300 last:border-0 hover:bg-white/50 sm:px-4 sm:py-7">
+                      {/* Number */}
+                      <span className="font-mono text-sm font-bold text-brand sm:text-base">
+                        {p.num}
+                      </span>
+                      {/* Icon */}
+                      <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-lg border border-brand/15 bg-white text-brand transition-colors duration-300 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                        <Icon className="size-5" aria-hidden />
+                      </span>
+                      {/* Content */}
+                      <div className="flex-1">
+                        <div className="flex items-baseline gap-2">
+                          <h3 className="text-base font-bold text-ink sm:text-lg">
+                            {p.title}
+                          </h3>
+                          <span className="text-xs text-body">— {p.subtitle}</span>
+                        </div>
+                        <p className="mt-2 text-sm leading-relaxed text-body">
+                          {p.desc}
                         </p>
-                        <p className="text-sm text-white/70">{imageBreak.sub}</p>
                       </div>
                     </div>
                   </Reveal>
-                )}
-
-                {/* Phase row — full-width horizontal, NOT a card */}
-                <Reveal>
-                  <div className="group relative flex items-start gap-4 border-b border-line px-6 py-6 transition-colors duration-300 hover:bg-shade sm:gap-6 sm:px-12 lg:px-20">
-                    {/* Hover flame bar on left */}
-                    <span
-                      aria-hidden
-                      className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gradient-to-b from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-y-100"
-                    />
-                    {/* Oversized number */}
-                    <span className="font-mono text-3xl font-bold leading-none text-flame/30 sm:text-5xl lg:text-6xl">
-                      {p.num}
-                    </span>
-                    {/* Icon circle */}
-                    <span className="mt-1 flex size-11 shrink-0 items-center justify-center rounded-full border border-brand/20 bg-cream text-brand transition-all duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-white sm:size-14">
-                      <Icon className="size-5 sm:size-6" aria-hidden />
-                    </span>
-                    {/* Title + subtitle + description */}
-                    <div className="flex-1">
-                      <h3 className="text-base font-bold text-ink sm:text-lg lg:text-xl">
-                        {p.title}
-                      </h3>
-                      <p className="mt-0.5 text-xs font-semibold text-brand sm:text-sm">
-                        {p.subtitle}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-body sm:text-[15px]">
-                        {p.desc}
-                      </p>
-                    </div>
-                    {/* Arrow on the right — appears on hover */}
-                    <ArrowRight
-                      aria-hidden
-                      className="mt-2 hidden size-5 shrink-0 text-ink/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand sm:block lg:size-6"
-                    />
-                  </div>
-                </Reveal>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
