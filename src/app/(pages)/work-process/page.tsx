@@ -46,7 +46,7 @@ export default function WorkProcessPage() {
   return (
     <>
       <PageHero
-        title="Seven stages, one engineering loop."
+        title="Our Work Process"
         label="Work process"
         image="/images/wp/2025-02/about_mna00n.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Work Process" }]}

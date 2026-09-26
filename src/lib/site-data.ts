@@ -1623,43 +1623,47 @@ export const officeLocations = [
 // ===== Why Choose Us page data =====
 export const whyChooseTop = [
   {
-    title: "Trusted & Reliable",
-    desc: "We build long-term partnerships through transparency, accountability, and consistent delivery—earning trust at every stage of engagement.",
+    title: "Global Expertise",
+    desc: "International Standards, Local Understanding. Delivering technology solutions aligned with global standards, best practices, and evolving industry requirements.",
   },
   {
-    title: "24/7 Customer Support",
-    desc: "We continuously monitor systems to ensure performance and security. Issues are identified and resolved proactively to keep operations running smoothly.",
+    title: "Innovation First",
+    desc: "Turning Ideas Into Digital Advantage. We leverage emerging technologies and innovative thinking to transform complex business challenges into intelligent solutions.",
   },
   {
-    title: "Global Client Experience",
-    desc: "We work with clients across the USA, Canada, and the UAE, understanding international business expectations, compliance needs, and delivery standards.",
+    title: "Tailored Solutions",
+    desc: "Built Around Your Business. Every solution is strategically designed around your business goals, processes, customers, and long-term vision.",
   },
 ];
 
 export const whyChooseGrid = [
   {
-    title: "Skilled & Agile Teams",
-    desc: "Our experienced engineers and consultants follow agile methodologies to deliver flexible, high-quality solutions with faster time-to-market.",
+    title: "Scalable Technology",
+    desc: "Built to Grow With You. Our applications and platforms are engineered for flexibility, scalability, and sustainable business growth.",
   },
   {
-    title: "Latest Technology",
-    desc: "We use modern, cutting-edge technologies to build secure and future-ready solutions. Our focus on innovation ensures high performance, scalability, and long-term value.",
+    title: "Security by Design",
+    desc: "Protecting What Matters Most. We integrate security, reliability, and best practices throughout the technology lifecycle to safeguard your digital ecosystem.",
   },
   {
-    title: "Secure & Scalable Solutions",
-    desc: "Security, performance, and scalability are built into everything we deliver, ensuring solutions grow with your business.",
+    title: "Quality Driven",
+    desc: "Precision at Every Stage. From architecture and development to testing and deployment, we maintain a strong focus on performance, quality, and reliability.",
   },
   {
-    title: "Cost-Effectiveness",
-    desc: "We deliver high-quality, secure solutions at optimized costs. Our efficient processes and transparent pricing ensure maximum value and ROI.",
+    title: "Client-Centric Partnership",
+    desc: "Collaboration Beyond Delivery. We work as an extension of your team, ensuring transparency, communication, and collaboration throughout every stage of the engagement.",
   },
   {
-    title: "Clear Communication & On-Time Delivery",
-    desc: "We maintain open communication, predictable timelines, and proactive reporting across time zones.",
+    title: "Agile Delivery",
+    desc: "Faster From Concept to Reality. Our agile approach enables faster development, continuous improvements, and efficient delivery without compromising quality.",
   },
   {
-    title: "Enhanced Security",
-    desc: "Security is embedded into every solution we build at Globantis Labs. We follow global security standards and best practices to protect data, systems, and applications. Our proactive approach ensures reliability, compliance, and peace of mind for our clients.",
+    title: "End-to-End Capabilities",
+    desc: "One Partner. Complete Technology Solutions. From strategy and design to development, cloud, deployment, and support, we provide comprehensive digital capabilities under one roof.",
+  },
+  {
+    title: "Long-Term Value",
+    desc: "Technology That Delivers Business Impact. We focus beyond project completion—building solutions that improve efficiency, enhance customer experiences, and create lasting business value.",
   },
 ];
 
@@ -1886,28 +1890,38 @@ export const contactFAQ = [
 export const technologyCategories = [
   {
     name: "Frontend",
-    desc: "Production-grade web and mobile interfaces with strict accessibility, performance budgets and design-system discipline.",
-    items: ["React", "Angular", "Vue.js", "Next.js", "TypeScript", "Figma"],
+    desc: "Modern, responsive, and accessible web interfaces built with the latest frameworks and design-system discipline.",
+    items: ["React.js", "Next.js", "Angular", "Vue.js", "HTML5", "CSS3"],
   },
   {
-    name: "Backend & Languages",
-    desc: "Service-oriented architectures, event-driven systems and polyglot persistence — engineered for scale and auditability.",
-    items: ["Node.js", "Python", "Go", "Java", "Laravel", "GraphQL"],
+    name: "Backend",
+    desc: "Robust, scalable server-side architectures engineered for performance, security, and maintainability.",
+    items: ["Node.js", "Python", "Java", ".NET", "PHP"],
   },
   {
-    name: "Data & Storage",
-    desc: "OLTP, OLAP, streaming and search — chosen to fit the workload, not the trend. We model data for the questions you'll ask next.",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "Elasticsearch", "InfluxDB"],
+    name: "Mobile",
+    desc: "Native and cross-platform mobile applications delivering consistent, high-performance experiences across iOS and Android.",
+    items: ["Flutter", "React Native", "Android", "iOS"],
   },
   {
-    name: "Cloud & DevOps",
-    desc: "Infrastructure-as-Code, automated CI/CD and full observability. Every change ships through a pipeline — never a console click.",
-    items: ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "GitLab", "Jenkins", "Puppet", "Grafana"],
+    name: "AI & Data",
+    desc: "Intelligent systems powered by machine learning, data analytics, and generative AI for smarter business decisions.",
+    items: ["Python", "TensorFlow", "Machine Learning", "Data Analytics", "Generative AI"],
   },
   {
-    name: "AI & ML",
-    desc: "Models shipped with the same release discipline as application code — versioned, monitored and rolled back when needed.",
-    items: ["TensorFlow", "PyTorch", "Keras", "Plotly"],
+    name: "Cloud",
+    desc: "Scalable, secure cloud infrastructure across leading platforms with automated deployment and monitoring.",
+    items: ["AWS", "Microsoft Azure", "Google Cloud"],
+  },
+  {
+    name: "Database",
+    desc: "Reliable data storage solutions — from relational to NoSQL — chosen to fit your workload and scale.",
+    items: ["MySQL", "PostgreSQL", "MongoDB", "SQL Server"],
+  },
+  {
+    name: "DevOps",
+    desc: "Automated CI/CD pipelines, containerization, and cloud automation for faster, more reliable software delivery.",
+    items: ["Docker", "Kubernetes", "CI/CD", "Git", "Cloud Automation"],
   },
 ];
 
@@ -1915,52 +1929,59 @@ export const technologyCategories = [
 export const workProcessPhases = [
   {
     phase: "01",
-    title: "Discovery & Requirement Analysis",
-    duration: "1–2 weeks",
-    desc: "We begin by understanding your business objectives, technical requirements and market challenges. Through detailed discussions and analysis, we define a clear project scope aligned with your goals.",
-    deliverables: ["Stakeholder interviews", "Technical requirements doc", "Risk register", "Project charter"],
+    title: "Discover",
+    duration: "Understand. Analyze. Define.",
+    desc: "We begin by understanding your business, objectives, challenges, target users, and technical requirements to establish a clear project direction.",
+    deliverables: ["Business objectives", "Technical requirements", "Project direction"],
   },
   {
     phase: "02",
-    title: "Planning & Strategy",
-    duration: "1 week",
-    desc: "Our team creates a well-defined project roadmap, architecture and delivery plan. Timelines, milestones and risk factors are identified to ensure predictable and efficient execution.",
-    deliverables: ["Architecture diagram", "Sprint roadmap", "Team plan", "Communication protocol"],
+    title: "Strategize",
+    duration: "Plan With Purpose.",
+    desc: "Our experts define the technology strategy, project roadmap, architecture, timelines, priorities, and engagement model required to achieve your goals.",
+    deliverables: ["Technology strategy", "Project roadmap", "Architecture plan", "Engagement model"],
   },
   {
     phase: "03",
-    title: "Design & Prototyping",
-    duration: "2–4 weeks",
-    desc: "We design intuitive user experiences and robust system architectures. Prototypes and design mockups are shared early to gather feedback and ensure alignment before development begins.",
-    deliverables: ["Wireframes", "Clickable prototype", "Design system", "Design QA checklist"],
+    title: "Design",
+    duration: "Create Experiences That Matter.",
+    desc: "We transform requirements into intuitive user experiences and modern interfaces that balance business objectives, usability, and visual excellence.",
+    deliverables: ["User experiences", "Modern interfaces", "Design system"],
   },
   {
     phase: "04",
-    title: "Development & Implementation",
-    duration: "Sprint cycles",
-    desc: "Using agile methodologies, our engineers build secure, scalable and high-performance solutions. Regular updates and sprint reviews keep clients informed throughout the development lifecycle.",
-    deliverables: ["Working software", "Sprint reviews", "Burndown reports", "Release notes"],
+    title: "Develop",
+    duration: "Engineer With Precision.",
+    desc: "Our development teams build robust, scalable, and secure solutions using modern technologies, agile methodologies, and industry best practices.",
+    deliverables: ["Robust solutions", "Scalable architecture", "Secure codebase"],
   },
   {
     phase: "05",
-    title: "Testing & Quality Assurance",
-    duration: "Continuous",
-    desc: "Every solution undergoes rigorous testing for functionality, performance, security and compliance. We ensure the final product meets international quality standards.",
-    deliverables: ["Test plans", "Automation suite", "Security scan report", "Compliance checklist"],
+    title: "Test",
+    duration: "Quality at Every Layer.",
+    desc: "We conduct comprehensive functional, performance, security, usability, and compatibility testing to ensure the solution meets defined quality standards.",
+    deliverables: ["Functional testing", "Performance testing", "Security testing", "Compatibility testing"],
   },
   {
     phase: "06",
-    title: "Deployment & Launch",
-    duration: "1 week",
-    desc: "We manage seamless deployment with minimal disruption, including infrastructure setup, data migration and production rollout — ensuring a smooth go-live for your team and users.",
-    deliverables: ["Runbook", "Deployment scripts", "Rollback plan", "Launch comms"],
+    title: "Deploy",
+    duration: "From Development to Production.",
+    desc: "Once approved, we manage deployment, configuration, integration, and production readiness to ensure a smooth transition into the live environment.",
+    deliverables: ["Deployment plan", "Configuration", "Integration", "Production readiness"],
   },
   {
     phase: "07",
-    title: "Support & Continuous Improvement",
-    duration: "Ongoing",
-    desc: "Post-launch, we provide ongoing support, maintenance and enhancements to ensure long-term reliability and continuous improvement.",
-    deliverables: ["SLA dashboard", "Monthly review", "Backlog grooming", "Quarterly roadmap"],
+    title: "Monitor",
+    duration: "Measure. Optimize. Improve.",
+    desc: "After deployment, we monitor system performance and identify opportunities for optimization, enhancement, and continuous improvement.",
+    deliverables: ["Performance monitoring", "Optimization plan", "Enhancement roadmap"],
+  },
+  {
+    phase: "08",
+    title: "Evolve",
+    duration: "Technology That Grows With You.",
+    desc: "As your business evolves, we continuously enhance your solution with new features, technologies, integrations, and capabilities.",
+    deliverables: ["New features", "Technology upgrades", "Integrations", "New capabilities"],
   },
 ];
 

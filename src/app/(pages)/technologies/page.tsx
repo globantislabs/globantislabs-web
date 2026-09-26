@@ -37,7 +37,7 @@ export default function TechnologiesPage() {
   return (
     <>
       <PageHero
-        title="Our engineering stack, in the open."
+        title="Technologies"
         label="Technologies"
         image="/images/wp/2025-02/technology1.png"
         crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}

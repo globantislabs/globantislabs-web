@@ -59,14 +59,14 @@ export default function WhyChooseUsPage() {
         <div className="container-site">
           <Reveal>
             <SectionHeading
-              label="[ Three reasons clients stay ]"
+              label="[ Why Leading Businesses Choose Us ]"
               title={
                 <>
                   Trust, support and{" "}
                   <span className="text-flame">global experience.</span>
                 </>
               }
-              lead="We earn trust the long way — through transparent reporting, predictable delivery and a security-first engineering culture. Here is what that looks like in practice."
+              lead="We combine technology, innovation, and industry expertise to build digital solutions that help businesses scale, adapt, and lead in a rapidly evolving digital world."
               align="center"
             />
           </Reveal>
