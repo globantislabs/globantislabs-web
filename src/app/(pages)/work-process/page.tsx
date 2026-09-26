@@ -223,16 +223,6 @@ export default function WorkProcessPage() {
           </div>
         </div>
       </section>
-
-      {/* ============ CTA — ink ============ */}
-      <CTABand
-        label="[ Let's build ]"
-        title="Want to see how we work?"
-        desc="Reach out and discover how Globantis Labs can engineer your next big thing."
-        ctaHref="/contact"
-        ctaLabel="Get in touch"
-        tone="ink"
-      />
     </>
   );
 }
