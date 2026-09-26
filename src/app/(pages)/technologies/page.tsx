@@ -9,56 +9,34 @@ import {
   Database,
   Boxes,
   ArrowRight,
-  ArrowUpRight,
+  Code2,
 } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
-import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
+import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { technologiesGrid, technologyCategories } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Technologies | Globantis Labs",
   description:
-    "Seven engineering categories — frontend, backend, mobile, AI & data, cloud, database and DevOps — under one roof. We pick boring, proven technology for production and adopt frontier tools only when they earn their keep.",
+    "Technology That Drives Digital Excellence. We combine modern technologies, intelligent engineering, and scalable architectures to build secure, high-performance digital solutions.",
   path: "/technologies",
-  keywords: [
-    "software technologies",
-    "tech stack",
-    "frontend engineering",
-    "backend engineering",
-    "mobile development",
-    "AI ML",
-    "cloud infrastructure",
-    "database",
-    "DevOps",
-  ],
+  keywords: ["software technologies", "tech stack", "React", "Python", "AWS", "Kubernetes", "AI ML"],
 });
 
-/** Icon per category — 1:1 with the 7 entries in `technologyCategories`
- *  (Frontend, Backend, Mobile, AI & Data, Cloud, Database, DevOps). */
-const categoryIcons = [
-  Layers,
-  Server,
-  Smartphone,
-  BrainCircuit,
-  Cloud,
-  Database,
-  Boxes,
-];
+const categoryIcons = [Layers, Server, Smartphone, BrainCircuit, Cloud, Database, Boxes];
 
-// Map tech names to their logo images from technologiesGrid
 const techLogoMap: Record<string, string> = {
   "React": "/images/wp/2024-10/React.png",
   "React.js": "/images/wp/2024-10/React.png",
   "Angular": "/images/wp/2024-10/angular.png",
   "Vue.js": "/images/wp/2024-10/vue.png",
-  "Vue": "/images/wp/2024-10/vue.png",
   "Node.js": "/images/wp/2024-09/1.png",
   "Python": "/images/wp/2024-09/9.png",
   "Java": "/images/wp/2024-09/13.png",
-  "Figma": "/images/wp/2024-10/figma.png",
   "AWS": "/images/wp/2024-09/5.png",
   "Azure": "/images/wp/2024-10/azure.png",
+  "Microsoft Azure": "/images/wp/2024-10/azure.png",
   "Docker": "/images/wp/2024-09/2.png",
   "Kubernetes": "/images/wp/2024-09/3-1.png",
   "GitLab": "/images/wp/2024-09/8.png",
@@ -77,87 +55,49 @@ function getTechLogo(name: string): string | null {
   return techLogoMap[name] ?? null;
 }
 
-
-const principles = [
-  {
-    title: "Boring technology first",
-    desc: "We pick proven tools for production — and reach for frontier tools only when they earn their keep.",
-  },
-  {
-    title: "Owned, not rented",
-    desc: "Every tool we use, we operate ourselves. No 'we'll figure out Kubernetes later' — we run it daily.",
-  },
-  {
-    title: "Versioned, observed, repeatable",
-    desc: "Code, infra and ML models all versioned. Observability from day one. Every change rolls back in one command.",
-  },
-];
-
 export default function TechnologiesPage() {
   return (
     <>
       <PageHero
         title="Technologies"
         label="Technologies"
-        image="/images/wp/2025-01/blog_new_02.jpg"
+        image="/images/wp/2025-01/project_new_05.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Technologies" }]}
       />
 
-      {/* ============ 1. Intro — narrative (2-col) ============ */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <Reveal>
-              <SectionHeading
-                label="[ Tech stack ]"
-                title="Technologies"
-                lead="Technology That Drives Digital Excellence"
-              />
-              <p className="mt-5 text-[15px] leading-relaxed text-body">
+      {/* ============ 1. Intro — full-width image banner ============ */}
+      <section className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
+        <Image
+          src="/images/wp/2025-02/vrhm2.jpg"
+          alt="Technology at Globantis Labs"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-ink-deep/92 via-ink-deep/60 to-ink-deep/20"
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="container-site w-full">
+            <div className="max-w-2xl">
+              <span aria-hidden className="rule-flame" />
+              <h2 className="mt-5 text-display-lg font-bold text-white">
+                Technology That Drives{" "}
+                <span className="text-brand-light">Digital Excellence</span>
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-white/75 sm:text-lg">
                 We combine modern technologies, intelligent engineering, and
                 scalable architectures to build secure, high-performance
                 digital solutions for businesses worldwide.
               </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/services"
-                  className="btn-lift inline-flex h-12 items-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
-                >
-                  See services
-                  <ArrowRight className="size-4" aria-hidden />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="btn-lift inline-flex h-12 items-center gap-2 rounded-full border border-ink/15 bg-white px-6 text-sm font-semibold text-ink shadow-soft hover:border-brand hover:text-brand hover:shadow-lift"
-                >
-                  Start a project
-                  <ArrowUpRight className="size-4" />
-                </Link>
-              </div>
-            </Reveal>
-
-            {/* Right — editorial image with offset cream frame */}
-            <Reveal delay={0.1} className="relative">
-              <div
-                aria-hidden
-                className="absolute -left-5 -bottom-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
-              />
-              <div className="relative overflow-hidden rounded-2xl shadow-float">
-                <Image
-                  src="/images/wp/2025-01/blog_new_02.jpg"
-                  alt="Globantis Labs technology workspace"
-                  width={720}
-                  height={560}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ============ 2. Tech logos — proof of stack (navy) ============ */}
+      {/* ============ 2. Tech logos marquee — navy ============ */}
       <section className="relative overflow-hidden bg-ink py-section-sm text-white">
         <div aria-hidden className="absolute inset-0 grid-pattern opacity-30" />
         <div
@@ -167,9 +107,7 @@ export default function TechnologiesPage() {
         <div className="container-site relative">
           <Reveal>
             <div className="mb-10 text-center">
-              <span className="section-label !text-brand-light">
-                [ Stack proof ]
-              </span>
+              <span className="section-label !text-brand-light">[ Stack proof ]</span>
               <h2 className="mt-3 text-display-md font-bold text-white">
                 The tools our engineers reach for.
               </h2>
@@ -184,19 +122,17 @@ export default function TechnologiesPage() {
               {technologiesGrid.map((t) => (
                 <div
                   key={t.name}
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 backdrop-blur transition-colors duration-200 hover:border-flame/40 hover:bg-white/[0.07]"
+                  className="flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 backdrop-blur transition-colors duration-200 hover:border-flame/40 hover:bg-white/[0.07]"
                 >
                   <Image
                     src={t.img}
                     alt={t.name}
-                    width={24}
-                    height={24}
-                    className="size-5 object-contain"
+                    width={28}
+                    height={28}
+                    className="size-7 object-contain"
                     unoptimized
                   />
-                  <span className="text-sm font-medium text-white/85">
-                    {t.name}
-                  </span>
+                  <span className="text-sm font-medium text-white/85">{t.name}</span>
                 </div>
               ))}
             </div>
@@ -204,14 +140,14 @@ export default function TechnologiesPage() {
         </div>
       </section>
 
-      {/* ============ 3. Categories — 7 cards (shade) ============ */}
-      <section className="bg-shade py-section-md">
+      {/* ============ 3. Technology Stack — 7 categories with logos ============ */}
+      <section className="bg-white py-section-md">
         <div className="container-site">
           <Reveal>
             <SectionHeading
-              label="[ By category ]"
+              label="[ Technology stack ]"
               title="Seven categories. One engineering culture."
-              lead="Filter by category to see what we'd reach for on day one of a new engagement. Each category below maps to a specific team inside Globantis."
+              lead="Filter by category to see what we'd reach for on day one of a new engagement. Each category maps to a specific team inside Globantis."
               align="center"
             />
           </Reveal>
@@ -225,44 +161,42 @@ export default function TechnologiesPage() {
                   className="h-full"
                   delay={Math.min(i * 0.07, 0.35)}
                 >
-                  <div className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift lg:p-8">
-                    {/* Signature flame top-bar */}
+                  <div className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-shade p-7 hover:border-flame/40 hover:shadow-lift lg:p-8">
                     <span
                       aria-hidden
                       className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
                     />
-                    {/* Soft cream glow in top-right corner — appears on hover */}
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-flame/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-                    />
-
-                    {/* Header — icon tile only, NO numbered marker */}
-                    <div className="relative">
-                      <div className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                        <Icon className="size-7" aria-hidden />
-                      </div>
+                    <div className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand transition-colors duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                      <Icon className="size-7" aria-hidden />
                     </div>
-
-                    {/* Title + description */}
-                    <h3 className="relative mt-6 text-display-sm font-bold text-ink">
-                      {cat.name}
-                    </h3>
-                    <p className="relative mt-3 text-sm leading-relaxed text-body md:text-[15px]">
+                    <h3 className="mt-6 text-display-sm font-bold text-ink">{cat.name}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-body md:text-[15px]">
                       {cat.desc}
                     </p>
-
-                    {/* Tech items as chips — pinned to card bottom */}
-                    <div className="relative mt-auto pt-6">
+                    {/* Tech items with logos */}
+                    <div className="mt-auto pt-6">
                       <div className="flex flex-wrap gap-2">
-                        {cat.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-line bg-shade px-3.5 py-1.5 text-xs font-medium text-ink/80 transition-colors duration-200 hover:border-brand/40 hover:text-brand"
-                          >
-                            {item}
-                          </span>
-                        ))}
+                        {cat.items.map((item) => {
+                          const logo = getTechLogo(item);
+                          return (
+                            <span
+                              key={item}
+                              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/80 transition-colors hover:border-brand/40 hover:text-brand"
+                            >
+                              {logo && (
+                                <Image
+                                  src={logo}
+                                  alt={item}
+                                  width={16}
+                                  height={16}
+                                  className="size-4 object-contain"
+                                  unoptimized
+                                />
+                              )}
+                              {item}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -273,50 +207,31 @@ export default function TechnologiesPage() {
         </div>
       </section>
 
-      {/* ============ 4. Engineering principles strip (white) ============ */}
-      <section className="bg-white py-section-md">
+      {/* ============ 4. CTA ============ */}
+      <section className="bg-shade py-section-sm">
         <div className="container-site">
           <Reveal>
-            <SectionHeading
-              label="[ Engineering principles ]"
-              title="How we choose what makes the cut."
-              lead="Three rules govern every technology decision we make — from the frameworks in our stack to the tools we operate in production."
-              align="center"
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
-            {principles.map((p, i) => (
-              <Reveal
-                key={p.title}
-                className="h-full"
-                delay={Math.min(i * 0.07, 0.21)}
+            <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-line bg-white p-8 text-center md:flex-row md:text-left">
+              <div className="max-w-xl">
+                <h2 className="text-display-sm font-bold text-ink">
+                  Want engineers who know your stack?
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-body">
+                  Tell us what you're running today. We'll match you with senior
+                  engineers who have shipped production code on the same technology.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="btn-lift inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
               >
-                <div className="card-lift group flex h-full flex-col rounded-2xl border border-line bg-shade p-7 hover:border-flame/30 hover:shadow-lift lg:p-8">
-                  {/* Signature flame rule */}
-                  <div aria-hidden className="rule-flame" />
-                  <h3 className="mt-4 text-display-sm font-bold text-ink">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-body md:text-[15px]">
-                    {p.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                Start a project
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
-
-      {/* ============ 5. CTA (ink) ============ */}
-      <CTABand
-        label="[ Stack match ]"
-        title="Want engineers who know your stack?"
-        desc="Tell us what you're running today. We'll match you with senior engineers who have shipped production code on the same technology."
-        ctaHref="/contact"
-        ctaLabel="Start a project"
-        tone="ink"
-      />
     </>
   );
 }
