@@ -27,7 +27,6 @@ import {
   whyChooseComparison,
   whyChooseFAQ,
   whyFeatures,
-  stats,
   valueTags,
 } from "@/lib/site-data";
 
@@ -243,45 +242,6 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* ============ 3. Stats band — engineering outcomes ============ */}
-      <section className="relative overflow-hidden bg-ink py-section-sm text-white">
-        <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
-        <div
-          aria-hidden
-          className="absolute -right-32 top-0 h-80 w-80 rounded-full bg-flame/15 blur-[120px]"
-        />
-        <div className="container-site relative">
-          <Reveal>
-            <div className="mx-auto mb-12 max-w-2xl text-center">
-              <span className="section-label !text-brand-light">
-                [ By the numbers ]
-              </span>
-              <h2 className="mt-3 text-display-md font-bold text-white">
-                A track record clients can rely on.
-              </h2>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <Reveal
-                key={s.label}
-                delay={Math.min(i * 0.08, 0.32)}
-                className="h-full"
-              >
-                <div className="flex h-full flex-col gap-2 p-6 sm:p-8">
-                  <div aria-hidden className="rule-flame" />
-                  <div className="mt-3 font-mono text-4xl font-bold leading-none text-white sm:text-5xl">
-                    {s.value}
-                  </div>
-                  <div className="mt-1 text-xs leading-tight text-white/60 sm:text-sm">
-                    {s.label}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ============ 5. Engineering principles — navy glass cards ============ */}
       <section className="relative overflow-hidden bg-ink py-section-md text-white">
