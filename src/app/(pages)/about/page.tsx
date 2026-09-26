@@ -374,7 +374,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ 5. Our Work Process — vertical timeline (different from card grid) ============ */}
+      {/* ============ 5. Our Work Process — horizontal connected stepper ============ */}
       <section className="bg-white py-section-md">
         <div className="container-site">
           <Reveal>
@@ -393,78 +393,58 @@ export default function AboutPage() {
             </p>
           </Reveal>
 
-          {/* Vertical timeline with alternating left/right cards */}
-          <div className="relative mt-16">
-            {/* Center line */}
-            <div
-              aria-hidden
-              className="absolute left-[2.5rem] top-0 h-full w-px bg-gradient-to-b from-flame via-flame/40 to-transparent sm:left-1/2 sm:-translate-x-1/2"
-            />
-            <ol className="space-y-8 sm:space-y-12">
-              {phases.map((p, i) => {
-                const isLeft = i % 2 === 0;
-                const Icon = p.icon;
-                return (
-                  <Reveal key={p.num} delay={Math.min(i * 0.04, 0.2)}>
-                    <li
-                      className={`relative flex flex-col gap-4 sm:flex-row sm:items-center ${
-                        isLeft ? "" : "sm:flex-row-reverse"
-                      }`}
+          {/* Horizontal connected stepper — circle icons + arrows between cards */}
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {phases.map((p, i) => {
+              const Icon = p.icon;
+              const isLastInRow = (i + 1) % 4 === 0;
+              return (
+                <Reveal
+                  key={p.num}
+                  delay={Math.min(i * 0.05, 0.25)}
+                  className="relative"
+                >
+                  {/* Arrow connector — only on desktop, not on last card of each row */}
+                  {!isLastInRow && (
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -right-3 top-12 z-10 hidden lg:flex size-6 items-center justify-center rounded-full border border-line bg-white text-brand shadow-sm"
                     >
-                      {/* Marker dot */}
-                      <span
-                        aria-hidden
-                        className="absolute left-[2.5rem] top-1.5 z-10 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border-2 border-flame bg-white shadow-md sm:left-1/2"
-                      >
-                        <span className="size-2 rounded-full bg-flame" />
+                      <ArrowRight className="size-3" aria-hidden />
+                    </span>
+                  )}
+
+                  <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift sm:p-6">
+                    {/* Signature flame top-bar */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+                    />
+
+                    {/* Circle icon — branded gradient, different from square tiles elsewhere */}
+                    <div className="flex items-center gap-3">
+                      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-gradient text-white shadow-lg shadow-brand/30 transition-transform duration-300 ease-out-quart group-hover:scale-110">
+                        <Icon className="size-5" aria-hidden />
                       </span>
+                      <span className="font-mono text-2xl font-bold text-ink/10 transition-colors duration-300 group-hover:text-flame/30">
+                        {p.num}
+                      </span>
+                    </div>
 
-                      {/* Year/number side */}
-                      <div
-                        className={`hidden w-1/2 shrink-0 sm:block ${
-                          isLeft ? "pr-12 text-right" : "pl-12"
-                        }`}
-                      >
-                        <span className="font-mono text-5xl font-bold leading-none text-flame/30">
-                          {p.num}
-                        </span>
-                      </div>
-
-                      {/* Content card */}
-                      <div
-                        className={`ml-12 w-full sm:ml-0 sm:w-1/2 ${
-                          isLeft ? "sm:pl-12" : "sm:pr-12"
-                        }`}
-                      >
-                        <div className="group card-lift rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift">
-                          <span
-                            aria-hidden
-                            className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 rounded-t-2xl bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
-                          />
-                          <p className="text-xs font-semibold text-brand sm:hidden">
-                            {p.num}
-                          </p>
-                          <div className="flex items-center gap-3">
-                            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand">
-                              <Icon className="size-5" />
-                            </span>
-                            <h3 className="text-display-sm font-bold text-ink">
-                              {p.title}
-                            </h3>
-                          </div>
-                          <p className="mt-2 text-sm font-semibold text-brand">
-                            {p.subtitle}
-                          </p>
-                          <p className="mt-2 text-sm leading-relaxed text-body">
-                            {p.desc}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </Reveal>
-                );
-              })}
-            </ol>
+                    {/* Title + subtitle + description */}
+                    <h3 className="mt-4 text-base font-bold text-ink">
+                      {p.title}
+                    </h3>
+                    <p className="mt-0.5 text-xs font-semibold text-brand">
+                      {p.subtitle}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-body">
+                      {p.desc}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
