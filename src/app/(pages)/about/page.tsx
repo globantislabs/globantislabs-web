@@ -7,8 +7,6 @@ import {
   Eye,
   History,
   Quote,
-  MapPin,
-  Clock,
   ShieldCheck,
   Sparkles,
   Globe2,
@@ -27,7 +25,6 @@ import {
   valueTags,
   stats,
   certifications,
-  officeLocations,
   company,
 } from "@/lib/site-data";
 
@@ -307,40 +304,47 @@ export default function AboutPage() {
           </div>
 
           {/* Full-width image break */}
-          <Reveal className="mt-12">
-            <div className="relative overflow-hidden rounded-2xl shadow-float">
-              <Image
-                src="/images/wp/2025-01/why_choose01.jpg"
-                alt="Why choose Globantis Labs"
-                width={1200}
-                height={500}
-                className="w-full object-cover"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-r from-ink-deep/85 via-ink-deep/40 to-transparent"
-              />
-              <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center gap-3 p-8 sm:p-12">
-                <Quote className="size-8 text-flame" aria-hidden />
-                <p className="text-display-sm font-bold text-white">
+        </div>
+      </section>
+
+      {/* ============ Full-width quote banner ============ */}
+      <Reveal>
+        <section className="relative h-[50vh] min-h-[360px] w-full overflow-hidden">
+          <Image
+            src="/images/wp/2025-01/why_choose01.jpg"
+            alt="Why choose Globantis Labs"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-r from-ink-deep/92 via-ink-deep/60 to-ink-deep/20"
+          />
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-site w-full">
+              <div className="max-w-2xl">
+                <Quote className="size-10 text-flame" aria-hidden />
+                <p className="mt-5 text-display-lg font-bold text-white">
                   Join our growing list of happy customers.
                 </p>
-                <p className="text-sm leading-relaxed text-white/75">
+                <p className="mt-4 text-base leading-relaxed text-white/75 sm:text-lg">
                   Organizations across 12+ countries trust Globantis Labs to
                   power their digital transformation.
                 </p>
                 <Link
                   href="/contact"
-                  className="btn-lift mt-3 inline-flex h-12 w-fit items-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
+                  className="btn-lift mt-8 inline-flex h-13 items-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
                 >
                   Become a client
                   <ArrowRight className="size-4" aria-hidden />
                 </Link>
               </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </div>
+        </section>
+      </Reveal>
 
       {/* ============ 7. Value pills marquee ============ */}
       <section className="bg-cream py-section-sm">
@@ -362,70 +366,6 @@ export default function AboutPage() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ============ 8. Global offices ============ */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ Where we work ]"
-              title="Three delivery centres, one engineering culture."
-              lead="We deliver from the United States, Canada and India — follow-the-sun coverage for time-sensitive projects and the local domain expertise each market demands."
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {officeLocations.map((o, i) => (
-              <Reveal
-                key={o.city}
-                delay={Math.min(i * 0.08, 0.32)}
-                className="h-full"
-              >
-                <div className="card-lift group h-full overflow-hidden rounded-2xl border border-line bg-white hover:border-flame/40 hover:shadow-lift">
-                  <div className="relative h-44 overflow-hidden">
-                    <Image
-                      src={o.image}
-                      alt={`${o.city} office`}
-                      fill
-                      className="object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105"
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-gradient-to-t from-ink-deep/80 via-ink-deep/20 to-transparent"
-                    />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-flame">
-                        {o.country}
-                      </p>
-                      <p className="font-display text-xl font-bold text-white">
-                        {o.city}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-3 p-6">
-                    <div className="flex items-start gap-2 text-sm text-body">
-                      <MapPin className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden />
-                      <span className="leading-relaxed">{o.address}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-body">
-                      <Clock className="size-4 shrink-0 text-brand" aria-hidden />
-                      {o.tz}
-                    </div>
-                    <div className="border-t border-line pt-3">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
-                        Role
-                      </p>
-                      <p className="mt-1 text-sm leading-relaxed text-ink/80">
-                        {o.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
