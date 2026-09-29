@@ -1,0 +1,991 @@
+     1→import type { Metadata } from "next";
+     2→import { notFound } from "next/navigation";
+     3→import Image from "next/image";
+     4→import Link from "next/link";
+     5→import { ArrowRight, ArrowUpRight } from "lucide-react";
+     6→import { PageHero } from "@/components/site/page-hero";
+     7→import { Reveal, SectionHeading } from "@/components/site/primitives";
+     8→import { buildMetadata } from "@/lib/seo";
+     9→import { industries, type Industry } from "@/lib/site-data";
+    10→
+    11→/* ============================================================
+    12→ * Dynamic industry detail page — handles all 7 industry slugs.
+    13→ * Layout picks by slug so each industry gets its own structure
+    14→ * (NOT a shared template):
+    15→ *
+    16→ *   A (financial-services · logistics · automation)
+    17→ *      2-col sticky intro + offset-cream framed bannerImage →
+    18→ *      4-col KPI cards (stats / flow / workflow) →
+    19→ *      alternating full-width narrative sections →
+    20→ *      ink-navy glass cards (subIndustries / techEnablers) →
+    21→ *      "Other industries" 3-card footer.
+    22→ *
+    23→ *   B (healthcare · cybersecurity)
+    24→ *      centered shade overview (max-w-3xl) →
+    25→ *      4-col premium cards (pillars / layers with coverage) →
+    26→ *      ink-navy horizontal flow (journey / faq-as-cards) →
+    27→ *      shade stacked content sections →
+    28→ *      "Other industries" footer.
+    29→ *
+    30→ *   C (education · ecommerce)
+    31→ *      left-aligned overview with flame rule (max-w-2xl) →
+    32→ *      shade horizontal stepper (pathway / channels) →
+    33→ *      white KPI / feature cards (ecommerceMetrics / platformFeatures) →
+    34→ *      shade content blocks (sections) →
+    35→ *      optional white horizontal strip (flow / techEnablers) →
+    36→ *      "Other industries" footer.
+    37→ *
+    38→ * No CTABand / CTAStrip at the bottom — every layout ends with
+    39→ * the "Other industries" 3-card grid.
+    40→ * ============================================================ */
+    41→
+    42→export function generateStaticParams() {
+    43→  return industries.map((i) => ({ slug: i.slug }));
+    44→}
+    45→
+    46→export async function generateMetadata({
+    47→  params,
+    48→}: {
+    49→  params: Promise<{ slug: string }>;
+    50→}): Promise<Metadata> {
+    51→  const { slug } = await params;
+    52→  const ind = industries.find((i) => i.slug === slug);
+    53→  if (!ind) return {};
+    54→  const title = `${ind.title} | Globantis Labs`;
+    55→  const description =
+    56→    ind.intro ??
+    57→    ind.heroHeading ??
+    58→    ind.sections?.[0]?.paragraphs?.[0] ??
+    59→    ind.tagline ??
+    60→    ind.title;
+    61→  return buildMetadata({
+    62→    title,
+    63→    description,
+    64→    path: `/industries/${slug}`,
+    65→    keywords: [ind.title, ind.tagline, ...(ind.focusAreas ?? [])].filter(
+    66→      Boolean
+    67→    ) as string[],
+    68→  });
+    69→}
+    70→
+    71→export default async function IndustryDetailPage({
+    72→  params,
+    73→}: {
+    74→  params: Promise<{ slug: string }>;
+    75→}) {
+    76→  const { slug } = await params;
+    77→  const ind = industries.find((i) => i.slug === slug);
+    78→  if (!ind) notFound();
+    79→
+    80→  const layout =
+    81→    slug === "financial-services" || slug === "logistics" || slug === "automation"
+    82→      ? "A"
+    83→      : slug === "healthcare" || slug === "cybersecurity"
+    84→        ? "B"
+    85→        : "C";
+    86→
+    87→  return (
+    88→    <>
+    89→      <PageHero
+    90→        title={ind.title}
+    91→        label={ind.label ?? ind.title}
+    92→        image={ind.bannerImage}
+    93→        crumbs={[
+    94→          { label: "Home", href: "/" },
+    95→          { label: "Industries", href: "/industries" },
+    96→          { label: ind.title },
+    97→        ]}
+    98→      />
+    99→      {layout === "A" && <LayoutA ind={ind} />}
+   100→      {layout === "B" && <LayoutB ind={ind} />}
+   101→      {layout === "C" && <LayoutC ind={ind} />}
+   102→    </>
+   103→  );
+   104→}
+   105→
+   106→/* ============================================================
+   107→ * Shared — Global reach badge
+   108→ * Woven into the intro of every layout so the UK, Canada, Dubai
+   109→ * reach is visible without dominating the page.
+   110→ * ============================================================ */
+   111→function GlobalReachBadge({ className }: { className?: string }) {
+   112→  return (
+   113→    <div className={className}>
+   114→      <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-cream px-3.5 py-2 text-xs font-semibold text-brand">
+   115→        <span aria-hidden className="size-1.5 rounded-full bg-flame" />
+   116→        Serving clients across the UK, Canada, Dubai, and beyond
+   117→      </span>
+   118→    </div>
+   119→  );
+   120→}
+   121→
+   122→/* ============================================================
+   123→
+   124→/* ============================================================
+   125→ * Shared — narrative section renderer
+   126→ * Renders one ind.sections[] block with eyebrow + flame rule +
+   127→ * heading + paragraphs + optional image. Used by all layouts
+   128→ * so the prose voice stays consistent while each layout owns
+   129→ * its surrounding section bg.
+   130→ * ============================================================ */
+   131→function NarrativeSection({
+   132→  sec,
+   133→  bg,
+   134→}: {
+   135→  sec: NonNullable<Industry["sections"]>[number];
+   136→  bg: "bg-white" | "bg-shade";
+   137→}) {
+   138→  return (
+   139→    <section className={`${bg} py-section-md`}>
+   140→      <div className="container-site">
+   141→        <div className="mx-auto max-w-4xl">
+   142→          <Reveal>
+   143→            {sec.label && <span className="section-label">[ {sec.label} ]</span>}
+   144→            <div aria-hidden className="rule-flame mb-6" />
+   145→            <h3 className="text-display-md font-bold leading-snug text-ink">
+   146→              {sec.heading}
+   147→            </h3>
+   148→            <div className="mt-5 space-y-4">
+   149→              {sec.paragraphs?.map((p, j) => (
+   150→                <p key={j} className="text-[16px] leading-relaxed text-body">
+   151→                  {p}
+   152→                </p>
+   153→              ))}
+   154→            </div>
+   155→            {sec.image && (
+   156→              <div className="mt-8 overflow-hidden rounded-2xl border border-line shadow-lift">
+   157→                <Image
+   158→                  src={sec.image}
+   159→                  alt={sec.heading}
+   160→                  width={960}
+   161→                  height={520}
+   162→                  className="h-[260px] w-full object-cover sm:h-[360px] lg:h-[460px]"
+   163→                />
+   164→              </div>
+   165→            )}
+   166→          </Reveal>
+   167→        </div>
+   168→      </div>
+   169→    </section>
+   170→  );
+   171→}
+   172→
+   173→/* ============================================================
+   174→ * LAYOUT A — financial-services · logistics · automation
+   175→ *
+   176→ *   §1 white  · 2-col sticky intro + offset-cream framed bannerImage
+   177→ *   §2 shade  · 4-col KPI / stage cards with flame rules
+   178→ *   §3 white  · narrative sections (alternating bg-white/bg-shade)
+   179→ *   §4 navy   · glass cards (subIndustries / techEnablers)
+   180→ *   §5 white  · "Other industries"
+   181→ * ============================================================ */
+   182→function LayoutA({ ind }: { ind: Industry }) {
+   183→  const Icon = ind.icon;
+   184→  const stageData = ind.flow ?? ind.workflow; // logistics.flow / automation.workflow
+   185→  const glassData = ind.subIndustries?.items ?? ind.techEnablers;
+   186→
+   187→  return (
+   188→    <>
+   189→      {/* === §1 — white, 2-col sticky intro + offset-cream framed image === */}
+   190→      <section className="bg-white py-section-md">
+   191→        <div className="container-site">
+   192→          <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-16">
+   193→            {/* Left — sticky intro */}
+   194→            <div className="lg:sticky lg:top-32 lg:self-start">
+   195→              <Reveal>
+   196→                <div className="flex items-center gap-4">
+   197→                  {Icon && (
+   198→                    <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+   199→                      <Icon aria-hidden className="size-7" />
+   200→                    </span>
+   201→                  )}
+   202→                  <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+   203→                    Industry · {ind.title}
+   204→                  </span>
+   205→                </div>
+   206→                <div aria-hidden className="rule-flame mt-6" />
+   207→                <span className="section-label">[ {ind.label ?? ind.title} ]</span>
+   208→                <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+   209→                  {ind.heroHeading ?? ind.title}
+   210→                </h2>
+   211→                {ind.intro && (
+   212→                  <p className="mt-6 text-[16px] leading-relaxed text-body">
+   213→                    {ind.intro}
+   214→                  </p>
+   215→                )}
+   216→                {ind.focusAreas && ind.focusAreas.length > 0 && (
+   217→                  <ul className="mt-6 flex flex-wrap gap-2">
+   218→                    {ind.focusAreas.map((fa) => (
+   219→                      <li
+   220→                        key={fa}
+   221→                        className="rounded-full border border-brand/30 bg-cream px-3.5 py-1.5 text-xs font-semibold text-brand"
+   222→                      >
+   223→                        {fa}
+   224→                      </li>
+   225→                    ))}
+   226→                  </ul>
+   227→                )}
+   228→                <GlobalReachBadge className="mt-6" />
+   229→              </Reveal>
+   230→            </div>
+   231→
+   232→            {/* Right — bannerImage in offset cream frame */}
+   233→            {ind.bannerImage && (
+   234→              <Reveal delay={0.1}>
+   235→                <div className="relative">
+   236→                  <div
+   237→                    aria-hidden
+   238→                    className="absolute -left-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
+   239→                  />
+   240→                  <div className="relative overflow-hidden rounded-2xl border border-line bg-ink shadow-lift">
+   241→                    <Image
+   242→                      src={ind.bannerImage}
+   243→                      alt={ind.title}
+   244→                      width={760}
+   245→                      height={560}
+   246→                      sizes="(min-width: 1024px) 760px, 100vw"
+   247→                      className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
+   248→                    />
+   249→                    <div
+   250→                      aria-hidden
+   251→                      className="absolute inset-x-0 bottom-0 h-24"
+   252→                      style={{
+   253→                        background:
+   254→                          "linear-gradient(to top, rgba(11,22,94,0.55) 0%, rgba(11,22,94,0) 100%)",
+   255→                      }}
+   256→                    />
+   257→                  </div>
+   258→                </div>
+   259→              </Reveal>
+   260→            )}
+   261→          </div>
+   262→        </div>
+   263→      </section>
+   264→
+   265→      {/* === §2 — shade, stage cards (flow/workflow only, NOT stats) === */}
+   266→      {stageData && stageData.length > 0 && (
+   267→        <section className="bg-shade py-section-md">
+   268→          <div className="container-site">
+   269→            <Reveal>
+   270→              <SectionHeading
+   271→                label="[ The stages ]"
+   272→                title={
+   273→                  <>
+   274→                    Stages that <span className="text-flame">connect.</span>
+   275→                  </>
+   276→                }
+   277→                lead="Five stages that move work end-to-end — each one observable, instrumented and recoverable in real time."
+   278→                align="center"
+   279→              />
+   280→            </Reveal>
+   281→
+   282→            {/* Stage cards (logistics.flow / automation.workflow) */}
+   283→            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+   284→              {stageData.map((step, i) => {
+   285→                const StepIcon = step.icon;
+   286→                const stepLabel = step.label;
+   287→                return (
+   288→                  <Reveal key={stepLabel + i} delay={Math.min(i * 0.05, 0.3)}>
+   289→                    <div className="card-lift relative flex h-full flex-col rounded-2xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift">
+   290→                      <div className="flex items-center justify-between">
+   291→                        {StepIcon && (
+   292→                          <span className="flex size-10 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand">
+   293→                            <StepIcon aria-hidden className="size-5" />
+   294→                          </span>
+   295→                        )}
+   296→                        <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+   297→                          {String(i + 1).padStart(2, "0")}
+   298→                        </span>
+   299→                      </div>
+   300→                      <p className="mt-4 text-base font-bold text-ink">
+   301→                        {stepLabel}
+   302→                      </p>
+   303→                      <p className="mt-1 text-xs leading-relaxed text-body">
+   304→                          {step.desc}
+   305→                        </p>
+   306→                      </div>
+   307→                    </Reveal>
+   308→                  );
+   309→                })}
+   310→              </div>
+   311→          </div>
+   312→        </section>
+   313→      )}
+   314→
+   315→      {/* === §3 — narrative sections (alternating bg-white/bg-shade) === */}
+   316→      {ind.sections?.map((sec, i) => (
+   317→        <NarrativeSection
+   318→          key={i}
+   319→          sec={sec}
+   320→          bg={i % 2 === 0 ? "bg-white" : "bg-shade"}
+   321→        />
+   322→      ))}
+   323→
+   324→      {/* === §4 — ink navy, glass cards (subIndustries / techEnablers) === */}
+   325→      {glassData && glassData.length > 0 && (
+   326→        <section className="ink-gradient relative overflow-hidden py-section-md">
+   327→          <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
+   328→          <div
+   329→            aria-hidden
+   330→            className="pointer-events-none absolute -left-20 -top-24 size-64 rounded-full bg-flame/20 blur-3xl"
+   331→          />
+   332→          <div
+   333→            aria-hidden
+   334→            className="pointer-events-none absolute -bottom-28 -right-16 size-72 rounded-full bg-flame/15 blur-3xl"
+   335→          />
+   336→          <div className="container-site relative">
+   337→            <Reveal>
+   338→              <SectionHeading
+   339→                label={
+   340→                  ind.subIndustries
+   341→                    ? `[ ${ind.subIndustries.heading} ]`
+   342→                    : "[ Tech enablers ]"
+   343→                }
+   344→                title={
+   345→                  ind.subIndustries ? (
+   346→                    <>
+   347→                      Engagements that <span className="text-flame">scale.</span>
+   348→                    </>
+   349→                  ) : (
+   350→                    <>
+   351→                      The stack that <span className="text-flame">powers it.</span>
+   352→                    </>
+   353→                  )
+   354→                }
+   355→                lead={
+   356→                  ind.subIndustries
+   357→                    ? "Three flagship service tracks inside this industry — each one scoped, engineered and shipped against a clear business outcome."
+   358→                    : "The technologies that make every shipment visible, every contract provable, and every cycle tunable."
+   359→                }
+   360→                tone="dark"
+   361→                align="center"
+   362→              />
+   363→            </Reveal>
+   364→            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+   365→              {glassData.map((item, i) => {
+   366→                const TIcon = "icon" in item ? item.icon : undefined;
+   367→                const itemTitle =
+   368→                  "title" in item
+   369→                    ? item.title
+   370→                    : "name" in item
+   371→                      ? item.name
+   372→                      : "label" in item
+   373→                        ? item.label
+   374→                        : "";
+   375→                const itemDesc = "desc" in item ? item.desc : "";
+   376→                const itemImage = "image" in item ? item.image : undefined;
+   377→                return (
+   378→                  <Reveal key={itemTitle + i} delay={Math.min(i * 0.07, 0.3)}>
+   379→                    <div className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/[0.04] backdrop-blur-sm hover:border-flame/40">
+   380→                      <span
+   381→                        aria-hidden
+   382→                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+   383→                      />
+   384→                      {itemImage && (
+   385→                        <div className="relative h-40 overflow-hidden">
+   386→                          <Image
+   387→                            src={itemImage}
+   388→                            alt={itemTitle}
+   389→                            fill
+   390→                            className="object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105"
+   391→                          />
+   392→                          <div
+   393→                            aria-hidden
+   394→                            className="absolute inset-0"
+   395→                            style={{
+   396→                              background:
+   397→                                "linear-gradient(to top, rgba(0,3,61,0.92) 0%, rgba(0,3,61,0.25) 60%, rgba(0,3,61,0) 100%)",
+   398→                            }}
+   399→                          />
+   400→                          <h3 className="absolute bottom-3 left-4 right-4 text-base font-bold leading-snug text-white">
+   401→                            {itemTitle}
+   402→                          </h3>
+   403→                        </div>
+   404→                      )}
+   405→                      <div className="flex flex-1 flex-col p-6">
+   406→                        {!itemImage && TIcon && (
+   407→                          <span className="flex size-12 items-center justify-center rounded-xl border border-brand/30 bg-brand/10 text-flame">
+   408→                            <TIcon aria-hidden className="size-6" />
+   409→                          </span>
+   410→                        )}
+   411→                        {!itemImage && (
+   412→                          <h3 className="mt-4 text-base font-bold leading-snug text-white">
+   413→                            {itemTitle}
+   414→                          </h3>
+   415→                        )}
+   416→                        {itemDesc && (
+   417→                          <p
+   418→                            className={`text-sm leading-relaxed text-white/70 ${
+   419→                              itemImage ? "pt-1" : "mt-2"
+   420→                            }`}
+   421→                          >
+   422→                            {itemDesc}
+   423→                          </p>
+   424→                        )}
+   425→                      </div>
+   426→                    </div>
+   427→                  </Reveal>
+   428→                );
+   429→              })}
+   430→            </div>
+   431→          </div>
+   432→        </section>
+   433→      )}
+   434→
+   435→    </>
+   436→  );
+   437→}
+   438→
+   439→/* ============================================================
+   440→ * LAYOUT B — healthcare · cybersecurity
+   441→ *
+   442→ *   §1 shade  · centered overview (max-w-3xl)
+   443→ *   §2 white  · 4-col premium cards (pillars / layers with coverage)
+   444→ *   §3 navy   · horizontal flow (journey / faq items as cards)
+   445→ *   §4 shade  · stacked content sections
+   446→ *   §5 white  · "Other industries"
+   447→ * ============================================================ */
+   448→function LayoutB({ ind }: { ind: Industry }) {
+   449→  const Icon = ind.icon;
+   450→  const isHealthcare = ind.slug === "healthcare";
+   451→  const gridData = ind.pillars ?? ind.layers;
+   452→  // Cybersecurity has no journey/workflow — fall back to FAQ items as the
+   453→  // navy "domains" section so the layout stays full and on-structure.
+   454→  const flowData = ind.journey ?? ind.workflow ?? ind.faq?.items;
+   455→
+   456→  return (
+   457→    <>
+   458→      {/* === §1 — shade, centered overview === */}
+   459→      <section className="bg-shade py-section-md">
+   460→        <div className="container-site">
+   461→          <Reveal>
+   462→            <div className="mx-auto max-w-3xl text-center">
+   463→              <div className="mb-6 flex items-center justify-center gap-4">
+   464→                {Icon && (
+   465→                  <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand">
+   466→                    <Icon aria-hidden className="size-7" />
+   467→                  </span>
+   468→                )}
+   469→                <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+   470→                  Industry · {ind.title}
+   471→                </span>
+   472→              </div>
+   473→              <div aria-hidden className="rule-flame mx-auto" />
+   474→              <span className="section-label !mx-auto !mt-6 !block">
+   475→                [ Overview ]
+   476→              </span>
+   477→              <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+   478→                {ind.heroHeading ?? ind.sections?.[0]?.heading ?? ind.title}
+   479→              </h2>
+   480→              <div className="mt-6 space-y-4">
+   481→                {ind.intro ? (
+   482→                  <p className="text-[16px] leading-relaxed text-body">
+   483→                    {ind.intro}
+   484→                  </p>
+   485→                ) : (
+   486→                  ind.sections?.[0]?.paragraphs?.map((p, i) => (
+   487→                    <p
+   488→                      key={i}
+   489→                      className="text-[16px] leading-relaxed text-body"
+   490→                    >
+   491→                      {p}
+   492→                    </p>
+   493→                  ))
+   494→                )}
+   495→              </div>
+   496→              <GlobalReachBadge className="mt-6 flex justify-center" />
+   497→            </div>
+   498→          </Reveal>
+   499→        </div>
+   500→      </section>
+   501→
+   502→      {/* === §2 — white, 4-col premium cards (pillars / layers) === */}
+   503→      {gridData && gridData.length > 0 && (
+   504→        <section className="bg-white py-section-md">
+   505→          <div className="container-site">
+   506→            <Reveal>
+   507→              <SectionHeading
+   508→                label={isHealthcare ? "[ Care pillars ]" : "[ Defense layers ]"}
+   509→                title={
+   510→                  isHealthcare ? (
+   511→                    <>
+   512→                      Four pillars of <span className="text-flame">modern care.</span>
+   513→                    </>
+   514→                  ) : (
+   515→                    <>
+   516→                      Defense-in-depth, <span className="text-flame">edge to human.</span>
+   517→                    </>
+   518→                  )
+   519→                }
+   520→                lead={
+   521→                  isHealthcare
+   522→                    ? "Four pillars shape every engagement — from first consult to long-term recovery, audited against outcomes not transactions."
+   523→                    : "Four defensive layers compound into full-spectrum resilience — every layer instrumented, every coverage gap measured and closed."
+   524→                }
+   525→                align="center"
+   526→              />
+   527→            </Reveal>
+   528→            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+   529→              {gridData.map((item, i) => {
+   530→                const ItemIcon = item.icon;
+   531→                // Extract coverage via a type guard helper so the narrowing
+   532→                // survives the JSX conditional block (in-operator narrowing
+   533→                // inside `&&` JSX containers is unreliable in TS 5.9).
+   534→                const layerItem = item as { coverage?: number };
+   535→                const coverage = layerItem.coverage;
+   536→                return (
+   537→                  <Reveal key={item.title} delay={Math.min(i * 0.07, 0.3)}>
+   538→                    <div className="card-lift group relative flex h-full flex-col rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift">
+   539→                      <span
+   540→                        aria-hidden
+   541→                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+   542→                      />
+   543→                      {ItemIcon && (
+   544→                        <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-all duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+   545→                          <ItemIcon aria-hidden className="size-6" />
+   546→                        </span>
+   547→                      )}
+   548→                      <h3 className="mt-5 text-base font-bold leading-snug text-ink">
+   549→                        {item.title}
+   550→                      </h3>
+   551→                      <p className="mt-2 text-sm leading-relaxed text-body">
+   552→                        {item.desc}
+   553→                      </p>
+   554→                      {coverage !== undefined && (
+   555→                        <div className="mt-auto border-t border-line pt-4">
+   556→                          <div className="flex items-center justify-between text-xs">
+   557→                            <span className="font-mono font-semibold tracking-[0.12em] text-ink/45">
+   558→                              Coverage
+   559→                            </span>
+   560→                            <span className="font-bold text-brand">
+   561→                              {coverage}%
+   562→                            </span>
+   563→                          </div>
+   564→                          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-shade">
+   565→                            <div
+   566→                              className="h-full rounded-full brand-gradient"
+   567→                              style={{ width: `${coverage}%` }}
+   568→                            />
+   569→                          </div>
+   570→                        </div>
+   571→                      )}
+   572→                    </div>
+   573→                  </Reveal>
+   574→                );
+   575→              })}
+   576→            </div>
+   577→          </div>
+   578→        </section>
+   579→      )}
+   580→
+   581→      {/* === §3 — ink navy, horizontal flow (journey) / faq cards === */}
+   582→      {flowData && flowData.length > 0 && (
+   583→        <section className="ink-gradient relative overflow-hidden py-section-md">
+   584→          <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
+   585→          <div
+   586→            aria-hidden
+   587→            className="pointer-events-none absolute -left-20 -top-24 size-64 rounded-full bg-flame/20 blur-3xl"
+   588→          />
+   589→          <div
+   590→            aria-hidden
+   591→            className="pointer-events-none absolute -bottom-28 -right-16 size-72 rounded-full bg-flame/15 blur-3xl"
+   592→          />
+   593→          <div className="container-site relative">
+   594→            <Reveal>
+   595→              <SectionHeading
+   596→                label={
+   597→                  ind.faq
+   598→                    ? `[ ${ind.faq.label ?? "What we secure"} ]`
+   599→                    : isHealthcare
+   600→                      ? "[ Patient journey ]"
+   601→                      : "[ Workflow ]"
+   602→                }
+   603→                title={
+   604→                  ind.faq ? (
+   605→                    <>
+   606→                      Security, <span className="text-flame">answered.</span>
+   607→                    </>
+   608→                  ) : isHealthcare ? (
+   609→                    <>
+   610→                      From schedule to <span className="text-flame">recovery.</span>
+   611→                    </>
+   612→                  ) : (
+   613→                    <>
+   614→                      A closed loop that <span className="text-flame">learns.</span>
+   615→                    </>
+   616→                  )
+   617→                }
+   618→                lead={
+   619→                  ind.faq
+   620→                    ? "Straight answers to the questions security leaders ask us first — from threat surface to compliance posture to human firewalls."
+   621→                    : isHealthcare
+   622→                      ? "The patient journey, reimagined around outcomes — every step instrumented, every handoff accountable, every recovery visible."
+   623→                      : "Five workflow stages that take manual effort out of every cycle — trigger, decide, act, monitor, optimize."
+   624→                }
+   625→                tone="dark"
+   626→                align="center"
+   627→              />
+   628→            </Reveal>
+   629→
+   630→            {ind.faq ? (
+   631→              // FAQ-as-navy-cards (cybersecurity)
+   632→              <div className="mt-12 grid gap-4 sm:grid-cols-2">
+   633→                {flowData.map((item, i) => {
+   634→                  const itemImage = "image" in item ? item.image : undefined;
+   635→                  return (
+   636→                    <Reveal key={i} delay={Math.min(i * 0.07, 0.3)}>
+   637→                      <div className="card-lift group flex h-full flex-col rounded-2xl border border-white/15 bg-white/[0.04] p-6 backdrop-blur-sm hover:border-flame/40">
+   638→                        <div className="flex items-center gap-3">
+   639→                          {itemImage && (
+   640→                            <span className="flex size-10 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-white/[0.04]">
+   641→                              <Image
+   642→                                src={itemImage}
+   643→                                alt=""
+   644→                                width={40}
+   645→                                height={40}
+   646→                                className="size-10 object-contain"
+   647→                              />
+   648→                            </span>
+   649→                          )}
+   650→                          <span className="font-mono text-xs font-semibold tracking-[0.12em] text-white/45">
+   651→                            Q{String(i + 1).padStart(2, "0")}
+   652→                          </span>
+   653→                        </div>
+   654→                        <h3 className="mt-4 text-base font-bold leading-snug text-white">
+   655→                          {item.q}
+   656→                        </h3>
+   657→                        <p className="mt-2 text-sm leading-relaxed text-white/70">
+   658→                          {item.a}
+   659→                        </p>
+   660→                      </div>
+   661→                    </Reveal>
+   662→                  );
+   663→                })}
+   664→              </div>
+   665→            ) : (
+   666→              // Horizontal flow with connected nodes (healthcare journey)
+   667→              <div className="relative mt-12">
+   668→                <div
+   669→                  aria-hidden
+   670→                  className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent lg:block"
+   671→                />
+   672→                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+   673→                  {flowData.map((step, i) => {
+   674→                    const StepIcon = step.icon;
+   675→                    const stepTitle = "title" in step ? step.title : step.label;
+   676→                    return (
+   677→                      <Reveal
+   678→                        key={stepTitle + i}
+   679→                        delay={Math.min(i * 0.07, 0.3)}
+   680→                        className="relative"
+   681→                      >
+   682→                        <div className="flex flex-col items-center text-center">
+   683→                          <div className="relative z-10 flex size-14 items-center justify-center rounded-full border border-flame/40 bg-brand/10 text-flame">
+   684→                            {StepIcon && (
+   685→                              <StepIcon aria-hidden className="size-7" />
+   686→                            )}
+   687→                          </div>
+   688→                          <span className="mt-4 font-mono text-xs font-semibold tracking-[0.12em] text-white/45">
+   689→                            Step {String(i + 1).padStart(2, "0")}
+   690→                          </span>
+   691→                          <h3 className="mt-1 text-base font-bold text-white">
+   692→                            {stepTitle}
+   693→                          </h3>
+   694→                          <p className="mt-2 text-xs leading-relaxed text-white/70">
+   695→                            {step.desc}
+   696→                          </p>
+   697→                        </div>
+   698→                      </Reveal>
+   699→                    );
+   700→                  })}
+   701→                </div>
+   702→              </div>
+   703→            )}
+   704→          </div>
+   705→        </section>
+   706→      )}
+   707→
+   708→      {/* === §4 — shade, stacked content sections === */}
+   709→      {ind.sections?.map((sec, i) => (
+   710→        <NarrativeSection key={i} sec={sec} bg="bg-shade" />
+   711→      ))}
+   712→
+   713→    </>
+   714→  );
+   715→}
+   716→
+   717→/* ============================================================
+   718→ * LAYOUT C — education · ecommerce
+   719→ *
+   720→ *   §1 white  · left-aligned overview with flame rule (max-w-2xl)
+   721→ *   §2 shade  · horizontal stepper (pathway / channels) with arrows
+   722→ *   §3 white  · KPI / feature cards (ecommerceMetrics / platformFeatures)
+   723→ *   §4 shade  · stacked content sections
+   724→ *   §5 white  · horizontal strip (flow / techEnablers) — only if present
+   725→ *   §6 white  · "Other industries"
+   726→ * ============================================================ */
+   727→function LayoutC({ ind }: { ind: Industry }) {
+   728→  const Icon = ind.icon;
+   729→  const isEcommerce = ind.slug === "ecommerce";
+   730→  const stepperData = isEcommerce ? ind.channels : ind.pathway;
+   731→  const cardsData = isEcommerce ? ind.ecommerceMetrics : ind.platformFeatures;
+   732→  const stripData = ind.flow ?? ind.techEnablers;
+   733→
+   734→  return (
+   735→    <>
+   736→      {/* === §1 — white, left-aligned overview with flame rule === */}
+   737→      <section className="bg-white py-section-md">
+   738→        <div className="container-site">
+   739→          <Reveal>
+   740→            <div className="max-w-2xl">
+   741→              <div className="flex items-center gap-4">
+   742→                {Icon && (
+   743→                  <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+   744→                    <Icon aria-hidden className="size-7" />
+   745→                  </span>
+   746→                )}
+   747→                <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+   748→                  Industry · {ind.title}
+   749→                </span>
+   750→              </div>
+   751→              <div aria-hidden className="rule-flame mt-6" />
+   752→              <span className="section-label">[ Overview ]</span>
+   753→              <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+   754→                {ind.heroHeading ?? ind.title}
+   755→              </h2>
+   756→              <div className="mt-6 space-y-4">
+   757→                {ind.intro ? (
+   758→                  <p className="text-[16px] leading-relaxed text-body">
+   759→                    {ind.intro}
+   760→                  </p>
+   761→                ) : (
+   762→                  <p className="text-[16px] leading-relaxed text-body">
+   763→                    {ind.tagline}
+   764→                  </p>
+   765→                )}
+   766→              </div>
+   767→              <GlobalReachBadge className="mt-6" />
+   768→            </div>
+   769→          </Reveal>
+   770→        </div>
+   771→      </section>
+   772→
+   773→      {/* === §2 — shade, horizontal stepper (pathway / channels) === */}
+   774→      {stepperData && stepperData.length > 0 && (
+   775→        <section className="bg-shade py-section-md">
+   776→          <div className="container-site">
+   777→            <Reveal>
+   778→              <SectionHeading
+   779→                label={isEcommerce ? "[ Omnichannel ]" : "[ Learner pathway ]"}
+   780→                title={
+   781→                  isEcommerce ? (
+   782→                    <>
+   783→                      Every touchpoint, <span className="text-flame">one experience.</span>
+   784→                    </>
+   785→                  ) : (
+   786→                    <>
+   787→                      From onboarding to <span className="text-flame">career.</span>
+   788→                    </>
+   789→                  )
+   790→                }
+   791→                lead={
+   792→                  isEcommerce
+   793→                    ? "Six channels converging on a single commerce spine — inventory, identity, pricing, and insight unified across every customer surface."
+   794→                    : "Five steps from first login to a credential that opens doors — adaptive, observable, and measurable at every step."
+   795→                }
+   796→                align="center"
+   797→              />
+   798→            </Reveal>
+   799→            <Reveal delay={0.1}>
+   800→              <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+   801→                {stepperData.map((step, i) => {
+   802→                  const StepIcon = "icon" in step ? step.icon : undefined;
+   803→                  const stepLabel = "label" in step ? step.label : step.title;
+   804→                  const stepDesc = "desc" in step ? step.desc : "";
+   805→                  return (
+   806→                    <li key={stepLabel + i} className="relative">
+   807→                      <div className="card-lift group flex h-full flex-col rounded-2xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift">
+   808→                        <div className="flex items-center justify-between">
+   809→                          {StepIcon ? (
+   810→                            <span className="flex size-10 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand">
+   811→                              <StepIcon aria-hidden className="size-5" />
+   812→                            </span>
+   813→                          ) : (
+   814→                            <span className="font-mono text-2xl font-bold leading-none text-flame">
+   815→                              {String(i + 1).padStart(2, "0")}
+   816→                            </span>
+   817→                          )}
+   818→                          <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+   819→                            {String(i + 1).padStart(2, "0")}
+   820→                          </span>
+   821→                        </div>
+   822→                        <p className="mt-4 text-sm font-bold text-ink">
+   823→                          {stepLabel}
+   824→                        </p>
+   825→                        {stepDesc && (
+   826→                          <p className="mt-1 text-xs leading-relaxed text-body">
+   827→                            {stepDesc}
+   828→                          </p>
+   829→                        )}
+   830→                      </div>
+   831→                      {i < stepperData.length - 1 && (
+   832→                        <ArrowRight
+   833→                          aria-hidden
+   834→                          className="absolute -right-3 top-1/2 z-10 hidden size-5 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white p-0.5 text-flame shadow-soft lg:flex"
+   835→                        />
+   836→                      )}
+   837→                    </li>
+   838→                  );
+   839→                })}
+   840→              </ol>
+   841→            </Reveal>
+   842→          </div>
+   843→        </section>
+   844→      )}
+   845→
+   846→      {/* === §3 — white, KPI / feature cards === */}
+   847→      {cardsData && cardsData.length > 0 && (
+   848→        <section className="bg-white py-section-md">
+   849→          <div className="container-site">
+   850→            <Reveal>
+   851→              <SectionHeading
+   852→                label={
+   853→                  isEcommerce ? "[ Commerce KPIs ]" : "[ Platform features ]"
+   854→                }
+   855→                title={
+   856→                  isEcommerce ? (
+   857→                    <>
+   858→                      Numbers that <span className="text-flame">compound.</span>
+   859→                    </>
+   860→                  ) : (
+   861→                    <>
+   862→                      Built for <span className="text-flame">scale.</span>
+   863→                    </>
+   864→                  )
+   865→                }
+   866→                lead={
+   867→                  isEcommerce
+   868→                    ? "Three KPIs we move on every engagement — and the baselines we beat across the UK, Canada, Dubai and beyond."
+   869→                    : "Three platform features that make learning measurable, scalable, and resilient across regions, devices and cohorts."
+   870→                }
+   871→                align="center"
+   872→              />
+   873→            </Reveal>
+   874→            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+   875→              {cardsData.map((item, i) => {
+   876→                const ItemIcon = "icon" in item ? item.icon : undefined;
+   877→                const isMetric = "value" in item;
+   878→                const itemTitle = "title" in item ? item.title : "";
+   879→                const itemDesc = "desc" in item ? item.desc : "";
+   880→                return (
+   881→                  <Reveal key={i} delay={Math.min(i * 0.07, 0.3)}>
+   882→                    <div className="card-lift group relative flex h-full flex-col rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift">
+   883→                      <span
+   884→                        aria-hidden
+   885→                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+   886→                      />
+   887→                      {isMetric ? (
+   888→                        <>
+   889→                          <div aria-hidden className="rule-flame" />
+   890→                          <p className="mt-4 text-display-md font-bold text-ink">
+   891→                            {item.value}
+   892→                          </p>
+   893→                          <p className="mt-2 text-sm leading-relaxed text-body">
+   894→                            {item.label}
+   895→                          </p>
+   896→                          {"trend" in item && item.trend && (
+   897→                            <p className="mt-1 text-xs font-semibold text-brand">
+   898→                              {item.trend}
+   899→                            </p>
+   900→                          )}
+   901→                        </>
+   902→                      ) : (
+   903→                        <>
+   904→                          {ItemIcon && (
+   905→                            <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-all duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+   906→                              <ItemIcon aria-hidden className="size-6" />
+   907→                            </span>
+   908→                          )}
+   909→                          <h3 className="mt-5 text-base font-bold leading-snug text-ink">
+   910→                            {itemTitle}
+   911→                          </h3>
+   912→                          <p className="mt-2 text-sm leading-relaxed text-body">
+   913→                            {itemDesc}
+   914→                          </p>
+   915→                        </>
+   916→                      )}
+   917→                    </div>
+   918→                  </Reveal>
+   919→                );
+   920→              })}
+   921→            </div>
+   922→          </div>
+   923→        </section>
+   924→      )}
+   925→
+   926→      {/* === §4 — shade, stacked content sections === */}
+   927→      {ind.sections?.map((sec, i) => (
+   928→        <NarrativeSection key={i} sec={sec} bg="bg-shade" />
+   929→      ))}
+   930→
+   931→      {/* === §5 — white, horizontal strip (flow / techEnablers) === */}
+   932→      {stripData && stripData.length > 0 && (
+   933→        <section className="bg-white py-section-md">
+   934→          <div className="container-site">
+   935→            <Reveal>
+   936→              <SectionHeading
+   937→                label="[ Tech enablers ]"
+   938→                title={
+   939→                  <>
+   940→                    The stack that <span className="text-flame">powers it.</span>
+   941→                  </>
+   942→                }
+   943→                lead="The technologies that make every transaction observable, every shipment provable, every cycle tunable."
+   944→                align="center"
+   945→              />
+   946→            </Reveal>
+   947→            <Reveal delay={0.1}>
+   948→              <ul className="mx-auto mt-12 flex max-w-4xl flex-wrap items-stretch justify-center gap-3">
+   949→                {stripData.map((t, i) => {
+   950→                  const TIcon = "icon" in t ? t.icon : undefined;
+   951→                  const tName =
+   952→                    "name" in t
+   953→                      ? t.name
+   954→                      : "label" in t
+   955→                        ? t.label
+   956→                        : "title" in t
+   957→                          ? t.title
+   958→                          : "";
+   959→                  const tDesc = "desc" in t ? t.desc : "";
+   960→                  return (
+   961→                    <li
+   962→                      key={tName + i}
+   963→                      className="card-lift flex items-center gap-3 rounded-2xl border border-line bg-cream px-5 py-4 hover:border-flame/40"
+   964→                    >
+   965→                      {TIcon && (
+   966→                        <span className="flex size-9 items-center justify-center rounded-lg border border-brand/20 bg-white text-brand">
+   967→                          <TIcon aria-hidden className="size-5" />
+   968→                        </span>
+   969→                      )}
+   970→                      <div>
+   971→                        <p className="text-sm font-bold text-ink">{tName}</p>
+   972→                        {tDesc && (
+   973→                          <p className="text-xs leading-relaxed text-body">
+   974→                            {tDesc}
+   975→                          </p>
+   976→                        )}
+   977→                      </div>
+   978→                    </li>
+   979→                  );
+   980→                })}
+   981→              </ul>
+   982→            </Reveal>
+   983→          </div>
+   984→        </section>
+   985→      )}
+   986→
+   987→      {/* === §6 — Other industries footer === */}
+   988→    </>
+   989→  );
+   990→}
+   991→
