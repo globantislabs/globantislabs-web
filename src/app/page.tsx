@@ -12,9 +12,9 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <TrustStrip />
         <Services />
         <WhyGlobantis />
+        <TrustStrip />
         <Consultation />
       </main>
       <Footer />
