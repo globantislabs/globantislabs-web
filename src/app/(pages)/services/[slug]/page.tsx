@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
 import { servicesV2, type ServiceV2 } from "@/lib/services-data";
+import { AnimatedCapabilities } from "./animated-capabilities";
 
 /* ============================================================
  * Dynamic service detail page — handles all 10 service slugs.
@@ -209,41 +211,9 @@ function LayoutA({ service }: { service: ServiceV2 }) {
         </div>
       </section>
 
-      {/* === Section 2 — shade, 2-col checkmark hairline grid === */}
-      <section className="bg-shade py-section-md">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ Capabilities ]"
-              title={
-                <>
-                  What we <span className="text-flame">deliver.</span>
-                </>
-              }
-              lead="A focused scope of work — engineered to ship, not to sprawl."
-              align="center"
-            />
-          </Reveal>
+      {/* === Section 2 — animated capabilities (navy) === */}
+      <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
 
-          <Reveal delay={0.1}>
-            <ul className="mx-auto mt-12 grid max-w-4xl gap-x-10 sm:grid-cols-2">
-              {service.capabilities.map((cap) => (
-                <li
-                  key={cap}
-                  className="group flex items-center gap-3 border-t border-line py-4 first:border-t-0 sm:[&:nth-child(2)]:border-t-0"
-                >
-                  <CheckCircle2
-                    className="size-5 shrink-0 text-brand transition-colors duration-300 group-hover:text-flame"
-                    aria-hidden
-                  />
-                  <span className="text-[15px] font-medium text-ink">{cap}</span>
-                </li>
-              ))}
-              <li aria-hidden className="col-span-full border-t border-line" />
-            </ul>
-          </Reveal>
-        </div>
-      </section>
 
       {/* === Section 3 — white, CTA === */}
       <CTASection
@@ -426,51 +396,9 @@ function LayoutC({ service }: { service: ServiceV2 }) {
         </div>
       </section>
 
-      {/* === Section 2 — shade, 2-col split: sticky heading + numbered list === */}
-      <section className="bg-shade py-section-md">
-        <div className="container-site">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
-            {/* Left — sticky heading */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
-              <Reveal>
-                <div aria-hidden className="rule-flame" />
-                <span className="section-label mt-6">[ Capabilities ]</span>
-                <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
-                  What's inside the{" "}
-                  <span className="text-flame">engagement.</span>
-                </h2>
-                <p className="mt-5 text-[16px] leading-relaxed text-body">
-                  A focused list of capabilities — each one scoped, engineered
-                  and shipped to a clear business outcome.
-                </p>
-              </Reveal>
-            </div>
+      {/* === Section 2 — animated capabilities (navy) === */}
+      <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
 
-            {/* Right — numbered clean list with hover tint */}
-            <Reveal delay={0.1}>
-              <ul className="overflow-hidden rounded-2xl border border-line bg-white">
-                {service.capabilities.map((cap, i) => (
-                  <li
-                    key={cap}
-                    className="group flex items-center gap-5 border-t border-line px-5 py-4 transition-colors duration-300 first:border-t-0 hover:bg-cream/60"
-                  >
-                    <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45 transition-colors duration-300 group-hover:text-brand">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="flex-1 text-[15px] font-medium text-ink">
-                      {cap}
-                    </span>
-                    <Check
-                      className="size-4 -translate-x-1 text-flame opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                      aria-hidden
-                    />
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* === Section 3 — white, full-width image break with overlay quote === */}
       <section className="relative h-[360px] overflow-hidden bg-ink sm:h-[460px] lg:h-[520px]">
