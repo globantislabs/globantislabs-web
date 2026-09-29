@@ -120,81 +120,6 @@ function GlobalReachBadge({ className }: { className?: string }) {
 }
 
 /* ============================================================
- * Shared — Other industries footer
- * 3-card grid of sibling industries with arrow affordance.
- * NO CTA section after this — the page ends here.
- * ============================================================ */
-function OtherIndustries({ current }: { current: Industry }) {
-  const others = industries.filter((i) => i.slug !== current.slug).slice(0, 3);
-  return (
-    <section className="bg-white py-section-md">
-      <div className="container-site">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <Reveal>
-            <SectionHeading
-              label="[ Keep exploring ]"
-              title="Other industries we serve"
-              size="md"
-            />
-          </Reveal>
-          <Link
-            href="/industries"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-brand transition-colors hover:text-brand-dark"
-          >
-            View all industries
-            <ArrowRight
-              aria-hidden
-              className="size-4 transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
-            />
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {others.map((i, idx) => {
-            const Icon = i.icon;
-            return (
-              <Reveal key={i.slug} delay={Math.min(idx * 0.07, 0.35)}>
-                <Link
-                  href={`/industries/${i.slug}`}
-                  className="card-lift group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
-                  />
-                  <div className="flex items-center justify-between">
-                    {Icon ? (
-                      <span className="flex size-11 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-all duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                        <Icon aria-hidden className="size-5" />
-                      </span>
-                    ) : (
-                      <span className="flex size-11 items-center justify-center rounded-xl bg-cream text-sm font-bold text-brand">
-                        {i.title.charAt(0)}
-                      </span>
-                    )}
-                    <ArrowUpRight
-                      aria-hidden
-                      className="size-5 text-ink/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-flame"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold leading-snug text-ink">
-                      {i.title}
-                    </h3>
-                    {i.tagline && (
-                      <p className="mt-1 text-xs leading-relaxed text-body">
-                        {i.tagline}
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ============================================================
  * Shared — narrative section renderer
@@ -544,8 +469,6 @@ function LayoutA({ ind }: { ind: Industry }) {
         </section>
       )}
 
-      {/* === §5 — Other industries footer === */}
-      <OtherIndustries current={ind} />
     </>
   );
 }
@@ -824,8 +747,6 @@ function LayoutB({ ind }: { ind: Industry }) {
         <NarrativeSection key={i} sec={sec} bg="bg-shade" />
       ))}
 
-      {/* === §5 — Other industries footer === */}
-      <OtherIndustries current={ind} />
     </>
   );
 }
@@ -1101,7 +1022,6 @@ function LayoutC({ ind }: { ind: Industry }) {
       )}
 
       {/* === §6 — Other industries footer === */}
-      <OtherIndustries current={ind} />
     </>
   );
 }
