@@ -39,6 +39,7 @@ export function Header() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   const [prevPath, setPrevPath] = useState(pathname);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Close panels on route change (render-phase adjust pattern)
   if (prevPath !== pathname) {
@@ -66,6 +67,28 @@ export function Header() {
     document.addEventListener("mousedown", onClick);
     return () => document.removeEventListener("mousedown", onClick);
   }, [openMenu]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  // Open immediately, close with delay (300ms) so user can move mouse to panel
+  function openMenuPanel(label: string) {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setOpenMenu(label);
+  }
+  function closeMenuPanel() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => {
+      setOpenMenu(null);
+    }, 300);
+  }
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -123,8 +146,8 @@ export function Header() {
                   <li
                     key={item.label}
                     className="static"
-                    onMouseEnter={() => hasChildren && setOpenMenu(item.label)}
-                    onMouseLeave={() => hasChildren && setOpenMenu(null)}
+                    onMouseEnter={() => hasChildren && openMenuPanel(item.label)}
+                    onMouseLeave={() => hasChildren && closeMenuPanel()}
                   >
                     <Link
                       href={item.href}
