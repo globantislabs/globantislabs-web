@@ -2,9 +2,11 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Menu,
+  X,
   Mail,
   MapPin,
   ArrowRight,
@@ -30,23 +32,33 @@ import { navItems, company } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
+  const [prevPath, setPrevPath] = useState(pathname);
+
+  // Close panels on route change (render-phase adjust pattern)
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
+    setOpen(false);
+    setMobileExpanded(null);
+    setOpenMenu(null);
+  }
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mega-menu on click outside (touch / click-away)
+  // Click outside closes the mega-menu
   useEffect(() => {
     if (!openMenu) return;
     const onClick = (e: MouseEvent) => {
-      // Close if click happens outside the nav area
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenMenu(null);
       }
@@ -54,6 +66,9 @@ export function Header() {
     document.addEventListener("mousedown", onClick);
     return () => document.removeEventListener("mousedown", onClick);
   }, [openMenu]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -80,13 +95,13 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main nav */}
+      {/* Main nav bar */}
       <div
         className={cn(
-          "border-b transition-all duration-300",
+          "border-b transition-[background-color,border-color,box-shadow] duration-300",
           scrolled
-            ? "border-line bg-white/95 shadow-soft backdrop-blur-md"
-            : "border-transparent bg-white"
+            ? "border-line bg-white/95 shadow-[0_1px_12px_rgba(15,23,42,0.06)] backdrop-blur-md"
+            : "border-transparent bg-white/60 backdrop-blur-sm"
         )}
       >
         <div className="mx-auto container-site flex h-20 items-center justify-between gap-6 px-6 py-3">
@@ -97,54 +112,66 @@ export function Header() {
           {/* Desktop nav */}
           <nav
             ref={navRef}
-            className="hidden flex-1 items-center justify-center gap-1 lg:flex"
+            aria-label="Primary"
+            className="hidden flex-1 items-center justify-center gap-0.5 lg:flex"
           >
-            {navItems.map((item) => {
-              const hasChildren = !!item.children?.length;
-              const isOpen = openMenu === item.label;
-              return (
-                <div
-                  key={item.label}
-                  className="relative"
-                  // HOVER trigger — opens on enter, closes on leave (desktop)
-                  onMouseEnter={() => hasChildren && setOpenMenu(item.label)}
-                  onMouseLeave={() => hasChildren && setOpenMenu(null)}
-                >
-                  <Link
-                    href={item.href}
-                    aria-haspopup={hasChildren}
-                    aria-expanded={isOpen}
-                    // CLICK trigger — toggles for keyboard/touch (hover handles desktop)
-                    onClick={(e) => {
-                      if (hasChildren) {
-                        e.preventDefault();
-                        setOpenMenu(isOpen ? null : item.label);
-                      }
-                    }}
-                    className="relative inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-[15px] font-medium text-ink/80 transition-colors after:absolute after:inset-x-3.5 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-flame after:to-flame-soft after:transition-transform after:duration-300 after:ease-out-expo hover:text-brand hover:after:scale-x-100"
+            <ul className="flex items-center gap-0.5">
+              {navItems.map((item) => {
+                const hasChildren = !!item.children?.length;
+                const isOpen = openMenu === item.label;
+                return (
+                  <li
+                    key={item.label}
+                    className="static"
+                    onMouseEnter={() => hasChildren && setOpenMenu(item.label)}
+                    onMouseLeave={() => hasChildren && setOpenMenu(null)}
                   >
-                    {item.label}
+                    <Link
+                      href={item.href}
+                      aria-haspopup={hasChildren ? "true" : undefined}
+                      aria-expanded={hasChildren ? isOpen : undefined}
+                      onFocus={() => hasChildren && setOpenMenu(item.label)}
+                      onBlur={(e) => {
+                        if (hasChildren) {
+                          const related = e.relatedTarget as Node | null;
+                          if (related && !e.currentTarget.parentElement?.contains(related)) {
+                            setOpenMenu(null);
+                          }
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Escape" && hasChildren) setOpenMenu(null);
+                      }}
+                      className={cn(
+                        "flex items-center gap-1 rounded-md px-3 py-2 text-[15px] font-medium transition-colors",
+                        isActive(item.href)
+                          ? "text-brand"
+                          : "text-ink/80 hover:text-brand"
+                      )}
+                    >
+                      {item.label}
+                      {hasChildren && (
+                        <ChevronDown
+                          className={cn(
+                            "size-3.5 transition-transform duration-300",
+                            isOpen && "rotate-180"
+                          )}
+                        />
+                      )}
+                    </Link>
+
+                    {/* Full-width mega menu panel */}
                     {hasChildren && (
-                      <ChevronDown
-                        className={cn(
-                          "size-3.5 transition-transform",
-                          isOpen && "rotate-180"
-                        )}
+                      <MegaMenu
+                        item={item}
+                        open={isOpen}
+                        onOpenChange={(o) => setOpenMenu(o ? item.label : null)}
                       />
                     )}
-                  </Link>
-
-                  {/* UNIFIED mega menu — same design for About / Services / Industries / Product */}
-                  {hasChildren && (
-                    <MegaMenu
-                      item={item}
-                      open={isOpen}
-                      onOpenChange={(o) => setOpenMenu(o ? item.label : null)}
-                    />
-                  )}
-                </div>
-              );
-            })}
+                  </li>
+                );
+              })}
+            </ul>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -155,112 +182,125 @@ export function Header() {
               asChild
               className="btn-lift hidden h-11 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark lg:inline-flex"
             >
-              <Link href="#consultation">
+              <Link href="/contact">
                 Let&apos;s Talk
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
 
-            {/* Mobile theme toggle + menu */}
+            {/* Mobile controls */}
             <div className="flex items-center gap-2 lg:hidden">
               <ThemeToggle />
-              <Sheet open={open} onOpenChange={setOpen}>
-                <SheetTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    aria-label="Open menu"
-                  >
-                    <Menu className="size-6 text-ink" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="w-[88vw] max-w-sm overflow-y-auto bg-white p-0 slim-scroll"
-                >
-                  <SheetHeader className="border-b border-line px-6 py-5 text-left">
-                    <SheetTitle className="text-left">
-                      <Logo variant="light" />
-                    </SheetTitle>
-                  </SheetHeader>
-                  <div className="px-4 py-4">
-                    <Accordion type="multiple" className="w-full">
-                      {navItems.map((item) => (
-                        <div key={item.label}>
-                          {item.children ? (
-                            <AccordionItem
-                              value={item.label}
-                              className="border-b-0"
-                            >
-                              <AccordionTrigger className="px-2 py-3 text-base font-medium text-ink hover:no-underline">
-                                {item.label}
-                              </AccordionTrigger>
-                              <AccordionContent className="pb-2">
-                                <div className="flex flex-col gap-0.5 pl-2">
-                                  <Link
-                                    href={item.href}
-                                    className="rounded-md px-3 py-2 text-sm font-medium text-brand"
-                                    onClick={() => setOpen(false)}
-                                  >
-                                    Overview
-                                  </Link>
-                                  {item.children.map((c) => (
-                                    <Link
-                                      key={c.label}
-                                      href={c.href}
-                                      className="rounded-md px-3 py-2 text-sm text-body hover:bg-brand/5 hover:text-brand"
-                                      onClick={() => setOpen(false)}
-                                    >
-                                      {c.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </AccordionContent>
-                            </AccordionItem>
-                          ) : (
-                            <Link
-                              href={item.href}
-                              className="block rounded-md px-2 py-3 text-base font-medium text-ink hover:text-brand"
-                              onClick={() => setOpen(false)}
-                            >
-                              {item.label}
-                            </Link>
-                          )}
-                        </div>
-                      ))}
-                    </Accordion>
-
-                    <div className="mt-4 space-y-3 border-t border-line pt-4">
-                      <Button
-                        asChild
-                        className="btn-lift h-11 w-full rounded-full bg-brand text-sm font-semibold text-white shadow-glow-flame"
-                      >
-                        <Link href="#consultation" onClick={() => setOpen(false)}>
-                          Let&apos;s Talk
-                          <ArrowRight className="size-4" />
-                        </Link>
-                      </Button>
-                      <div className="space-y-2 px-1 text-sm text-body">
-                        <a
-                          href={company.emailHref}
-                          className="flex items-center gap-2"
-                        >
-                          <Mail className="size-4 text-brand" />
-                          {company.email}
-                        </a>
-                        <p className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
-                          {company.canadaAddress}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </SheetContent>
-              </Sheet>
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+                className="inline-flex size-10 items-center justify-center rounded-md border border-line text-ink"
+              >
+                {open ? <X className="size-5" /> : <Menu className="size-5" />}
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile menu — accordion */}
+      {open && (
+        <div
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-line bg-white/95 backdrop-blur-md lg:hidden"
+        >
+          <nav className="px-4 py-4">
+            <ul className="space-y-1">
+              {navItems.map((item) => (
+                <li key={item.label} className="border-b border-line/70 last:border-0">
+                  {item.children ? (
+                    <div className="flex items-center">
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex-1 py-3 text-base font-medium text-ink"
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setMobileExpanded(
+                            mobileExpanded === item.label ? null : item.label
+                          )
+                        }
+                        aria-expanded={mobileExpanded === item.label}
+                        aria-label={`Expand ${item.label} sub-pages`}
+                        className="inline-flex size-9 items-center justify-center border border-line text-ink"
+                      >
+                        <ChevronDown
+                          className={cn(
+                            "size-4 transition-transform duration-300",
+                            mobileExpanded === item.label && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    </div>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block py-3 text-base font-medium text-ink"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                  {item.children && mobileExpanded === item.label && (
+                    <ul className="border-l border-line pl-2 pb-2">
+                      {item.children.map((c) => (
+                        <li key={c.href}>
+                          <Link
+                            href={c.href}
+                            onClick={() => setOpen(false)}
+                            className="block rounded-md px-3 py-2 text-sm font-medium text-ink/70 hover:text-brand"
+                          >
+                            {c.label}
+                            {c.desc && (
+                              <span className="block text-xs text-body">
+                                {c.desc}
+                              </span>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <Button
+              asChild
+              className="btn-lift mt-4 h-11 w-full rounded-full bg-brand text-sm font-semibold text-white shadow-glow-flame"
+            >
+              <Link href="/contact" onClick={() => setOpen(false)}>
+                Let&apos;s Talk
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+
+            <div className="mt-4 space-y-2 px-1 text-sm text-body">
+              <a
+                href={company.emailHref}
+                className="flex items-center gap-2"
+              >
+                <Mail className="size-4 text-brand" />
+                {company.email}
+              </a>
+              <p className="flex items-start gap-2">
+                <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
+                {company.canadaAddress}
+              </p>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
