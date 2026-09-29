@@ -100,8 +100,8 @@ export function Header() {
         className={cn(
           "border-b transition-[background-color,border-color,box-shadow] duration-300",
           scrolled
-            ? "border-line bg-white/95 shadow-[0_1px_12px_rgba(15,23,42,0.06)] backdrop-blur-md"
-            : "border-transparent bg-white/60 backdrop-blur-sm"
+            ? "border-line bg-white shadow-[0_1px_12px_rgba(15,23,42,0.06)]"
+            : "border-transparent bg-white"
         )}
       >
         <div className="mx-auto container-site flex h-20 items-center justify-between gap-6 px-6 py-3">
@@ -208,7 +208,7 @@ export function Header() {
       {/* Mobile menu — accordion */}
       {open && (
         <div
-          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-line bg-white/95 backdrop-blur-md lg:hidden"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-line bg-white lg:hidden"
         >
           <nav className="px-4 py-4">
             <ul className="space-y-1">
