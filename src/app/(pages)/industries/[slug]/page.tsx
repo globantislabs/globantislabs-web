@@ -262,81 +262,45 @@ function LayoutA({ ind }: { ind: Industry }) {
         </div>
       </section>
 
-      {/* === §2 — shade, KPI cards (stats) OR stage cards (flow/workflow) === */}
-      {((ind.stats && ind.stats.length > 0) ||
-        (stageData && stageData.length > 0)) && (
+      {/* === §2 — shade, stage cards (flow/workflow only, NOT stats) === */}
+      {stageData && stageData.length > 0 && (
         <section className="bg-shade py-section-md">
           <div className="container-site">
             <Reveal>
               <SectionHeading
-                label={
-                  ind.stats && ind.stats.length > 0
-                    ? "[ By the numbers ]"
-                    : "[ The stages ]"
-                }
+                label="[ The stages ]"
                 title={
-                  ind.stats && ind.stats.length > 0 ? (
-                    <>
-                      Outcomes that <span className="text-flame">compound.</span>
-                    </>
-                  ) : (
-                    <>
-                      Stages that <span className="text-flame">connect.</span>
-                    </>
-                  )
+                  <>
+                    Stages that <span className="text-flame">connect.</span>
+                  </>
                 }
-                lead={
-                  ind.stats && ind.stats.length > 0
-                    ? "Benchmarks from engagements across the UK, Canada, Dubai and beyond — measured at the moments that matter to operators."
-                    : "Five stages that move work end-to-end — each one observable, instrumented and recoverable in real time."
-                }
+                lead="Five stages that move work end-to-end — each one observable, instrumented and recoverable in real time."
                 align="center"
               />
             </Reveal>
 
-            {/* KPI cards (financial-services stats) */}
-            {ind.stats && ind.stats.length > 0 && (
-              <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {ind.stats.map((s, i) => (
-                  <Reveal key={s.label} delay={Math.min(i * 0.07, 0.3)}>
-                    <div className="card-lift relative flex h-full flex-col rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift">
-                      <div aria-hidden className="rule-flame" />
-                      <p className="mt-4 text-display-md font-bold text-ink">
-                        {s.value}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-body">
-                        {s.label}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            )}
-
             {/* Stage cards (logistics.flow / automation.workflow) */}
-            {!ind.stats && stageData && stageData.length > 0 && (
-              <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-                {stageData.map((step, i) => {
-                  const StepIcon = step.icon;
-                  // Both ind.flow and ind.workflow items have `label` (not `title`).
-                  const stepLabel = step.label;
-                  return (
-                    <Reveal key={stepLabel + i} delay={Math.min(i * 0.05, 0.3)}>
-                      <div className="card-lift relative flex h-full flex-col rounded-2xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift">
-                        <div className="flex items-center justify-between">
-                          {StepIcon && (
-                            <span className="flex size-10 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand">
-                              <StepIcon aria-hidden className="size-5" />
-                            </span>
-                          )}
-                          <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
-                            {String(i + 1).padStart(2, "0")}
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {stageData.map((step, i) => {
+                const StepIcon = step.icon;
+                const stepLabel = step.label;
+                return (
+                  <Reveal key={stepLabel + i} delay={Math.min(i * 0.05, 0.3)}>
+                    <div className="card-lift relative flex h-full flex-col rounded-2xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift">
+                      <div className="flex items-center justify-between">
+                        {StepIcon && (
+                          <span className="flex size-10 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand">
+                            <StepIcon aria-hidden className="size-5" />
                           </span>
-                        </div>
-                        <p className="mt-4 text-base font-bold text-ink">
-                          {stepLabel}
-                        </p>
-                        <p className="mt-1 text-xs leading-relaxed text-body">
+                        )}
+                        <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <p className="mt-4 text-base font-bold text-ink">
+                        {stepLabel}
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed text-body">
                           {step.desc}
                         </p>
                       </div>
@@ -344,7 +308,6 @@ function LayoutA({ ind }: { ind: Industry }) {
                   );
                 })}
               </div>
-            )}
           </div>
         </section>
       )}
