@@ -124,39 +124,58 @@ function GlobalReachBadge({ className }: { className?: string }) {
 function NarrativeSection({
   sec,
   bg,
+  image,
+  imageSide = "right",
 }: {
   sec: NonNullable<Industry["sections"]>[number];
   bg: "bg-white" | "bg-shade";
+  image?: string;
+  imageSide?: "left" | "right";
 }) {
+  const useImage = sec.image || image;
   return (
     <section className={`${bg} py-section-md`}>
       <div className="container-site">
-        <div className="mx-auto max-w-4xl">
-          <Reveal>
-            {sec.label && <span className="section-label">[ {sec.label} ]</span>}
-            <div aria-hidden className="rule-flame mb-6" />
-            <h3 className="text-display-md font-bold leading-snug text-ink">
-              {sec.heading}
-            </h3>
-            <div className="mt-5 space-y-4">
-              {sec.paragraphs?.map((p, j) => (
-                <p key={j} className="text-[16px] leading-relaxed text-body">
-                  {p}
-                </p>
-              ))}
-            </div>
-            {sec.image && (
-              <div className="mt-8 overflow-hidden rounded-2xl border border-line shadow-lift">
-                <Image
-                  src={sec.image}
-                  alt={sec.heading}
-                  width={960}
-                  height={520}
-                  className="h-[260px] w-full object-cover sm:h-[360px] lg:h-[460px]"
-                />
+        <div className={`grid gap-12 lg:gap-16 ${useImage ? "lg:grid-cols-2 lg:items-center" : "mx-auto max-w-4xl"}`}>
+          {/* Text side */}
+          <div className={imageSide === "left" && useImage ? "lg:order-2" : ""}>
+            <Reveal>
+              {sec.label && <span className="section-label">[ {sec.label} ]</span>}
+              <div aria-hidden className="rule-flame mb-6" />
+              <h3 className="text-display-md font-bold leading-snug text-ink">
+                {sec.heading}
+              </h3>
+              <div className="mt-5 space-y-4">
+                {sec.paragraphs?.map((p, j) => (
+                  <p key={j} className="text-[16px] leading-relaxed text-body">
+                    {p}
+                  </p>
+                ))}
               </div>
-            )}
-          </Reveal>
+            </Reveal>
+          </div>
+          {/* Image side */}
+          {useImage && (
+            <Reveal delay={0.1} className={imageSide === "left" ? "lg:order-1" : ""}>
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className={`absolute hidden h-full w-full rounded-2xl border border-line bg-cream lg:block ${
+                    imageSide === "left" ? "-left-5 -top-5" : "-right-5 -top-5"
+                  }`}
+                />
+                <div className="relative overflow-hidden rounded-2xl shadow-float">
+                  <Image
+                    src={useImage}
+                    alt={sec.heading}
+                    width={640}
+                    height={480}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            </Reveal>
+          )}
         </div>
       </div>
     </section>
@@ -305,12 +324,14 @@ function LayoutA({ ind }: { ind: Industry }) {
         </section>
       )}
 
-      {/* === §3 — narrative sections (alternating bg-white/bg-shade) === */}
+      {/* === §3 — narrative sections (alternating bg-white/bg-shade, para left + image right) === */}
       {ind.sections?.map((sec, i) => (
         <NarrativeSection
           key={i}
           sec={sec}
           bg={i % 2 === 0 ? "bg-white" : "bg-shade"}
+          image={ind.bannerImage}
+          imageSide={i % 2 === 0 ? "right" : "left"}
         />
       ))}
 
@@ -692,12 +713,14 @@ function LayoutB({ ind }: { ind: Industry }) {
         </div>
       </section>
 
-      {/* === §2 — alternating shade / white prose sections === */}
+      {/* === §2 — alternating shade / white prose sections (para left + image right) === */}
       {proseSections.map((sec, i) => (
         <NarrativeSection
           key={i}
           sec={sec}
           bg={i % 2 === 0 ? "bg-shade" : "bg-white"}
+          image={ind.bannerImage}
+          imageSide={i % 2 === 0 ? "right" : "left"}
         />
       ))}
 
