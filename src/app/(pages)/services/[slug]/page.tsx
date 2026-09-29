@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  Quote,
-  Sparkles,
-  PackageCheck,
-} from "lucide-react";
-import { PageBanner } from "@/components/site/page-banner";
-import { ServiceHero } from "@/components/site/service-hero";
-import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
+import { ArrowRight, Check, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { PageHero } from "@/components/site/page-hero";
+import { Reveal, SectionHeading } from "@/components/site/primitives";
 import { buildMetadata } from "@/lib/seo";
-import { services } from "@/lib/site-data";
+import { servicesV2, type ServiceV2 } from "@/lib/services-data";
+
+/* ============================================================
+ * Dynamic service detail page — handles all 10 service slugs.
+ * Layout picks based on the service's index in servicesV2:
+ *   layout = serviceIndex % 3   →   0 = A · 1 = B · 2 = C
+ *
+ *   A (0, 3, 6, 9)  : Custom Software · Mobile · Cybersecurity · Managed
+ *   B (1, 4, 7)     : AI & Automation · Cloud & DevOps · E-Commerce
+ *   C (2, 5, 8)     : Web Solutions · Data · Enterprise Integration
+ * ============================================================ */
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return servicesV2.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
@@ -28,12 +28,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const service = servicesV2.find((s) => s.slug === slug);
   if (!service) return {};
   return buildMetadata({
     title: `${service.title} | Globantis Labs`,
     description: service.desc,
     path: `/services/${slug}`,
+    keywords: [service.shortTitle, service.tagline, service.revenueEngine],
   });
 }
 
@@ -43,643 +44,481 @@ export default async function ServiceDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
-  if (!service) notFound();
-
-  const Icon = service.icon;
-  const serviceNo = services.findIndex((s) => s.slug === service.slug) + 1;
-
-  // Other services for the "explore more" strip
-  const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const serviceIndex = servicesV2.findIndex((s) => s.slug === slug);
+  if (serviceIndex < 0) notFound();
+  const service = servicesV2[serviceIndex];
+  const layout = serviceIndex % 3; // 0=A, 1=B, 2=C
 
   return (
     <>
-      <ServiceHero
-        service={{
-          title: service.title,
-          banner: service.banner,
-        }}
+      <PageHero
+        title={service.title}
+        label={service.number}
+        image={service.heroImage}
         crumbs={[
+          { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
           { label: service.shortTitle },
         ]}
       />
 
-      {/* ============ 1. Overview + sticky rail ============ */}
+      {layout === 0 && <LayoutA service={service} />}
+      {layout === 1 && <LayoutB service={service} />}
+      {layout === 2 && <LayoutC service={service} />}
+    </>
+  );
+}
+
+/* ============================================================
+ * Shared CTA — used by every layout at the end of the page.
+ * Primary button label is always "Start a project" → /contact.
+ * An optional secondary outline link lets the layout surface a
+ * "back to /services" or sibling navigation affordance.
+ * ============================================================ */
+function CTASection({
+  bg,
+  eyebrow,
+  title,
+  desc,
+  secondaryHref,
+  secondaryLabel,
+}: {
+  bg: "bg-white" | "bg-shade";
+  eyebrow: string;
+  title: string;
+  desc: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}) {
+  return (
+    <section className={`${bg} py-section-md`}>
+      <div className="container-site">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-line ink-gradient px-6 py-14 text-center sm:px-12 lg:px-20 lg:py-16">
+            <div aria-hidden className="absolute inset-0 grid-pattern opacity-25" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -left-20 -top-24 size-64 rounded-full bg-flame/25 blur-3xl"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-28 -right-16 size-72 rounded-full bg-flame/20 blur-3xl"
+            />
+            <div className="relative">
+              <span className="section-label !text-brand-light">{eyebrow}</span>
+              <h2 className="text-display-lg font-bold text-white">{title}</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[17px] leading-relaxed text-white/70">
+                {desc}
+              </p>
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/contact"
+                  className="btn-lift inline-flex h-14 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
+                >
+                  Start a project
+                  <ArrowRight className="size-4" aria-hidden />
+                </Link>
+                {secondaryHref && secondaryLabel && (
+                  <Link
+                    href={secondaryHref}
+                    className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/20 px-7 text-base font-semibold text-white transition-colors duration-300 hover:border-flame hover:text-flame"
+                  >
+                    {secondaryLabel}
+                    <ArrowUpRight className="size-4" aria-hidden />
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+ * LAYOUT A — services 0, 3, 6, 9
+ * (Custom Software · Mobile · Cybersecurity · Managed Services)
+ *
+ *   §1 white  · 2-col sticky heading + offset-cream framed image
+ *   §2 shade  · 2-col checkmark hairline grid (NOT cards)
+ *   §3 white  · CTA "Explore this service" + "Start a project"
+ * ============================================================ */
+function LayoutA({ service }: { service: ServiceV2 }) {
+  const Icon = service.icon;
+  return (
+    <>
+      {/* === Section 1 — white, 2-col sticky heading + offset-cream framed image === */}
       <section className="bg-white py-section-md">
         <div className="container-site">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
-            {/* Sticky service rail */}
-            <div className="lg:sticky lg:top-32">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
+            {/* Left — sticky heading */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
               <Reveal>
-                <div className="overflow-hidden rounded-2xl border border-line bg-shade shadow-soft">
-                  {/* Branded header strip */}
-                  <div className="relative overflow-hidden bg-brand-gradient p-6 text-white">
-                    <svg
-                      aria-hidden
-                      viewBox="0 0 30 30"
-                      className="pointer-events-none absolute -right-4 -top-4 size-20 opacity-20"
-                    >
-                      <polygon
-                        points="24.3,7.1 13.14,22.91 5.7,22.91 16.86,7.1"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    <div className="flex items-start justify-between">
-                      <span className="flex size-14 items-center justify-center rounded-xl bg-white/15">
-                        <Icon className="size-7" />
-                      </span>
-                      <span className="font-mono text-4xl font-bold leading-none text-white/30">
-                        {String(serviceNo).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <h2 className="mt-4 text-display-sm font-bold">
-                      {service.title}
-                    </h2>
-                    {service.tagline && (
-                      <p className="mt-1 text-sm opacity-85">{service.tagline}</p>
-                    )}
-                  </div>
-
-                  {/* Body — description + tech stack + CTA */}
-                  <div className="p-6">
-                    <p className="text-sm leading-relaxed text-body">
-                      {service.desc}
+                <div className="flex items-center gap-4">
+                  <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+                    <Icon className="size-7" aria-hidden />
+                  </span>
+                  <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+                    Service {service.number} · {service.revenueEngine}
+                  </span>
+                </div>
+                <div aria-hidden className="rule-flame mt-6" />
+                <span className="section-label">[ Overview ]</span>
+                <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+                  {service.overviewHeading}
+                </h2>
+                <div className="mt-6 space-y-4">
+                  {service.overviewParas.map((p, i) => (
+                    <p key={i} className="text-[16px] leading-relaxed text-body">
+                      {p}
                     </p>
-                    <div aria-hidden className="rule-flame mt-5" />
-
-                    {/* Tech stack */}
-                    <div className="mt-5">
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-ink/45">
-                        Technologies
-                      </p>
-                      <div className="mt-3 flex flex-wrap items-center gap-3">
-                        {service.techs.map((t) => (
-                          <div
-                            key={t.name}
-                            className="flex h-12 items-center justify-center rounded-xl border border-line bg-white px-3"
-                          >
-                            <Image
-                              src={t.img}
-                              alt={t.name}
-                              width={60}
-                              height={40}
-                              className="h-6 w-auto object-contain"
-                              title={t.name}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <Link
-                      href="/contact"
-                      className="btn-lift mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
-                    >
-                      Discuss your project
-                      <ArrowRight className="size-4" aria-hidden />
-                    </Link>
-                  </div>
+                  ))}
                 </div>
               </Reveal>
             </div>
 
-            {/* Long-form content */}
-            <div>
-              {service.overview && (
-                <Reveal>
-                  <SectionHeading
-                label={service.banner?.label ? `[ ${service.banner.label} ]` : "[ Overview ]"}
-                title={service.overview.heading}
-              />
-                  {service.overview.paragraphs.length > 0 && (
-                    <div className="mt-6 space-y-4">
-                      {service.overview.paragraphs.map((p, i) => (
-                        <p
-                          key={i}
-                          className="text-[17px] leading-relaxed text-body"
-                        >
-                          {p}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </Reveal>
-              )}
-
-              {/* Deliverables chips — quick visual summary */}
-              {service.deliverables && (
-                <Reveal delay={0.07} className="mt-10">
-                  <div className="rounded-2xl border border-line bg-shade p-6">
-                    <div className="flex items-center gap-2">
-                      <PackageCheck className="size-5 text-brand" aria-hidden />
-                      <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
-                        What you'll walk away with
-                      </p>
-                    </div>
-                    <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                      {service.deliverables.map((d) => (
-                        <li
-                          key={d}
-                          className="flex items-center gap-2 text-sm text-ink"
-                        >
-                          <CheckCircle2
-                            className="size-4 shrink-0 text-brand"
-                            aria-hidden
-                          />
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Reveal>
-              )}
-            </div>
+            {/* Right — hero image in a rounded frame with offset cream border */}
+            <Reveal delay={0.1}>
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="absolute -left-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
+                />
+                <div className="relative overflow-hidden rounded-2xl border border-line bg-ink shadow-lift">
+                  <Image
+                    src={service.heroImage}
+                    alt={service.title}
+                    width={760}
+                    height={560}
+                    sizes="(min-width: 1024px) 760px, 100vw"
+                    className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-24"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(11,22,94,0.55) 0%, rgba(11,22,94,0) 100%)",
+                    }}
+                  />
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ============ 2. Stats band — service KPIs ============ */}
-      {service.stats && (
-        <section className="relative overflow-hidden bg-ink py-section-sm text-white">
-          <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
-          <div
-            aria-hidden
-            className="absolute -right-32 top-0 size-80 rounded-full bg-flame/15 blur-[120px]"
-          />
-          <div className="container-site relative">
-            <Reveal>
-              <div className="mx-auto mb-10 max-w-2xl text-center">
-                <span className="section-label !text-brand-light">[ By the numbers ]</span>
-                <h2 className="mt-3 text-display-md font-bold text-white">
-                  Outcomes we ship on this engagement.
-                </h2>
-              </div>
-            </Reveal>
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur lg:grid-cols-4">
-              {service.stats.map((s, i) => (
-                <Reveal
-                  key={s.label}
-                  delay={Math.min(i * 0.08, 0.32)}
-                  className="h-full"
-                >
-                  <div className="flex h-full flex-col gap-2 p-6 sm:p-8">
-                    <div aria-hidden className="rule-flame" />
-                    <div className="mt-3 font-mono text-4xl font-bold leading-none text-white sm:text-5xl">
-                      {s.value}
-                    </div>
-                    <div className="mt-1 text-xs leading-tight text-white/60 sm:text-sm">
-                      {s.label}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============ 3. Process timeline — five phases with deliverables ============ */}
-      {service.processSteps && (
-        <section className="bg-shade py-section-md">
-          <div className="container-site">
-            <Reveal>
-              <SectionHeading
-                label={service.processSteps.label ? `[ ${service.processSteps.label} ]` : "[ Delivery process ]"}
-                title={service.processSteps.heading}
-                lead={service.processSteps.intro}
-                align="center"
-              />
-            </Reveal>
-
-            <ol className="mt-16 space-y-6">
-              {service.processSteps.steps.map((step, i) => {
-                const isLast = i === service.processSteps!.steps.length - 1;
-                return (
-                  <Reveal
-                    key={step.phase}
-                    delay={Math.min(i * 0.05, 0.25)}
-                  >
-                    <li className="group grid gap-6 rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift md:grid-cols-[5rem_1fr_15rem] md:items-start md:gap-8 md:p-8">
-                      {/* Number + icon */}
-                      <div className="flex flex-row items-center gap-4 md:flex-col md:items-start md:gap-3">
-                        <div className="flex size-14 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-lg shadow-brand/30">
-                          <span className="font-mono text-lg font-bold">
-                            {step.phase}
-                          </span>
-                        </div>
-                        <Clock className="size-5 text-ink/30" aria-hidden />
-                      </div>
-
-                      {/* Body */}
-                      <div>
-                        <div className="flex flex-wrap items-baseline gap-3">
-                          <h3 className="text-display-sm font-bold text-ink">
-                            {step.title}
-                          </h3>
-                          <span className="inline-flex items-center gap-1 rounded-full bg-cream px-3 py-1 text-xs font-semibold text-brand">
-                            <Clock className="size-3" aria-hidden />
-                            {step.duration}
-                          </span>
-                        </div>
-                        <p className="mt-3 text-sm leading-relaxed text-body md:text-[15px]">
-                          {step.desc}
-                        </p>
-                      </div>
-
-                      {/* Deliverables */}
-                      <div className="md:border-l md:border-line md:pl-6">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
-                          Deliverables
-                        </p>
-                        <ul className="mt-2 space-y-2">
-                          {step.deliverables.map((d) => (
-                            <li
-                              key={d}
-                              className="flex items-start gap-2 text-sm text-ink/80"
-                            >
-                              <CheckCircle2
-                                className="mt-0.5 size-3.5 shrink-0 text-brand"
-                                aria-hidden
-                              />
-                              {d}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </li>
-                  </Reveal>
-                );
-              })}
-            </ol>
-          </div>
-        </section>
-      )}
-
-      {/* ============ 4. Use cases / What we ship ============ */}
-      {service.useCases && (
-        <section className="bg-white py-section-md">
-          <div className="container-site">
-            <Reveal>
-              <SectionHeading
-                label={service.useCases.label ? `[ ${service.useCases.label} ]` : "[ What we ship ]"}
-                title={service.useCases.heading}
-                lead={service.useCases.intro}
-              />
-            </Reveal>
-
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {service.useCases.items.map((item, i) => {
-                const ItemIcon = item.icon;
-                return (
-                  <Reveal
-                    key={item.title}
-                    delay={Math.min(i * 0.05, 0.25)}
-                    className="h-full"
-                  >
-                    <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift">
-                      <span
-                        aria-hidden
-                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
-                      />
-                      <div className="flex items-center justify-between">
-                        {ItemIcon && (
-                          <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand transition-all duration-500 group-hover:bg-brand group-hover:text-white">
-                            <ItemIcon className="size-6" />
-                          </span>
-                        )}
-                        <span className="font-mono text-3xl font-bold text-ink/10 transition-colors duration-300 group-hover:text-flame/30">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-                      <h3 className="mt-4 text-display-sm font-bold text-ink">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-body">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============ 5. Testimonial ============ */}
-      {service.testimonial && (
-        <section className="bg-shade py-section-md">
-          <div className="container-site">
-            <Reveal>
-              <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-line bg-white p-8 text-center shadow-float md:p-12">
-                <Quote
-                  aria-hidden
-                  className="mx-auto size-12 text-flame"
-                />
-                <p className="mt-6 text-display-md font-bold leading-snug text-ink">
-                  &ldquo;{service.testimonial.quote}&rdquo;
-                </p>
-                <div className="mt-6 flex flex-col items-center gap-1">
-                  <p className="font-bold text-ink">
-                    {service.testimonial.author}
-                  </p>
-                  <p className="text-sm text-body">
-                    {service.testimonial.role}
-                    {service.testimonial.company
-                      ? ` · ${service.testimonial.company}`
-                      : ""}
-                  </p>
-                </div>
-                <div
-                  aria-hidden
-                  className="absolute -left-12 -top-12 size-32 rounded-full bg-flame/10 blur-3xl"
-                />
-                <div
-                  aria-hidden
-                  className="absolute -bottom-12 -right-12 size-32 rounded-full bg-flame/10 blur-3xl"
-                />
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      )}
-
-      {/* ============ 6. Benefits (existing — preserved) ============ */}
-      {service.benefits && (
-        <section className="bg-white py-section-md">
-          <div className="container-site">
-            <Reveal>
-              <SectionHeading
-                label={service.benefits.label ? `[ ${service.benefits.label} ]` : "[ Benefits ]"}
-                title={service.benefits.heading}
-                lead={service.benefits.intro}
-              />
-            </Reveal>
-
-            {service.benefits.bullets && (
-              <Reveal delay={0.07} className="mt-10">
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {service.benefits.bullets.map((b) => (
-                    <div
-                      key={b}
-                      className="flex items-center gap-3 rounded-xl border border-line bg-shade px-4 py-3.5 text-sm font-medium text-ink"
-                    >
-                      <CheckCircle2
-                        className="size-4 shrink-0 text-brand"
-                        aria-hidden
-                      />
-                      {b}
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            )}
-
-            {service.benefits.features && (
-              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {service.benefits.features.map((f, i) => (
-                  <Reveal
-                    key={f.title}
-                    delay={Math.min(i * 0.05, 0.25)}
-                    className="h-full"
-                  >
-                    <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift">
-                      <span
-                        aria-hidden
-                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
-                      />
-                      <span className="font-mono text-3xl font-bold text-ink/10">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h4 className="mt-3 text-display-sm font-bold text-ink">
-                        {f.title}
-                      </h4>
-                      <p className="mt-2.5 text-sm leading-relaxed text-body">
-                        {f.desc}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            )}
-
-            {service.benefits.closing && (
-              <Reveal className="mt-10">
-                <p className="max-w-3xl text-[17px] leading-relaxed text-body">
-                  {service.benefits.closing}
-                </p>
-              </Reveal>
-            )}
-
-            {service.benefits.images && service.benefits.images.length > 0 && (
-              <Reveal className="mt-10">
-                {service.benefits.images.length === 1 ? (
-                  <div className="relative max-w-xl">
-                    <div
-                      aria-hidden
-                      className="absolute -bottom-4 -right-4 size-full rounded-2xl bg-cream"
-                    />
-                    <div className="relative overflow-hidden rounded-2xl border border-line shadow-float">
-                      <Image
-                        src={service.benefits.images[0]}
-                        alt="Project showcase"
-                        width={640}
-                        height={427}
-                        className="h-auto w-full object-cover"
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                    {service.benefits.images.map((img) => (
-                      <div
-                        key={img}
-                        className="group/img overflow-hidden rounded-2xl border border-line bg-shade shadow-soft"
-                      >
-                        <Image
-                          src={img}
-                          alt="Project showcase"
-                          width={300}
-                          height={200}
-                          className="aspect-[3/2] h-auto w-full object-cover transition-transform duration-700 ease-out-expo group-hover/img:scale-105"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </Reveal>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* ============ 7. Sub-services ============ */}
-      {service.subServices && (
-        <section className="bg-shade py-section-md">
-          <div className="container-site">
-            <Reveal>
-              <SectionHeading
-                label={service.subServices.label ? `[ ${service.subServices.label} ]` : "[ What we deliver ]"}
-                title={service.subServices.heading}
-                lead={service.subServices.intro}
-              />
-            </Reveal>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-              {service.subServices.items.map((item, i) => (
-                <Reveal
-                  key={item.title}
-                  delay={Math.min(i * 0.07, 0.35)}
-                  className="h-full"
-                >
-                  <div className="card-lift group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift">
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
-                    />
-                    <span className="font-mono text-4xl font-bold text-ink/10">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-display-sm font-bold text-ink">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-body">
-                      {item.desc}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============ 8. FAQ ============ */}
-      {service.faq && (
-        <section className="bg-white py-section-md">
-          <div className="container-site">
-            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
-              <div className="lg:sticky lg:top-32">
-                <Reveal>
-                  {service.faq.label && (
-                    <span className="section-label">[ {service.faq.label} ]</span>
-                  )}
-                  <h2 className="text-display-lg font-bold text-ink">
-                    {service.faq.heading}
-                  </h2>
-                  {service.faq.image && (
-                    <div className="relative mt-8 max-w-md">
-                      <div
-                        aria-hidden
-                        className="absolute -inset-3 rounded-3xl border border-flame/25"
-                      />
-                      <div className="relative overflow-hidden rounded-2xl shadow-float">
-                        <Image
-                          src={service.faq.image}
-                          alt={service.faq.heading}
-                          width={560}
-                          height={400}
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
-                    </div>
-                  )}
-                </Reveal>
-              </div>
-
-              <div className="space-y-3">
-                {service.faq.items.map((item, i) => (
-                  <Reveal key={i} delay={Math.min(i * 0.07, 0.35)}>
-                    <details className="group card-lift rounded-2xl border border-line bg-shade p-5 transition-colors duration-300 hover:border-flame/40 open:border-flame/40 open:bg-white open:shadow-lift [&_summary]:cursor-pointer">
-                      <summary className="flex min-h-11 list-none items-center gap-4 text-base font-bold text-ink marker:content-none">
-                        {item.image && (
-                          <Image
-                            src={item.image}
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="size-10 shrink-0 object-contain"
-                          />
-                        )}
-                        {item.q}
-                        <ChevronRight
-                          aria-hidden
-                          className="ml-auto size-4 shrink-0 text-brand transition-transform duration-300 ease-out-quart group-open:rotate-90"
-                        />
-                      </summary>
-                      <p
-                        className={`mt-3 text-sm leading-relaxed text-body ${
-                          item.image ? "pl-14" : ""
-                        }`}
-                      >
-                        {item.a}
-                      </p>
-                    </details>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============ 9. Explore more services ============ */}
+      {/* === Section 2 — shade, 2-col checkmark hairline grid === */}
       <section className="bg-shade py-section-md">
         <div className="container-site">
           <Reveal>
             <SectionHeading
-              size="md"
-              label="[ Keep exploring ]"
-              title="Other services from Globantis Labs."
+              label="[ Capabilities ]"
+              title={
+                <>
+                  What we <span className="text-flame">deliver.</span>
+                </>
+              }
+              lead="A focused scope of work — engineered to ship, not to sprawl."
+              align="center"
             />
           </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-            {others.map((s, i) => {
-              const OtherIcon = s.icon;
-              return (
-                <Reveal
-                  key={s.slug}
-                  delay={Math.min(i * 0.07, 0.35)}
-                  className="h-full"
+
+          <Reveal delay={0.1}>
+            <ul className="mx-auto mt-12 grid max-w-4xl gap-x-10 sm:grid-cols-2">
+              {service.capabilities.map((cap) => (
+                <li
+                  key={cap}
+                  className="group flex items-center gap-3 border-t border-line py-4 first:border-t-0 sm:[&:nth-child(2)]:border-t-0"
                 >
-                  <Link
-                    href={`/services/${s.slug}`}
-                    className="group card-lift relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift"
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
-                    />
-                    <div className="flex items-center justify-between">
-                      <span className="flex size-11 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                        <OtherIcon className="size-5" aria-hidden />
-                      </span>
-                      <ArrowUpRight
-                        aria-hidden
-                        className="size-5 text-body transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
-                      />
-                    </div>
-                    <h4 className="text-base font-bold text-ink">{s.title}</h4>
-                    <p className="text-sm leading-relaxed text-body line-clamp-2">
-                      {s.desc}
-                    </p>
-                  </Link>
-                </Reveal>
-              );
-            })}
+                  <CheckCircle2
+                    className="size-5 shrink-0 text-brand transition-colors duration-300 group-hover:text-flame"
+                    aria-hidden
+                  />
+                  <span className="text-[15px] font-medium text-ink">{cap}</span>
+                </li>
+              ))}
+              <li aria-hidden className="col-span-full border-t border-line" />
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* === Section 3 — white, CTA === */}
+      <CTASection
+        bg="bg-white"
+        eyebrow="[ Explore this service ]"
+        title={`Ready to scope your ${service.shortTitle} project?`}
+        desc="From first call to first commit — we'll scope, sequence and price your engagement in a single discovery session."
+        secondaryHref="/services"
+        secondaryLabel="Explore all services"
+      />
+    </>
+  );
+}
+
+/* ============================================================
+ * LAYOUT B — services 1, 4, 7
+ * (AI & Automation · Cloud & DevOps · E-Commerce)
+ *
+ *   §1 shade  · centered overview (max-w-3xl)
+ *   §2 white  · full-width image with navy gradient + overlay text
+ *   §3 shade  · 3-col capability card grid (name only)
+ *   §4 white  · CTA
+ * ============================================================ */
+function LayoutB({ service }: { service: ServiceV2 }) {
+  const Icon = service.icon;
+  return (
+    <>
+      {/* === Section 1 — shade, centered overview === */}
+      <section className="bg-shade py-section-md">
+        <div className="container-site">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="mb-6 flex items-center justify-center gap-4">
+                <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand">
+                  <Icon className="size-7" aria-hidden />
+                </span>
+                <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+                  Service {service.number} · {service.revenueEngine}
+                </span>
+              </div>
+              <div aria-hidden className="rule-flame mx-auto" />
+              <span className="section-label !mx-auto !mt-6 !block">[ Overview ]</span>
+              <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+                {service.overviewHeading}
+              </h2>
+              <div className="mt-6 space-y-4">
+                {service.overviewParas.map((p, i) => (
+                  <p key={i} className="text-[16px] leading-relaxed text-body">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* === Section 2 — white, full-width image with navy gradient overlay === */}
+      <section className="relative h-[340px] overflow-hidden bg-ink sm:h-[440px] lg:h-[480px]">
+        <Image
+          src={service.heroImage}
+          alt={service.title}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(120deg, rgba(0,3,61,0.94) 0%, rgba(11,22,94,0.65) 50%, rgba(11,22,94,0.25) 100%)",
+          }}
+        />
+        <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 top-1/4 size-72 rounded-full bg-flame/20 blur-[120px]"
+        />
+        <div className="container-site relative flex h-full items-center">
+          <Reveal className="max-w-xl">
+            <span className="section-label !text-brand-light">
+              [ Capabilities that ship ]
+            </span>
+            <p className="mt-3 text-display-md font-bold leading-snug text-white sm:text-display-lg">
+              Capabilities that <span className="text-flame">ship.</span>
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-white/70 sm:text-base">
+              Production-ready building blocks — each one scoped, engineered and
+              delivered as part of the engagement.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* === Section 3 — shade, 3-col capability card grid === */}
+      <section className="bg-shade py-section-md">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              label="[ The scope ]"
+              title={
+                <>
+                  Production-ready{" "}
+                  <span className="text-flame">building blocks.</span>
+                </>
+              }
+              lead="Each item below is a capability we've shipped before — selected, scoped and delivered as part of the engagement."
+              align="center"
+            />
+          </Reveal>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            {service.capabilities.map((cap, i) => (
+              <Reveal key={cap} className="h-full" delay={Math.min(i * 0.05, 0.3)}>
+                <div className="card-lift group flex h-full items-center gap-3 rounded-xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift">
+                  <CheckCircle2
+                    className="size-5 shrink-0 text-brand transition-colors duration-500 group-hover:text-flame"
+                    aria-hidden
+                  />
+                  <span className="text-sm font-semibold text-ink">{cap}</span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ============ 10. CTA ============ */}
-      <CTABand
-        label="[ Let's build ]"
-        title={`Ready to scope your ${service.shortTitle.toLowerCase()} project?`}
-        desc="Book a free 30-minute consultation. We'll review your situation, share a written recommendation, and propose a small first milestone."
-        ctaHref="/appointment"
-        ctaLabel="Book a consultation"
-        tone="ink"
+      {/* === Section 4 — white, CTA === */}
+      <CTASection
+        bg="bg-white"
+        eyebrow="[ Start a project ]"
+        title={`Ready to scope your ${service.shortTitle} project?`}
+        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome."
+      />
+    </>
+  );
+}
+
+/* ============================================================
+ * LAYOUT C — services 2, 5, 8
+ * (Web Solutions · Data & Analytics · Enterprise Integration)
+ *
+ *   §1 white  · left-aligned overview with flame rule (max-w-2xl)
+ *   §2 shade  · 2-col split: sticky "[ Capabilities ]" + numbered list
+ *   §3 white  · full-width image break with overlay quote
+ *   §4 shade  · CTA
+ * ============================================================ */
+function LayoutC({ service }: { service: ServiceV2 }) {
+  const Icon = service.icon;
+  return (
+    <>
+      {/* === Section 1 — white, left-aligned overview with flame rule === */}
+      <section className="bg-white py-section-md">
+        <div className="container-site">
+          <Reveal>
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-4">
+                <span className="flex size-14 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+                  <Icon className="size-7" aria-hidden />
+                </span>
+                <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
+                  Service {service.number} · {service.revenueEngine}
+                </span>
+              </div>
+              <div aria-hidden className="rule-flame mt-6" />
+              <span className="section-label">[ Overview ]</span>
+              <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+                {service.overviewHeading}
+              </h2>
+              <div className="mt-6 space-y-4">
+                {service.overviewParas.map((p, i) => (
+                  <p key={i} className="text-[16px] leading-relaxed text-body">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* === Section 2 — shade, 2-col split: sticky heading + numbered list === */}
+      <section className="bg-shade py-section-md">
+        <div className="container-site">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
+            {/* Left — sticky heading */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <Reveal>
+                <div aria-hidden className="rule-flame" />
+                <span className="section-label mt-6">[ Capabilities ]</span>
+                <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+                  What's inside the{" "}
+                  <span className="text-flame">engagement.</span>
+                </h2>
+                <p className="mt-5 text-[16px] leading-relaxed text-body">
+                  A focused list of capabilities — each one scoped, engineered
+                  and shipped to a clear business outcome.
+                </p>
+              </Reveal>
+            </div>
+
+            {/* Right — numbered clean list with hover tint */}
+            <Reveal delay={0.1}>
+              <ul className="overflow-hidden rounded-2xl border border-line bg-white">
+                {service.capabilities.map((cap, i) => (
+                  <li
+                    key={cap}
+                    className="group flex items-center gap-5 border-t border-line px-5 py-4 transition-colors duration-300 first:border-t-0 hover:bg-cream/60"
+                  >
+                    <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45 transition-colors duration-300 group-hover:text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 text-[15px] font-medium text-ink">
+                      {cap}
+                    </span>
+                    <Check
+                      className="size-4 -translate-x-1 text-flame opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                      aria-hidden
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* === Section 3 — white, full-width image break with overlay quote === */}
+      <section className="relative h-[360px] overflow-hidden bg-ink sm:h-[460px] lg:h-[520px]">
+        <Image
+          src={service.heroImage}
+          alt={service.title}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(120deg, rgba(0,3,61,0.95) 0%, rgba(11,22,94,0.72) 50%, rgba(11,22,94,0.32) 100%)",
+          }}
+        />
+        <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-16 top-1/3 size-72 rounded-full bg-flame/20 blur-[120px]"
+        />
+        <div className="container-site relative flex h-full items-center">
+          <Reveal className="max-w-2xl">
+            <span className="section-label !text-brand-light">[ Field note ]</span>
+            <blockquote className="mt-3 text-display-md font-bold leading-snug text-white sm:text-display-lg">
+              <span className="text-flame" aria-hidden>
+                &ldquo;
+              </span>
+              {service.tagline}
+              <span className="text-flame" aria-hidden>
+                &rdquo;
+              </span>
+            </blockquote>
+            <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
+              {service.shortTitle} — engineered around the outcomes that matter.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* === Section 4 — shade, CTA === */}
+      <CTASection
+        bg="bg-shade"
+        eyebrow="[ Start a project ]"
+        title={`Ready to scope your ${service.shortTitle} project?`}
+        desc="Tell us where you are today. We'll translate it into a scoped engagement with clear milestones and a delivery plan."
       />
     </>
   );

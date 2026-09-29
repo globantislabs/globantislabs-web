@@ -1,0 +1,687 @@
+     1→import type { Metadata } from "next";
+     2→import { notFound } from "next/navigation";
+     3→import Image from "next/image";
+     4→import Link from "next/link";
+     5→import {
+     6→  ArrowRight,
+     7→  ArrowUpRight,
+     8→  CheckCircle2,
+     9→  ChevronRight,
+    10→  Clock,
+    11→  Quote,
+    12→  Sparkles,
+    13→  PackageCheck,
+    14→} from "lucide-react";
+    15→import { PageBanner } from "@/components/site/page-banner";
+    16→import { ServiceHero } from "@/components/site/service-hero";
+    17→import { Reveal, SectionHeading, CTABand } from "@/components/site/primitives";
+    18→import { buildMetadata } from "@/lib/seo";
+    19→import { services } from "@/lib/site-data";
+    20→
+    21→export function generateStaticParams() {
+    22→  return services.map((s) => ({ slug: s.slug }));
+    23→}
+    24→
+    25→export async function generateMetadata({
+    26→  params,
+    27→}: {
+    28→  params: Promise<{ slug: string }>;
+    29→}): Promise<Metadata> {
+    30→  const { slug } = await params;
+    31→  const service = services.find((s) => s.slug === slug);
+    32→  if (!service) return {};
+    33→  return buildMetadata({
+    34→    title: `${service.title} | Globantis Labs`,
+    35→    description: service.desc,
+    36→    path: `/services/${slug}`,
+    37→  });
+    38→}
+    39→
+    40→export default async function ServiceDetailPage({
+    41→  params,
+    42→}: {
+    43→  params: Promise<{ slug: string }>;
+    44→}) {
+    45→  const { slug } = await params;
+    46→  const service = services.find((s) => s.slug === slug);
+    47→  if (!service) notFound();
+    48→
+    49→  const Icon = service.icon;
+    50→  const serviceNo = services.findIndex((s) => s.slug === service.slug) + 1;
+    51→
+    52→  // Other services for the "explore more" strip
+    53→  const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+    54→
+    55→  return (
+    56→    <>
+    57→      <ServiceHero
+    58→        service={{
+    59→          title: service.title,
+    60→          banner: service.banner,
+    61→        }}
+    62→        crumbs={[
+    63→          { label: "Services", href: "/services" },
+    64→          { label: service.shortTitle },
+    65→        ]}
+    66→      />
+    67→
+    68→      {/* ============ 1. Overview + sticky rail ============ */}
+    69→      <section className="bg-white py-section-md">
+    70→        <div className="container-site">
+    71→          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
+    72→            {/* Sticky service rail */}
+    73→            <div className="lg:sticky lg:top-32">
+    74→              <Reveal>
+    75→                <div className="overflow-hidden rounded-2xl border border-line bg-shade shadow-soft">
+    76→                  {/* Branded header strip */}
+    77→                  <div className="relative overflow-hidden bg-brand-gradient p-6 text-white">
+    78→                    <svg
+    79→                      aria-hidden
+    80→                      viewBox="0 0 30 30"
+    81→                      className="pointer-events-none absolute -right-4 -top-4 size-20 opacity-20"
+    82→                    >
+    83→                      <polygon
+    84→                        points="24.3,7.1 13.14,22.91 5.7,22.91 16.86,7.1"
+    85→                        fill="currentColor"
+    86→                      />
+    87→                    </svg>
+    88→                    <div className="flex items-start justify-between">
+    89→                      <span className="flex size-14 items-center justify-center rounded-xl bg-white/15">
+    90→                        <Icon className="size-7" />
+    91→                      </span>
+    92→                      <span className="font-mono text-4xl font-bold leading-none text-white/30">
+    93→                        {String(serviceNo).padStart(2, "0")}
+    94→                      </span>
+    95→                    </div>
+    96→                    <h2 className="mt-4 text-display-sm font-bold">
+    97→                      {service.title}
+    98→                    </h2>
+    99→                    {service.tagline && (
+   100→                      <p className="mt-1 text-sm opacity-85">{service.tagline}</p>
+   101→                    )}
+   102→                  </div>
+   103→
+   104→                  {/* Body — description + tech stack + CTA */}
+   105→                  <div className="p-6">
+   106→                    <p className="text-sm leading-relaxed text-body">
+   107→                      {service.desc}
+   108→                    </p>
+   109→                    <div aria-hidden className="rule-flame mt-5" />
+   110→
+   111→                    {/* Tech stack */}
+   112→                    <div className="mt-5">
+   113→                      <p className="text-[11px] font-semibold uppercase tracking-wider text-ink/45">
+   114→                        Technologies
+   115→                      </p>
+   116→                      <div className="mt-3 flex flex-wrap items-center gap-3">
+   117→                        {service.techs.map((t) => (
+   118→                          <div
+   119→                            key={t.name}
+   120→                            className="flex h-12 items-center justify-center rounded-xl border border-line bg-white px-3"
+   121→                          >
+   122→                            <Image
+   123→                              src={t.img}
+   124→                              alt={t.name}
+   125→                              width={60}
+   126→                              height={40}
+   127→                              className="h-6 w-auto object-contain"
+   128→                              title={t.name}
+   129→                            />
+   130→                          </div>
+   131→                        ))}
+   132→                      </div>
+   133→                    </div>
+   134→
+   135→                    {/* CTA */}
+   136→                    <Link
+   137→                      href="/contact"
+   138→                      className="btn-lift mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
+   139→                    >
+   140→                      Discuss your project
+   141→                      <ArrowRight className="size-4" aria-hidden />
+   142→                    </Link>
+   143→                  </div>
+   144→                </div>
+   145→              </Reveal>
+   146→            </div>
+   147→
+   148→            {/* Long-form content */}
+   149→            <div>
+   150→              {service.overview && (
+   151→                <Reveal>
+   152→                  <SectionHeading
+   153→                label={service.banner?.label ? `[ ${service.banner.label} ]` : "[ Overview ]"}
+   154→                title={service.overview.heading}
+   155→              />
+   156→                  {service.overview.paragraphs.length > 0 && (
+   157→                    <div className="mt-6 space-y-4">
+   158→                      {service.overview.paragraphs.map((p, i) => (
+   159→                        <p
+   160→                          key={i}
+   161→                          className="text-[17px] leading-relaxed text-body"
+   162→                        >
+   163→                          {p}
+   164→                        </p>
+   165→                      ))}
+   166→                    </div>
+   167→                  )}
+   168→                </Reveal>
+   169→              )}
+   170→
+   171→              {/* Deliverables chips — quick visual summary */}
+   172→              {service.deliverables && (
+   173→                <Reveal delay={0.07} className="mt-10">
+   174→                  <div className="rounded-2xl border border-line bg-shade p-6">
+   175→                    <div className="flex items-center gap-2">
+   176→                      <PackageCheck className="size-5 text-brand" aria-hidden />
+   177→                      <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
+   178→                        What you'll walk away with
+   179→                      </p>
+   180→                    </div>
+   181→                    <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+   182→                      {service.deliverables.map((d) => (
+   183→                        <li
+   184→                          key={d}
+   185→                          className="flex items-center gap-2 text-sm text-ink"
+   186→                        >
+   187→                          <CheckCircle2
+   188→                            className="size-4 shrink-0 text-brand"
+   189→                            aria-hidden
+   190→                          />
+   191→                          {d}
+   192→                        </li>
+   193→                      ))}
+   194→                    </ul>
+   195→                  </div>
+   196→                </Reveal>
+   197→              )}
+   198→            </div>
+   199→          </div>
+   200→        </div>
+   201→      </section>
+   202→
+   203→      {/* ============ 2. Stats band — service KPIs ============ */}
+   204→      {service.stats && (
+   205→        <section className="relative overflow-hidden bg-ink py-section-sm text-white">
+   206→          <div aria-hidden className="absolute inset-0 grid-pattern opacity-40" />
+   207→          <div
+   208→            aria-hidden
+   209→            className="absolute -right-32 top-0 size-80 rounded-full bg-flame/15 blur-[120px]"
+   210→          />
+   211→          <div className="container-site relative">
+   212→            <Reveal>
+   213→              <div className="mx-auto mb-10 max-w-2xl text-center">
+   214→                <span className="section-label !text-brand-light">[ By the numbers ]</span>
+   215→                <h2 className="mt-3 text-display-md font-bold text-white">
+   216→                  Outcomes we ship on this engagement.
+   217→                </h2>
+   218→              </div>
+   219→            </Reveal>
+   220→            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur lg:grid-cols-4">
+   221→              {service.stats.map((s, i) => (
+   222→                <Reveal
+   223→                  key={s.label}
+   224→                  delay={Math.min(i * 0.08, 0.32)}
+   225→                  className="h-full"
+   226→                >
+   227→                  <div className="flex h-full flex-col gap-2 p-6 sm:p-8">
+   228→                    <div aria-hidden className="rule-flame" />
+   229→                    <div className="mt-3 font-mono text-4xl font-bold leading-none text-white sm:text-5xl">
+   230→                      {s.value}
+   231→                    </div>
+   232→                    <div className="mt-1 text-xs leading-tight text-white/60 sm:text-sm">
+   233→                      {s.label}
+   234→                    </div>
+   235→                  </div>
+   236→                </Reveal>
+   237→              ))}
+   238→            </div>
+   239→          </div>
+   240→        </section>
+   241→      )}
+   242→
+   243→      {/* ============ 3. Process timeline — five phases with deliverables ============ */}
+   244→      {service.processSteps && (
+   245→        <section className="bg-shade py-section-md">
+   246→          <div className="container-site">
+   247→            <Reveal>
+   248→              <SectionHeading
+   249→                label={service.processSteps.label ? `[ ${service.processSteps.label} ]` : "[ Delivery process ]"}
+   250→                title={service.processSteps.heading}
+   251→                lead={service.processSteps.intro}
+   252→                align="center"
+   253→              />
+   254→            </Reveal>
+   255→
+   256→            <ol className="mt-16 space-y-6">
+   257→              {service.processSteps.steps.map((step, i) => {
+   258→                const isLast = i === service.processSteps!.steps.length - 1;
+   259→                return (
+   260→                  <Reveal
+   261→                    key={step.phase}
+   262→                    delay={Math.min(i * 0.05, 0.25)}
+   263→                  >
+   264→                    <li className="group grid gap-6 rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift md:grid-cols-[5rem_1fr_15rem] md:items-start md:gap-8 md:p-8">
+   265→                      {/* Number + icon */}
+   266→                      <div className="flex flex-row items-center gap-4 md:flex-col md:items-start md:gap-3">
+   267→                        <div className="flex size-14 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-lg shadow-brand/30">
+   268→                          <span className="font-mono text-lg font-bold">
+   269→                            {step.phase}
+   270→                          </span>
+   271→                        </div>
+   272→                        <Clock className="size-5 text-ink/30" aria-hidden />
+   273→                      </div>
+   274→
+   275→                      {/* Body */}
+   276→                      <div>
+   277→                        <div className="flex flex-wrap items-baseline gap-3">
+   278→                          <h3 className="text-display-sm font-bold text-ink">
+   279→                            {step.title}
+   280→                          </h3>
+   281→                          <span className="inline-flex items-center gap-1 rounded-full bg-cream px-3 py-1 text-xs font-semibold text-brand">
+   282→                            <Clock className="size-3" aria-hidden />
+   283→                            {step.duration}
+   284→                          </span>
+   285→                        </div>
+   286→                        <p className="mt-3 text-sm leading-relaxed text-body md:text-[15px]">
+   287→                          {step.desc}
+   288→                        </p>
+   289→                      </div>
+   290→
+   291→                      {/* Deliverables */}
+   292→                      <div className="md:border-l md:border-line md:pl-6">
+   293→                        <p className="text-xs font-semibold uppercase tracking-wider text-ink/45">
+   294→                          Deliverables
+   295→                        </p>
+   296→                        <ul className="mt-2 space-y-2">
+   297→                          {step.deliverables.map((d) => (
+   298→                            <li
+   299→                              key={d}
+   300→                              className="flex items-start gap-2 text-sm text-ink/80"
+   301→                            >
+   302→                              <CheckCircle2
+   303→                                className="mt-0.5 size-3.5 shrink-0 text-brand"
+   304→                                aria-hidden
+   305→                              />
+   306→                              {d}
+   307→                            </li>
+   308→                          ))}
+   309→                        </ul>
+   310→                      </div>
+   311→                    </li>
+   312→                  </Reveal>
+   313→                );
+   314→              })}
+   315→            </ol>
+   316→          </div>
+   317→        </section>
+   318→      )}
+   319→
+   320→      {/* ============ 4. Use cases / What we ship ============ */}
+   321→      {service.useCases && (
+   322→        <section className="bg-white py-section-md">
+   323→          <div className="container-site">
+   324→            <Reveal>
+   325→              <SectionHeading
+   326→                label={service.useCases.label ? `[ ${service.useCases.label} ]` : "[ What we ship ]"}
+   327→                title={service.useCases.heading}
+   328→                lead={service.useCases.intro}
+   329→              />
+   330→            </Reveal>
+   331→
+   332→            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+   333→              {service.useCases.items.map((item, i) => {
+   334→                const ItemIcon = item.icon;
+   335→                return (
+   336→                  <Reveal
+   337→                    key={item.title}
+   338→                    delay={Math.min(i * 0.05, 0.25)}
+   339→                    className="h-full"
+   340→                  >
+   341→                    <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift">
+   342→                      <span
+   343→                        aria-hidden
+   344→                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
+   345→                      />
+   346→                      <div className="flex items-center justify-between">
+   347→                        {ItemIcon && (
+   348→                          <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-white text-brand transition-all duration-500 group-hover:bg-brand group-hover:text-white">
+   349→                            <ItemIcon className="size-6" />
+   350→                          </span>
+   351→                        )}
+   352→                        <span className="font-mono text-3xl font-bold text-ink/10 transition-colors duration-300 group-hover:text-flame/30">
+   353→                          {String(i + 1).padStart(2, "0")}
+   354→                        </span>
+   355→                      </div>
+   356→                      <h3 className="mt-4 text-display-sm font-bold text-ink">
+   357→                        {item.title}
+   358→                      </h3>
+   359→                      <p className="mt-2 text-sm leading-relaxed text-body">
+   360→                        {item.desc}
+   361→                      </p>
+   362→                    </div>
+   363→                  </Reveal>
+   364→                );
+   365→              })}
+   366→            </div>
+   367→          </div>
+   368→        </section>
+   369→      )}
+   370→
+   371→      {/* ============ 5. Testimonial ============ */}
+   372→      {service.testimonial && (
+   373→        <section className="bg-shade py-section-md">
+   374→          <div className="container-site">
+   375→            <Reveal>
+   376→              <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-line bg-white p-8 text-center shadow-float md:p-12">
+   377→                <Quote
+   378→                  aria-hidden
+   379→                  className="mx-auto size-12 text-flame"
+   380→                />
+   381→                <p className="mt-6 text-display-md font-bold leading-snug text-ink">
+   382→                  &ldquo;{service.testimonial.quote}&rdquo;
+   383→                </p>
+   384→                <div className="mt-6 flex flex-col items-center gap-1">
+   385→                  <p className="font-bold text-ink">
+   386→                    {service.testimonial.author}
+   387→                  </p>
+   388→                  <p className="text-sm text-body">
+   389→                    {service.testimonial.role}
+   390→                    {service.testimonial.company
+   391→                      ? ` · ${service.testimonial.company}`
+   392→                      : ""}
+   393→                  </p>
+   394→                </div>
+   395→                <div
+   396→                  aria-hidden
+   397→                  className="absolute -left-12 -top-12 size-32 rounded-full bg-flame/10 blur-3xl"
+   398→                />
+   399→                <div
+   400→                  aria-hidden
+   401→                  className="absolute -bottom-12 -right-12 size-32 rounded-full bg-flame/10 blur-3xl"
+   402→                />
+   403→              </div>
+   404→            </Reveal>
+   405→          </div>
+   406→        </section>
+   407→      )}
+   408→
+   409→      {/* ============ 6. Benefits (existing — preserved) ============ */}
+   410→      {service.benefits && (
+   411→        <section className="bg-white py-section-md">
+   412→          <div className="container-site">
+   413→            <Reveal>
+   414→              <SectionHeading
+   415→                label={service.benefits.label ? `[ ${service.benefits.label} ]` : "[ Benefits ]"}
+   416→                title={service.benefits.heading}
+   417→                lead={service.benefits.intro}
+   418→              />
+   419→            </Reveal>
+   420→
+   421→            {service.benefits.bullets && (
+   422→              <Reveal delay={0.07} className="mt-10">
+   423→                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+   424→                  {service.benefits.bullets.map((b) => (
+   425→                    <div
+   426→                      key={b}
+   427→                      className="flex items-center gap-3 rounded-xl border border-line bg-shade px-4 py-3.5 text-sm font-medium text-ink"
+   428→                    >
+   429→                      <CheckCircle2
+   430→                        className="size-4 shrink-0 text-brand"
+   431→                        aria-hidden
+   432→                      />
+   433→                      {b}
+   434→                    </div>
+   435→                  ))}
+   436→                </div>
+   437→              </Reveal>
+   438→            )}
+   439→
+   440→            {service.benefits.features && (
+   441→              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+   442→                {service.benefits.features.map((f, i) => (
+   443→                  <Reveal
+   444→                    key={f.title}
+   445→                    delay={Math.min(i * 0.05, 0.25)}
+   446→                    className="h-full"
+   447→                  >
+   448→                    <div className="group card-lift relative h-full overflow-hidden rounded-2xl border border-line bg-shade p-6 hover:border-flame/40 hover:shadow-lift">
+   449→                      <span
+   450→                        aria-hidden
+   451→                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+   452→                      />
+   453→                      <span className="font-mono text-3xl font-bold text-ink/10">
+   454→                        {String(i + 1).padStart(2, "0")}
+   455→                      </span>
+   456→                      <h4 className="mt-3 text-display-sm font-bold text-ink">
+   457→                        {f.title}
+   458→                      </h4>
+   459→                      <p className="mt-2.5 text-sm leading-relaxed text-body">
+   460→                        {f.desc}
+   461→                      </p>
+   462→                    </div>
+   463→                  </Reveal>
+   464→                ))}
+   465→              </div>
+   466→            )}
+   467→
+   468→            {service.benefits.closing && (
+   469→              <Reveal className="mt-10">
+   470→                <p className="max-w-3xl text-[17px] leading-relaxed text-body">
+   471→                  {service.benefits.closing}
+   472→                </p>
+   473→              </Reveal>
+   474→            )}
+   475→
+   476→            {service.benefits.images && service.benefits.images.length > 0 && (
+   477→              <Reveal className="mt-10">
+   478→                {service.benefits.images.length === 1 ? (
+   479→                  <div className="relative max-w-xl">
+   480→                    <div
+   481→                      aria-hidden
+   482→                      className="absolute -bottom-4 -right-4 size-full rounded-2xl bg-cream"
+   483→                    />
+   484→                    <div className="relative overflow-hidden rounded-2xl border border-line shadow-float">
+   485→                      <Image
+   486→                        src={service.benefits.images[0]}
+   487→                        alt="Project showcase"
+   488→                        width={640}
+   489→                        height={427}
+   490→                        className="h-auto w-full object-cover"
+   491→                      />
+   492→                    </div>
+   493→                  </div>
+   494→                ) : (
+   495→                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+   496→                    {service.benefits.images.map((img) => (
+   497→                      <div
+   498→                        key={img}
+   499→                        className="group/img overflow-hidden rounded-2xl border border-line bg-shade shadow-soft"
+   500→                      >
+   501→                        <Image
+   502→                          src={img}
+   503→                          alt="Project showcase"
+   504→                          width={300}
+   505→                          height={200}
+   506→                          className="aspect-[3/2] h-auto w-full object-cover transition-transform duration-700 ease-out-expo group-hover/img:scale-105"
+   507→                        />
+   508→                      </div>
+   509→                    ))}
+   510→                  </div>
+   511→                )}
+   512→              </Reveal>
+   513→            )}
+   514→          </div>
+   515→        </section>
+   516→      )}
+   517→
+   518→      {/* ============ 7. Sub-services ============ */}
+   519→      {service.subServices && (
+   520→        <section className="bg-shade py-section-md">
+   521→          <div className="container-site">
+   522→            <Reveal>
+   523→              <SectionHeading
+   524→                label={service.subServices.label ? `[ ${service.subServices.label} ]` : "[ What we deliver ]"}
+   525→                title={service.subServices.heading}
+   526→                lead={service.subServices.intro}
+   527→              />
+   528→            </Reveal>
+   529→            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+   530→              {service.subServices.items.map((item, i) => (
+   531→                <Reveal
+   532→                  key={item.title}
+   533→                  delay={Math.min(i * 0.07, 0.35)}
+   534→                  className="h-full"
+   535→                >
+   536→                  <div className="card-lift group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift">
+   537→                    <span
+   538→                      aria-hidden
+   539→                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+   540→                    />
+   541→                    <span className="font-mono text-4xl font-bold text-ink/10">
+   542→                      {String(i + 1).padStart(2, "0")}
+   543→                    </span>
+   544→                    <h3 className="text-display-sm font-bold text-ink">
+   545→                      {item.title}
+   546→                    </h3>
+   547→                    <p className="text-sm leading-relaxed text-body">
+   548→                      {item.desc}
+   549→                    </p>
+   550→                  </div>
+   551→                </Reveal>
+   552→              ))}
+   553→            </div>
+   554→          </div>
+   555→        </section>
+   556→      )}
+   557→
+   558→      {/* ============ 8. FAQ ============ */}
+   559→      {service.faq && (
+   560→        <section className="bg-white py-section-md">
+   561→          <div className="container-site">
+   562→            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
+   563→              <div className="lg:sticky lg:top-32">
+   564→                <Reveal>
+   565→                  {service.faq.label && (
+   566→                    <span className="section-label">[ {service.faq.label} ]</span>
+   567→                  )}
+   568→                  <h2 className="text-display-lg font-bold text-ink">
+   569→                    {service.faq.heading}
+   570→                  </h2>
+   571→                  {service.faq.image && (
+   572→                    <div className="relative mt-8 max-w-md">
+   573→                      <div
+   574→                        aria-hidden
+   575→                        className="absolute -inset-3 rounded-3xl border border-flame/25"
+   576→                      />
+   577→                      <div className="relative overflow-hidden rounded-2xl shadow-float">
+   578→                        <Image
+   579→                          src={service.faq.image}
+   580→                          alt={service.faq.heading}
+   581→                          width={560}
+   582→                          height={400}
+   583→                          className="h-full w-full object-cover"
+   584→                        />
+   585→                      </div>
+   586→                    </div>
+   587→                  )}
+   588→                </Reveal>
+   589→              </div>
+   590→
+   591→              <div className="space-y-3">
+   592→                {service.faq.items.map((item, i) => (
+   593→                  <Reveal key={i} delay={Math.min(i * 0.07, 0.35)}>
+   594→                    <details className="group card-lift rounded-2xl border border-line bg-shade p-5 transition-colors duration-300 hover:border-flame/40 open:border-flame/40 open:bg-white open:shadow-lift [&_summary]:cursor-pointer">
+   595→                      <summary className="flex min-h-11 list-none items-center gap-4 text-base font-bold text-ink marker:content-none">
+   596→                        {item.image && (
+   597→                          <Image
+   598→                            src={item.image}
+   599→                            alt=""
+   600→                            width={40}
+   601→                            height={40}
+   602→                            className="size-10 shrink-0 object-contain"
+   603→                          />
+   604→                        )}
+   605→                        {item.q}
+   606→                        <ChevronRight
+   607→                          aria-hidden
+   608→                          className="ml-auto size-4 shrink-0 text-brand transition-transform duration-300 ease-out-quart group-open:rotate-90"
+   609→                        />
+   610→                      </summary>
+   611→                      <p
+   612→                        className={`mt-3 text-sm leading-relaxed text-body ${
+   613→                          item.image ? "pl-14" : ""
+   614→                        }`}
+   615→                      >
+   616→                        {item.a}
+   617→                      </p>
+   618→                    </details>
+   619→                  </Reveal>
+   620→                ))}
+   621→              </div>
+   622→            </div>
+   623→          </div>
+   624→        </section>
+   625→      )}
+   626→
+   627→      {/* ============ 9. Explore more services ============ */}
+   628→      <section className="bg-shade py-section-md">
+   629→        <div className="container-site">
+   630→          <Reveal>
+   631→            <SectionHeading
+   632→              size="md"
+   633→              label="[ Keep exploring ]"
+   634→              title="Other services from Globantis Labs."
+   635→            />
+   636→          </Reveal>
+   637→          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+   638→            {others.map((s, i) => {
+   639→              const OtherIcon = s.icon;
+   640→              return (
+   641→                <Reveal
+   642→                  key={s.slug}
+   643→                  delay={Math.min(i * 0.07, 0.35)}
+   644→                  className="h-full"
+   645→                >
+   646→                  <Link
+   647→                    href={`/services/${s.slug}`}
+   648→                    className="group card-lift relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift"
+   649→                  >
+   650→                    <span
+   651→                      aria-hidden
+   652→                      className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+   653→                    />
+   654→                    <div className="flex items-center justify-between">
+   655→                      <span className="flex size-11 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-colors duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+   656→                        <OtherIcon className="size-5" aria-hidden />
+   657→                      </span>
+   658→                      <ArrowUpRight
+   659→                        aria-hidden
+   660→                        className="size-5 text-body transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
+   661→                      />
+   662→                    </div>
+   663→                    <h4 className="text-base font-bold text-ink">{s.title}</h4>
+   664→                    <p className="text-sm leading-relaxed text-body line-clamp-2">
+   665→                      {s.desc}
+   666→                    </p>
+   667→                  </Link>
+   668→                </Reveal>
+   669→              );
+   670→            })}
+   671→          </div>
+   672→        </div>
+   673→      </section>
+   674→
+   675→      {/* ============ 10. CTA ============ */}
+   676→      <CTABand
+   677→        label="[ Let's build ]"
+   678→        title={`Ready to scope your ${service.shortTitle.toLowerCase()} project?`}
+   679→        desc="Book a free 30-minute consultation. We'll review your situation, share a written recommendation, and propose a small first milestone."
+   680→        ctaHref="/appointment"
+   681→        ctaLabel="Book a consultation"
+   682→        tone="ink"
+   683→      />
+   684→    </>
+   685→  );
+   686→}
+   687→
