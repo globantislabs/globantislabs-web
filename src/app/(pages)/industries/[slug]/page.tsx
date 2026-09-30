@@ -652,29 +652,10 @@ function LayoutB({ ind }: { ind: Industry }) {
 
   return (
     <>
-      {/* === §1 — white, text-only intro (PageHero already has the image) === */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <div className="max-w-2xl">
-            <Reveal>
-              <div aria-hidden className="rule-flame mb-6" />
-              <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
-                {ind.heroHeading ?? ind.title}
-              </h2>
-              {ind.intro && (
-                <p className="mt-5 text-[16px] leading-relaxed text-body">
-                  {ind.intro}
-                </p>
-              )}
-              <p className="mt-4 text-sm font-medium text-brand">
-                {ind.focusAreas?.join("  ·  ") ?? ind.tagline}
-                {"  —  "}
-                Serving clients across the UK, Canada, Dubai, and beyond.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      {/* === §1 — REMOVED: was a duplicate text-only intro that re-stated
+         * the title + focus areas + global-reach line already shown in
+         * PageHero above. Jumping straight into §2 narrative sections
+         * keeps the page from feeling redundant. === */}
 
       {/* === §2 — alternating shade / white prose sections (para left + image right) === */}
       {proseSections.map((sec, i) => (
