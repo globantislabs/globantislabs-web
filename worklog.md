@@ -220,3 +220,24 @@ Stage Summary:
 - All 7 industry pages return HTTP 200 (financial-services preserved with LayoutA; healthcare / education / logistics / cybersecurity / ecommerce / automation all redesigned with the new clean LayoutB). All 7 bannerImage paths + both section-image paths exist under `/public/images/wp/`. The previously-broken `/images/wp/2025-04/services_01..05.jpg` paths on `automation.subIndustries.items[].image` are NOT rendered by the new LayoutB (the new card pattern is icon tile + title + desc — no image) — so no broken images appear on any industry page. Bonus verified all 10 service pages also return HTTP 200 with all heroImage references pointing to existing files.
 - Design-token usage matches the established premium system: `bg-white` / `bg-shade` / `bg-ink` (via §4 image break + LayoutA's preserved `ink-gradient` navy panel) alternation, `card-lift` hover on §3 cards, `rule-flame` as the editorial separator (§1 intro + §2 narrative sections + §4 image break), `section-label` eyebrow, `container-site` 1310px, `text-flame` (heading highlights + flame top-bar hover + flame orbs + flame dot + ArrowRight flourish), `text-brand` (icon tiles + numbered tiles + hover-inverted icon tiles), `text-ink` (headings), `text-body` (paragraphs), `grid-pattern` + flame orbs on the §4 image break. NO bullets / lists / numbered lists anywhere in the LayoutB prose — verified via `grep` on all 6 redesigned industry pages' rendered HTML.
 
+
+---
+Task ID: dup-banner-fix-2
+Agent: general-purpose
+Task: Remove duplicate "title + focusAreas + Serving clients..." section that appeared below PageHero on Layout B industry pages (healthcare, education, logistics, cybersecurity, ecommerce, automation)
+
+Work Log:
+- Located the offending section in `/src/app/(pages)/industries/[slug]/page.tsx` — Layout B's §1 (a white text-only intro) immediately below PageHero.
+- Identified the exact rendered duplicate: an h2 with `ind.heroHeading ?? ind.title` (== "Healthcare" on the healthcare page, identical to PageHero's H1), followed by a one-line paragraph joining `ind.focusAreas` with " · " then " — Serving clients across the UK, Canada, Dubai, and beyond." — which is what the user pasted back.
+- Confirmed this was a Layout-B-only issue: Layout A (financial-services) uses a 2-col sticky intro with a distinct heroHeading, so it is intentionally retained.
+- Verified the other Layout-B industries (education, logistics, cybersecurity, ecommerce) all have proper `sections: [...]` blocks defined in `site-data.ts` so the §2 prose renderer has real content to show once §1 is removed. Automation has no `sections` array — the existing fallback (`ind.heroHeading` + `ind.tagline`) still produces a non-duplicate heading ("Automation solutions designed…"), which is fine.
+- Also audited `/src/app/(pages)/services/[slug]/page.tsx` — services Layout A uses `service.overviewHeading` (a longer, distinct heading, NOT equal to the title shown in PageHero). No duplicate there. No change needed.
+- Edited `industries/[slug]/page.tsx` to delete the §1 `<section>` block (was lines 655–677) and replaced with a comment explaining the removal so future readers don't re-add it.
+- Ran `bun run build` — all 54 routes compiled, all 6 Layout-B industry pages (healthcare, education, logistics, cybersecurity, ecommerce, automation) pre-rendered successfully.
+- Committed locally: `fix(industries): remove duplicate §1 intro section from Layout B` (2162ff6). Push requires interactive GitHub auth — left to user to `git push origin main` from their terminal.
+
+Stage Summary:
+- 1 file changed, +4 / −23 lines in `src/app/(pages)/industries/[slug]/page.tsx`
+- All 6 Layout-B industry pages now flow: PageHero → §2 narrative prose sections (no redundant title+focus-areas line sandwich).
+- Layout A (financial-services) untouched, per earlier user instruction.
+- Build green. Push pending user-side auth.
