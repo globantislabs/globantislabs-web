@@ -706,52 +706,48 @@ function LayoutB({ ind }: { ind: Industry }) {
         />
       ))}
 
-      {/* === §3 — white, cards (icon tile + title + paragraph desc) === */}
+      {/* === §3 — white, paragraph-based content with image (NOT cards) === */}
       {cards && cards.items.length > 0 && (
         <section className="bg-white py-section-md">
           <div className="container-site">
-            <Reveal>
-              <SectionHeading
-                label={cards.label}
-                title={cards.title}
-                lead={cards.lead}
-                align="center"
-              />
-            </Reveal>
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {cards.items.map((card, i) => {
-                const CardIcon = card.icon;
-                return (
-                  <Reveal
-                    key={card.title + i}
-                    delay={Math.min(i * 0.07, 0.3)}
-                  >
-                    <div className="card-lift group relative flex h-full flex-col rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift">
-                      <span
-                        aria-hidden
-                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-500 ease-out-expo group-hover:scale-x-100"
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+              {/* Left — paragraph */}
+              <div>
+                <Reveal>
+                  <div aria-hidden className="rule-flame mb-6" />
+                  <h3 className="text-display-md font-bold leading-snug text-ink">
+                    {cards.title}
+                  </h3>
+                  <div className="mt-5 space-y-4">
+                    {cards.items.map((item, i) => (
+                      <p key={i} className="text-[16px] leading-relaxed text-body">
+                        <span className="font-semibold text-ink">{item.title}</span>
+                        {item.desc ? ` — ${item.desc}` : ""}
+                      </p>
+                    ))}
+                  </div>
+                </Reveal>
+              </div>
+              {/* Right — image */}
+              {ind.bannerImage && (
+                <Reveal delay={0.1}>
+                  <div className="relative">
+                    <div
+                      aria-hidden
+                      className="absolute -right-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
+                    />
+                    <div className="relative overflow-hidden rounded-2xl shadow-float">
+                      <Image
+                        src={ind.bannerImage}
+                        alt={ind.title}
+                        width={640}
+                        height={480}
+                        className="h-[280px] w-full object-cover sm:h-[360px] lg:h-[440px]"
                       />
-                      {CardIcon ? (
-                        <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand transition-all duration-500 ease-out-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                          <CardIcon aria-hidden className="size-6" />
-                        </span>
-                      ) : (
-                        <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream font-mono text-base font-bold text-brand">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      )}
-                      <h3 className="mt-5 text-base font-bold leading-snug text-ink">
-                        {card.title}
-                      </h3>
-                      {card.desc && (
-                        <p className="mt-2 text-sm leading-relaxed text-body">
-                          {card.desc}
-                        </p>
-                      )}
                     </div>
-                  </Reveal>
-                );
-              })}
+                  </div>
+                </Reveal>
+              )}
             </div>
           </div>
         </section>

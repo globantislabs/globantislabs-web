@@ -1,101 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Sparkles, Zap } from "lucide-react";
 import { Reveal } from "@/components/site/primitives";
 
 export function AnimatedCapabilities({ shortTitle, capabilities }: { shortTitle: string; capabilities: string[] }) {
-  const caps = capabilities;
+  // Group capabilities into paragraphs (3-4 per paragraph)
+  const groups: string[][] = [];
+  for (let i = 0; i < capabilities.length; i += 4) {
+    groups.push(capabilities.slice(i, i + 4));
+  }
+
   return (
-    <section className="relative overflow-hidden bg-ink py-section-md text-white">
-      <div aria-hidden className="absolute inset-0 grid-pattern opacity-30" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-40 top-0 size-96 rounded-full bg-flame/15 blur-[130px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-40 bottom-0 size-80 rounded-full bg-flame/10 blur-[100px]"
-      />
-      <div className="container-site relative">
+    <section className="bg-shade py-section-md">
+      <div className="container-site">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="section-label !text-brand-light">[ What we deliver ]</span>
-            <h2 className="mt-3 text-display-lg font-bold text-white">
-              {shortTitle}{" "}
-              <span className="text-flame">capabilities.</span>
+          <div className="max-w-3xl">
+            <div aria-hidden className="rule-flame mb-6" />
+            <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
+              {shortTitle} <span className="text-flame">capabilities.</span>
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/65">
-              Production-ready building blocks — each one scoped, engineered
-              and delivered as part of the engagement. {caps.length} capabilities
+            <p className="mt-5 text-[16px] leading-relaxed text-body">
+              Production-ready building blocks — each one scoped, engineered and
+              delivered as part of the engagement. {capabilities.length} capabilities
               that ship from day one.
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {caps.map((cap, i) => (
+        {/* Render capabilities as explanatory paragraphs, NOT cards or bullet points */}
+        <div className="mt-12 max-w-3xl space-y-8">
+          {groups.map((group, gi) => (
             <motion.div
-              key={cap}
-              initial={{ opacity: 0, y: 20 }}
+              key={gi}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.45,
-                delay: Math.min(i * 0.06, 0.4),
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur transition-colors duration-300 hover:border-flame/40 hover:bg-white/[0.07]"
+              transition={{ duration: 0.5, delay: gi * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span
-                aria-hidden
-                className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 ease-out-expo group-hover:scale-x-100"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-8 -top-8 size-24 rounded-full bg-flame/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <div className="relative flex items-start gap-3">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-brand-light transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
-                  <span className="font-mono text-xs font-bold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold leading-tight text-white">
-                    {cap}
-                  </p>
-                  <div className="mt-2 flex items-center gap-1.5">
-                    <Check
-                      className="size-3.5 text-flame opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 -translate-x-1"
-                      aria-hidden
-                    />
-                    <span className="text-[10px] font-medium uppercase tracking-wider text-white/40 transition-colors duration-300 group-hover:text-brand-light">
-                      Production-ready
+              <p className="text-[16px] leading-relaxed text-body">
+                {group.map((cap, ci) => {
+                  const isFirst = ci === 0;
+                  const isLast = ci === group.length - 1;
+                  return (
+                    <span key={cap}>
+                      {isFirst && gi > 0 && "Our "}
+                      <span className="font-semibold text-ink">{cap}</span>
+                      {isLast ? "." : ci === group.length - 2 ? " and " : ", "}
                     </span>
-                  </div>
-                </div>
-              </div>
+                  );
+                })}
+              </p>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 pt-8 text-center"
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-medium text-white/60">
-            <Zap className="size-3.5 text-brand-light" aria-hidden />
-            {caps.length} capabilities · scoped and shipped
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-medium text-white/60">
-            <Sparkles className="size-3.5 text-brand-light" aria-hidden />
-            Engineering-led · not outsourced
-          </span>
-        </motion.div>
       </div>
     </section>
   );
