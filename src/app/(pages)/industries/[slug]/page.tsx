@@ -652,63 +652,45 @@ function LayoutB({ ind }: { ind: Industry }) {
 
   return (
     <>
-      {/* === §1 — white, 2-col intro + offset-cream framed image === */}
-      <section className="bg-white py-section-md">
-        <div className="container-site">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-16">
-            {/* Left — intro text */}
-            <div className="lg:py-4">
-              <Reveal>
-                <span className="section-label">
-                  [ {ind.label ?? ind.title} ]
-                </span>
-                <div aria-hidden className="rule-flame mb-6" />
-                <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
-                  {ind.heroHeading ?? ind.title}
-                </h2>
-                {ind.intro && (
-                  <p className="mt-6 text-[16px] leading-relaxed text-body">
-                    {ind.intro}
-                  </p>
-                )}
-                {ind.focusAreas && ind.focusAreas.length > 0 && (
-                  <p className="mt-6 text-[15px] font-semibold tracking-wide text-ink/65">
-                    {ind.focusAreas.join("  ·  ")}
-                  </p>
-                )}
-                <GlobalReachBadge className="mt-6" />
-              </Reveal>
-            </div>
-
-            {/* Right — banner image with offset cream frame */}
-            {ind.bannerImage && (
-              <Reveal delay={0.1}>
-                <div className="relative">
-                  <div
-                    aria-hidden
-                    className="absolute -left-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
-                  />
-                  <div className="relative overflow-hidden rounded-2xl border border-line bg-ink shadow-lift">
-                    <Image
-                      src={ind.bannerImage}
-                      alt={ind.title}
-                      width={760}
-                      height={560}
-                      sizes="(min-width: 1024px) 760px, 100vw"
-                      className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute inset-x-0 bottom-0 h-24"
-                      style={{
-                        background:
-                          "linear-gradient(to top, rgba(11,22,94,0.55) 0%, rgba(11,22,94,0) 100%)",
-                      }}
-                    />
-                  </div>
-                </div>
-              </Reveal>
-            )}
+      {/* === §1 — full-width image banner with integrated intro text === */}
+      <section className="relative overflow-hidden bg-ink">
+        {ind.bannerImage && (
+          <Image
+            src={ind.bannerImage}
+            alt={ind.title}
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
+        )}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(100deg, rgba(0,3,61,0.95) 0%, rgba(11,22,94,0.75) 45%, rgba(11,22,94,0.35) 100%)",
+          }}
+        />
+        <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="container-site relative py-20 lg:py-28">
+          <div className="max-w-2xl">
+            <Reveal>
+              <div aria-hidden className="rule-flame mb-5" />
+              <h2 className="text-display-xl font-bold leading-[1.05] text-white">
+                {ind.heroHeading ?? ind.title}
+              </h2>
+              {ind.intro && (
+                <p className="mt-5 text-base leading-relaxed text-white/75 md:text-lg">
+                  {ind.intro}
+                </p>
+              )}
+              <p className="mt-4 text-sm font-medium text-brand-light">
+                {ind.focusAreas?.join("  ·  ") ?? ind.tagline}
+                {"  —  "}
+                Serving clients across the UK, Canada, Dubai, and beyond.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
