@@ -471,9 +471,12 @@ function DiagonalCropHero({
 }
 
 /* ----------------------------------------------------------------
- * Centered logo-strip hero — centered headline + CTAs + a row of
- * partner / client names below. No photography in this variant
- * (it's the "trust + brand" hero from the skill).
+ * Centered logo-strip hero — LIGHT version.
+ * Centered headline + CTAs + partner names row, on bg-shade with
+ * a navy brand band UNDER the headline carrying the partner row.
+ * This deliberately contrasts with fullbleed-overlay (dark, photo)
+ * and split-* (light, photo) so the hero reads as its own visual
+ * identity: the "trust + brand" treatment from the skill.
  * ---------------------------------------------------------------- */
 function CenteredLogoStripHero({
   title,
@@ -506,7 +509,7 @@ function CenteredLogoStripHero({
         className={
           variant === "primary"
             ? "btn-lift inline-flex h-12 items-center justify-center gap-2 rounded-full bg-flame px-7 text-sm font-semibold text-white shadow-glow-flame transition-colors hover:bg-flame-soft"
-            : "inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 text-sm font-semibold text-white/90 transition-colors hover:border-flame hover:text-flame"
+            : "inline-flex h-12 items-center justify-center gap-2 rounded-full border border-brand/30 bg-white px-6 text-sm font-semibold text-brand transition-colors hover:border-flame hover:text-flame"
         }
       >
         {cta.label}
@@ -515,39 +518,39 @@ function CenteredLogoStripHero({
   };
 
   return (
-    <section className="relative overflow-hidden bg-ink">
-      {/* Decorative brand orbs + grid */}
+    <section className="relative overflow-hidden bg-shade">
+      {/* Decorative brand orbs + grid (LIGHT treatment) */}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-flame/15 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 -bottom-32 size-96 rounded-full bg-brand/30 blur-3xl"
+        className="pointer-events-none absolute -right-32 -bottom-32 size-96 rounded-full bg-brand/10 blur-3xl"
       />
-      <div aria-hidden className="absolute inset-0 grid-pattern opacity-15" />
+      <div aria-hidden className="absolute inset-0 grid-pattern opacity-[0.05]" />
 
       <div className="container-site relative py-16 text-center lg:py-24">
         {crumbs.length > 0 && (
           <nav
             aria-label="Breadcrumb"
-            className="mb-5 flex flex-wrap items-center justify-center gap-1.5 text-xs text-white/60"
+            className="mb-5 flex flex-wrap items-center justify-center gap-1.5 text-xs text-ink/55"
           >
             {crumbs.map((c, i) => (
               <span key={i} className="inline-flex items-center gap-1.5">
                 {c.href ? (
                   <Link
                     href={c.href}
-                    className="transition-colors hover:text-white"
+                    className="transition-colors hover:text-ink"
                   >
                     {c.label}
                   </Link>
                 ) : (
-                  <span className="text-white">{c.label}</span>
+                  <span className="text-ink">{c.label}</span>
                 )}
                 {i < crumbs.length - 1 && (
                   <ChevronRight
-                    className="size-3 text-white/30"
+                    className="size-3 text-ink/30"
                     aria-hidden
                   />
                 )}
@@ -572,12 +575,12 @@ function CenteredLogoStripHero({
           </div>
         )}
 
-        <h1 className="mx-auto mt-4 max-w-4xl text-display-lg font-bold leading-[1.08] text-white sm:text-display-xl">
+        <h1 className="mx-auto mt-4 max-w-4xl text-display-lg font-bold leading-[1.08] text-ink sm:text-display-xl">
           {title}
         </h1>
 
         {description && (
-          <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-white/70 sm:text-[18px]">
+          <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-body sm:text-[18px]">
             {description}
           </p>
         )}
@@ -590,15 +593,15 @@ function CenteredLogoStripHero({
         )}
 
         {partners && partners.length > 0 && (
-          <div className="mt-14 border-t border-white/10 pt-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
+          <div className="mx-auto mt-14 max-w-5xl rounded-3xl bg-ink px-6 py-7 text-center shadow-lift sm:px-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/45">
               Trusted by teams across the UK, Canada, Dubai & beyond
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
               {partners.map((p, i) => (
                 <span
                   key={i}
-                  className="font-mono text-base font-semibold tracking-tight text-white/55 transition-colors hover:text-white"
+                  className="font-mono text-base font-semibold tracking-tight text-white/65 transition-colors hover:text-flame"
                 >
                   {p}
                 </span>

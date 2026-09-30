@@ -439,6 +439,562 @@ function ChallengesSection({
 }
 
 /* ============================================================
+ * IndustryShowcase — renders the unique per-industry showcase
+ * module. Each industry has its OWN data shape (pillars, journey,
+ * pathway, flow, layers, channels, workflow, etc.) and gets a
+ * visually-distinct section no sibling industry renders. This is
+ * the single biggest reason every industry page reads differently.
+ * ============================================================ */
+function IndustryShowcase({ ind }: { ind: Industry }) {
+  switch (ind.slug) {
+    case "healthcare":
+      return <HealthcareShowcase ind={ind} />;
+    case "education":
+      return <EducationShowcase ind={ind} />;
+    case "logistics":
+      return <LogisticsShowcase ind={ind} />;
+    case "cybersecurity":
+      return <CybersecurityShowcase ind={ind} />;
+    case "ecommerce":
+      return <EcommerceShowcase ind={ind} />;
+    case "automation":
+      return <AutomationShowcase ind={ind} />;
+    default:
+      return null;
+  }
+}
+
+/* ---------- Healthcare: care pillars (4-card grid) + patient journey
+ *  horizontal strip. Warm, caring visual: cream bg, large icon tiles,
+ *  rounded cards. ---------- */
+function HealthcareShowcase({ ind }: { ind: Industry }) {
+  if (!ind.pillars && !ind.journey) return null;
+  return (
+    <>
+      {ind.pillars && ind.pillars.length > 0 && (
+        <section className="bg-cream py-section-md">
+          <div className="container-site">
+            <Reveal>
+              <SectionHeading
+                label="[ Care pillars ]"
+                title={
+                  <>
+                    Four pillars of{" "}
+                    <span className="text-flame">modern care.</span>
+                  </>
+                }
+                lead="How we structure every healthcare engagement — from PHI security to last-mile access."
+                align="center"
+              />
+            </Reveal>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {ind.pillars.map((p, i) => {
+                const Icon = p.icon;
+                return (
+                  <Reveal key={p.title} delay={Math.min(i * 0.06, 0.3)}>
+                    <div className="card-lift group relative h-full overflow-hidden rounded-3xl border border-line bg-white p-7 hover:border-flame/40 hover:shadow-lift">
+                      {/* Flame top-bar on hover */}
+                      <div
+                        aria-hidden
+                        className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-flame to-flame-soft transition-transform duration-300 group-hover:scale-x-100"
+                      />
+                      {Icon && (
+                        <span className="flex size-14 items-center justify-center rounded-2xl border border-brand/20 bg-cream text-brand transition-colors group-hover:bg-flame group-hover:text-white">
+                          <Icon aria-hidden className="size-7" />
+                        </span>
+                      )}
+                      <p className="mt-5 text-lg font-bold text-ink">
+                        {p.title}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-body">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {ind.journey && ind.journey.length > 0 && (
+        <section className="bg-white py-section-md">
+          <div className="container-site">
+            <Reveal>
+              <SectionHeading
+                label="[ Patient journey ]"
+                title={
+                  <>
+                    From schedule to{" "}
+                    <span className="text-flame">follow-up.</span>
+                  </>
+                }
+                lead="Every touchpoint in the patient journey — instrumented, observable, recoverable."
+                align="center"
+              />
+            </Reveal>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {ind.journey.map((j, i) => {
+                const Icon = j.icon;
+                return (
+                  <Reveal key={j.title} delay={Math.min(i * 0.06, 0.3)}>
+                    <div className="relative h-full rounded-2xl border border-line bg-shade p-6">
+                      <div className="flex items-center justify-between">
+                        {Icon && (
+                          <span className="flex size-10 items-center justify-center rounded-lg bg-flame/10 text-flame">
+                            <Icon aria-hidden className="size-5" />
+                          </span>
+                        )}
+                        <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/40">
+                          STEP {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <p className="mt-4 text-base font-bold text-ink">
+                        {j.title}
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed text-body">
+                        {j.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
+/* ---------- Education: 5-step numbered pathway (left sticky intro +
+ *  right vertical stepper) + platform features 3-col grid. ---------- */
+function EducationShowcase({ ind }: { ind: Industry }) {
+  if (!ind.pathway && !ind.platformFeatures) return null;
+  return (
+    <>
+      {ind.pathway && ind.pathway.length > 0 && (
+        <section className="bg-shade py-section-md">
+          <div className="container-site">
+            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
+              {/* Left — sticky intro */}
+              <div className="lg:sticky lg:top-32 lg:self-start">
+                <Reveal>
+                  <span className="section-label">[ Learning pathway ]</span>
+                  <div aria-hidden className="rule-flame mt-3 mb-6" />
+                  <h2 className="text-display-md font-bold leading-snug text-ink">
+                    Five steps to{" "}
+                    <span className="text-flame">mastery.</span>
+                  </h2>
+                  <p className="mt-5 text-[16px] leading-relaxed text-body">
+                    A repeatable learning pathway that adapts to each learner — from first diagnostic to capstone assessment.
+                  </p>
+                </Reveal>
+              </div>
+              {/* Right — vertical numbered pathway */}
+              <div>
+                <ol className="relative space-y-6 before:absolute before:left-[27px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-line">
+                  {ind.pathway.map((p, i) => (
+                    <Reveal key={p.title} delay={Math.min(i * 0.05, 0.25)}>
+                      <li className="relative flex gap-5">
+                        <span className="flex size-14 shrink-0 items-center justify-center rounded-full border-2 border-flame bg-white font-mono text-lg font-bold text-flame">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div className="pt-1.5">
+                          <p className="text-lg font-bold text-ink">
+                            {p.title}
+                          </p>
+                          <p className="mt-1 text-sm leading-relaxed text-body">
+                            {p.desc}
+                          </p>
+                        </div>
+                      </li>
+                    </Reveal>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {ind.platformFeatures && ind.platformFeatures.length > 0 && (
+        <section className="bg-white py-section-md">
+          <div className="container-site">
+            <Reveal>
+              <SectionHeading
+                label="[ Platform features ]"
+                title={
+                  <>
+                    The platform that{" "}
+                    <span className="text-flame">runs it.</span>
+                  </>
+                }
+                lead="Three feature pillars that move learning from content delivery to outcome engineering."
+                align="center"
+              />
+            </Reveal>
+            <div className="mt-12 grid gap-8 md:grid-cols-3">
+              {ind.platformFeatures.map((f, i) => {
+                const Icon = f.icon;
+                return (
+                  <Reveal key={f.title} delay={Math.min(i * 0.07, 0.3)}>
+                    <div className="card-lift h-full rounded-2xl border border-line bg-shade p-8 text-center hover:border-flame/40 hover:shadow-lift">
+                      {Icon && (
+                        <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-flame/10 text-flame">
+                          <Icon aria-hidden className="size-7" />
+                        </span>
+                      )}
+                      <p className="mt-5 text-lg font-bold text-ink">
+                        {f.title}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-body">
+                        {f.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
+/* ---------- Logistics: horizontal 5-node flow with connector lines +
+ *  tech-enabler chips strip. Operational, "in motion" feel. ---------- */
+function LogisticsShowcase({ ind }: { ind: Industry }) {
+  if (!ind.flow && !ind.techEnablers) return null;
+  return (
+    <>
+      {ind.flow && ind.flow.length > 0 && (
+        <section className="bg-ink py-section-md text-white">
+          <div className="container-site">
+            <Reveal>
+              <span className="section-label !text-brand-light">
+                [ Supply-chain flow ]
+              </span>
+              <div
+                aria-hidden
+                className="rule-flame mt-3 mb-6"
+              />
+              <h2 className="text-display-md font-bold leading-snug text-white">
+                Five stages, end-to-end{" "}
+                <span className="text-flame">observable.</span>
+              </h2>
+              <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/70">
+                Source, make, store, move, deliver — every node instrumented and recoverable in real time.
+              </p>
+            </Reveal>
+
+            {/* Horizontal flow with connector arrows */}
+            <div className="mt-12 grid gap-2 lg:grid-cols-9 lg:items-center">
+              {ind.flow.map((step, i) => {
+                const Icon = step.icon;
+                return (
+                  <Reveal
+                    key={step.label}
+                    delay={Math.min(i * 0.08, 0.4)}
+                    className={
+                      // 5 nodes + 4 connectors = 9 cells; nodes at 1,3,5,7,9
+                      i === 0
+                        ? "lg:col-span-1 lg:col-start-1"
+                        : "lg:col-span-1"
+                    }
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      <div className="relative">
+                        <span className="flex size-16 items-center justify-center rounded-2xl border border-white/20 bg-white/5 text-flame backdrop-blur">
+                          {Icon && <Icon aria-hidden className="size-7" />}
+                        </span>
+                        <span className="absolute -right-1 -top-1 flex size-6 items-center justify-center rounded-full bg-flame font-mono text-xs font-bold text-white">
+                          {i + 1}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm font-bold text-white">
+                        {step.label}
+                      </p>
+                      <p className="mt-1 text-xs leading-tight text-white/60">
+                        {step.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+            {/* Connector line under the flow (desktop) */}
+            <div
+              aria-hidden
+              className="mt-2 hidden h-px w-full bg-gradient-to-r from-flame/0 via-flame/40 to-flame/0 lg:block"
+            />
+          </div>
+        </section>
+      )}
+
+      {ind.techEnablers && ind.techEnablers.length > 0 && (
+        <section className="bg-shade py-section-md">
+          <div className="container-site">
+            <Reveal>
+              <SectionHeading
+                label="[ Tech enablers ]"
+                title={
+                  <>
+                    The stack that{" "}
+                    <span className="text-flame">powers it.</span>
+                  </>
+                }
+                lead="Six tech enablers we deploy across the supply chain to keep data, identity and provenance trustworthy end-to-end."
+                align="center"
+              />
+            </Reveal>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              {ind.techEnablers.map((t) => {
+                const Icon = t.icon;
+                return (
+                  <div
+                    key={t.name}
+                    className="group inline-flex items-center gap-3 rounded-full border border-line bg-white px-5 py-3 transition-all hover:border-flame hover:shadow-float"
+                  >
+                    {Icon && (
+                      <Icon
+                        aria-hidden
+                        className="size-5 text-brand transition-colors group-hover:text-flame"
+                      />
+                    )}
+                    <div className="flex flex-col">
+                      <span className="text-sm font-bold text-ink">
+                        {t.name}
+                      </span>
+                      <span className="text-[11px] leading-tight text-body">
+                        {t.desc}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
+/* ---------- Cybersecurity: 5 stacked defense layers with coverage
+ *  progress bars. Reads as "defense in depth", distinct from any
+ *  other industry. ---------- */
+function CybersecurityShowcase({ ind }: { ind: Industry }) {
+  if (!ind.layers) return null;
+  return (
+    <section className="bg-shade py-section-md">
+      <div className="container-site">
+        <Reveal>
+          <SectionHeading
+            label="[ Defense layers ]"
+            title={
+              <>
+                Five layers,{" "}
+                <span className="text-flame">defense in depth.</span>
+              </>
+            }
+            lead="From network edge to human firewall — each layer with its own coverage metric."
+            align="center"
+          />
+        </Reveal>
+        <div className="mt-12 space-y-3">
+          {ind.layers.map((l, i) => {
+            const Icon = l.icon;
+            return (
+              <Reveal key={l.title} delay={Math.min(i * 0.06, 0.3)}>
+                <div className="grid gap-4 rounded-2xl border border-line bg-white p-5 lg:grid-cols-[0.6fr_2fr_1.2fr] lg:items-center lg:gap-6">
+                  {/* Icon + number */}
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/40">
+                      L{String(i + 1).padStart(2, "0")}
+                    </span>
+                    {Icon && (
+                      <span className="flex size-10 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand">
+                        <Icon aria-hidden className="size-5" />
+                      </span>
+                    )}
+                    <p className="text-base font-bold text-ink">{l.title}</p>
+                  </div>
+                  {/* Desc */}
+                  <p className="text-sm leading-relaxed text-body">
+                    {l.desc}
+                  </p>
+                  {/* Coverage bar */}
+                  <div className="flex items-center gap-3">
+                    <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-shade">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-flame to-flame-soft"
+                        style={{ width: `${l.coverage}%` }}
+                      />
+                    </div>
+                    <span className="font-mono text-sm font-bold text-flame">
+                      {l.coverage}%
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Ecommerce: omnichannel chips strip + KPI metrics band.
+ *  "Conversion + commerce" feel — bright, conversion-focused. ---------- */
+function EcommerceShowcase({ ind }: { ind: Industry }) {
+  return (
+    <>
+      {ind.channels && ind.channels.length > 0 && (
+        <section className="bg-white py-section-md">
+          <div className="container-site">
+            <Reveal>
+              <SectionHeading
+                label="[ Omnichannel ]"
+                title={
+                  <>
+                    One brand,{" "}
+                    <span className="text-flame">every channel.</span>
+                  </>
+                }
+                lead="Web, mobile, marketplace, POS, social, voice — inventory and pricing sync across every touchpoint."
+                align="center"
+              />
+            </Reveal>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              {ind.channels.map((c) => {
+                const Icon = c.icon;
+                return (
+                  <div
+                    key={c.label}
+                    className="inline-flex items-center gap-2.5 rounded-full border border-line bg-shade px-5 py-2.5"
+                  >
+                    {Icon && (
+                      <Icon aria-hidden className="size-4 text-brand" />
+                    )}
+                    <span className="text-sm font-semibold text-ink">
+                      {c.label}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {ind.ecommerceMetrics && ind.ecommerceMetrics.length > 0 && (
+        <section className="bg-ink py-section-md">
+          <div className="container-site">
+            <Reveal>
+              <span className="section-label !text-brand-light">
+                [ Commerce KPIs ]
+              </span>
+              <div aria-hidden className="rule-flame mt-3 mb-6" />
+              <h2 className="text-display-md font-bold leading-snug text-white">
+                The metrics we{" "}
+                <span className="text-flame">move.</span>
+              </h2>
+            </Reveal>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {ind.ecommerceMetrics.map((m, i) => (
+                <Reveal key={m.label} delay={Math.min(i * 0.06, 0.3)}>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-colors hover:border-flame/40">
+                    <p className="text-display-sm font-bold text-flame">
+                      {m.value}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-white">
+                      {m.label}
+                    </p>
+                    {m.trend && (
+                      <p className="mt-1 font-mono text-xs text-white/50">
+                        {m.trend}
+                      </p>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
+/* ---------- Automation: 5-step horizontal workflow with connector
+ *  arrows. "Trigger → decide → act → monitor → optimize" feel. ---------- */
+function AutomationShowcase({ ind }: { ind: Industry }) {
+  if (!ind.workflow) return null;
+  return (
+    <section className="bg-shade py-section-md">
+      <div className="container-site">
+        <Reveal>
+          <SectionHeading
+            label="[ Automation loop ]"
+            title={
+              <>
+                Trigger → decide → act → monitor →{" "}
+                <span className="text-flame">optimize.</span>
+              </>
+            }
+            lead="A closed-loop automation workflow that tunes itself with every cycle."
+            align="center"
+          />
+        </Reveal>
+        <div className="mt-12 grid gap-4 lg:grid-cols-5 lg:items-stretch">
+          {ind.workflow.map((step, i) => {
+            const Icon = step.icon;
+            const isLast = i === ind.workflow!.length - 1;
+            return (
+              <Reveal key={step.label} delay={Math.min(i * 0.08, 0.4)}>
+                <div className="relative flex h-full flex-col rounded-2xl border border-line bg-white p-6 hover:border-flame/40 hover:shadow-lift">
+                  {/* Connector arrow (between cards, desktop only) */}
+                  {!isLast && (
+                    <span
+                      aria-hidden
+                      className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center lg:flex"
+                    >
+                      <span className="flex size-6 items-center justify-center rounded-full bg-flame text-white shadow-glow-flame">
+                        <ArrowRight aria-hidden className="size-3" />
+                      </span>
+                    </span>
+                  )}
+                  <div className="flex items-center justify-between">
+                    {Icon && (
+                      <span className="flex size-12 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
+                        <Icon aria-hidden className="size-6" />
+                      </span>
+                    )}
+                    <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/40">
+                      STEP {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-base font-bold text-ink">
+                    {step.label}
+                  </p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-body">
+                    {step.desc}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
  * LAYOUT A — financial-services · logistics · automation
  *
  *   §1 white  · 2-col sticky intro + offset-cream framed bannerImage
@@ -968,6 +1524,14 @@ function LayoutB({
           imageSide={sideFor(i)}
         />
       ))}
+
+      {/* === §2.5 — Per-industry UNIQUE showcase module ===================
+       * Each industry has its own showcase data shape (pillars, journey,
+       * pathway, platformFeatures, flow, techEnablers, layers, channels,
+       * ecommerceMetrics, workflow). Rendering it here gives every page
+       * a visibly different body section that no sibling page has.
+       * === */}
+      <IndustryShowcase ind={ind} />
 
       {/* === §3 — white, paragraph-based content with image (NOT cards) === */}
       {cards && cards.items.length > 0 && (
