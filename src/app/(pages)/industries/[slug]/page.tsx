@@ -652,40 +652,21 @@ function LayoutB({ ind }: { ind: Industry }) {
 
   return (
     <>
-      {/* === §1 — full-width image banner with integrated intro text === */}
-      <section className="relative overflow-hidden bg-ink">
-        {ind.bannerImage && (
-          <Image
-            src={ind.bannerImage}
-            alt={ind.title}
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
-          />
-        )}
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(100deg, rgba(0,3,61,0.95) 0%, rgba(11,22,94,0.75) 45%, rgba(11,22,94,0.35) 100%)",
-          }}
-        />
-        <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="container-site relative py-20 lg:py-28">
+      {/* === §1 — white, text-only intro (PageHero already has the image) === */}
+      <section className="bg-white py-section-md">
+        <div className="container-site">
           <div className="max-w-2xl">
             <Reveal>
-              <div aria-hidden className="rule-flame mb-5" />
-              <h2 className="text-display-xl font-bold leading-[1.05] text-white">
+              <div aria-hidden className="rule-flame mb-6" />
+              <h2 className="text-display-lg font-bold leading-[1.1] text-ink">
                 {ind.heroHeading ?? ind.title}
               </h2>
               {ind.intro && (
-                <p className="mt-5 text-base leading-relaxed text-white/75 md:text-lg">
+                <p className="mt-5 text-[16px] leading-relaxed text-body">
                   {ind.intro}
                 </p>
               )}
-              <p className="mt-4 text-sm font-medium text-brand-light">
+              <p className="mt-4 text-sm font-medium text-brand">
                 {ind.focusAreas?.join("  ·  ") ?? ind.tagline}
                 {"  —  "}
                 Serving clients across the UK, Canada, Dubai, and beyond.
@@ -753,58 +734,6 @@ function LayoutB({ ind }: { ind: Industry }) {
         </section>
       )}
 
-      {/* === §4 — full-width banner image break with navy overlay + tagline === */}
-      {ind.bannerImage && (
-        <section className="relative overflow-hidden bg-ink">
-          <div className="relative h-[400px] w-full sm:h-[480px] lg:h-[560px]">
-            <Image
-              src={ind.bannerImage}
-              alt={ind.title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(110deg, rgba(0,3,61,0.94) 0%, rgba(11,22,94,0.78) 50%, rgba(11,22,94,0.52) 100%)",
-              }}
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 grid-pattern opacity-20"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -left-20 -top-24 size-64 rounded-full bg-flame/20 blur-3xl"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-28 -right-16 size-72 rounded-full bg-flame/15 blur-3xl"
-            />
-            <div className="container-site relative flex h-full items-center">
-              <div className="max-w-2xl">
-                <div aria-hidden className="rule-flame mb-6" />
-                {ind.tagline && (
-                  <p className="text-display-md font-bold leading-[1.15] text-white lg:text-display-lg">
-                    {ind.tagline}
-                  </p>
-                )}
-                <div className="mt-8 flex items-center gap-2 text-xs font-semibold tracking-[0.12em] text-flame">
-                  <span
-                    aria-hidden
-                    className="inline-block size-1.5 rounded-full bg-flame"
-                  />
-                  Serving clients across the UK, Canada, Dubai, and beyond
-                  <ArrowRight className="size-4" aria-hidden />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
     </>
   );
 }
