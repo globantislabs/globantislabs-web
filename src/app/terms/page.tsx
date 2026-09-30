@@ -23,7 +23,7 @@ export default function TermsPage() {
       <PageHero
         title="Terms of Service"
         label="Legal"
-        image="/images/wp/2025-02/faq00.jpg"
+        image="/images/wp/2025-02/concept.png"
         crumbs={[{ label: "Home", href: "/" }, { label: "Terms" }]}
       />
 

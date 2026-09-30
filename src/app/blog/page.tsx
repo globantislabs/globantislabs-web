@@ -31,7 +31,7 @@ export default function BlogPage() {
       <PageHero
         title="Insights"
         label="Engineering blog"
-        image="/images/wp/2025-02/technology1.png"
+        image="/images/wp/2025-01/blog_new_02.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Insights" }]}
       />
 

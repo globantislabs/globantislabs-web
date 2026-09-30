@@ -54,7 +54,7 @@ export default function AboutPage() {
       <PageHero
         title="About Globantis Labs"
         label="About company"
-        image="/images/wp/2025-01/about.jpg"
+        image="/images/about.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 

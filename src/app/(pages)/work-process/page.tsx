@@ -68,7 +68,7 @@ export default function WorkProcessPage() {
       <PageHero
         title="Our Work Process"
         label="Work process"
-        image="/images/wp/2025-01/blog_new_05.jpg"
+        image="/images/wp/2025-02/about_mna00n.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Work Process" }]}
       />
 

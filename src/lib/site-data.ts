@@ -1093,7 +1093,7 @@ export const industries: Industry[] = [
     slug: "financial-services",
     title: "Financial Services",
     label: "Financial Services",
-    bannerImage: "/images/wp/2025-01/blog_new_02.jpg",
+    bannerImage: "/images/wp/2025-02/about_o01.jpg",
     icon: Landmark,
     tagline: "Banking, capital markets & fintech — modernized end-to-end.",
     focusAreas: ["Banking", "Capital Markets", "Fintech"],
@@ -1133,7 +1133,7 @@ export const industries: Industry[] = [
   {
     slug: "healthcare",
     title: "Healthcare",
-    bannerImage: "/images/wp/2025-02/about_o01.jpg",
+    bannerImage: "/images/wp/2025-02/about_mna00n.jpg",
     icon: HeartPulse,
     tagline: "Patient-centric care, empowered by AI, data & genomics.",
     focusAreas: ["Telemedicine", "AI Diagnostics", "Genomics"],
@@ -1196,7 +1196,7 @@ export const industries: Industry[] = [
   {
     slug: "education",
     title: "Education",
-    bannerImage: "/images/wp/2025-04/testimonials.jpg",
+    bannerImage: "/images/wp/2025-01/about_video.jpg",
     icon: GraduationCap,
     tagline: "Scalable, accessible, personalized learning pathways.",
     focusAreas: ["Virtual Classrooms", "AI Learning", "Cloud LMS"],

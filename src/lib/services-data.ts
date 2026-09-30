@@ -54,7 +54,7 @@ export const servicesV2: ServiceV2[] = [
       "Software Re-engineering",
       "Application Maintenance & Enhancement",
     ],
-    heroImage: "/images/wp/2025-01/project_new_05.jpg",
+    heroImage: "/images/about.jpg",
     revenueEngine: "Custom Software",
   },
   {
@@ -84,7 +84,7 @@ export const servicesV2: ServiceV2[] = [
       "AI Integration",
       "AI Workflow Automation",
     ],
-    heroImage: "/images/wp/2025-01/blog_new_05.jpg",
+    heroImage: "/images/hero-bg.jpg",
     revenueEngine: "AI & Automation",
   },
   {
@@ -113,7 +113,7 @@ export const servicesV2: ServiceV2[] = [
       "CMS Development",
       "Web Application Modernization",
     ],
-    heroImage: "/images/wp/2025-01/blog_new_02.jpg",
+    heroImage: "/images/hm2-about.jpg",
     revenueEngine: "Custom Software",
   },
   {
@@ -142,7 +142,7 @@ export const servicesV2: ServiceV2[] = [
       "Mobile API Integration",
       "Application Maintenance",
     ],
-    heroImage: "/images/wp/2025-02/vrhm2.jpg",
+    heroImage: "/images/vr-girl.jpg",
     revenueEngine: "Custom Software",
   },
   {
@@ -173,7 +173,7 @@ export const servicesV2: ServiceV2[] = [
       "Performance Optimization",
       "Backup & Disaster Recovery",
     ],
-    heroImage: "/images/wp/2025-01/project_new_02.jpg",
+    heroImage: "/images/hero-bg-2.jpg",
     revenueEngine: "Managed Services",
   },
   {
@@ -203,7 +203,7 @@ export const servicesV2: ServiceV2[] = [
       "Reporting & Dashboards",
       "Data Platform Modernization",
     ],
-    heroImage: "/images/wp/2025-01/blog_new_03.jpg",
+    heroImage: "/images/hm2-about-2.jpg",
     revenueEngine: "AI & Automation",
   },
   {
@@ -233,7 +233,7 @@ export const servicesV2: ServiceV2[] = [
       "Security Architecture",
       "Risk & Compliance Support",
     ],
-    heroImage: "/images/wp/2025-02/faq00.jpg",
+    heroImage: "/images/about-2.jpg",
     revenueEngine: "Managed Services",
   },
   {
@@ -263,7 +263,7 @@ export const servicesV2: ServiceV2[] = [
       "CRM & ERP Integration",
       "E-Commerce Modernization",
     ],
-    heroImage: "/images/wp/2025-02/concept.png",
+    heroImage: "/images/vrhm2.jpg",
     revenueEngine: "Custom Software",
   },
   {
@@ -293,7 +293,7 @@ export const servicesV2: ServiceV2[] = [
       "Data Integration",
       "Integration Architecture",
     ],
-    heroImage: "/images/wp/2025-01/why_choose01.jpg",
+    heroImage: "/images/office.jpg",
     revenueEngine: "Custom Software",
   },
   {
@@ -323,7 +323,7 @@ export const servicesV2: ServiceV2[] = [
       "SLA-Based Support",
       "Continuous Product Development",
     ],
-    heroImage: "/images/wp/2025-01/project_new_06.jpg",
+    heroImage: "/images/hero-asset.png",
     revenueEngine: "Managed Services",
   },
 ];

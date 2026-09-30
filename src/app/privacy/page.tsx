@@ -24,7 +24,7 @@ export default function PrivacyPage() {
       <PageHero
         title="Privacy Policy"
         label="Legal"
-        image="/images/wp/2025-02/technology1.png"
+        image="/images/wp/2025-02/faq00.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Privacy" }]}
       />
 
