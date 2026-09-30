@@ -241,3 +241,44 @@ Stage Summary:
 - All 6 Layout-B industry pages now flow: PageHero → §2 narrative prose sections (no redundant title+focus-areas line sandwich).
 - Layout A (financial-services) untouched, per earlier user instruction.
 - Build green. Push pending user-side auth.
+
+---
+Task ID: it-page-designer-apply
+Agent: general-purpose
+Task: Apply it-page-designer skill workflow to industry pages — unique layout fingerprint per page, real stock photography, MNC polish
+
+Work Log:
+- Saved the user-supplied it-page-designer skill spec to /home/z/my-project/skills/it-page-designer/SKILL.md (skills/ is gitignored, kept local-only as a reference).
+- Extracted pick_layout.py (Appendix E) and fetch_industry_images.sh (Appendix F simplified) to /home/z/my-project/scripts/ for reuse.
+- Ran pick_layout.py for all 7 industry slugs with the industry block list (challenges, solutions, outcomes, case, tech, why, faq, related). All 7 plans were assigned unique fingerprints (see layout_registry.json). Layout plans written one-per-file under /home/z/my-project/layout-plans/{slug}.json.
+- Tried to source real stock photography via the image-search skill (z-ai image-search CLI). The upstream service (reader.psmoe.com/glm/s/serp/images) consistently returned HTTP 400 Bad Request across 5 different queries and a 30s/20s/90s cooldown. Not a query issue — service is down on the gateway side. Deferred image sourcing to a follow-up turn.
+- Extended PageHero with a new `variant` prop supporting 3 working variants:
+    • fullbleed-overlay (default — original behaviour, unchanged, all other pages unaffected)
+    • split-image-left (text left, photo right with offset-cream frame + brand orb glow, light bg-shade)
+    • split-image-right (mirror)
+  PageHeroVariant type exported for callers. Existing PageHero callers (services, blog, case-studies, etc.) keep working — variant defaults to fullbleed-overlay.
+- Wired per-industry hero variants into industries/[slug]/page.tsx via a HERO_VARIANTS map keyed by slug. Industries education, logistics, automation now render the SPLIT hero; the other 4 (financial-services, healthcare, cybersecurity, ecommerce) keep fullbleed-overlay because their assigned plan variants (diagonal-crop, centered-logo-strip) need data we don't have on the Industry type yet.
+- Added per-industry prose rhythm to LayoutB §2 (NarrativeSection loop). Each slug gets a (bg-rhythm, image-side-pattern) pair:
+    • financial-services / healthcare / ecommerce — alt-shade-first + alternate sides (original feel)
+    • education — alt-white-first + always-right
+    • logistics — alt-white-first + always-left
+    • cybersecurity — all-white + always-right
+    • automation — all-white + always-left
+  So no two adjacent industries feel identical even when they share the NarrativeSection template.
+- Bug + fix: first build failed with ReferenceError "trail is not defined" in FullbleedHero — I renamed the param from `trail` to `crumbs` during refactor but left `trail.*` references in the body. Fixed by aliasing `const trail = crumbs;` at the top of FullbleedHero (kept the original variable name internally to minimise churn).
+- Re-ran bun run build — all 54 routes compile, all 7 industry pages pre-render.
+
+Stage Summary:
+- New artifacts:
+    • skills/it-page-designer/SKILL.md (local-only, gitignored)
+    • scripts/pick_layout.py
+    • scripts/fetch_industry_images.sh (placeholder for image-search retry when service recovers)
+    • layout-plans/{slug}.json (×7)
+    • layout_registry.json
+- Modified:
+    • src/components/site/page-hero.tsx  (+variant prop, +SplitHero, +PageHeroVariant export)
+    • src/app/(pages)/industries/[slug]/page.tsx  (+HERO_VARIANTS map, +PROSE_RHYTHM map)
+- 3 industries (education, logistics, automation) now have visibly different hero layouts from the other 4.
+- 6 Layout-B industries now have visibly different §2 prose rhythms.
+- Image sourcing deferred (upstream image-search 400 outage).
+- Commit: 9a9c75e (local). Push pending user-side GitHub auth.
