@@ -1086,6 +1086,18 @@ export type Industry = {
     button?: string;
     image?: string;
   };
+  /** Partner / client names rendered in the centered-logo-strip hero
+   *  variant. Text-only — no logo assets required. Used by the
+   *  it-page-designer skill's "centered-logo-strip" hero. */
+  partners?: string[];
+  /** Industry-specific challenges for the §1 challenges section
+   *  (it-page-designer skill: `challenges` section). Each entry has
+   *  an icon, a short pain-point title and a one-sentence desc. */
+  challenges?: {
+    icon: LucideIcon;
+    title: string;
+    desc: string;
+  }[];
 };
 
 export const industries: Industry[] = [
@@ -1097,6 +1109,34 @@ export const industries: Industry[] = [
     icon: Landmark,
     tagline: "Banking, capital markets & fintech — modernized end-to-end.",
     focusAreas: ["Banking", "Capital Markets", "Fintech"],
+    partners: [
+      "Canadian tier-1 bank",
+      "UK insurer",
+      "Dubai exchange",
+      "Fintech venture",
+    ],
+    challenges: [
+      {
+        icon: Scale,
+        title: "Regulatory compliance",
+        desc: "Basel III, MiFID II, PCI DSS and local conduct rules shift every quarter — leaving teams perpetually catching up.",
+      },
+      {
+        icon: Briefcase,
+        title: "Legacy core systems",
+        desc: "Mainframe + COBOL back-owners slow product launches and inflate run-cost while fintech entrants ship weekly.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Real-time fraud",
+        desc: "Card-not-present and account-takeover fraud moved inside the 200ms authorisation window — too fast for batch scoring.",
+      },
+      {
+        icon: Lock,
+        title: "Data residency",
+        desc: "Cross-border data flows must satisfy UK GDPR, PIPEDA and UAE data law simultaneously without fragmenting the customer record.",
+      },
+    ],
     heroHeading: "Shaping the Next Era of Financial Services with AI at the Core",
     intro:
       "In financial services, transformation is no longer a choice—it is a continuous necessity. Institutions face rising customer expectations, evolving risk landscapes, regulatory complexity, and the urgent need to modernize legacy systems.",
@@ -1137,6 +1177,34 @@ export const industries: Industry[] = [
     icon: HeartPulse,
     tagline: "Patient-centric care, empowered by AI, data & genomics.",
     focusAreas: ["Telemedicine", "AI Diagnostics", "Genomics"],
+    partners: [
+      "UK NHS trust",
+      "Canadian health network",
+      "Dubai clinic group",
+      "Pharma research org",
+    ],
+    challenges: [
+      {
+        icon: Lock,
+        title: "PHI security & privacy",
+        desc: "HIPAA, UK Data Protection Act and UAE health-data rules demand zero-trust controls around every patient record.",
+      },
+      {
+        icon: Link2,
+        title: "System interoperability",
+        desc: "EHR, imaging and lab systems were never designed to talk — leaving clinicians context-switching across five tabs per visit.",
+      },
+      {
+        icon: Users,
+        title: "Clinician burnout",
+        desc: "Two hours of documentation for every hour of care is driving attrition and worsening patient access metrics.",
+      },
+      {
+        icon: Scale,
+        title: "Regulatory compliance",
+        desc: "Medical device software (MDS2), HIPAA and DHA rules raise the audit bar every year — manual evidence no longer scales.",
+      },
+    ],
     pillars: [
       {
         icon: Video,
@@ -1200,6 +1268,34 @@ export const industries: Industry[] = [
     icon: GraduationCap,
     tagline: "Scalable, accessible, personalized learning pathways.",
     focusAreas: ["Virtual Classrooms", "AI Learning", "Cloud LMS"],
+    partners: [
+      "Canadian university",
+      "UK college group",
+      "Dubai K-12 network",
+      "Edtech platform",
+    ],
+    challenges: [
+      {
+        icon: Users,
+        title: "Student engagement",
+        desc: "Passive recorded lectures lose 60% of learners by week three — interactive, adaptive paths are now table stakes.",
+      },
+      {
+        icon: Wifi,
+        title: "Digital equity",
+        desc: "Rural Canada, UK social-housing estates and Dubai labour-camp schools still hit bandwidth and device ceilings that break live video.",
+      },
+      {
+        icon: FileText,
+        title: "Administrative overhead",
+        desc: "Admissions, accreditation and reporting swallow the budget that should fund pedagogy and student support.",
+      },
+      {
+        icon: LineChart,
+        title: "Learning outcomes",
+        desc: "Institutions can measure completion but struggle to evidence mastery — accreditors and employers want skills, not seat-time.",
+      },
+    ],
     pathway: [
       {
         title: "Learner Onboarding",
@@ -1263,6 +1359,34 @@ export const industries: Industry[] = [
     icon: Truck,
     tagline: "End-to-end supply chain visibility, velocity & resilience.",
     focusAreas: ["Supply Chain", "5G & Cloud", "Blockchain"],
+    partners: [
+      "Canadian 3PL",
+      "UK port authority",
+      "Dubai freight forwarder",
+      "National retailer",
+    ],
+    challenges: [
+      {
+        icon: MapPin,
+        title: "End-to-end visibility",
+        desc: "Containers disappear between carrier handoffs — customs, port and last-mile data live in siloed TMS / WMS stacks.",
+      },
+      {
+        icon: PackageCheck,
+        title: "Inventory accuracy",
+        desc: "Cycle counts lag demand signals; the WMS says 1,200 units, the dock says 940 — stock-outs and overstocks follow.",
+      },
+      {
+        icon: Truck,
+        title: "Last-mile cost",
+        desc: "Failed deliveries, route re-plans and COD handling make the last 5km cost more than the previous 5,000km.",
+      },
+      {
+        icon: BarChart3,
+        title: "Sustainability reporting",
+        desc: "Scope-3 carbon disclosure is now a tender requirement — but the data trail across carriers and modes is fragmented.",
+      },
+    ],
     flow: [
       {
         icon: PackageCheck,
@@ -1322,6 +1446,34 @@ export const industries: Industry[] = [
     icon: ShieldCheck,
     tagline: "Defense-in-depth — from network edge to human firewall.",
     focusAreas: ["Network", "Application", "Data", "Human"],
+    partners: [
+      "Canadian bank",
+      "UK SaaS leader",
+      "Dubai gov entity",
+      "Critical-infrastructure operator",
+    ],
+    challenges: [
+      {
+        icon: ShieldCheck,
+        title: "Threat detection latency",
+        desc: "Mean-time-to-detect still measured in hours while ransomware dwell-time has dropped to under 12 minutes.",
+      },
+      {
+        icon: Lock,
+        title: "Zero-trust adoption",
+        desc: "Legacy flat networks and shared service accounts block the path to per-session, least-privilege access.",
+      },
+      {
+        icon: Scale,
+        title: "Audit fatigue",
+        desc: "SOC 2, ISO 27001, PCI DSS and customer questionnaires all ask the same control evidence — re-collected every quarter.",
+      },
+      {
+        icon: Zap,
+        title: "Incident response readiness",
+        desc: "Runbooks live in three tools, on-call rotations are tribal knowledge and tabletop drills happen once a year at best.",
+      },
+    ],
     layers: [
       {
         icon: Network,
@@ -1392,6 +1544,34 @@ export const industries: Industry[] = [
     icon: ShoppingCart,
     tagline: "Omnichannel commerce that converts on every touchpoint.",
     focusAreas: ["Omnichannel", "Personalization", "Payments"],
+    partners: [
+      "Canadian D2C brand",
+      "UK retailer",
+      "Dubai marketplace",
+      "Subscription platform",
+    ],
+    challenges: [
+      {
+        icon: LineChart,
+        title: "Conversion rate",
+        desc: "Traffic is up but conversion is flat — slow PDPs, weak search relevance and a 7-step checkout are leaking intent.",
+      },
+      {
+        icon: ShoppingCart,
+        title: "Cart abandonment",
+        desc: "70% of carts die at shipping or payment step — guest checkout, surprise fees and slow pages all compound.",
+      },
+      {
+        icon: Zap,
+        title: "Site performance",
+        desc: "Every 100ms of LCP delay costs ~1% revenue, yet hero banners and third-party scripts keep pushing past 4s.",
+      },
+      {
+        icon: Share2,
+        title: "Omnichannel sync",
+        desc: "Inventory, pricing and loyalty offers drift between web, POS and marketplace — customers see one store, the system sees five.",
+      },
+    ],
     heroHeading: "Trustworthy, Scalable, & Optimized E-commerce & Retail Development.",
     channels: [
       { icon: Globe, label: "Web" },
@@ -1433,6 +1613,34 @@ export const industries: Industry[] = [
     icon: Workflow,
     tagline: "Eliminate manual effort & optimize operations intelligently.",
     focusAreas: ["Intelligent", "Process", "RPA"],
+    partners: [
+      "Canadian manufacturer",
+      "UK telco",
+      "Dubai logistics operator",
+      "BPO provider",
+    ],
+    challenges: [
+      {
+        icon: Workflow,
+        title: "Process bottlenecks",
+        desc: "20% of any back-office workflow still routes through a single human queue — approvals, exceptions and reconciliations pile up.",
+      },
+      {
+        icon: Briefcase,
+        title: "Legacy integration",
+        desc: "Mainframe, AS/400 and on-prem ERP expose no clean APIs — bots hit green-screen emulators and brittle screen-scrapers.",
+      },
+      {
+        icon: BarChart3,
+        title: "Data quality",
+        desc: "Master data, vendor records and item attributes are inconsistent across systems — automation propagates the bad data faster.",
+      },
+      {
+        icon: Users,
+        title: "Change adoption",
+        desc: "Bots ship but the operating model doesn't — exceptions still route to people who left, and trust erodes with each failure.",
+      },
+    ],
     heroHeading:
       "Automation solutions designed to eliminate manual effort and optimize business operations.",
     workflow: [
