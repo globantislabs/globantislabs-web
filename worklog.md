@@ -336,3 +336,36 @@ Stage Summary:
     automation        : split-image-left + cards-icons challenges
 - Image sourcing still deferred (image-search upstream outage persists).
 - Push pending user-side GitHub auth.
+
+---
+Task ID: visible-difference-fix
+Agent: general-purpose
+Task: Fix the user feedback that "all industry pages look the same as before" — make pages VISIBLY different
+
+Work Log:
+- Diagnosed two root causes for the user's complaint:
+  1. CenteredLogoStripHero used bg-ink (dark navy) — visually identical to FullbleedHero. So healthcare & ecommerce heroes looked the same as financial-services' dark hero.
+  2. Layout B body was IDENTICAL across 6 industries — only prose sections + cards grid, never rendering each industry's unique showcase data (pillars, journey, pathway, flow, layers, channels, ecommerceMetrics, workflow).
+- Fix 1: Refactored CenteredLogoStripHero to use LIGHT bg-shade background with dark text-ink, plus a navy brand band UNDER the headline carrying the partner row. Now visibly distinct from FullbleedHero (dark photo + scrim).
+- Fix 2: Added IndustryShowcase component (switch-based dispatcher) that renders a UNIQUE showcase module per industry. Each renderer uses different background colors, different grid layouts, and different visual treatments so no two industry pages look alike in the body:
+  • HealthcareShowcase — bg-cream 4-card pillars grid with flame top-bar hover + bg-white patient journey 4-step strip with STEP 01 markers.
+  • EducationShowcase — bg-shade sticky 2-col with vertical 5-step pathway (numbered flame circles + connector line via before: pseudo) + bg-white 3-col platform features with centered icon tiles.
+  • LogisticsShowcase — bg-ink dark section with horizontal 5-node flow (icon tiles + numbered badges + connector gradient line) + bg-shade tech-enablers chips strip with hover lift.
+  • CybersecurityShowcase — bg-shade 5-layer stacked rows in 3-col grid (icon+number / desc / coverage progress bar with %). Reads as "defense in depth".
+  • EcommerceShowcase — bg-white omnichannel chips row + bg-ink dark KPI metrics band with 4 large flame-colored numbers and trend markers.
+  • AutomationShowcase — bg-shade 5-step horizontal workflow cards with flame-arrow connectors between cards (desktop only, hidden on mobile).
+- Updated LayoutB to render <IndustryShowcase ind={ind} /> between §2 prose and §3 cards. Each industry page now has a body section no sibling industry renders.
+- Build green: all 54 routes compile, all 7 industry pages pre-render statically. No new warnings.
+
+Stage Summary:
+- Commit: 8007001 (local).
+- Modified:
+  • src/components/site/page-hero.tsx (CenteredLogoStripHero → light bg-shade + navy brand band)
+  • src/app/(pages)/industries/[slug]/page.tsx (+ IndustryShowcase dispatcher + 6 per-industry showcase components: HealthcareShowcase, EducationShowcase, LogisticsShowcase, CybersecurityShowcase, EcommerceShowcase, AutomationShowcase)
+- 584 insertions, 17 deletions across 2 files.
+- Every industry page now has THREE layers of visual distinction:
+  1. Hero variant (5 different visual treatments)
+  2. §1 Challenges section variant (3 different visual treatments)
+  3. §2.5 IndustryShowcase (6 UNIQUE modules — one per industry, no sibling has the same)
+- Plus per-industry prose rhythm in §2 (3 different bg+image-side patterns).
+- Push pending user-side GitHub auth.
