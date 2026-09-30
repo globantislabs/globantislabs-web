@@ -1,0 +1,70 @@
+{
+  "page_type": "industry",
+  "slug": "education",
+  "hero": "split-image-left",
+  "accent_treatment": "pill-eyebrow",
+  "sections": [
+    {
+      "section": "challenges",
+      "variant": "challenge-split-photo",
+      "background": "light",
+      "image_side": "left"
+    },
+    {
+      "section": "solutions",
+      "variant": "map-tabs-by-function",
+      "background": "tint"
+    },
+    {
+      "section": "why",
+      "variant": "why-numbered-list",
+      "background": "light"
+    },
+    {
+      "section": "outcomes",
+      "variant": "stats-cards-light",
+      "background": "tint"
+    },
+    {
+      "section": "case",
+      "variant": "case-quote-banner",
+      "background": "dark",
+      "image_side": "right"
+    },
+    {
+      "section": "tech",
+      "variant": "tech-matrix",
+      "background": "light"
+    },
+    {
+      "section": "faq",
+      "variant": "faq-accordion",
+      "background": "tint"
+    },
+    {
+      "section": "related",
+      "variant": "related-cards",
+      "background": "light"
+    },
+    {
+      "section": "cta",
+      "variant": "cta-band-dark",
+      "background": "dark"
+    }
+  ],
+  "image_slots": [
+    {
+      "slot": "hero",
+      "section": "hero"
+    },
+    {
+      "slot": "challenge",
+      "section": "challenges"
+    },
+    {
+      "slot": "case",
+      "section": "case"
+    }
+  ],
+  "fingerprint": "0894f4cd3d70"
+}

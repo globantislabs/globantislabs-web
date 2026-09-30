@@ -1,0 +1,70 @@
+{
+  "page_type": "industry",
+  "slug": "logistics",
+  "hero": "split-image-right",
+  "accent_treatment": "underline-accent",
+  "sections": [
+    {
+      "section": "challenges",
+      "variant": "challenge-split-photo",
+      "background": "light",
+      "image_side": "right"
+    },
+    {
+      "section": "solutions",
+      "variant": "map-challenge-to-service",
+      "background": "tint"
+    },
+    {
+      "section": "why",
+      "variant": "why-numbered-list",
+      "background": "light"
+    },
+    {
+      "section": "outcomes",
+      "variant": "stats-cards-light",
+      "background": "tint"
+    },
+    {
+      "section": "case",
+      "variant": "case-quote-banner",
+      "background": "dark",
+      "image_side": "left"
+    },
+    {
+      "section": "tech",
+      "variant": "tech-grouped-chips",
+      "background": "light"
+    },
+    {
+      "section": "faq",
+      "variant": "faq-accordion",
+      "background": "tint"
+    },
+    {
+      "section": "related",
+      "variant": "related-cards",
+      "background": "light"
+    },
+    {
+      "section": "cta",
+      "variant": "cta-band-dark",
+      "background": "dark"
+    }
+  ],
+  "image_slots": [
+    {
+      "slot": "hero",
+      "section": "hero"
+    },
+    {
+      "slot": "challenge",
+      "section": "challenges"
+    },
+    {
+      "slot": "case",
+      "section": "case"
+    }
+  ],
+  "fingerprint": "efbc5cd85c64"
+}

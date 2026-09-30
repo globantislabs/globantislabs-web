@@ -1,0 +1,70 @@
+{
+  "page_type": "industry",
+  "slug": "ecommerce",
+  "hero": "centered-logo-strip",
+  "accent_treatment": "underline-accent",
+  "sections": [
+    {
+      "section": "challenges",
+      "variant": "challenge-split-photo",
+      "background": "light",
+      "image_side": "left"
+    },
+    {
+      "section": "solutions",
+      "variant": "map-challenge-to-service",
+      "background": "tint"
+    },
+    {
+      "section": "why",
+      "variant": "why-split-icons",
+      "background": "light",
+      "image_side": "right"
+    },
+    {
+      "section": "outcomes",
+      "variant": "stats-inline",
+      "background": "tint"
+    },
+    {
+      "section": "case",
+      "variant": "case-cards-3",
+      "background": "light"
+    },
+    {
+      "section": "tech",
+      "variant": "tech-logo-strip",
+      "background": "tint"
+    },
+    {
+      "section": "faq",
+      "variant": "faq-accordion",
+      "background": "light"
+    },
+    {
+      "section": "related",
+      "variant": "related-cards",
+      "background": "tint"
+    },
+    {
+      "section": "cta",
+      "variant": "cta-split-form",
+      "background": "light"
+    }
+  ],
+  "image_slots": [
+    {
+      "slot": "hero",
+      "section": "hero"
+    },
+    {
+      "slot": "challenge",
+      "section": "challenges"
+    },
+    {
+      "slot": "why",
+      "section": "why"
+    }
+  ],
+  "fingerprint": "8b065af680f2"
+}

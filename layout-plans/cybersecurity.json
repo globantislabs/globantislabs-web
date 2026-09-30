@@ -1,0 +1,65 @@
+{
+  "page_type": "industry",
+  "slug": "cybersecurity",
+  "hero": "diagonal-crop",
+  "accent_treatment": "left-rule",
+  "sections": [
+    {
+      "section": "challenges",
+      "variant": "challenge-cards-icons",
+      "background": "light"
+    },
+    {
+      "section": "solutions",
+      "variant": "map-tabs-by-function",
+      "background": "tint"
+    },
+    {
+      "section": "why",
+      "variant": "why-numbered-list",
+      "background": "light"
+    },
+    {
+      "section": "outcomes",
+      "variant": "stats-band-dark",
+      "background": "dark"
+    },
+    {
+      "section": "case",
+      "variant": "case-feature-split",
+      "background": "tint",
+      "image_side": "left"
+    },
+    {
+      "section": "tech",
+      "variant": "tech-logo-strip",
+      "background": "light"
+    },
+    {
+      "section": "faq",
+      "variant": "faq-two-col",
+      "background": "tint"
+    },
+    {
+      "section": "related",
+      "variant": "related-cards",
+      "background": "light"
+    },
+    {
+      "section": "cta",
+      "variant": "cta-band-dark",
+      "background": "dark"
+    }
+  ],
+  "image_slots": [
+    {
+      "slot": "hero",
+      "section": "hero"
+    },
+    {
+      "slot": "case",
+      "section": "case"
+    }
+  ],
+  "fingerprint": "3b128b23b950"
+}

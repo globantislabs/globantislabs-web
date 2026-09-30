@@ -1,0 +1,65 @@
+{
+  "page_type": "industry",
+  "slug": "healthcare",
+  "hero": "centered-logo-strip",
+  "accent_treatment": "dot-eyebrow",
+  "sections": [
+    {
+      "section": "challenges",
+      "variant": "challenge-cards-icons",
+      "background": "light"
+    },
+    {
+      "section": "solutions",
+      "variant": "map-tabs-by-function",
+      "background": "tint"
+    },
+    {
+      "section": "why",
+      "variant": "why-numbered-list",
+      "background": "light"
+    },
+    {
+      "section": "outcomes",
+      "variant": "stats-inline",
+      "background": "tint"
+    },
+    {
+      "section": "case",
+      "variant": "case-feature-split",
+      "background": "light",
+      "image_side": "left"
+    },
+    {
+      "section": "tech",
+      "variant": "tech-logo-strip",
+      "background": "tint"
+    },
+    {
+      "section": "faq",
+      "variant": "faq-two-col",
+      "background": "light"
+    },
+    {
+      "section": "related",
+      "variant": "related-cards",
+      "background": "tint"
+    },
+    {
+      "section": "cta",
+      "variant": "cta-band-dark",
+      "background": "dark"
+    }
+  ],
+  "image_slots": [
+    {
+      "slot": "hero",
+      "section": "hero"
+    },
+    {
+      "slot": "case",
+      "section": "case"
+    }
+  ],
+  "fingerprint": "98123719154a"
+}

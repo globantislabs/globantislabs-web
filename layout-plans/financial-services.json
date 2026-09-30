@@ -1,0 +1,70 @@
+{
+  "page_type": "industry",
+  "slug": "financial-services",
+  "hero": "diagonal-crop",
+  "accent_treatment": "underline-accent",
+  "sections": [
+    {
+      "section": "challenges",
+      "variant": "challenge-cards-icons",
+      "background": "light"
+    },
+    {
+      "section": "solutions",
+      "variant": "map-challenge-to-service",
+      "background": "tint"
+    },
+    {
+      "section": "why",
+      "variant": "why-numbered-list",
+      "background": "light"
+    },
+    {
+      "section": "outcomes",
+      "variant": "stats-cards-light",
+      "background": "tint"
+    },
+    {
+      "section": "case",
+      "variant": "case-quote-banner",
+      "background": "dark",
+      "image_side": "right"
+    },
+    {
+      "section": "tech",
+      "variant": "tech-logo-strip",
+      "background": "light"
+    },
+    {
+      "section": "faq",
+      "variant": "faq-two-col",
+      "background": "tint"
+    },
+    {
+      "section": "related",
+      "variant": "related-cards",
+      "background": "light"
+    },
+    {
+      "section": "cta",
+      "variant": "cta-photo-overlay",
+      "background": "dark",
+      "image_side": "left"
+    }
+  ],
+  "image_slots": [
+    {
+      "slot": "hero",
+      "section": "hero"
+    },
+    {
+      "slot": "case",
+      "section": "case"
+    },
+    {
+      "slot": "cta",
+      "section": "cta"
+    }
+  ],
+  "fingerprint": "dc4d1b1bd196"
+}

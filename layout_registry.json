@@ -1,0 +1,46 @@
+{
+  "pages": {
+    "financial-services": {
+      "slug": "financial-services",
+      "type": "industry",
+      "hero": "diagonal-crop",
+      "fingerprint": "dc4d1b1bd196"
+    },
+    "healthcare": {
+      "slug": "healthcare",
+      "type": "industry",
+      "hero": "centered-logo-strip",
+      "fingerprint": "98123719154a"
+    },
+    "education": {
+      "slug": "education",
+      "type": "industry",
+      "hero": "split-image-left",
+      "fingerprint": "0894f4cd3d70"
+    },
+    "logistics": {
+      "slug": "logistics",
+      "type": "industry",
+      "hero": "split-image-right",
+      "fingerprint": "efbc5cd85c64"
+    },
+    "cybersecurity": {
+      "slug": "cybersecurity",
+      "type": "industry",
+      "hero": "diagonal-crop",
+      "fingerprint": "3b128b23b950"
+    },
+    "ecommerce": {
+      "slug": "ecommerce",
+      "type": "industry",
+      "hero": "centered-logo-strip",
+      "fingerprint": "8b065af680f2"
+    },
+    "automation": {
+      "slug": "automation",
+      "type": "industry",
+      "hero": "split-image-left",
+      "fingerprint": "26864a0c6906"
+    }
+  }
+}
