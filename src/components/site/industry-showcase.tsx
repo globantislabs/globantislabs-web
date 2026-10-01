@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight, ShoppingCart } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
@@ -36,51 +36,6 @@ function ShowcaseHeading({
   );
 }
 
-/** Parse a stat value like "$12T+" or "99.99%" into prefix / numeric / suffix / decimals */
-function parseStat(raw: string): {
-  prefix: string;
-  numeric: number;
-  suffix: string;
-  decimals: number;
-} {
-  const m = raw.match(/^([^\d.]*)(\d+(?:\.\d+)?)(.*)$/);
-  if (!m) return { prefix: "", numeric: 0, suffix: raw, decimals: 0 };
-  const [, prefix, numStr, suffix] = m;
-  return {
-    prefix,
-    numeric: parseFloat(numStr),
-    suffix,
-    decimals: numStr.includes(".") ? numStr.split(".")[1].length : 0,
-  };
-}
-
-/** Count-up number that animates the numeric part of a stat when in view */
-function StatCounter({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const { prefix, numeric, suffix, decimals } = parseStat(value);
-  const [display, setDisplay] = useState(decimals > 0 ? "0.00" : "0");
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, numeric, {
-      duration: 1.6,
-      ease: "easeOut",
-      onUpdate: (v) =>
-        setDisplay(
-          decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString(),
-        ),
-    });
-    return () => controls.stop();
-  }, [inView, numeric, decimals]);
-  return (
-    <span ref={ref} aria-label={value}>
-      {prefix}
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
 /** Small label kicker used as a sub-section divider */
 function KickerLabel({ children }: { children: ReactNode }) {
   return (
@@ -94,61 +49,20 @@ function KickerLabel({ children }: { children: ReactNode }) {
 }
 
 // =====================================================================
-// 1. Financial Services — animated stats + 3-tab areas panel
+// 1. Financial Services — 3-tab areas panel
+//    (Stats band REMOVED per user request 2026-10-01 — was the 'By the
+//    numbers' kicker + animated stats grid above the 3-tab panel.)
 // =====================================================================
 
 function FinancialServicesShowcase({ ind }: { ind: Industry }) {
-  const stats = ind.stats ?? [];
   const items = ind.subIndustries?.items ?? [];
-  if (!stats.length || !items.length) return null;
+  if (!items.length) return null;
 
   return (
     <section className="bg-shade py-section-md">
       <div className="container-site">
-        <ShowcaseHeading
-          kicker="By the numbers"
-          title={
-            <>
-              A track record built on{" "}
-              <span className="text-flame">trust &amp; scale</span>
-            </>
-          }
-          desc="Decades of partnership with global financial institutions — measured in assets processed, uptime guaranteed, and outcomes delivered."
-        />
-
-        {/* Stats band on navy */}
-        <div className="relative mt-12 overflow-hidden rounded-3xl bg-ink p-8 shadow-float lg:p-12">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 grid-pattern opacity-20"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-flame/20 blur-3xl"
-          />
-          <div className="relative grid gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="text-center sm:text-left lg:px-8 lg:first:pl-0 lg:last:pr-0"
-              >
-                <div className="text-4xl font-bold tracking-tight text-white lg:text-5xl">
-                  <StatCounter value={s.value} />
-                </div>
-                <div className="mt-2 text-sm font-medium text-white/60">
-                  {s.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
         {/* 3-tab panel */}
-        <div className="mt-16">
+        <div>
           <ShowcaseHeading
             kicker={ind.subIndustries?.heading ?? "Areas We Serve"}
             title={

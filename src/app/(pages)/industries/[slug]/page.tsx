@@ -11,9 +11,7 @@ import {
 } from "@/components/site/solutions-section";
 import {
   AnchorNavigation,
-  EditorialParagraphs,
   OverviewSplitSection,
-  StatisticsStrip,
   WhyUsEditorial,
   FinalCTADramatic,
   FAQAccordionRows,
@@ -151,7 +149,6 @@ export default async function IndustryDetailPage({
           { id: "challenges", label: "Challenges" },
           { id: "showcase", label: "Showcase" },
           { id: "solutions", label: "Solutions" },
-          ...(ind.stats ? [{ id: "stats", label: "Stats" }] : []),
           ...(ind.faq ? [{ id: "faq", label: "FAQ" }] : []),
           { id: "why-us", label: "Why Us" },
           { id: "cta", label: "Get Started" },
@@ -193,16 +190,10 @@ export default async function IndustryDetailPage({
         bg="bg-shade"
       />
 
-      {/* === Statistics Strip — horizontal metric strip (HCL §20) === */}
-      {ind.stats && ind.stats.length > 0 && (
-        <StatisticsStrip
-          id="stats"
-          eyebrow="By the numbers"
-          title="Outcomes that compound."
-          stats={ind.stats}
-          bg="bg-white"
-        />
-      )}
+      {/* === Statistics Strip REMOVED per user request (2026-10-01) —
+       *  was the 'By the numbers' horizontal metric strip after Why Us.
+       *  Stats data still exists on Industry type but is not surfaced
+       *  on the industry page anymore. === */}
 
       {/* === FAQ Accordion Rows — full-width horizontal dividers (HCL §24) === */}
       {ind.faq && ind.faq.items.length > 0 && (
