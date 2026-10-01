@@ -11,6 +11,23 @@ import {
   Network,
   LifeBuoy,
   ArrowRight,
+  Workflow,
+  FileText,
+  Bot,
+  Headset,
+  Cpu,
+  Activity,
+  LayoutGrid,
+  Users,
+  Truck,
+  Boxes,
+  Settings,
+  Sparkles,
+  Database,
+  Server,
+  Package,
+  Handshake,
+  Network as NetworkIcon,
 } from "lucide-react";
 
 export type ServiceV2 = {
@@ -26,6 +43,25 @@ export type ServiceV2 = {
   capabilities: string[];
   heroImage: string;
   revenueEngine: "Custom Software" | "AI & Automation" | "Dedicated Teams" | "Managed Services";
+  /** HCL-tech-style "Powering the future of X" block on service pages:
+   *  intro (eyebrow + title + lead paragraph) + a grid of capability
+   *  tiles (icon + title + desc) + an optional closing tagline. */
+  capabilitiesTiles?: {
+    intro?: {
+      eyebrow?: string;
+      title: string;
+      desc?: string;
+    };
+    tiles: {
+      icon?: LucideIcon;
+      title: string;
+      desc: string;
+    }[];
+    closingQuote?: string;
+  };
+  /** Big italicised quote rendered between the overview prose and the
+   *  capabilities tiles grid. Optional. */
+  overviewQuote?: string;
 };
 
 export const servicesV2: ServiceV2[] = [
@@ -63,12 +99,12 @@ export const servicesV2: ServiceV2[] = [
     number: "02",
     title: "AI & Automation",
     shortTitle: "AI & Automation",
-    tagline: "Transforming Business With Intelligent Technology",
-    desc: "We help organizations identify practical AI opportunities and transform them into production-ready solutions that improve efficiency, accelerate decision-making and create new digital experiences.",
-    overviewHeading: "Transforming Business With Intelligent Technology",
+    tagline: "Automate Processes. Augment Intelligence. Accelerate Growth.",
+    desc: "AI is transforming automation from rule-based task execution into intelligent, adaptive business operations. We help enterprises identify high-value automation opportunities and transform them into scalable, AI-powered solutions that improve productivity, reduce operational complexity, and accelerate business outcomes.",
+    overviewHeading: "AI-Powered Automation for Smarter Operations",
     overviewParas: [
-      "Artificial intelligence is changing how organizations create products, serve customers and operate their businesses.",
-      "We help organizations identify practical AI opportunities and transform them into production-ready solutions that improve efficiency, accelerate decision-making and create new digital experiences.",
+      "AI is transforming automation from rule-based task execution into intelligent, adaptive business operations. Organizations can now combine artificial intelligence, machine learning, Generative AI, and intelligent agents to automate complex workflows, improve decision-making, and create more responsive customer and employee experiences.",
+      "We help enterprises identify high-value automation opportunities and transform them into scalable, AI-powered solutions that improve productivity, reduce operational complexity, and accelerate business outcomes.",
     ],
     capabilities: [
       "Generative AI Solutions",
@@ -84,6 +120,25 @@ export const servicesV2: ServiceV2[] = [
       "AI Integration",
       "AI Workflow Automation",
     ],
+    capabilitiesTiles: {
+      intro: {
+        eyebrow: "Our AI Automation Capabilities",
+        title: "From Automation to Autonomous Operations",
+        desc: "We help organizations move beyond traditional automation toward intelligent, connected, and adaptive operations — where AI works alongside people to simplify complexity, accelerate execution, and continuously improve business performance.",
+      },
+      tiles: [
+        { icon: Workflow, title: "Intelligent Process Automation", desc: "Automate repetitive and complex workflows using AI-driven decision-making and intelligent orchestration." },
+        { icon: FileText, title: "AI-Powered Document Processing", desc: "Extract, classify, validate, and process information from documents with intelligent automation." },
+        { icon: Sparkles, title: "Generative AI Automation", desc: "Leverage GenAI to automate content creation, knowledge processing, summarization, and business workflows." },
+        { icon: Bot, title: "Agentic AI", desc: "Deploy intelligent AI agents capable of understanding objectives, reasoning through tasks, and executing multi-step workflows." },
+        { icon: Headset, title: "Customer Service Automation", desc: "Enhance customer support with AI-powered virtual assistants, conversational AI, intelligent routing, and automated responses." },
+        { icon: Network, title: "Business Workflow Automation", desc: "Connect applications, systems, data, and people to streamline end-to-end enterprise processes." },
+        { icon: Cpu, title: "Intelligent Decision Support", desc: "Combine AI, analytics, and real-time data to provide actionable insights and support faster business decisions." },
+        { icon: Activity, title: "AI-Driven Operations", desc: "Continuously monitor processes, identify inefficiencies, predict issues, and optimize operations with intelligent automation." },
+      ],
+      closingQuote: "Transform Workflows. Empower People. Accelerate Business.",
+    },
+    overviewQuote: "From AI Potential to Business Impact.",
     heroImage: "/images/hero-bg.jpg",
     revenueEngine: "AI & Automation",
   },
@@ -93,12 +148,12 @@ export const servicesV2: ServiceV2[] = [
     number: "03",
     title: "Enterprise Web Solutions",
     shortTitle: "Web Solutions",
-    tagline: "Digital Experiences Built for Scale",
-    desc: "We create high-performance web applications and digital platforms that combine modern design, robust engineering and seamless user experiences.",
-    overviewHeading: "Digital Experiences Built for Scale",
+    tagline: "Collaborating for Business Excellence",
+    desc: "Enterprise applications are the foundation of modern organizations, enabling businesses to operate efficiently, innovate at scale, and respond to evolving market demands. Achieving meaningful digital transformation requires more than technology alone—it demands a strategic, holistic approach supported by a strong ecosystem of trusted partners.",
+    overviewHeading: "Collaborating for Business Excellence",
     overviewParas: [
-      "We create high-performance web applications and digital platforms that combine modern design, robust engineering and seamless user experiences.",
-      "Whether you're building a corporate digital presence, enterprise portal or complex SaaS platform, our teams engineer web solutions designed for performance, security and scalability.",
+      "Enterprise applications are the foundation of modern organizations, enabling businesses to operate efficiently, innovate at scale, and respond to evolving market demands. Achieving meaningful digital transformation requires more than technology alone—it demands a strategic, holistic approach supported by a strong ecosystem of trusted partners.",
+      "By bringing together industry expertise, intelligent solutions, and complementary capabilities, organizations can accelerate transformation, optimize business processes, and unlock sustainable value across the enterprise.",
     ],
     capabilities: [
       "Enterprise Web Applications",
@@ -113,6 +168,28 @@ export const servicesV2: ServiceV2[] = [
       "CMS Development",
       "Web Application Modernization",
     ],
+    capabilitiesTiles: {
+      intro: {
+        eyebrow: "Our Web Solutions",
+        title: "Engineered for Scale, Built for the Enterprise",
+        desc: "From corporate digital presence and enterprise portals to complex SaaS platforms, our teams engineer web solutions designed for performance, security, and scalability.",
+      },
+      tiles: [
+        { icon: Globe, title: "Enterprise Web Applications", desc: "Mission-critical applications engineered for performance, security, and scale across the enterprise." },
+        { icon: LayoutGrid, title: "Corporate Websites", desc: "Brand-led, content-rich corporate websites with modern CMS, SEO, and editorial workflows." },
+        { icon: Cloud, title: "SaaS Platforms", desc: "Multi-tenant SaaS platforms built for fast onboarding, predictable billing, and elastic scale." },
+        { icon: Users, title: "Customer Portals", desc: "Self-service portals that unify account, billing, support, and engagement in one experience." },
+        { icon: Network, title: "B2B Platforms", desc: "B2B commerce, partner, and dealer platforms with quoting, ordering, and account hierarchies." },
+        { icon: ShoppingCart, title: "B2C Platforms", desc: "B2C commerce and engagement platforms optimised for conversion and customer lifetime value." },
+        { icon: Smartphone, title: "Progressive Web Applications", desc: "Installable, offline-capable PWAs that deliver app-grade UX without the app store." },
+        { icon: Server, title: "Headless Architecture", desc: "Headless CMS + composable APIs for omnichannel content delivery at velocity." },
+        { icon: Workflow, title: "API-Driven Applications", desc: "API-first engineering for integration-heavy environments and partner ecosystems." },
+        { icon: FileText, title: "CMS Development", desc: "Editor-friendly CMS implementations that let marketing ship without engineering." },
+        { icon: Code2, title: "Web Application Modernization", desc: "Replatform legacy web estates to modern stacks without business disruption." },
+      ],
+      closingQuote: "Build Digital Experiences That Move the Enterprise.",
+    },
+    overviewQuote: "From Enterprise Apps to Intelligent Ecosystems.",
     heroImage: "/images/hm2-about.jpg",
     revenueEngine: "Custom Software",
   },

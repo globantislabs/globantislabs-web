@@ -45,6 +45,7 @@ import {
   Laptop,
   BarChart3,
   AppWindow,
+  Activity,
   Mail,
   FileText,
   Briefcase,
@@ -1098,6 +1099,26 @@ export type Industry = {
     title: string;
     desc: string;
   }[];
+  /** Solutions section (HCL-tech-style "Powering the future of X" block):
+   *  intro (eyebrow + title + lead paragraph) + a grid of solution
+   *  tiles (icon + title + desc) + an optional closing tagline. */
+  solutions?: {
+    intro?: {
+      eyebrow?: string;
+      title: string;
+      desc?: string;
+    };
+    tiles: {
+      icon?: LucideIcon;
+      title: string;
+      desc: string;
+    }[];
+    closingQuote?: string;
+  };
+  /** Big italicised quote rendered between the overview prose and the
+   *  solutions grid (e.g. "Transform Healthcare. Empower People.
+   *  Improve Outcomes."). Optional. */
+  overviewQuote?: string;
 };
 
 export const industries: Industry[] = [
@@ -1177,6 +1198,9 @@ export const industries: Industry[] = [
     icon: HeartPulse,
     tagline: "Patient-centric care, empowered by AI, data & genomics.",
     focusAreas: ["Telemedicine", "AI Diagnostics", "Genomics"],
+    heroHeading: "Technology Advancing the Future of Healthcare",
+    intro:
+      "Healthcare is evolving rapidly, driven by personalized care, emerging treatment models, rising operational pressures, and an increasingly complex regulatory landscape. Technology is reshaping how healthcare is delivered, managed, and experienced.",
     partners: [
       "UK NHS trust",
       "Canadian health network",
@@ -1251,15 +1275,51 @@ export const industries: Industry[] = [
     ],
     sections: [
       {
-        heading: "Technology Driving the Future of Patient Care",
+        heading: "Overview",
         paragraphs: [
-          "Personalized healthcare, innovative care delivery models, rising cost pressures, and evolving regulatory requirements are reshaping the healthcare landscape. In this dynamic environment, technology is playing a critical role in advancing patient outcomes and operational efficiency.",
-          "From telemedicine to AI-powered diagnostics, technological innovation is redefining how care is delivered and how diseases are detected. Breakthroughs in genomic research are unlocking the potential of personalized medicine, while advances in biotechnology are enabling the development of next-generation therapies.",
-          "Despite this progress, challenges around affordability, accessibility, and data security remain at the forefront.",
-          "We help healthcare organizations modernize their digital ecosystems, integrate fragmented systems, and align processes, technology, and people—empowering them to deliver smarter, safer, and more patient-centric care.",
+          "Healthcare is evolving rapidly, driven by personalized care, emerging treatment models, rising operational pressures, and an increasingly complex regulatory landscape. Technology is reshaping how healthcare is delivered, managed, and experienced.",
+          "Innovations such as AI-powered diagnostics, telemedicine, connected healthcare, predictive analytics, and digital health platforms are enabling faster decision-making and more personalized patient experiences. Advances in genomics and biotechnology are also opening new possibilities for precision medicine, drug discovery, and next-generation therapies.",
+          "At the same time, healthcare organizations continue to navigate critical challenges around affordability, accessibility, interoperability, data privacy, and security.",
+          "We help healthcare organizations modernize their digital ecosystems, connect fragmented systems, streamline processes, and enable their people with intelligent technology solutions—creating more connected, efficient, secure, and patient-centric healthcare experiences.",
         ],
       },
     ],
+    overviewQuote: "Transform Healthcare. Empower People. Improve Outcomes.",
+    solutions: {
+      intro: {
+        eyebrow: "Powering Healthcare Transformation",
+        title: "Building Smarter, More Connected Healthcare Enterprises",
+        desc: "Healthcare and life sciences organizations are navigating rapid technological change, evolving patient expectations, complex regulatory requirements, and increasing demands for operational efficiency. We help organizations turn these challenges into opportunities for meaningful transformation. Our industry-focused approach brings together healthcare expertise, digital innovation, advanced technologies, and scalable solutions to help organizations:",
+      },
+      tiles: [
+        {
+          icon: HeartPulse,
+          title: "Elevate Patient Experiences",
+          desc: "Through personalized, connected, and accessible digital healthcare journeys.",
+        },
+        {
+          icon: Cpu,
+          title: "Modernize Healthcare Operations",
+          desc: "With intelligent platforms, automation, analytics, cloud, and next-generation technologies.",
+        },
+        {
+          icon: ShieldCheck,
+          title: "Strengthen Compliance & Security",
+          desc: "With solutions designed around evolving healthcare regulations, data privacy, and security requirements.",
+        },
+        {
+          icon: Link2,
+          title: "Connect the Healthcare Ecosystem",
+          desc: "By integrating systems, data, processes, providers, and patients across the value chain.",
+        },
+        {
+          icon: Rocket,
+          title: "Accelerate Innovation at Scale",
+          desc: "With flexible technology solutions that support sustainable growth and continuous transformation.",
+        },
+      ],
+      closingQuote: "Reimagine Healthcare. Transform Experiences. Create Lasting Impact.",
+    },
   },
   {
     slug: "education",
@@ -1359,6 +1419,9 @@ export const industries: Industry[] = [
     icon: Truck,
     tagline: "End-to-end supply chain visibility, velocity & resilience.",
     focusAreas: ["Supply Chain", "5G & Cloud", "Blockchain"],
+    heroHeading: "Accelerating Digital Transformation",
+    intro:
+      "We combine deep industry understanding, advanced technology, and a customer-first approach to help travel, transportation, hospitality, and logistics organizations navigate complex challenges and unlock new opportunities.",
     partners: [
       "Canadian 3PL",
       "UK port authority",
@@ -1422,21 +1485,47 @@ export const industries: Industry[] = [
     ],
     sections: [
       {
-        heading: "IT Solution for Travel, Transportation, Logistics and Hospitality",
+        heading: "Accelerating Digital Transformation",
         paragraphs: [
-          "AI-powered engagement, hyper-personalized and connected experiences, and increasing supply chain pressures are redefining the travel, transportation, logistics, and hospitality industries.",
+          "We combine deep industry understanding, advanced technology, and a customer-first approach to help travel, transportation, hospitality, and logistics organizations navigate complex challenges and unlock new opportunities.",
+          "Our technology capabilities, innovation-driven solutions, industry-focused frameworks, and experienced global teams help businesses accelerate growth, modernize operations, adapt to changing market demands, and deliver connected experiences that keep customers at the center.",
+        ],
+      },
+      {
+        label: "Hospitality",
+        heading: "Hospitality Designed Around Every Guest",
+        paragraphs: [
+          "Hospitality businesses are evolving rapidly as they manage diverse brands, franchises, properties, and increasingly connected guest journeys. Today's travelers expect personalized experiences, seamless digital interactions, and consistent service across every touchpoint.",
+          "We help hospitality organizations modernize their customer-facing and operational ecosystems with intelligent digital solutions. From loyalty and omnichannel engagement to digital hotel experiences and connected operations, our technology enables businesses to deliver personalized guest experiences, improve operational efficiency, and build lasting customer relationships across the travel, transportation, logistics, and hospitality landscape.",
         ],
         image: "/images/wp/2025-01/why_choose01.jpg",
       },
       {
-        label: "Overview",
-        heading: "Making digital work for real people",
+        label: "Logistics",
+        heading: "Logistics Built for Seamless Movement",
         paragraphs: [
-          "Modern travel and logistics technologies are transforming business outcomes. From hospitality IT solutions that elevate guest experiences to end-to-end logistics management platforms that improve efficiency and reliability, the industry is evolving rapidly. Our deep travel and logistics expertise—combined with advanced technology capabilities—helps organizations optimize operations while driving sustainable digital transformation.",
-          "At the same time, technology is accelerating supply chain velocity. Advanced transportation solutions are helping organizations reduce costs by enabling real-time visibility and seamless information sharing between trading partners and service providers. Now is the time to rethink traditional frameworks, processes, and systems. Targeted investments in cloud platforms, 5G connectivity, Generative AI, and blockchain enable organizations to deliver the seamless, personalized experiences today's customers expect.",
+          "The logistics industry is evolving rapidly across freight forwarding, third-party logistics, warehousing, distribution, and connected supply chain networks. As customer expectations rise and supply chains become increasingly dynamic, organizations need greater visibility, agility, automation, and operational efficiency.",
+          "We help logistics businesses modernize their operations with intelligent, scalable digital solutions that connect people, processes, and technology. From supply chain visibility and warehouse management to transportation optimization and real-time analytics, our solutions enable seamless goods movement, smarter decision-making, and more resilient logistics networks.",
         ],
       },
     ],
+    overviewQuote: "Transform Today. Lead Tomorrow.",
+    solutions: {
+      intro: {
+        eyebrow: "Powering the Next Generation of Travel, Transportation & Hospitality",
+        title: "Connected ecosystems for travel, transportation & logistics",
+        desc: "From hospitality and freight forwarding to warehousing and last-mile delivery, we engineer the digital fabric that connects guests, operators, carriers and customers across the entire journey.",
+      },
+      tiles: [
+        { icon: Users, title: "Guest Experience & Loyalty", desc: "Omnichannel loyalty, in-stay digital experiences, and personalized guest journeys across every property and brand." },
+        { icon: Globe, title: "Digital Hotel & Property Operations", desc: "Property management, housekeeping, energy and guest-request orchestration on a single connected platform." },
+        { icon: MapPin, title: "Supply Chain Visibility", desc: "Multi-modal control towers with real-time ETA, exception alerts and predictive ETA across carriers and borders." },
+        { icon: Warehouse, title: "Warehouse Management", desc: "WMS, slotting AI, robotics integration and wave planning that lift pick accuracy and throughput." },
+        { icon: Truck, title: "Transportation Optimization", desc: "TMS, route optimization, load consolidation and carrier collaboration that cut freight cost and improve service." },
+        { icon: LineChart, title: "Real-Time Analytics & AI", desc: "Forecasting, anomaly detection and GenAI co-pilots that turn operational data into decisions." },
+      ],
+      closingQuote: "Move People. Move Goods. Move Forward.",
+    },
   },
   {
     slug: "cybersecurity",
@@ -1446,6 +1535,9 @@ export const industries: Industry[] = [
     icon: ShieldCheck,
     tagline: "Defense-in-depth — from network edge to human firewall.",
     focusAreas: ["Network", "Application", "Data", "Human"],
+    heroHeading: "Cybersecurity for Business Resilience",
+    intro:
+      "As digital ecosystems continue to expand, organizations face an increasingly complex and evolving threat landscape. Cybersecurity is no longer solely a matter of compliance and risk mitigation—it is a strategic business imperative that enables resilience, protects enterprise value, and supports sustainable growth.",
     partners: [
       "Canadian bank",
       "UK SaaS leader",
@@ -1502,12 +1594,29 @@ export const industries: Industry[] = [
     ],
     sections: [
       {
-        heading: "Comprehensive Cybersecurity Solutions for Modern Enterprises",
+        heading: "Cybersecurity for Business Resilience",
         paragraphs: [
-          "In an era of increasing cyber threats and digital transformation, Globantis delivers advanced cybersecurity solutions that protect businesses from complex and evolving risks. Our security-first approach ensures confidentiality, integrity, and availability of critical systems while enabling organizations to scale securely.",
+          "As digital ecosystems continue to expand, organizations face an increasingly complex and evolving threat landscape. Cybersecurity is no longer solely a matter of compliance and risk mitigation—it is a strategic business imperative that enables resilience, protects enterprise value, and supports sustainable growth.",
         ],
       },
     ],
+    overviewQuote: "Security as a Strategic Business Imperative.",
+    solutions: {
+      intro: {
+        eyebrow: "Our Services, Designed Around Your Business",
+        title: "Consulting, Implementation, and Managed Security Services",
+        desc: "Strengthen your organization with a comprehensive portfolio of consulting, implementation, and managed security services. Our tailored solutions are designed to address your unique business needs, enhance resilience, and enable secure, sustainable growth.",
+      },
+      tiles: [
+        { icon: ShieldCheck, title: "Security Consulting & Advisory", desc: "Strategic risk assessment, security architecture, control maturity and roadmap design aligned to your business outcomes." },
+        { icon: Cpu, title: "Implementation & Engineering", desc: "Zero-trust, SASE, SIEM/SOAR, DLP and identity platforms deployed by certified engineers with minimal business disruption." },
+        { icon: Activity, title: "Managed Security Services", desc: "24/7 monitoring, threat hunting, incident response and continuous control validation delivered as a managed service." },
+        { icon: Scale, title: "Compliance & Audit Readiness", desc: "ISO 27001, SOC 2, PCI DSS, HIPAA, GDPR gap analysis, control implementation and audit-ready evidence pipelines." },
+        { icon: Lock, title: "Data Protection & Privacy", desc: "Encryption, tokenization, DLP and immutable backup engineered around evolving data-privacy regulations." },
+        { icon: Users, title: "Human Firewall Program", desc: "Phishing simulations, behavioral analytics and interactive training that turns every employee into a first responder." },
+      ],
+      closingQuote: "Resilience by Design. Security by Default.",
+    },
     faq: {
       label: "What We Secure",
       heading: "What We Secure",
@@ -1542,8 +1651,11 @@ export const industries: Industry[] = [
     label: "E-commerce & Retail",
     bannerImage: "/images/wp/2025-02/concept.png",
     icon: ShoppingCart,
-    tagline: "Omnichannel commerce that converts on every touchpoint.",
+    tagline: "Automation. Experience-led retail. Data-driven intelligence.",
     focusAreas: ["Omnichannel", "Personalization", "Payments"],
+    heroHeading: "Navigating the Future of Retail 4.0",
+    intro:
+      "Retail is evolving rapidly, driven by emerging technologies, changing customer expectations, and increasingly data-driven business models. Success in Retail 4.0 requires more than adopting new technologies—it requires a strategic approach to identifying the right investments and translating innovation into measurable business value.",
     partners: [
       "Canadian D2C brand",
       "UK retailer",
@@ -1572,7 +1684,6 @@ export const industries: Industry[] = [
         desc: "Inventory, pricing and loyalty offers drift between web, POS and marketplace — customers see one store, the system sees five.",
       },
     ],
-    heroHeading: "Trustworthy, Scalable, & Optimized E-commerce & Retail Development.",
     channels: [
       { icon: Globe, label: "Web" },
       { icon: Smartphone, label: "Mobile App" },
@@ -1596,14 +1707,33 @@ export const industries: Industry[] = [
     },
     sections: [
       {
-        label: "Digital Commerce",
-        heading: "Powering the future of Digital Commerce",
+        heading: "Navigating the Future of Retail 4.0",
         paragraphs: [
-          "E-commerce continues to evolve at speed, driven by changing customer behaviors, rising expectations for seamless experiences, and increasing competition across digital marketplaces. To succeed, businesses must deliver fast, secure, and personalized commerce experiences at scale.",
-          "Technology is at the heart of this transformation. From AI-driven personalization and data-led decision-making to automation, cloud platforms, and secure digital payments, modern e-commerce ecosystems demand agility and resilience.",
+          "Retail is evolving rapidly, driven by emerging technologies, changing customer expectations, and increasingly data-driven business models. Success in Retail 4.0 requires more than adopting new technologies—it requires a strategic approach to identifying the right investments and translating innovation into measurable business value.",
+          "Our retail experts help organizations navigate the evolving digital landscape, prioritize technology investments, and maximize return on investment. From hyper-personalized customer experiences to intelligent operations, we enable retailers to build agile, resilient, and future-ready businesses.",
+          "With a focus on sustainable innovation, responsible technology adoption, and customer-centric strategies, we help you stay ahead of change and build brands that remain relevant in a rapidly evolving retail environment.",
         ],
       },
     ],
+    overviewQuote: "From Retail 4.0 Ambition to Measurable Business Value.",
+    solutions: {
+      intro: {
+        eyebrow: "Powering the Future of Retail",
+        title: "Transform every aspect of your retail business",
+        desc: "From customer engagement and digital commerce to supply chain, analytics, and store operations, our solutions help retailers create seamless experiences and drive sustainable business growth.",
+      },
+      tiles: [
+        { icon: ShoppingCart, title: "Digital Commerce", desc: "Build seamless omnichannel shopping experiences across web, mobile, marketplaces, and digital storefronts." },
+        { icon: HeartPulse, title: "Customer Experience", desc: "Deliver personalized, connected experiences that strengthen customer engagement, loyalty, and retention." },
+        { icon: BarChart3, title: "Retail Analytics & AI", desc: "Turn customer, sales, and operational data into actionable insights with advanced analytics and AI." },
+        { icon: PackageCheck, title: "Supply Chain & Inventory", desc: "Optimize inventory, forecasting, procurement, warehousing, and fulfillment for greater efficiency." },
+        { icon: MonitorCheck, title: "Store Operations", desc: "Modernize store operations with intelligent POS, workforce management, automation, and real-time visibility." },
+        { icon: Briefcase, title: "Retail ERP & Business Applications", desc: "Streamline finance, merchandising, procurement, HR, and core business operations through integrated enterprise platforms." },
+        { icon: ShoppingBag, title: "Product & Merchandising", desc: "Improve product planning, pricing, assortment, promotions, and merchandising decisions with data-driven intelligence." },
+        { icon: Cloud, title: "Cloud & Digital Transformation", desc: "Modernize legacy retail environments with secure, scalable cloud platforms and next-generation digital technologies." },
+      ],
+      closingQuote: "Build Agile, Resilient, Future-Ready Retail.",
+    },
   },
   {
     slug: "automation",

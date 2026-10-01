@@ -5,6 +5,10 @@ import Image from "next/image";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { PageHero, type PageHeroVariant } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
+import {
+  SolutionsSection,
+  OverviewQuote,
+} from "@/components/site/solutions-section";
 import { buildMetadata } from "@/lib/seo";
 import { industries, type Industry } from "@/lib/site-data";
 
@@ -1528,6 +1532,25 @@ function LayoutB({
        * a visibly different body section that no sibling page has.
        * === */}
       <IndustryShowcase ind={ind} />
+
+      {/* === §2.6 — HCL-style "Powering the future of X" solutions block ===
+       * Big intro (eyebrow + title + lead) followed by a responsive tile
+       * grid of solutions (icon + title + desc) and a closing tagline
+       * band on dark navy. Pulled from ind.solutions + ind.overviewQuote
+       * in site-data.ts. Renders only when the industry has solutions.
+       * === */}
+      {ind.overviewQuote && (
+        <OverviewQuote quote={ind.overviewQuote} bg="bg-white" />
+      )}
+      {ind.solutions && ind.solutions.tiles.length > 0 && (
+        <SolutionsSection
+          intro={ind.solutions.intro}
+          tiles={ind.solutions.tiles}
+          closingQuote={ind.solutions.closingQuote}
+          bg="bg-shade"
+          closingBg="bg-ink"
+        />
+      )}
 
       {/* === §3 — white, paragraph-based content with image (NOT cards) === */}
       {cards && cards.items.length > 0 && (

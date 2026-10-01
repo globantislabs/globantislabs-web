@@ -6,6 +6,10 @@ import Link from "next/link";
 import { ArrowRight, Check, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Reveal, SectionHeading } from "@/components/site/primitives";
+import {
+  SolutionsSection,
+  OverviewQuote,
+} from "@/components/site/solutions-section";
 import { buildMetadata } from "@/lib/seo";
 import { servicesV2, type ServiceV2 } from "@/lib/services-data";
 import { AnimatedCapabilities } from "./animated-capabilities";
@@ -214,6 +218,20 @@ function LayoutA({ service }: { service: ServiceV2 }) {
       {/* === Section 2 — animated capabilities (navy) === */}
       <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
 
+      {/* === Section 2.5 — HCL-style capabilities tiles + closing quote === */}
+      {service.overviewQuote && (
+        <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
+      )}
+      {service.capabilitiesTiles && service.capabilitiesTiles.tiles.length > 0 && (
+        <SolutionsSection
+          intro={service.capabilitiesTiles.intro}
+          tiles={service.capabilitiesTiles.tiles}
+          closingQuote={service.capabilitiesTiles.closingQuote}
+          bg="bg-shade"
+          closingBg="bg-ink"
+        />
+      )}
+
 
       {/* === Section 3 — white, CTA === */}
       <CTASection
@@ -342,6 +360,20 @@ function LayoutB({ service }: { service: ServiceV2 }) {
         </div>
       </section>
 
+      {/* === Section 3.5 — HCL-style capabilities tiles + closing quote === */}
+      {service.overviewQuote && (
+        <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
+      )}
+      {service.capabilitiesTiles && service.capabilitiesTiles.tiles.length > 0 && (
+        <SolutionsSection
+          intro={service.capabilitiesTiles.intro}
+          tiles={service.capabilitiesTiles.tiles}
+          closingQuote={service.capabilitiesTiles.closingQuote}
+          bg="bg-white"
+          closingBg="bg-ink"
+        />
+      )}
+
       {/* === Section 4 — white, CTA === */}
       <CTASection
         bg="bg-white"
@@ -440,6 +472,20 @@ function LayoutC({ service }: { service: ServiceV2 }) {
           </Reveal>
         </div>
       </section>
+
+      {/* === Section 3.5 — HCL-style capabilities tiles + closing quote === */}
+      {service.overviewQuote && (
+        <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
+      )}
+      {service.capabilitiesTiles && service.capabilitiesTiles.tiles.length > 0 && (
+        <SolutionsSection
+          intro={service.capabilitiesTiles.intro}
+          tiles={service.capabilitiesTiles.tiles}
+          closingQuote={service.capabilitiesTiles.closingQuote}
+          bg="bg-shade"
+          closingBg="bg-ink"
+        />
+      )}
 
       {/* === Section 4 — shade, CTA === */}
       <CTASection
