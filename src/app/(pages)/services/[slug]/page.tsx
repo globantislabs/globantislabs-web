@@ -12,7 +12,6 @@ import {
 } from "@/components/site/solutions-section";
 import {
   AnchorNavigation,
-  OverviewSplitSection,
   WhyUsEditorial,
   FinalCTADramatic,
 } from "@/components/site/enterprise-sections";
@@ -74,27 +73,16 @@ export default async function ServiceDetailPage({
         ]}
       />
 
-      {/* === Anchor Navigation — sticky horizontal section nav === */}
+      {/* === Anchor Navigation — sticky horizontal section nav ===
+       *  ('Overview' item removed per user request — the
+       *  OverviewSplitSection block below was also removed.) */}
       <AnchorNavigation
         items={[
-          { id: "overview", label: "Overview" },
           { id: "capabilities", label: "Capabilities" },
           { id: "solutions", label: "Solutions" },
           { id: "why-us", label: "Why Us" },
           { id: "cta", label: "Get Started" },
         ]}
-      />
-
-      {/* === Overview Split — 50/50 text + 4:3 image (HCL §6) === */}
-      <OverviewSplitSection
-        id="overview"
-        eyebrow={`Service ${service.number} · ${service.revenueEngine}`}
-        title={service.overviewHeading}
-        paragraphs={service.overviewParas}
-        image={service.heroImage}
-        imageAlt={service.title}
-        cta={{ label: "Talk to an expert", href: "/contact" }}
-        bg="bg-white"
       />
 
       {layout === 0 && <LayoutA service={service} />}
