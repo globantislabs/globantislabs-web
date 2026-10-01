@@ -369,3 +369,46 @@ Stage Summary:
   3. §2.5 IndustryShowcase (6 UNIQUE modules — one per industry, no sibling has the same)
 - Plus per-industry prose rhythm in §2 (3 different bg+image-side patterns).
 - Push pending user-side GitHub auth.
+
+---
+Task ID: hcl-style-content-overhaul
+Agent: general-purpose
+Task: Apply HCL-tech retail-services design pattern + user's finalised copy to industry pages (cybersecurity, ecommerce, logistics, healthcare) + service pages (ai-automation, enterprise-web-solutions)
+
+Work Log:
+- User pasted finalised copy for 4 industry pages + 2 service pages from globantislabs.com and pointed to https://www.hcltech.com/retail-services as the design reference. Goal: clean enterprise "Powering the future of X" tile grid pattern with intro (eyebrow + title + lead) + responsive solution tiles (icon + title + desc) + closing tagline band.
+- Added two new shared components in src/components/site/solutions-section.tsx:
+  • SolutionsSection — renders SectionHeading intro + responsive tile grid (auto-picks 2/3/4 cols by tile count) + optional closing quote band on dark navy. Each tile has flame top-bar on hover, icon tile + numbered marker + bold title + desc, card-lift hover.
+  • OverviewQuote — big italicised pull-quote rendered between the prose overview and the solutions grid. Pure typography moment that breaks page rhythm.
+- Extended Industry type in src/lib/site-data.ts with two new optional fields:
+  • solutions?: { intro?: {eyebrow,title,desc}; tiles: {icon?,title,desc}[]; closingQuote?: string }
+  • overviewQuote?: string
+- Extended ServiceV2 type in src/lib/services-data.ts with two new optional fields:
+  • capabilitiesTiles?: { intro?: {eyebrow,title,desc}; tiles: {icon?,title,desc}[]; closingQuote?: string }
+  • overviewQuote?: string
+- Added Activity icon to site-data.ts imports (used in cybersecurity solutions tiles).
+- Added 11 new icons to services-data.ts imports (Workflow, FileText, Bot, Headset, Cpu, Activity, LayoutGrid, Users, Truck, Boxes, Settings, Sparkles, Database, Server, Package, Handshake, Network as NetworkIcon).
+- Updated 4 industry page data records with the user's finalised copy + new solutions + overviewQuote fields:
+  • healthcare — new heroHeading 'Technology Advancing the Future of Healthcare', rewritten sections with the user's 4-paragraph Overview copy, overviewQuote 'Transform Healthcare. Empower People. Improve Outcomes.', 5-tile solutions (Elevate Patient Experiences / Modernize Healthcare Operations / Strengthen Compliance & Security / Connect the Healthcare Ecosystem / Accelerate Innovation at Scale), closing 'Reimagine Healthcare. Transform Experiences. Create Lasting Impact.'
+  • ecommerce — new heroHeading 'Navigating the Future of Retail 4.0', tagline 'Automation. Experience-led retail. Data-driven intelligence.', 3 intro paragraphs, overviewQuote 'From Retail 4.0 Ambition to Measurable Business Value.', 8-tile solutions (Digital Commerce / Customer Experience / Retail Analytics & AI / Supply Chain & Inventory / Store Operations / Retail ERP & Business Applications / Product & Merchandising / Cloud & Digital Transformation), closing 'Build Agile, Resilient, Future-Ready Retail.'
+  • logistics — new heroHeading 'Accelerating Digital Transformation', rewritten sections including the Hospitality ('Hospitality Designed Around Every Guest') + Logistics ('Logistics Built for Seamless Movement') subsections, overviewQuote 'Transform Today. Lead Tomorrow.', 6-tile solutions (Guest Experience & Loyalty / Digital Hotel & Property Operations / Supply Chain Visibility / Warehouse Management / Transportation Optimization / Real-Time Analytics & AI), closing 'Move People. Move Goods. Move Forward.'
+  • cybersecurity — new heroHeading 'Cybersecurity for Business Resilience', rewritten sections, overviewQuote 'Security as a Strategic Business Imperative.', 6-tile solutions with the user's 'Our Services, Designed Around Your Business' eyebrow (Security Consulting & Advisory / Implementation & Engineering / Managed Security Services / Compliance & Audit Readiness / Data Protection & Privacy / Human Firewall Program), closing 'Resilience by Design. Security by Default.'
+- Updated 2 service page data records:
+  • ai-automation — new overviewHeading 'AI-Powered Automation for Smarter Operations', tagline 'Automate Processes. Augment Intelligence. Accelerate Growth.', overviewParas with the user's 2-paragraph copy, overviewQuote 'From AI Potential to Business Impact.', 8-tile capabilitiesTiles with 'Our AI Automation Capabilities' eyebrow (Intelligent Process Automation / AI-Powered Document Processing / Generative AI Automation / Agentic AI / Customer Service Automation / Business Workflow Automation / Intelligent Decision Support / AI-Driven Operations), closing 'Transform Workflows. Empower People. Accelerate Business.'
+  • enterprise-web-solutions — new overviewHeading 'Collaborating for Business Excellence', tagline 'Collaborating for Business Excellence', overviewParas with the user's 2-paragraph copy, overviewQuote 'From Enterprise Apps to Intelligent Ecosystems.', 11-tile capabilitiesTiles with 'Our Web Solutions' eyebrow (Enterprise Web Applications / Corporate Websites / SaaS Platforms / Customer Portals / B2B Platforms / B2C Platforms / Progressive Web Applications / Headless Architecture / API-Driven Applications / CMS Development / Web Application Modernization), closing 'Build Digital Experiences That Move the Enterprise.'
+- Wired the new components into both page renderers:
+  • industries/[slug]/page.tsx — LayoutB now renders OverviewQuote + SolutionsSection as §2.6 right after the per-industry IndustryShowcase module and before the §3 cards grid.
+  • services/[slug]/page.tsx — LayoutA renders them as §2.5 (between AnimatedCapabilities and CTA); LayoutB as §3.5 (between capability card grid and CTA); LayoutC as §3.5 (between sticky numbered list and CTA).
+- Build green: all 54 routes compile, all 7 industry pages + 10 service pages pre-render statically. No new warnings.
+
+Stage Summary:
+- Commit: df3d69e (local).
+- New file: src/components/site/solutions-section.tsx (SolutionsSection + OverviewQuote components, ~190 lines).
+- Modified:
+  • src/lib/site-data.ts (+ Industry.solutions, + Industry.overviewQuote fields, + Activity icon import, + updated healthcare/ecommerce/logistics/cybersecurity data records)
+  • src/lib/services-data.ts (+ ServiceV2.capabilitiesTiles, + ServiceV2.overviewQuote fields, + 11 new icon imports, + updated ai-automation + enterprise-web-solutions data records)
+  • src/app/(pages)/industries/[slug]/page.tsx (imported SolutionsSection + OverviewQuote, render in LayoutB §2.6)
+  • src/app/(pages)/services/[slug]/page.tsx (imported SolutionsSection + OverviewQuote, render in all 3 layouts as §2.5/§3.5)
+- 474 insertions, 29 deletions across 5 files.
+- 4 industry pages + 2 service pages now have the full HCL-style "Powering the future of X" treatment with the user's finalised copy: hero (fullbleed-overlay per earlier revert) → §1 ChallengesSection → §2 prose → §2.5 unique IndustryShowcase module → §2.6 OverviewQuote + SolutionsSection (HCL tile grid + closing quote band) → §3 cards grid.
+- Push pending user-side GitHub auth.
