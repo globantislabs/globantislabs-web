@@ -139,7 +139,7 @@ export const servicesV2: ServiceV2[] = [
       closingQuote: "Transform Workflows. Empower People. Accelerate Business.",
     },
     overviewQuote: "From AI Potential to Business Impact.",
-    heroImage: "/images/hero-bg.jpg",
+    heroImage: "/images/services/ai-automation.png",
     revenueEngine: "AI & Automation",
   },
   {
@@ -190,7 +190,7 @@ export const servicesV2: ServiceV2[] = [
       closingQuote: "Build Digital Experiences That Move the Enterprise.",
     },
     overviewQuote: "From Enterprise Apps to Intelligent Ecosystems.",
-    heroImage: "/images/hm2-about.jpg",
+    heroImage: "/images/services/enterprise-web-solutions.png",
     revenueEngine: "Custom Software",
   },
   {

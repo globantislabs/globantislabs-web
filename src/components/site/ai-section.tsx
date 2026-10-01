@@ -109,8 +109,8 @@ export function AISection() {
               />
               <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink shadow-lift">
                 <Image
-                  src="/images/vr-girl.jpg"
-                  alt="Engineer exploring AI-driven virtual reality experiences"
+                  src="/images/ai/ai-hero.png"
+                  alt="AI-driven neural network visualization representing business transformation"
                   width={720}
                   height={900}
                   sizes="(min-width: 1024px) 600px, 100vw"
