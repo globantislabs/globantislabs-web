@@ -10,6 +10,12 @@ import {
   SolutionsSection,
   OverviewQuote,
 } from "@/components/site/solutions-section";
+import {
+  AnchorNavigation,
+  OverviewSplitSection,
+  WhyUsEditorial,
+  FinalCTADramatic,
+} from "@/components/site/enterprise-sections";
 import { buildMetadata } from "@/lib/seo";
 import { servicesV2, type ServiceV2 } from "@/lib/services-data";
 import { AnimatedCapabilities } from "./animated-capabilities";
@@ -68,9 +74,55 @@ export default async function ServiceDetailPage({
         ]}
       />
 
+      {/* === Anchor Navigation — sticky horizontal section nav === */}
+      <AnchorNavigation
+        items={[
+          { id: "overview", label: "Overview" },
+          { id: "capabilities", label: "Capabilities" },
+          { id: "solutions", label: "Solutions" },
+          { id: "why-us", label: "Why Us" },
+          { id: "cta", label: "Get Started" },
+        ]}
+      />
+
+      {/* === Overview Split — 50/50 text + 4:3 image (HCL §6) === */}
+      <OverviewSplitSection
+        id="overview"
+        eyebrow={`Service ${service.number} · ${service.revenueEngine}`}
+        title={service.overviewHeading}
+        paragraphs={service.overviewParas}
+        image={service.heroImage}
+        imageAlt={service.title}
+        cta={{ label: "Talk to an expert", href: "/contact" }}
+        bg="bg-white"
+      />
+
       {layout === 0 && <LayoutA service={service} />}
       {layout === 1 && <LayoutB service={service} />}
       {layout === 2 && <LayoutC service={service} />}
+
+      {/* === Why Us — large editorial block + CTA (HCL §19) === */}
+      <WhyUsEditorial
+        id="why-us"
+        eyebrow="Why Globantis Labs"
+        title={`Why teams choose us for ${service.shortTitle.toLowerCase()}`}
+        paragraphs={[
+          `We bring deep ${service.shortTitle.toLowerCase()} expertise, modern engineering practices, and a follow-the-sun delivery model across Canada, the UK, and Dubai — so every engagement ships faster, scales safely, and stays close to the customer.`,
+          `From first discovery to production rollout and continuous improvement, our teams operate as an extension of yours — sharing risk, owning outcomes, and turning the next phase of your ${service.shortTitle.toLowerCase()} initiative into a measurable plan rather than a slide deck.`,
+        ]}
+        cta={{ label: "Start a project", href: "/contact" }}
+        bg="bg-shade"
+      />
+
+      {/* === Final CTA — dark dramatic band (HCL §23) === */}
+      <FinalCTADramatic
+        eyebrow="Get started"
+        title={`Ready to scope your ${service.shortTitle.toLowerCase()} project?`}
+        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome — across Canada, the UK, Dubai and beyond."
+        primaryCta={{ label: "Start a project", href: "/contact" }}
+        secondaryCta={{ label: "Explore all services", href: "/services" }}
+        image={service.heroImage}
+      />
     </>
   );
 }
@@ -155,7 +207,7 @@ function LayoutA({ service }: { service: ServiceV2 }) {
   return (
     <>
       {/* === Section 1 — white, 2-col sticky heading + offset-cream framed image === */}
-      <section className="bg-white py-section-md">
+      <section id="capabilities" className="bg-white py-section-md">
         <div className="container-site">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
             {/* Left — sticky heading */}
@@ -223,13 +275,15 @@ function LayoutA({ service }: { service: ServiceV2 }) {
         <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
       )}
       {service.capabilitiesTiles && service.capabilitiesTiles.tiles.length > 0 && (
-        <SolutionsSection
-          intro={service.capabilitiesTiles.intro}
-          tiles={service.capabilitiesTiles.tiles}
-          closingQuote={service.capabilitiesTiles.closingQuote}
-          bg="bg-shade"
-          closingBg="bg-ink"
-        />
+        <div id="solutions">
+          <SolutionsSection
+            intro={service.capabilitiesTiles.intro}
+            tiles={service.capabilitiesTiles.tiles}
+            closingQuote={service.capabilitiesTiles.closingQuote}
+            bg="bg-shade"
+            closingBg="bg-ink"
+          />
+        </div>
       )}
 
 
@@ -365,13 +419,15 @@ function LayoutB({ service }: { service: ServiceV2 }) {
         <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
       )}
       {service.capabilitiesTiles && service.capabilitiesTiles.tiles.length > 0 && (
-        <SolutionsSection
-          intro={service.capabilitiesTiles.intro}
-          tiles={service.capabilitiesTiles.tiles}
-          closingQuote={service.capabilitiesTiles.closingQuote}
-          bg="bg-white"
-          closingBg="bg-ink"
-        />
+        <div id="solutions">
+          <SolutionsSection
+            intro={service.capabilitiesTiles.intro}
+            tiles={service.capabilitiesTiles.tiles}
+            closingQuote={service.capabilitiesTiles.closingQuote}
+            bg="bg-white"
+            closingBg="bg-ink"
+          />
+        </div>
       )}
 
       {/* === Section 4 — white, CTA === */}
@@ -478,13 +534,15 @@ function LayoutC({ service }: { service: ServiceV2 }) {
         <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
       )}
       {service.capabilitiesTiles && service.capabilitiesTiles.tiles.length > 0 && (
-        <SolutionsSection
-          intro={service.capabilitiesTiles.intro}
-          tiles={service.capabilitiesTiles.tiles}
-          closingQuote={service.capabilitiesTiles.closingQuote}
-          bg="bg-shade"
-          closingBg="bg-ink"
-        />
+        <div id="solutions">
+          <SolutionsSection
+            intro={service.capabilitiesTiles.intro}
+            tiles={service.capabilitiesTiles.tiles}
+            closingQuote={service.capabilitiesTiles.closingQuote}
+            bg="bg-shade"
+            closingBg="bg-ink"
+          />
+        </div>
       )}
 
       {/* === Section 4 — shade, CTA === */}

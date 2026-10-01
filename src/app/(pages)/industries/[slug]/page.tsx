@@ -9,6 +9,15 @@ import {
   SolutionsSection,
   OverviewQuote,
 } from "@/components/site/solutions-section";
+import {
+  AnchorNavigation,
+  EditorialParagraphs,
+  OverviewSplitSection,
+  StatisticsStrip,
+  WhyUsEditorial,
+  FinalCTADramatic,
+  FAQAccordionRows,
+} from "@/components/site/enterprise-sections";
 import { buildMetadata } from "@/lib/seo";
 import { industries, type Industry } from "@/lib/site-data";
 
@@ -134,6 +143,35 @@ export default async function IndustryDetailPage({
           { label: ind.title },
         ]}
       />
+
+      {/* === Anchor Navigation — sticky horizontal section nav === */}
+      <AnchorNavigation
+        items={[
+          { id: "overview", label: "Overview" },
+          { id: "challenges", label: "Challenges" },
+          { id: "showcase", label: "Showcase" },
+          { id: "solutions", label: "Solutions" },
+          ...(ind.stats ? [{ id: "stats", label: "Stats" }] : []),
+          ...(ind.faq ? [{ id: "faq", label: "FAQ" }] : []),
+          { id: "why-us", label: "Why Us" },
+          { id: "cta", label: "Get Started" },
+        ]}
+      />
+
+      {/* === Overview Split (50/50: text + 4:3 image, HCL §6) === */}
+      {ind.intro && (
+        <OverviewSplitSection
+          id="overview"
+          eyebrow={ind.label ?? ind.title}
+          title={ind.heroHeading ?? ind.title}
+          paragraphs={[ind.intro]}
+          image={ind.bannerImage ?? "/images/wp/2025-01/about.jpg"}
+          imageAlt={ind.title}
+          cta={{ label: "Talk to an expert", href: "/contact" }}
+          bg="bg-white"
+        />
+      )}
+
       {layout === "A" && <LayoutA ind={ind} />}
       {layout === "B" && (
         <LayoutB
@@ -141,6 +179,50 @@ export default async function IndustryDetailPage({
           challengesVariant={challengesVariant}
         />
       )}
+
+      {/* === Why Us — large editorial block + CTA (HCL §19) === */}
+      <WhyUsEditorial
+        id="why-us"
+        eyebrow="Why Globantis Labs"
+        title={`Why teams choose us for ${ind.title.toLowerCase()}`}
+        paragraphs={[
+          `We bring deep ${ind.title.toLowerCase()} expertise, modern engineering practices, and a follow-the-sun delivery model across Canada, the UK, and Dubai — so every engagement ships faster, scales safely, and stays close to the customer.`,
+          `From first discovery to production rollout and continuous improvement, our teams operate as an extension of yours — sharing risk, owning outcomes, and turning the next phase of your ${ind.title.toLowerCase()} transformation into a measurable plan rather than a slide deck.`,
+        ]}
+        cta={{ label: "Start a project", href: "/contact" }}
+        bg="bg-shade"
+      />
+
+      {/* === Statistics Strip — horizontal metric strip (HCL §20) === */}
+      {ind.stats && ind.stats.length > 0 && (
+        <StatisticsStrip
+          id="stats"
+          eyebrow="By the numbers"
+          title="Outcomes that compound."
+          stats={ind.stats}
+          bg="bg-white"
+        />
+      )}
+
+      {/* === FAQ Accordion Rows — full-width horizontal dividers (HCL §24) === */}
+      {ind.faq && ind.faq.items.length > 0 && (
+        <FAQAccordionRows
+          id="faq"
+          eyebrow={ind.faq.label ?? "FAQ"}
+          title={ind.faq.heading}
+          items={ind.faq.items.map((i) => ({ q: i.q, a: i.a }))}
+          bg="bg-white"
+        />
+      )}
+
+      {/* === Final CTA — dark dramatic band (HCL §23) === */}
+      <FinalCTADramatic
+        eyebrow="Get started"
+        title={`Ready to transform your ${ind.title.toLowerCase()} business?`}
+        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome — across Canada, the UK, Dubai and beyond."
+        primaryCta={{ label: "Start a project", href: "/contact" }}
+        secondaryCta={{ label: "View case studies", href: "/case-studies" }}
+      />
     </>
   );
 }
@@ -254,7 +336,7 @@ function ChallengesSection({
   /* ---------- Variant: cards-icons ---------- */
   if (variant === "cards-icons") {
     return (
-      <section className="bg-white py-section-md">
+      <section id="challenges" className="bg-white py-section-md">
         <div className="container-site">
           <Reveal>
             <SectionHeading
@@ -304,7 +386,7 @@ function ChallengesSection({
   /* ---------- Variant: split-photo ---------- */
   if (variant === "split-photo") {
     return (
-      <section className="bg-white py-section-md">
+      <section id="challenges" className="bg-white py-section-md">
         <div className="container-site">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
             {/* Left — photo */}
@@ -391,7 +473,7 @@ function ChallengesSection({
    *  cards-icons but with the full-bleed banner photo treatment so
    *  the page still reads differently from sibling industries) ---- */
   return (
-    <section className="bg-shade py-section-md">
+    <section id="challenges" className="bg-shade py-section-md">
       <div className="container-site">
         <Reveal>
           <SectionHeading
@@ -446,22 +528,27 @@ function ChallengesSection({
  * the single biggest reason every industry page reads differently.
  * ============================================================ */
 function IndustryShowcase({ ind }: { ind: Industry }) {
-  switch (ind.slug) {
-    case "healthcare":
-      return <HealthcareShowcase ind={ind} />;
-    case "education":
-      return <EducationShowcase ind={ind} />;
-    case "logistics":
-      return <LogisticsShowcase ind={ind} />;
-    case "cybersecurity":
-      return <CybersecurityShowcase ind={ind} />;
-    case "ecommerce":
-      return <EcommerceShowcase ind={ind} />;
-    case "automation":
-      return <AutomationShowcase ind={ind} />;
-    default:
-      return null;
-  }
+  // Wrap in a section with id="showcase" so the anchor nav target works.
+  const inner = (() => {
+    switch (ind.slug) {
+      case "healthcare":
+        return <HealthcareShowcase ind={ind} />;
+      case "education":
+        return <EducationShowcase ind={ind} />;
+      case "logistics":
+        return <LogisticsShowcase ind={ind} />;
+      case "cybersecurity":
+        return <CybersecurityShowcase ind={ind} />;
+      case "ecommerce":
+        return <EcommerceShowcase ind={ind} />;
+      case "automation":
+        return <AutomationShowcase ind={ind} />;
+      default:
+        return null;
+    }
+  })();
+  if (!inner) return null;
+  return <div id="showcase">{inner}</div>;
 }
 
 /* ---------- Healthcare: care pillars (4-card grid) + patient journey
@@ -1543,13 +1630,15 @@ function LayoutB({
         <OverviewQuote quote={ind.overviewQuote} bg="bg-white" />
       )}
       {ind.solutions && ind.solutions.tiles.length > 0 && (
-        <SolutionsSection
-          intro={ind.solutions.intro}
-          tiles={ind.solutions.tiles}
-          closingQuote={ind.solutions.closingQuote}
-          bg="bg-shade"
-          closingBg="bg-ink"
-        />
+        <div id="solutions">
+          <SolutionsSection
+            intro={ind.solutions.intro}
+            tiles={ind.solutions.tiles}
+            closingQuote={ind.solutions.closingQuote}
+            bg="bg-shade"
+            closingBg="bg-ink"
+          />
+        </div>
       )}
 
       {/* === §3 — white, paragraph-based content with image (NOT cards) === */}

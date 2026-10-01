@@ -117,6 +117,9 @@
 @utility py-section-lg {
   padding-block: clamp(5.5rem, 11vw, 8.5rem);
 }
+@utility py-section-xl {
+  padding-block: clamp(7rem, 14vw, 11rem);
+}
 @utility pt-section-md {
   padding-top: clamp(4.5rem, 8vw, 7rem);
 }
