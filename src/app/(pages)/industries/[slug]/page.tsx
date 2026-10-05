@@ -128,6 +128,10 @@ export default async function IndustryDetailPage({
   const heroVariant: PageHeroVariant = HERO_VARIANTS[slug] ?? "fullbleed-overlay";
   const challengesVariant: ChallengesVariant =
     CHALLENGES_VARIANTS[slug] ?? "cards-icons";
+  // Per-industry challenges image — unique per industry, NOT the banner.
+  // Eliminates the duplicate-image problem where ind.bannerImage was
+  // being reused for both the hero and the challenges section.
+  const challengesImage = `/images/industries/${slug}/challenges/challenges.jpg`;
 
   return (
     <>
@@ -146,7 +150,6 @@ export default async function IndustryDetailPage({
       {/* === Anchor Navigation — sticky horizontal section nav === */}
       <AnchorNavigation
         items={[
-          { id: "overview", label: "Overview" },
           { id: "challenges", label: "Challenges" },
           { id: "showcase", label: "Showcase" },
           { id: "solutions", label: "Solutions" },
@@ -156,25 +159,19 @@ export default async function IndustryDetailPage({
         ]}
       />
 
-      {/* === Overview Split (50/50: text + 4:3 image, HCL §6) === */}
-      {ind.intro && (
-        <OverviewSplitSection
-          id="overview"
-          eyebrow={ind.label ?? ind.title}
-          title={ind.heroHeading ?? ind.title}
-          paragraphs={[ind.intro]}
-          image={ind.bannerImage ?? "/images/wp/2025-01/about.jpg"}
-          imageAlt={ind.title}
-          cta={{ label: "Talk to an expert", href: "/contact" }}
-          bg="bg-white"
-        />
-      )}
+      {/* === OverviewSplitSection REMOVED per user request — was
+       *  duplicating ind.bannerImage (already shown in PageHero
+       *  above). The heroHeading + intro copy already lives in the
+       *  hero's label and breadcrumb area; rendering them again
+       *  in a 50/50 split with the SAME image was the duplication
+       *  the user flagged. === */}
 
       {layout === "A" && <LayoutA ind={ind} />}
       {layout === "B" && (
         <LayoutB
           ind={ind}
           challengesVariant={challengesVariant}
+          challengesImage={challengesImage}
         />
       )}
 
@@ -1115,35 +1112,35 @@ function LayoutA({ ind }: { ind: Industry }) {
               </Reveal>
             </div>
 
-            {/* Right — bannerImage in offset cream frame */}
-            {ind.bannerImage && (
-              <Reveal delay={0.1}>
-                <div className="relative">
+            {/* Right — unique overview image in offset cream frame.
+             *  Was using ind.bannerImage (duplicate of hero); replaced
+             *  with a unique overview image to avoid duplication. */}
+            <Reveal delay={0.1}>
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="absolute -left-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
+                />
+                <div className="relative overflow-hidden rounded-2xl border border-line bg-ink shadow-lift">
+                  <Image
+                    src="/images/industries/financial-services/overview/overview.jpg"
+                    alt={ind.title}
+                    width={760}
+                    height={560}
+                    sizes="(min-width: 1024px) 760px, 100vw"
+                    className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
+                  />
                   <div
                     aria-hidden
-                    className="absolute -left-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
+                    className="absolute inset-x-0 bottom-0 h-24"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(11,22,94,0.55) 0%, rgba(11,22,94,0) 100%)",
+                    }}
                   />
-                  <div className="relative overflow-hidden rounded-2xl border border-line bg-ink shadow-lift">
-                    <Image
-                      src={ind.bannerImage}
-                      alt={ind.title}
-                      width={760}
-                      height={560}
-                      sizes="(min-width: 1024px) 760px, 100vw"
-                      className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[560px]"
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute inset-x-0 bottom-0 h-24"
-                      style={{
-                        background:
-                          "linear-gradient(to top, rgba(11,22,94,0.55) 0%, rgba(11,22,94,0) 100%)",
-                      }}
-                    />
-                  </div>
                 </div>
-              </Reveal>
-            )}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -1195,13 +1192,14 @@ function LayoutA({ ind }: { ind: Industry }) {
         </section>
       )}
 
-      {/* === §3 — narrative sections (alternating bg-white/bg-shade, para left + image right) === */}
+      {/* === §3 — narrative sections (alternating bg-white/bg-shade,
+       *  text-only — image prop REMOVED to stop the duplicate
+       *  bannerImage across this LayoutA page too) === */}
       {ind.sections?.map((sec, i) => (
         <NarrativeSection
           key={i}
           sec={sec}
           bg={i % 2 === 0 ? "bg-white" : "bg-shade"}
-          image={ind.bannerImage}
           imageSide={i % 2 === 0 ? "right" : "left"}
         />
       ))}
@@ -1351,9 +1349,11 @@ function LayoutA({ ind }: { ind: Industry }) {
 function LayoutB({
   ind,
   challengesVariant = "cards-icons",
+  challengesImage,
 }: {
   ind: Industry;
   challengesVariant?: "cards-icons" | "split-photo" | "stat-led";
+  challengesImage?: string;
 }) {
   // §3 — pick the first available card dataset following the spec
   // fallback chain. The flow / workflow / journey fallbacks are
@@ -1568,18 +1568,20 @@ function LayoutB({
         <ChallengesSection
           challenges={ind.challenges}
           variant={challengesVariant}
-          image={ind.bannerImage}
+          image={challengesImage}
         />
       )}
 
-      {/* === §2 — prose sections (per-industry bg + image-side rhythm
-       * so no two industry pages feel identical) === */}
+      {/* === §2 — prose sections (per-industry bg rhythm so no two
+       *  industry pages feel identical). Image prop REMOVED — was
+       *  reusing ind.bannerImage (already shown in the hero) for the
+       *  alternating-side photo in every prose section. Now text-only,
+       *  letting the prose + bg colour do the work. === */}
       {proseSections.map((sec, i) => (
         <NarrativeSection
           key={i}
           sec={sec}
           bg={bgFor(i)}
-          image={ind.bannerImage}
           imageSide={sideFor(i)}
         />
       ))}
@@ -1629,48 +1631,27 @@ function LayoutB({
         </div>
       )}
 
-      {/* === §3 — white, paragraph-based content with image (NOT cards) === */}
+      {/* === §3 — white, paragraph-based content (text-only — image
+       *  block REMOVED to stop bannerImage duplication; the SolutionsImageGrid
+       *  above already shows the per-tile images for this industry) === */}
       {cards && cards.items.length > 0 && (
         <section className="bg-white py-section-md">
           <div className="container-site">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-              {/* Left — paragraph */}
-              <div>
-                <Reveal>
-                  <div aria-hidden className="rule-flame mb-6" />
-                  <h3 className="text-display-md font-bold leading-snug text-ink">
-                    {cards.title}
-                  </h3>
-                  <div className="mt-5 space-y-4">
-                    {cards.items.map((item, i) => (
-                      <p key={i} className="text-[16px] leading-relaxed text-body">
-                        <span className="font-semibold text-ink">{item.title}</span>
-                        {item.desc ? ` — ${item.desc}` : ""}
-                      </p>
-                    ))}
-                  </div>
-                </Reveal>
-              </div>
-              {/* Right — image */}
-              {ind.bannerImage && (
-                <Reveal delay={0.1}>
-                  <div className="relative">
-                    <div
-                      aria-hidden
-                      className="absolute -right-5 -top-5 hidden h-full w-full rounded-2xl border border-line bg-cream lg:block"
-                    />
-                    <div className="relative overflow-hidden rounded-2xl shadow-float">
-                      <Image
-                        src={ind.bannerImage}
-                        alt={ind.title}
-                        width={640}
-                        height={480}
-                        className="h-[280px] w-full object-cover sm:h-[360px] lg:h-[440px]"
-                      />
-                    </div>
-                  </div>
-                </Reveal>
-              )}
+            <div className="mx-auto max-w-4xl">
+              <Reveal>
+                <div aria-hidden className="rule-flame mb-6" />
+                <h3 className="text-display-md font-bold leading-snug text-ink">
+                  {cards.title}
+                </h3>
+                <div className="mt-5 space-y-4">
+                  {cards.items.map((item, i) => (
+                    <p key={i} className="text-[16px] leading-relaxed text-body">
+                      <span className="font-semibold text-ink">{item.title}</span>
+                      {item.desc ? ` — ${item.desc}` : ""}
+                    </p>
+                  ))}
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
