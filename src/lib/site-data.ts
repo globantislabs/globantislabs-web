@@ -1110,6 +1110,7 @@ export type Industry = {
     };
     tiles: {
       icon?: LucideIcon;
+      image?: string;
       title: string;
       desc: string;
     }[];
@@ -1517,12 +1518,12 @@ export const industries: Industry[] = [
         desc: "From hospitality and freight forwarding to warehousing and last-mile delivery, we engineer the digital fabric that connects guests, operators, carriers and customers across the entire journey.",
       },
       tiles: [
-        { icon: Users, title: "Guest Experience & Loyalty", desc: "Omnichannel loyalty, in-stay digital experiences, and personalized guest journeys across every property and brand." },
-        { icon: Globe, title: "Digital Hotel & Property Operations", desc: "Property management, housekeeping, energy and guest-request orchestration on a single connected platform." },
-        { icon: MapPin, title: "Supply Chain Visibility", desc: "Multi-modal control towers with real-time ETA, exception alerts and predictive ETA across carriers and borders." },
-        { icon: Warehouse, title: "Warehouse Management", desc: "WMS, slotting AI, robotics integration and wave planning that lift pick accuracy and throughput." },
-        { icon: Truck, title: "Transportation Optimization", desc: "TMS, route optimization, load consolidation and carrier collaboration that cut freight cost and improve service." },
-        { icon: LineChart, title: "Real-Time Analytics & AI", desc: "Forecasting, anomaly detection and GenAI co-pilots that turn operational data into decisions." },
+        { icon: Users, image: "/images/industries/logistics/guest-experience.png", title: "Guest Experience & Loyalty", desc: "Omnichannel loyalty, in-stay digital experiences, and personalized guest journeys across every property and brand." },
+        { icon: Globe, image: "/images/industries/logistics/digital-hotel.png", title: "Digital Hotel & Property Operations", desc: "Property management, housekeeping, energy and guest-request orchestration on a single connected platform." },
+        { icon: MapPin, image: "/images/industries/logistics/supply-chain-visibility.png", title: "Supply Chain Visibility", desc: "Multi-modal control towers with real-time ETA, exception alerts and predictive ETA across carriers and borders." },
+        { icon: Warehouse, image: "/images/industries/logistics/warehouse-management.png", title: "Warehouse Management", desc: "WMS, slotting AI, robotics integration and wave planning that lift pick accuracy and throughput." },
+        { icon: Truck, image: "/images/industries/logistics/transportation-optimization.png", title: "Transportation Optimization", desc: "TMS, route optimization, load consolidation and carrier collaboration that cut freight cost and improve service." },
+        { icon: LineChart, image: "/images/industries/logistics/real-time-analytics.png", title: "Real-Time Analytics & AI", desc: "Forecasting, anomaly detection and GenAI co-pilots that turn operational data into decisions." },
       ],
       closingQuote: "Move People. Move Goods. Move Forward.",
     },

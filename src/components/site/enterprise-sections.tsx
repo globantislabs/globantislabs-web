@@ -225,10 +225,17 @@ export function FocusAreasGrid({
 }
 
 /* ----------------------------------------------------------------
- * SolutionsImageGrid — 2-col image+text cards (image-first).
+ * SolutionsImageGrid — image+text cards (image-first).
  * Spec §10 & §11 — Solutions Section.
  * Each tile: 16:9 image on top, then heading + desc + arrow link.
  * NO big rounded cards.
+ *
+ * `columns` prop picks the desktop grid:
+ *   - 2 (default) — large editorial cards, 28-32px headings
+ *   - 3           — HCL-tech retail-services style, smaller cards,
+ *                   20-22px headings, tighter spacing, 6-tile grid
+ *                   (3 cols × 2 rows). Matches the reference at
+ *                   https://www.hcltech.com/retail-services.
  * ---------------------------------------------------------------- */
 export function SolutionsImageGrid({
   id,
@@ -237,6 +244,9 @@ export function SolutionsImageGrid({
   lead,
   items,
   bg = "bg-shade",
+  columns = 2,
+  closingQuote,
+  closingBg = "bg-ink",
 }: {
   id?: string;
   eyebrow?: string;
@@ -249,65 +259,122 @@ export function SolutionsImageGrid({
     href?: string;
   }[];
   bg?: "bg-white" | "bg-shade";
+  columns?: 2 | 3;
+  closingQuote?: string;
+  closingBg?: "bg-ink" | "bg-brand" | "bg-white";
 }) {
   if (!items || items.length === 0) return null;
 
   // Use a single fallback image if items don't supply their own.
   const fallback = items.find((i) => i.image)?.image;
 
-  return (
-    <section id={id} className={`${bg} py-section-lg`}>
-      <div className="container-site">
-        <Reveal>
-          <SectionHeading
-            label={eyebrow ? `[ ${eyebrow} ]` : undefined}
-            title={title}
-            lead={lead}
-            align="left"
-          />
-        </Reveal>
+  // Grid + per-card sizing picked by column count.
+  const gridClass =
+    columns === 3
+      ? "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+      : "grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-20";
+  const headingClass =
+    columns === 3
+      ? "mt-5 text-[20px] font-semibold leading-snug text-ink sm:text-[22px]"
+      : "mt-6 text-[28px] font-semibold leading-snug text-ink sm:text-[32px]";
+  const descClass =
+    columns === 3
+      ? "mt-2 text-[14px] leading-relaxed text-body sm:text-[15px]"
+      : "mt-3 text-[17px] leading-relaxed text-body";
+  const imgSizes =
+    columns === 3
+      ? "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      : "(min-width: 1024px) 50vw, 100vw";
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-20">
-          {items.map((item, i) => {
-            const img = item.image ?? fallback ?? "/images/wp/2025-01/about.jpg";
-            return (
-              <Reveal key={item.title} delay={Math.min(i * 0.05, 0.3)}>
-                <article className="group">
-                  <div className="relative overflow-hidden bg-shade">
-                    <Image
-                      src={img}
-                      alt={item.title}
-                      width={720}
-                      height={405}
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <h3 className="mt-6 text-[28px] font-semibold leading-snug text-ink sm:text-[32px]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-[17px] leading-relaxed text-body">
-                    {item.desc}
-                  </p>
-                  {item.href && (
-                    <Link
-                      href={item.href}
-                      className="group/arrow mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-flame"
-                    >
-                      Read more
-                      <ArrowRight
-                        aria-hidden
-                        className="size-4 transition-transform group-hover/arrow:translate-x-1"
+  return (
+    <>
+      <section id={id} className={`${bg} py-section-lg`}>
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              label={eyebrow ? `[ ${eyebrow} ]` : undefined}
+              title={title}
+              lead={lead}
+              align="left"
+            />
+          </Reveal>
+
+          <div className={`mt-12 grid ${gridClass}`}>
+            {items.map((item, i) => {
+              const img = item.image ?? fallback ?? "/images/wp/2025-01/about.jpg";
+              return (
+                <Reveal key={item.title} delay={Math.min(i * 0.05, 0.3)}>
+                  <article className="group flex h-full flex-col">
+                    <div className="relative overflow-hidden bg-shade">
+                      <Image
+                        src={img}
+                        alt={item.title}
+                        width={720}
+                        height={405}
+                        sizes={imgSizes}
+                        className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       />
-                    </Link>
-                  )}
-                </article>
-              </Reveal>
-            );
-          })}
+                      {/* Subtle bottom gradient for caption legibility if
+                       * a caption is ever overlaid later */}
+                      <div
+                        aria-hidden
+                        className="absolute inset-x-0 bottom-0 h-16 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{
+                          background:
+                            "linear-gradient(to top, rgba(0,3,61,0.45) 0%, rgba(0,3,61,0) 100%)",
+                        }}
+                      />
+                    </div>
+                    <h3 className={headingClass}>{item.title}</h3>
+                    <p className={descClass}>{item.desc}</p>
+                    {item.href && (
+                      <Link
+                        href={item.href}
+                        className="group/arrow mt-4 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-flame"
+                      >
+                        Read more
+                        <ArrowRight
+                          aria-hidden
+                          className="size-4 transition-transform group-hover/arrow:translate-x-1"
+                        />
+                      </Link>
+                    )}
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Optional closing quote band — same treatment as SolutionsSection */}
+      {closingQuote && (
+        <section className={`${closingBg} relative overflow-hidden py-16 lg:py-20`}>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-flame/15 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-32 -bottom-32 size-96 rounded-full bg-flame/10 blur-3xl"
+          />
+          <div aria-hidden className="absolute inset-0 grid-pattern opacity-15" />
+          <div className="container-site relative">
+            <Reveal>
+              <div className="mx-auto max-w-4xl text-center">
+                <span
+                  aria-hidden
+                  className="mx-auto mb-6 block h-[2px] w-12 rounded-full bg-gradient-to-r from-flame to-flame-soft"
+                />
+                <p className="text-display-md font-bold leading-tight text-white sm:text-display-lg">
+                  {closingQuote}
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
 
