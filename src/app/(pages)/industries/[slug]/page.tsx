@@ -10,10 +10,6 @@ import {
   OverviewQuote,
 } from "@/components/site/solutions-section";
 import {
-  AnchorNavigation,
-  OverviewSplitSection,
-  WhyUsEditorial,
-  FinalCTADramatic,
   FAQAccordionRows,
   SolutionsImageGrid,
 } from "@/components/site/enterprise-sections";
@@ -85,29 +81,20 @@ export async function generateMetadata({
  * each industry listed specific sections to remove.
  * ============================================================ */
 
-// Industries that KEEP the §1 ChallengesSection. Removed from:
-//   healthcare, logistics, ecommerce (user explicitly listed 'The
-//   challenges' for removal on those pages).
-const SHOW_CHALLENGES = new Set([
-  "education",
-  "cybersecurity",
-  "automation",
-  "financial-services",
-]);
+// Industries that KEEP the §1 ChallengesSection.
+// Per content.md (user's final content spec), NO industry page has
+// a 'Challenges' section → empty Set → ChallengesSection removed
+// from ALL industry pages.
+const SHOW_CHALLENGES = new Set<string>([]);
 
-// Industries that KEEP the page-level WhyUsEditorial. Removed from:
-//   financial-services and logistics per user request.
-const SHOW_WHY_US = new Set([
-  "healthcare",
-  "education",
-  "cybersecurity",
-  "ecommerce",
-  "automation",
-]);
+// Industries that KEEP the page-level WhyUsEditorial.
+// Per content.md, NO industry page has a 'Why Globantis Labs' section
+// → empty Set → WhyUsEditorial removed from ALL industry pages.
+const SHOW_WHY_US = new Set<string>([]);
 
-// Industries that KEEP the §3 cards grid ('Stages that connect' for
-// logistics with flow data, etc.). Removed from logistics per user
-// request ('Stages that connect' was listed for removal).
+// Industries that KEEP the §3 cards grid.
+// Per content.md, only pages with explicit tile content keep it.
+// logistics removed ('Stages that connect' not in MD).
 const SHOW_CARDS_GRID = new Set([
   "healthcare",
   "education",
@@ -185,28 +172,10 @@ export default async function IndustryDetailPage({
         ]}
       />
 
-      {/* === Anchor Navigation — sticky horizontal section nav ===
-       *  'Showcase' item removed — IndustryShowcase block was removed
-       *  from all LayoutB industry pages per user request (each
-       *  industry's showcase sub-sections were all individually listed
-       *  for removal across the 6 Layout-B industries). */}
-      <AnchorNavigation
-        items={[
-          ...(SHOW_CHALLENGES.has(slug)
-            ? [{ id: "challenges", label: "Challenges" }]
-            : []),
-          { id: "solutions", label: "Solutions" },
-          ...(ind.faq ? [{ id: "faq", label: "FAQ" }] : []),
-          ...(SHOW_WHY_US.has(slug)
-            ? [{ id: "why-us", label: "Why Us" }]
-            : []),
-          { id: "cta", label: "Get Started" },
-        ]}
-      />
-
-      {/* === OverviewSplitSection REMOVED per user request — was
-       *  duplicating ind.bannerImage (already shown in PageHero
-       *  above). === */}
+      {/* === Per content.md: strip to ONLY MD content. Removed:
+       *  AnchorNavigation, OverviewSplitSection, WhyUsEditorial,
+       *  FinalCTADramatic, Statistics Strip — none of these appear
+       *  in the user's MD file. === */}
 
       {layout === "A" && <LayoutA ind={ind} />}
       {layout === "B" && (
@@ -219,29 +188,7 @@ export default async function IndustryDetailPage({
         />
       )}
 
-      {/* === Why Us — large editorial block + CTA (HCL §19) ===
-       *  Per user request, removed from financial-services and
-       *  logistics pages. */}
-      {SHOW_WHY_US.has(slug) && (
-        <WhyUsEditorial
-          id="why-us"
-          eyebrow="Why Globantis Labs"
-          title={`Why teams choose us for ${ind.title.toLowerCase()}`}
-          paragraphs={[
-            `We bring deep ${ind.title.toLowerCase()} expertise, modern engineering practices, and a follow-the-sun delivery model across Canada, the UK, and Dubai — so every engagement ships faster, scales safely, and stays close to the customer.`,
-            `From first discovery to production rollout and continuous improvement, our teams operate as an extension of yours — sharing risk, owning outcomes, and turning the next phase of your ${ind.title.toLowerCase()} transformation into a measurable plan rather than a slide deck.`,
-          ]}
-          cta={{ label: "Start a project", href: "/contact" }}
-          bg="bg-shade"
-        />
-      )}
-
-      {/* === Statistics Strip REMOVED per user request (2026-10-01) —
-       *  was the 'By the numbers' horizontal metric strip after Why Us.
-       *  Stats data still exists on Industry type but is not surfaced
-       *  on the industry page anymore. === */}
-
-      {/* === FAQ Accordion Rows — full-width horizontal dividers (HCL §24) === */}
+      {/* === FAQ — kept only for industries with faq data in the MD === */}
       {ind.faq && ind.faq.items.length > 0 && (
         <FAQAccordionRows
           id="faq"
@@ -251,15 +198,6 @@ export default async function IndustryDetailPage({
           bg="bg-white"
         />
       )}
-
-      {/* === Final CTA — dark dramatic band (HCL §23) === */}
-      <FinalCTADramatic
-        eyebrow="Get started"
-        title={`Ready to transform your ${ind.title.toLowerCase()} business?`}
-        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome — across Canada, the UK, Dubai and beyond."
-        primaryCta={{ label: "Start a project", href: "/contact" }}
-        secondaryCta={{ label: "View case studies", href: "/case-studies" }}
-      />
     </>
   );
 }
