@@ -304,27 +304,38 @@ export function SolutionsImageGrid({
                       className="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                     />
 
-                    {/* Hover overlay — navy gradient slides up from bottom.
-                     * Default: opacity-0 + translate-y-8 (hidden below image).
-                     * Hover:   opacity-100 + translate-y-0 (covers bottom 65%
-                     *          of image with a from-ink → to-transparent
-                     *          gradient, 500ms ease-out). */}
+                    {/* Permanent bottom gradient — ALWAYS visible so the
+                     * overlaid title is legible against any image. Deepens
+                     * slightly on hover (60% → 100% opacity via the second
+                     * overlay layer below). */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 h-1/2"
+                      style={{
+                        background:
+                          "linear-gradient(to top, rgba(0,3,61,0.92) 0%, rgba(0,3,61,0.78) 38%, rgba(0,3,61,0.35) 75%, rgba(0,3,61,0) 100%)",
+                      }}
+                    />
+
+                    {/* Second overlay — extends gradient UP on hover so the
+                     * description has a backdrop when it slides in. */}
                     <div
                       aria-hidden
                       className="absolute inset-x-0 bottom-0 h-2/3 translate-y-4 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100"
                       style={{
                         background:
-                          "linear-gradient(to top, rgba(0,3,61,0.96) 0%, rgba(0,3,61,0.88) 38%, rgba(0,3,61,0.55) 70%, rgba(0,3,61,0) 100%)",
+                          "linear-gradient(to top, rgba(0,3,61,0.96) 0%, rgba(0,3,61,0.7) 50%, rgba(0,3,61,0) 100%)",
                       }}
                     />
 
-                    {/* Heading text — slides up from bottom of image with
-                     * the gradient. Default: opacity-0 + translate-y-6.
-                     * Hover: opacity-100 + translate-y-0. */}
-                    <div className="absolute inset-x-0 bottom-0 translate-y-6 p-6 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 sm:p-7">
+                    {/* Title — ALWAYS visible at the bottom of the image
+                     * (overlaid on the permanent gradient). This is what
+                     * the user asked for — title visible by default, not
+                     * only on hover. */}
+                    <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                       <span
                         aria-hidden
-                        className="mb-3 block h-[2px] w-8 rounded-full bg-gradient-to-r from-flame to-flame-soft"
+                        className="mb-2 block h-[2px] w-8 rounded-full bg-gradient-to-r from-flame to-flame-soft"
                       />
                       <h3
                         className={
@@ -335,27 +346,35 @@ export function SolutionsImageGrid({
                       >
                         {item.title}
                       </h3>
-                      <p
-                        className={
-                          columns === 3
-                            ? "mt-2 text-[13px] leading-relaxed text-white/75 sm:text-[14px]"
-                            : "mt-2.5 text-[15px] leading-relaxed text-white/80 sm:text-[16px]"
-                        }
-                      >
-                        {item.desc}
-                      </p>
-                      {item.href && (
-                        <Link
-                          href={item.href}
-                          className="group/arrow mt-4 inline-flex items-center gap-2 text-sm font-semibold text-flame transition-colors hover:text-flame-soft"
-                        >
-                          Read more
-                          <ArrowRight
-                            aria-hidden
-                            className="size-4 transition-transform group-hover/arrow:translate-x-1"
-                          />
-                        </Link>
-                      )}
+
+                      {/* Description + Read more — hidden by default, fade +
+                       * slide up on hover (the gradient above deepens to
+                       * give them a legible backdrop). */}
+                      <div className="grid max-h-0 grid-rows-[0fr] opacity-0 transition-all duration-500 ease-out group-hover:max-h-40 group-hover:grid-rows-[1fr] group-hover:opacity-100">
+                        <div className="overflow-hidden">
+                          <p
+                            className={
+                              columns === 3
+                                ? "mt-2 text-[13px] leading-relaxed text-white/75 sm:text-[14px]"
+                                : "mt-2.5 text-[15px] leading-relaxed text-white/80 sm:text-[16px]"
+                            }
+                          >
+                            {item.desc}
+                          </p>
+                          {item.href && (
+                            <Link
+                              href={item.href}
+                              className="group/arrow mt-3 inline-flex items-center gap-2 text-sm font-semibold text-flame transition-colors hover:text-flame-soft"
+                            >
+                              Read more
+                              <ArrowRight
+                                aria-hidden
+                                className="size-4 transition-transform group-hover/arrow:translate-x-1"
+                              />
+                            </Link>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </article>
                 </Reveal>
