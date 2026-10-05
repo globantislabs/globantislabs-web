@@ -37,28 +37,10 @@ export function Footer() {
       id="contact"
       className="relative mt-auto overflow-hidden bg-ink text-white"
     >
-      {/* CTA banner */}
-      <div className="relative border-b border-white/10">
-        <div className="absolute inset-0 grid-pattern opacity-30" aria-hidden />
-        <div className="relative container-site flex flex-col items-start gap-6 px-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:py-14">
-          <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[34px] lg:leading-[42px]">
-              Have Any Projects In Your Mind ?
-            </h2>
-            <p className="mt-3 text-sm text-white/60 sm:text-base">
-              AI, automation, and emerging technologies are converging to
-              transform how organizations operate, compete, and scale.
-            </p>
-          </div>
-          <Link
-            href="#consultation"
-            className="btn-lift inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
-          >
-            Let&apos;s Discuss Your Project
-            <ArrowRight className="size-4" />
-          </Link>
-        </div>
-      </div>
+      {/* CTA banner REMOVED per user request (2026-10-05) — was
+          "Have Any Projects In Your Mind?" with Let's Discuss button.
+          Each page already has its own FinalCTADramatic band, so the
+          footer CTA was redundant. */}
 
       {/* Main footer */}
       <div className="relative container-site py-14">

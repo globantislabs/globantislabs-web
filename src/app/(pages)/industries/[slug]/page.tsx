@@ -80,6 +80,44 @@ export async function generateMetadata({
 }
 
 /* ============================================================
+ * Per-industry visibility flags — control which optional sections
+ * render on which industry page. Driven by user request 2026-10-05:
+ * each industry listed specific sections to remove.
+ * ============================================================ */
+
+// Industries that KEEP the §1 ChallengesSection. Removed from:
+//   healthcare, logistics, ecommerce (user explicitly listed 'The
+//   challenges' for removal on those pages).
+const SHOW_CHALLENGES = new Set([
+  "education",
+  "cybersecurity",
+  "automation",
+  "financial-services",
+]);
+
+// Industries that KEEP the page-level WhyUsEditorial. Removed from:
+//   financial-services and logistics per user request.
+const SHOW_WHY_US = new Set([
+  "healthcare",
+  "education",
+  "cybersecurity",
+  "ecommerce",
+  "automation",
+]);
+
+// Industries that KEEP the §3 cards grid ('Stages that connect' for
+// logistics with flow data, etc.). Removed from logistics per user
+// request ('Stages that connect' was listed for removal).
+const SHOW_CARDS_GRID = new Set([
+  "healthcare",
+  "education",
+  "cybersecurity",
+  "ecommerce",
+  "automation",
+  "financial-services",
+]);
+
+/* ============================================================
  * Per-industry hero variant assignment.
  *
  * USER PREFERENCE: every industry keeps the original
@@ -147,24 +185,28 @@ export default async function IndustryDetailPage({
         ]}
       />
 
-      {/* === Anchor Navigation — sticky horizontal section nav === */}
+      {/* === Anchor Navigation — sticky horizontal section nav ===
+       *  'Showcase' item removed — IndustryShowcase block was removed
+       *  from all LayoutB industry pages per user request (each
+       *  industry's showcase sub-sections were all individually listed
+       *  for removal across the 6 Layout-B industries). */}
       <AnchorNavigation
         items={[
-          { id: "challenges", label: "Challenges" },
-          { id: "showcase", label: "Showcase" },
+          ...(SHOW_CHALLENGES.has(slug)
+            ? [{ id: "challenges", label: "Challenges" }]
+            : []),
           { id: "solutions", label: "Solutions" },
           ...(ind.faq ? [{ id: "faq", label: "FAQ" }] : []),
-          { id: "why-us", label: "Why Us" },
+          ...(SHOW_WHY_US.has(slug)
+            ? [{ id: "why-us", label: "Why Us" }]
+            : []),
           { id: "cta", label: "Get Started" },
         ]}
       />
 
       {/* === OverviewSplitSection REMOVED per user request — was
        *  duplicating ind.bannerImage (already shown in PageHero
-       *  above). The heroHeading + intro copy already lives in the
-       *  hero's label and breadcrumb area; rendering them again
-       *  in a 50/50 split with the SAME image was the duplication
-       *  the user flagged. === */}
+       *  above). === */}
 
       {layout === "A" && <LayoutA ind={ind} />}
       {layout === "B" && (
@@ -172,21 +214,27 @@ export default async function IndustryDetailPage({
           ind={ind}
           challengesVariant={challengesVariant}
           challengesImage={challengesImage}
+          showChallenges={SHOW_CHALLENGES.has(slug)}
+          showCardsGrid={SHOW_CARDS_GRID.has(slug)}
         />
       )}
 
-      {/* === Why Us — large editorial block + CTA (HCL §19) === */}
-      <WhyUsEditorial
-        id="why-us"
-        eyebrow="Why Globantis Labs"
-        title={`Why teams choose us for ${ind.title.toLowerCase()}`}
-        paragraphs={[
-          `We bring deep ${ind.title.toLowerCase()} expertise, modern engineering practices, and a follow-the-sun delivery model across Canada, the UK, and Dubai — so every engagement ships faster, scales safely, and stays close to the customer.`,
-          `From first discovery to production rollout and continuous improvement, our teams operate as an extension of yours — sharing risk, owning outcomes, and turning the next phase of your ${ind.title.toLowerCase()} transformation into a measurable plan rather than a slide deck.`,
-        ]}
-        cta={{ label: "Start a project", href: "/contact" }}
-        bg="bg-shade"
-      />
+      {/* === Why Us — large editorial block + CTA (HCL §19) ===
+       *  Per user request, removed from financial-services and
+       *  logistics pages. */}
+      {SHOW_WHY_US.has(slug) && (
+        <WhyUsEditorial
+          id="why-us"
+          eyebrow="Why Globantis Labs"
+          title={`Why teams choose us for ${ind.title.toLowerCase()}`}
+          paragraphs={[
+            `We bring deep ${ind.title.toLowerCase()} expertise, modern engineering practices, and a follow-the-sun delivery model across Canada, the UK, and Dubai — so every engagement ships faster, scales safely, and stays close to the customer.`,
+            `From first discovery to production rollout and continuous improvement, our teams operate as an extension of yours — sharing risk, owning outcomes, and turning the next phase of your ${ind.title.toLowerCase()} transformation into a measurable plan rather than a slide deck.`,
+          ]}
+          cta={{ label: "Start a project", href: "/contact" }}
+          bg="bg-shade"
+        />
+      )}
 
       {/* === Statistics Strip REMOVED per user request (2026-10-01) —
        *  was the 'By the numbers' horizontal metric strip after Why Us.
@@ -1350,10 +1398,14 @@ function LayoutB({
   ind,
   challengesVariant = "cards-icons",
   challengesImage,
+  showChallenges = true,
+  showCardsGrid = true,
 }: {
   ind: Industry;
   challengesVariant?: "cards-icons" | "split-photo" | "stat-led";
   challengesImage?: string;
+  showChallenges?: boolean;
+  showCardsGrid?: boolean;
 }) {
   // §3 — pick the first available card dataset following the spec
   // fallback chain. The flow / workflow / journey fallbacks are
@@ -1563,8 +1615,11 @@ function LayoutB({
       {/* === §1 — Challenges the industry faces =========================
        * Replaces the old text-only intro (which duplicated PageHero).
        * Now uses real industry pain-point data from `ind.challenges`
-       * with the per-industry variant picked in CHALLENGES_VARIANTS. === */}
-      {ind.challenges && ind.challenges.length > 0 && (
+       * with the per-industry variant picked in CHALLENGES_VARIANTS.
+       * SKIPPED per-slug when showChallenges is false (healthcare,
+       * logistics, ecommerce — user explicitly listed 'The
+       * challenges' for removal on those pages). === */}
+      {showChallenges && ind.challenges && ind.challenges.length > 0 && (
         <ChallengesSection
           challenges={ind.challenges}
           variant={challengesVariant}
@@ -1586,13 +1641,20 @@ function LayoutB({
         />
       ))}
 
-      {/* === §2.5 — Per-industry UNIQUE showcase module ===================
-       * Each industry has its own showcase data shape (pillars, journey,
-       * pathway, platformFeatures, flow, techEnablers, layers, channels,
-       * ecommerceMetrics, workflow). Rendering it here gives every page
-       * a visibly different body section that no sibling page has.
-       * === */}
-      <IndustryShowcase ind={ind} />
+      {/* === §2.5 — IndustryShowcase REMOVED per user request (2026-10-05)
+       *  Each LayoutB industry listed its showcase sub-sections for
+       *  removal:
+       *    healthcare   → Care pillars + Patient journey
+       *    education    → full portion (pathway + platform features)
+       *    automation   → all content (workflow)
+       *    logistics    → Supply-chain flow + Tech enablers
+       *    ecommerce   → Omnichannel + Commerce KPIs
+       *    cybersecurity → Defense layers
+       *  Since every industry's full showcase was flagged, the entire
+       *  IndustryShowcase block is removed from LayoutB. The
+       *  per-industry showcase components (HealthcareShowcase,
+       *  EducationShowcase, etc.) stay defined in this file for
+       *  future re-wiring, just not rendered. === */}
 
       {/* === §2.6 — HCL-style "Powering the future of X" solutions block ===
        * Big intro (eyebrow + title + lead) followed by a responsive tile
@@ -1633,8 +1695,11 @@ function LayoutB({
 
       {/* === §3 — white, paragraph-based content (text-only — image
        *  block REMOVED to stop bannerImage duplication; the SolutionsImageGrid
-       *  above already shows the per-tile images for this industry) === */}
-      {cards && cards.items.length > 0 && (
+       *  above already shows the per-tile images for this industry)
+       *  SKIPPED for logistics per user request ('Stages that connect'
+       *  was listed for removal — that's the cards.title when
+       *  ind.flow is the data source). === */}
+      {showCardsGrid && cards && cards.items.length > 0 && (
         <section className="bg-white py-section-md">
           <div className="container-site">
             <div className="mx-auto max-w-4xl">
