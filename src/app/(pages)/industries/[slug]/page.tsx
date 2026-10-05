@@ -1603,36 +1603,29 @@ function LayoutB({
       )}
       {ind.solutions && ind.solutions.tiles.length > 0 && (
         <div id="solutions">
-          {ind.slug === "logistics" ? (
-            /* Logistics gets the HCL-tech retail-services style
-             * 3-col image+text card grid (6 tiles, each with its
-             * own AI-generated image + hover scale animation).
-             * Strip the `icon` field (a Lucide function) before
-             * passing to the client component — server→client
-             * serialization can't carry functions. */
-            <SolutionsImageGrid
-              eyebrow={ind.solutions.intro?.eyebrow}
-              title={ind.solutions.intro?.title ?? "Solutions"}
-              lead={ind.solutions.intro?.desc}
-              items={ind.solutions.tiles.map((t) => ({
-                image: t.image,
-                title: t.title,
-                desc: t.desc,
-              }))}
-              columns={3}
-              bg="bg-shade"
-              closingQuote={ind.solutions.closingQuote}
-              closingBg="bg-ink"
-            />
-          ) : (
-            <SolutionsSection
-              intro={ind.solutions.intro}
-              tiles={ind.solutions.tiles}
-              closingQuote={ind.solutions.closingQuote}
-              bg="bg-shade"
-              closingBg="bg-ink"
-            />
-          )}
+          {/* All industries with solutions data now use the HCL-tech
+           * retail-services style 3-col image+text card grid with the
+           * hover-overlay pattern (image only by default, navy gradient
+           * + heading slides up on hover). Each tile has its own unique
+           * downloaded stock photo — no repeats anywhere.
+           *
+           * Strip the `icon` field (a Lucide function) before passing
+           * to the client component — server→client serialization
+           * can't carry functions. */}
+          <SolutionsImageGrid
+            eyebrow={ind.solutions.intro?.eyebrow}
+            title={ind.solutions.intro?.title ?? "Solutions"}
+            lead={ind.solutions.intro?.desc}
+            items={ind.solutions.tiles.map((t) => ({
+              image: t.image,
+              title: t.title,
+              desc: t.desc,
+            }))}
+            columns={3}
+            bg="bg-shade"
+            closingQuote={ind.solutions.closingQuote}
+            closingBg="bg-ink"
+          />
         </div>
       )}
 

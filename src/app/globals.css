@@ -127,6 +127,82 @@
   padding-bottom: clamp(4.5rem, 8vw, 7rem);
 }
 
+/* ============================================================
+ * Animations — Products "Coming Soon" page
+ * ============================================================ */
+
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.18); opacity: 0.25; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+@keyframes ping-slow-delay {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.08); opacity: 0.15; }
+}
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.05); }
+}
+@keyframes pulse-slow-delay {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
+}
+@keyframes hammer {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(8deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@utility animate-ping-slow {
+  animation: ping-slow 2.4s ease-in-out infinite;
+}
+@utility animate-ping-slow-delay {
+  animation: ping-slow-delay 2.4s ease-in-out 0.4s infinite;
+}
+@utility animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+@utility animate-pulse-slow-delay {
+  animation: pulse-slow-delay 4s ease-in-out 0.8s infinite;
+}
+@utility animate-hammer {
+  animation: hammer 1.6s ease-in-out infinite;
+}
+@utility animate-blink {
+  animation: blink 1.4s ease-in-out 0.2s infinite;
+}
+@utility animate-blink-delay {
+  animation: blink 1.4s ease-in-out 0.4s infinite;
+}
+@utility animate-blink-delay-2 {
+  animation: blink 1.4s ease-in-out 0.6s infinite;
+}
+@utility animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping-slow,
+  .animate-ping-slow-delay,
+  .animate-pulse-slow,
+  .animate-pulse-slow-delay,
+  .animate-hammer,
+  .animate-blink,
+  .animate-blink-delay,
+  .animate-blink-delay-2,
+  .animate-spin-slow {
+    animation: none;
+  }
+}
+
 :root {
   --radius: 0.5rem;
   /* Map shadcn tokens onto the EXACT Globantis palette */
