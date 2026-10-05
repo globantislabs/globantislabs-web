@@ -142,7 +142,7 @@ check "Para: 'We help enterprises move from AI experimentation'" "$AISECTION" "W
 check "Para: 'From Generative AI and Agentic AI'" "$AISECTION" "From Generative AI and Agentic AI"
 check "Para: 'Our focus is simple: turn AI from an emerging'" "$AISECTION" "Our focus is simple: turn AI"
 check "Closing tagline: 'From AI Potential to Business Impact.'" "$AISECTION" "From AI Potential to"
-check "AI image embedded" "$AISECTION" "src=\"/images/vr-girl.jpg\""
+check "AI image embedded" "$AISECTION" "src=\"/images/ai/ai-hero.png\""
 
 echo ""
 echo "============================================================"
