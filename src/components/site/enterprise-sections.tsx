@@ -205,9 +205,6 @@ export function FocusAreasGrid({
                   {Icon && (
                     <Icon aria-hidden className="size-6 text-flame" />
                   )}
-                  <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/35">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                 </div>
                 <p className="mt-5 text-lg font-semibold leading-snug text-ink">
                   {a.title}
@@ -273,14 +270,6 @@ export function SolutionsImageGrid({
     columns === 3
       ? "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
       : "grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-20";
-  const headingClass =
-    columns === 3
-      ? "mt-5 text-[20px] font-semibold leading-snug text-ink sm:text-[22px]"
-      : "mt-6 text-[28px] font-semibold leading-snug text-ink sm:text-[32px]";
-  const descClass =
-    columns === 3
-      ? "mt-2 text-[14px] leading-relaxed text-body sm:text-[15px]"
-      : "mt-3 text-[17px] leading-relaxed text-body";
   const imgSizes =
     columns === 3
       ? "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -304,41 +293,70 @@ export function SolutionsImageGrid({
               const img = item.image ?? fallback ?? "/images/wp/2025-01/about.jpg";
               return (
                 <Reveal key={item.title} delay={Math.min(i * 0.05, 0.3)}>
-                  <article className="group flex h-full flex-col">
-                    <div className="relative overflow-hidden bg-shade">
-                      <Image
-                        src={img}
-                        alt={item.title}
-                        width={720}
-                        height={405}
-                        sizes={imgSizes}
-                        className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                      />
-                      {/* Subtle bottom gradient for caption legibility if
-                       * a caption is ever overlaid later */}
-                      <div
+                  <article className="group relative overflow-hidden bg-shade">
+                    {/* Image — always visible, scales on hover */}
+                    <Image
+                      src={img}
+                      alt={item.title}
+                      width={720}
+                      height={405}
+                      sizes={imgSizes}
+                      className="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                    />
+
+                    {/* Hover overlay — navy gradient slides up from bottom.
+                     * Default: opacity-0 + translate-y-8 (hidden below image).
+                     * Hover:   opacity-100 + translate-y-0 (covers bottom 65%
+                     *          of image with a from-ink → to-transparent
+                     *          gradient, 500ms ease-out). */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 h-2/3 translate-y-4 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+                      style={{
+                        background:
+                          "linear-gradient(to top, rgba(0,3,61,0.96) 0%, rgba(0,3,61,0.88) 38%, rgba(0,3,61,0.55) 70%, rgba(0,3,61,0) 100%)",
+                      }}
+                    />
+
+                    {/* Heading text — slides up from bottom of image with
+                     * the gradient. Default: opacity-0 + translate-y-6.
+                     * Hover: opacity-100 + translate-y-0. */}
+                    <div className="absolute inset-x-0 bottom-0 translate-y-6 p-6 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 sm:p-7">
+                      <span
                         aria-hidden
-                        className="absolute inset-x-0 bottom-0 h-16 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        style={{
-                          background:
-                            "linear-gradient(to top, rgba(0,3,61,0.45) 0%, rgba(0,3,61,0) 100%)",
-                        }}
+                        className="mb-3 block h-[2px] w-8 rounded-full bg-gradient-to-r from-flame to-flame-soft"
                       />
-                    </div>
-                    <h3 className={headingClass}>{item.title}</h3>
-                    <p className={descClass}>{item.desc}</p>
-                    {item.href && (
-                      <Link
-                        href={item.href}
-                        className="group/arrow mt-4 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-flame"
+                      <h3
+                        className={
+                          columns === 3
+                            ? "text-[20px] font-semibold leading-snug text-white sm:text-[22px]"
+                            : "text-[26px] font-semibold leading-snug text-white sm:text-[30px]"
+                        }
                       >
-                        Read more
-                        <ArrowRight
-                          aria-hidden
-                          className="size-4 transition-transform group-hover/arrow:translate-x-1"
-                        />
-                      </Link>
-                    )}
+                        {item.title}
+                      </h3>
+                      <p
+                        className={
+                          columns === 3
+                            ? "mt-2 text-[13px] leading-relaxed text-white/75 sm:text-[14px]"
+                            : "mt-2.5 text-[15px] leading-relaxed text-white/80 sm:text-[16px]"
+                        }
+                      >
+                        {item.desc}
+                      </p>
+                      {item.href && (
+                        <Link
+                          href={item.href}
+                          className="group/arrow mt-4 inline-flex items-center gap-2 text-sm font-semibold text-flame transition-colors hover:text-flame-soft"
+                        >
+                          Read more
+                          <ArrowRight
+                            aria-hidden
+                            className="size-4 transition-transform group-hover/arrow:translate-x-1"
+                          />
+                        </Link>
+                      )}
+                    </div>
                   </article>
                 </Reveal>
               );

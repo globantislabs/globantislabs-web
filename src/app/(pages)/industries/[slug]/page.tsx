@@ -355,9 +355,6 @@ function ChallengesSection({
                           <Icon aria-hidden className="size-5" />
                         </span>
                       )}
-                      <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/40">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                     </div>
                     <p className="mt-5 text-base font-bold text-ink">
                       {c.title}
@@ -440,9 +437,6 @@ function ChallengesSection({
                         </div>
                         <div className="pb-2">
                           <p className="text-base font-bold text-ink">
-                            <span className="font-mono text-xs font-semibold tracking-[0.12em] text-flame">
-                              {String(i + 1).padStart(2, "0")} —{" "}
-                            </span>
                             {c.title}
                           </p>
                           <p className="mt-1.5 text-sm leading-relaxed text-body">
@@ -493,9 +487,6 @@ function ChallengesSection({
                   )}
                   <div>
                     <p className="text-base font-bold text-ink">
-                      <span className="font-mono text-xs font-semibold tracking-[0.12em] text-flame">
-                        {String(i + 1).padStart(2, "0")} —{" "}
-                      </span>
                       {c.title}
                     </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-body">
@@ -625,9 +616,6 @@ function HealthcareShowcase({ ind }: { ind: Industry }) {
                             <Icon aria-hidden className="size-5" />
                           </span>
                         )}
-                        <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/40">
-                          STEP {String(i + 1).padStart(2, "0")}
-                        </span>
                       </div>
                       <p className="mt-4 text-base font-bold text-ink">
                         {j.title}
@@ -671,14 +659,15 @@ function EducationShowcase({ ind }: { ind: Industry }) {
                   </p>
                 </Reveal>
               </div>
-              {/* Right — vertical numbered pathway */}
+              {/* Right — vertical pathway with flame markers (numbers
+                  removed per user request) */}
               <div>
-                <ol className="relative space-y-6 before:absolute before:left-[27px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-line">
+                <ol className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-line">
                   {ind.pathway.map((p, i) => (
                     <Reveal key={p.title} delay={Math.min(i * 0.05, 0.25)}>
                       <li className="relative flex gap-5">
-                        <span className="flex size-14 shrink-0 items-center justify-center rounded-full border-2 border-flame bg-white font-mono text-lg font-bold text-flame">
-                          {String(i + 1).padStart(2, "0")}
+                        <span className="mt-2 flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-flame bg-white">
+                          <span aria-hidden className="size-2.5 rounded-full bg-flame" />
                         </span>
                         <div className="pt-1.5">
                           <p className="text-lg font-bold text-ink">
@@ -889,11 +878,8 @@ function CybersecurityShowcase({ ind }: { ind: Industry }) {
             return (
               <Reveal key={l.title} delay={Math.min(i * 0.06, 0.3)}>
                 <div className="grid gap-4 rounded-2xl border border-line bg-white p-5 lg:grid-cols-[0.6fr_2fr_1.2fr] lg:items-center lg:gap-6">
-                  {/* Icon + number */}
+                  {/* Icon + title (number removed per user request) */}
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/40">
-                      L{String(i + 1).padStart(2, "0")}
-                    </span>
                     {Icon && (
                       <span className="flex size-10 items-center justify-center rounded-lg border border-brand/20 bg-cream text-brand">
                         <Icon aria-hidden className="size-5" />
@@ -1053,9 +1039,6 @@ function AutomationShowcase({ ind }: { ind: Industry }) {
                         <Icon aria-hidden className="size-6" />
                       </span>
                     )}
-                    <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/40">
-                      STEP {String(i + 1).padStart(2, "0")}
-                    </span>
                   </div>
                   <p className="mt-4 text-base font-bold text-ink">
                     {step.label}
@@ -1196,9 +1179,6 @@ function LayoutA({ ind }: { ind: Industry }) {
                             <StepIcon aria-hidden className="size-5" />
                           </span>
                         )}
-                        <span className="font-mono text-xs font-semibold tracking-[0.12em] text-ink/45">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
                       </div>
                       <p className="mt-4 text-base font-bold text-ink">
                         {stepLabel}

@@ -290,9 +290,6 @@ function EducationShowcase({ ind }: { ind: Industry }) {
                           isLeft ? "lg:justify-end" : ""
                         }`}
                       >
-                        <span className="bg-gradient-to-br from-flame to-flame-soft bg-clip-text text-4xl font-bold leading-none text-transparent">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
                         <span className="flex size-9 items-center justify-center rounded-xl border border-brand/20 bg-cream text-brand">
                           <ChevronRight className="size-4" />
                         </span>

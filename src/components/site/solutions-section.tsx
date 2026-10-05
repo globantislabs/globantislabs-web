@@ -87,9 +87,6 @@ export function SolutionsSection({
                           <Icon aria-hidden className="size-6" />
                         </span>
                       )}
-                      <span className="font-mono text-xs font-bold tracking-[0.12em] text-ink/30">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                     </div>
                     <p className="mt-5 text-base font-bold leading-snug text-ink">
                       {t.title}
