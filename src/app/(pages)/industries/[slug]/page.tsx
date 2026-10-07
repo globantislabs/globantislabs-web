@@ -12,6 +12,7 @@ import {
 import {
   FAQAccordionRows,
   SolutionsImageGrid,
+  FinalCTADramatic,
 } from "@/components/site/enterprise-sections";
 import { buildMetadata } from "@/lib/seo";
 import { industries, type Industry } from "@/lib/site-data";
@@ -149,7 +150,7 @@ export default async function IndustryDetailPage({
   const ind = industries.find((i) => i.slug === slug);
   if (!ind) notFound();
 
-  const layout = slug === "financial-services" ? "A" : "B";
+  const layout = "B";
   const heroVariant: PageHeroVariant = HERO_VARIANTS[slug] ?? "fullbleed-overlay";
   const challengesVariant: ChallengesVariant =
     CHALLENGES_VARIANTS[slug] ?? "cards-icons";
@@ -198,6 +199,15 @@ export default async function IndustryDetailPage({
           bg="bg-white"
         />
       )}
+
+      {/* === Final CTA — white bg band === */}
+      <FinalCTADramatic
+        eyebrow="Get started"
+        title={`Ready to transform your ${ind.title.toLowerCase()} business?`}
+        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome — across Canada, the UK, Dubai and beyond."
+        primaryCta={{ label: "Start a project", href: "/contact" }}
+        secondaryCta={{ label: "View case studies", href: "/case-studies" }}
+      />
     </>
   );
 }

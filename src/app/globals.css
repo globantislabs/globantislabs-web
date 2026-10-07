@@ -203,6 +203,19 @@
   }
 }
 
+/* Global paragraph justification */
+section p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+li p, li span {
+  text-align: left;
+}
+/* Quote portions center-aligned, not justified */
+section .text-center p {
+  text-align: center;
+}
+
 :root {
   --radius: 0.5rem;
   /* Map shadcn tokens onto the EXACT Globantis palette */
@@ -413,6 +426,10 @@
   margin-bottom: 14px;
   position: relative;
   letter-spacing: 0.02em;
+  background: #ffffff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
 }
 
 /* Slim scrollbar */

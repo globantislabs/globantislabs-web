@@ -10,6 +10,7 @@ import {
   SolutionsSection,
   OverviewQuote,
 } from "@/components/site/solutions-section";
+import { FinalCTADramatic } from "@/components/site/enterprise-sections";
 import { buildMetadata } from "@/lib/seo";
 import { servicesV2, type ServiceV2 } from "@/lib/services-data";
 import { AnimatedCapabilities } from "./animated-capabilities";
@@ -75,6 +76,16 @@ export default async function ServiceDetailPage({
       {layout === 0 && <LayoutA service={service} />}
       {layout === 1 && <LayoutB service={service} />}
       {layout === 2 && <LayoutC service={service} />}
+
+      {/* === Final CTA — white bg band === */}
+      <FinalCTADramatic
+        eyebrow="Get started"
+        title={`Ready to scope your ${service.shortTitle.toLowerCase()} project?`}
+        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome — across Canada, the UK, Dubai and beyond."
+        primaryCta={{ label: "Start a project", href: "/contact" }}
+        secondaryCta={{ label: "Explore all services", href: "/services" }}
+        image={service.heroImage}
+      />
     </>
   );
 }

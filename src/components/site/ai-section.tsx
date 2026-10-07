@@ -42,7 +42,7 @@ export function AISection() {
   return (
     <section
       id="ai"
-      className="relative overflow-hidden bg-ink py-section-md text-white"
+      className="relative overflow-hidden bg-white py-section-md text-ink"
     >
       {/* Decorative grid + flame orbs (signature dark-bg treatment) */}
       <div aria-hidden className="absolute inset-0 grid-pattern opacity-25" />
@@ -61,15 +61,15 @@ export function AISection() {
           {/* Left — text */}
           <div>
             <Reveal>
-              <span className="section-label !text-brand-light">
+              <span className="section-label text-brand">
                 [ AI Technologies for Business Transformation ]
               </span>
               <div aria-hidden className="rule-flame mt-3 mb-6" />
-              <h2 className="text-display-lg font-bold leading-[1.08] text-white sm:text-display-xl">
+              <h2 className="text-display-lg font-bold leading-[1.08] text-ink sm:text-display-xl">
                 AI That Drives{" "}
                 <span className="text-flame">Business Impact.</span>
               </h2>
-              <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-white/70 sm:text-[17px]">
+              <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-body sm:text-[17px]">
                 {INTRO_PARA}
               </p>
 
@@ -80,7 +80,7 @@ export function AISection() {
                   return (
                     <span
                       key={c.label}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/80 backdrop-blur"
+                      className="inline-flex items-center gap-2 rounded-full border border-line bg-shade px-4 py-2 text-xs font-semibold text-ink/70 backdrop-blur"
                     >
                       <Icon aria-hidden className="size-4 text-flame" />
                       {c.label}
@@ -105,7 +105,7 @@ export function AISection() {
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute -right-5 -top-5 hidden h-full w-full rounded-3xl border border-white/15 bg-white/5 lg:block"
+                className="absolute -right-5 -top-5 hidden h-full w-full rounded-3xl border border-line bg-shade lg:block"
               />
               <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink shadow-lift">
                 <Image
@@ -153,7 +153,7 @@ export function AISection() {
         <div className="mt-20 lg:mt-28">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <span className="section-label !text-brand-light !mx-auto !block">
+              <span className="section-label text-brand !mx-auto !block">
                 [ Welcome to AI That Creates Business Value ]
               </span>
               <div
@@ -168,7 +168,7 @@ export function AISection() {
                 {DESCRIPTION_PARAS.map((p, i) => (
                   <p
                     key={i}
-                    className="text-[16px] leading-relaxed text-white/70 sm:text-[17px]"
+                    className="text-[16px] leading-relaxed text-body sm:text-[17px]"
                   >
                     {p}
                   </p>

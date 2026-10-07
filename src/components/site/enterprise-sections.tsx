@@ -513,48 +513,19 @@ export function FinalCTADramatic({
   image?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink py-section-xl text-white">
-      {/* Background image (optional) */}
-      {image && (
-        <Image
-          src={image}
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover opacity-30"
-        />
-      )}
-      {/* Scrim + decorative orbs */}
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(0,3,61,0.94) 0%, rgba(11,22,94,0.78) 100%)",
-        }}
-      />
-      <div aria-hidden className="absolute inset-0 grid-pattern opacity-15" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-24 top-1/4 size-72 rounded-full bg-flame/20 blur-[120px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 bottom-0 size-96 rounded-full bg-brand/40 blur-[140px]"
-      />
-
+    <section className="relative overflow-hidden bg-white py-section-md text-ink border-t border-line">
       <div className="container-site relative text-center">
         <Reveal>
           {eyebrow && (
-            <span className="section-label !text-brand-light !mx-auto !block">
+            <span className="section-label !mx-auto !block">
               [ {eyebrow} ]
             </span>
           )}
-          <h2 className="mx-auto mt-4 max-w-4xl text-[clamp(36px,5vw,64px)] font-semibold leading-[1.05] tracking-tight text-white">
+          <h2 className="mx-auto mt-4 max-w-4xl text-[clamp(36px,5vw,64px)] font-semibold leading-[1.05] tracking-tight text-ink">
             {title}
           </h2>
           {desc && (
-            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-white/70 sm:text-[18px]">
+            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-body sm:text-[18px]">
               {desc}
             </p>
           )}
@@ -569,7 +540,7 @@ export function FinalCTADramatic({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-7 text-sm font-semibold text-white/90 transition-colors hover:border-flame hover:text-flame"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-brand/30 bg-shade px-7 text-sm font-semibold text-brand transition-colors hover:border-flame hover:text-flame"
               >
                 {secondaryCta.label}
               </Link>
