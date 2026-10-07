@@ -230,8 +230,10 @@ function LayoutA({ service }: { service: ServiceV2 }) {
         </div>
       </section>
 
-      {/* === Section 2 — animated capabilities (navy) === */}
-      <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
+      {/* === Section 2 — animated capabilities — skipped when tiles exist === */}
+      {!service.capabilitiesTiles && (
+        <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
+      )}
 
       {/* === Section 2.5 — HCL-style capabilities tiles + closing quote === */}
       {service.overviewQuote && (
@@ -447,8 +449,10 @@ function LayoutC({ service }: { service: ServiceV2 }) {
         </div>
       </section>
 
-      {/* === Section 2 — animated capabilities (navy) === */}
-      <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
+      {/* === Section 2 — animated capabilities — skipped when tiles exist === */}
+      {!service.capabilitiesTiles && (
+        <AnimatedCapabilities shortTitle={service.shortTitle} capabilities={service.capabilities} />
+      )}
 
 
       {/* === Section 3 — white, full-width image break with overlay quote === */}
