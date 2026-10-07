@@ -252,7 +252,7 @@ function NarrativeSection({
   return (
     <section className={`${bg} py-section-md`}>
       <div className="container-site">
-        <div className={`grid gap-12 lg:gap-16 ${useImage ? "lg:grid-cols-2 lg:items-center" : "mx-auto max-w-4xl"}`}>
+        <div className={`grid gap-12 lg:gap-16 ${useImage ? "lg:grid-cols-2 lg:items-center" : "w-full"}`}>
           {/* Text side */}
           <div className={imageSide === "left" && useImage ? "lg:order-2" : ""}>
             <Reveal>
@@ -1650,7 +1650,7 @@ function LayoutB({
       {showCardsGrid && cards && cards.items.length > 0 && (
         <section className="bg-white py-section-md">
           <div className="container-site">
-            <div className="mx-auto max-w-4xl">
+            <div className="w-full">
               <Reveal>
                 <div aria-hidden className="rule-flame mb-6" />
                 <h3 className="text-display-md font-bold leading-snug text-ink">

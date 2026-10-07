@@ -187,9 +187,9 @@ export const servicesV2: ServiceV2[] = [
         { icon: FileText, title: "CMS Development", desc: "Editor-friendly CMS implementations that let marketing ship without engineering." },
         { icon: Code2, title: "Web Application Modernization", desc: "Replatform legacy web estates to modern stacks without business disruption." },
       ],
-      closingQuote: "Build Digital Experiences That Move the Enterprise.",
+      // closingQuote removed — not in the MD content
     },
-    overviewQuote: "From Enterprise Apps to Intelligent Ecosystems.",
+    // overviewQuote removed — not in the MD content
     heroImage: "/images/services/enterprise-web-solutions.png",
     revenueEngine: "Custom Software",
   },

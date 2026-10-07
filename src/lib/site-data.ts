@@ -143,7 +143,6 @@ export const navItems: NavItem[] = [
     children: [
       { label: "Financial Services", desc: "Banking, capital markets, fintech", href: "/industries/financial-services", icon: Landmark, image: "/images/wp/2025-01/blog_new_02.jpg" },
       { label: "Healthcare", desc: "Patient-centric care, AI diagnostics", href: "/industries/healthcare", icon: HeartPulse, image: "/images/wp/2025-02/about_o01.jpg" },
-      { label: "Education", desc: "Scalable, accessible learning", href: "/industries/education", icon: GraduationCap, image: "/images/wp/2025-04/testimonials.jpg" },
       { label: "Automation", desc: "Intelligent process automation", href: "/industries/automation", icon: Workflow, image: "/images/wp/2025-02/why-choose-24.jpg" },
       { label: "Logistics & Hospitality", desc: "End-to-end supply chain", href: "/industries/logistics", icon: Truck, image: "/images/wp/2025-01/why_choose01.jpg" },
       { label: "Cybersecurity", desc: "Defense-in-depth from edge to human", href: "/industries/cybersecurity", icon: ShieldCheck, image: "/images/wp/2025-02/faq00.jpg" },
@@ -1011,7 +1010,6 @@ export const footerCompany = [
 
 export const footerIndustries = [
   { label: "Automation", href: "/industries/automation" },
-  { label: "Education", href: "/industries/education" },
   { label: "Financial Services", href: "/industries/financial-services" },
   { label: "Healthcare", href: "/industries/healthcare" },
   { label: "Logistics & Hospitality", href: "/industries/logistics" },
@@ -1288,8 +1286,8 @@ export const industries: Industry[] = [
     overviewQuote: "Transform Healthcare. Empower People. Improve Outcomes.",
     solutions: {
       intro: {
-        eyebrow: "Powering Healthcare Transformation",
-        title: "Building Smarter, More Connected Healthcare Enterprises",
+        eyebrow: "Description",
+        title: "Powering Healthcare Transformation",
         desc: "Healthcare and life sciences organizations are navigating rapid technological change, evolving patient expectations, complex regulatory requirements, and increasing demands for operational efficiency. We help organizations turn these challenges into opportunities for meaningful transformation. Our industry-focused approach brings together healthcare expertise, digital innovation, advanced technologies, and scalable solutions to help organizations:",
       },
       tiles: [
@@ -1518,8 +1516,8 @@ export const industries: Industry[] = [
     overviewQuote: "Transform Today. Lead Tomorrow.",
     solutions: {
       intro: {
-        eyebrow: "Powering the Next Generation of Travel, Transportation & Hospitality",
-        title: "Connected ecosystems for travel, transportation & logistics",
+        eyebrow: undefined,
+        title: "Powering the Next Generation of Travel, Transportation & Hospitality",
         desc: "From hospitality and freight forwarding to warehousing and last-mile delivery, we engineer the digital fabric that connects guests, operators, carriers and customers across the entire journey.",
       },
       tiles: [
@@ -1530,7 +1528,7 @@ export const industries: Industry[] = [
         { icon: Truck, image: "/images/industries/logistics/transportation-optimization.jpg", title: "Transportation Optimization", desc: "TMS, route optimization, load consolidation and carrier collaboration that cut freight cost and improve service." },
         { icon: LineChart, image: "/images/industries/logistics/real-time-analytics.jpg", title: "Real-Time Analytics & AI", desc: "Forecasting, anomaly detection and GenAI co-pilots that turn operational data into decisions." },
       ],
-      closingQuote: "Move People. Move Goods. Move Forward.",
+      // closingQuote removed — not in the MD content
     },
   },
   {
@@ -1539,7 +1537,7 @@ export const industries: Industry[] = [
     label: "Cybersecurity",
     bannerImage: "/images/industries/cybersecurity.png",
     icon: ShieldCheck,
-    tagline: "Defense-in-depth — from network edge to human firewall.",
+    tagline: undefined,
     focusAreas: ["Network", "Application", "Data", "Human"],
     heroHeading: "Cybersecurity for Business Resilience",
     intro:
@@ -1606,11 +1604,11 @@ export const industries: Industry[] = [
         ],
       },
     ],
-    overviewQuote: "Security as a Strategic Business Imperative.",
+    // overviewQuote removed — not in the MD content
     solutions: {
       intro: {
-        eyebrow: "Our Services, Designed Around Your Business",
-        title: "Consulting, Implementation, and Managed Security Services",
+        eyebrow: undefined,
+        title: "Our Services, Designed Around Your Business",
         desc: "Strengthen your organization with a comprehensive portfolio of consulting, implementation, and managed security services. Our tailored solutions are designed to address your unique business needs, enhance resilience, and enable secure, sustainable growth.",
       },
       tiles: [
@@ -1621,7 +1619,7 @@ export const industries: Industry[] = [
         { icon: Lock, image: "/images/industries/cybersecurity/data-protection-privacy.jpg", title: "Data Protection & Privacy", desc: "Encryption, tokenization, DLP and immutable backup engineered around evolving data-privacy regulations." },
         { icon: Users, image: "/images/industries/cybersecurity/human-firewall-program.jpg", title: "Human Firewall Program", desc: "Phishing simulations, behavioral analytics and interactive training that turns every employee into a first responder." },
       ],
-      closingQuote: "Resilience by Design. Security by Default.",
+      // closingQuote removed — not in the MD content
     },
     faq: {
       label: "What We Secure",
@@ -1659,7 +1657,7 @@ export const industries: Industry[] = [
     icon: ShoppingCart,
     tagline: "Automation. Experience-led retail. Data-driven intelligence.",
     focusAreas: ["Omnichannel", "Personalization", "Payments"],
-    heroHeading: "Navigating the Future of Retail 4.0",
+    heroHeading: "NAVIGATING THE FUTURE OF RETAIL 4.0",
     intro:
       "Retail is evolving rapidly, driven by emerging technologies, changing customer expectations, and increasingly data-driven business models. Success in Retail 4.0 requires more than adopting new technologies—it requires a strategic approach to identifying the right investments and translating innovation into measurable business value.",
     partners: [
@@ -1721,12 +1719,12 @@ export const industries: Industry[] = [
         ],
       },
     ],
-    overviewQuote: "From Retail 4.0 Ambition to Measurable Business Value.",
+    // overviewQuote removed — not in the MD content
     solutions: {
       intro: {
-        eyebrow: "Powering the Future of Retail",
-        title: "Transform every aspect of your retail business",
-        desc: "From customer engagement and digital commerce to supply chain, analytics, and store operations, our solutions help retailers create seamless experiences and drive sustainable business growth.",
+        eyebrow: "Solution",
+        title: "Powering the Future of Retail",
+        desc: "Transform every aspect of your retail business with intelligent, scalable, and connected technology solutions. From customer engagement and digital commerce to supply chain, analytics, and store operations, our solutions help retailers create seamless experiences and drive sustainable business growth.",
       },
       tiles: [
         { icon: ShoppingCart, image: "/images/industries/ecommerce/digital-commerce.jpg", title: "Digital Commerce", desc: "Build seamless omnichannel shopping experiences across web, mobile, marketplaces, and digital storefronts." },
@@ -1738,7 +1736,7 @@ export const industries: Industry[] = [
         { icon: ShoppingBag, image: "/images/industries/ecommerce/product-merchandising.jpg", title: "Product & Merchandising", desc: "Improve product planning, pricing, assortment, promotions, and merchandising decisions with data-driven intelligence." },
         { icon: Cloud, image: "/images/industries/ecommerce/cloud-digital-transformation.jpg", title: "Cloud & Digital Transformation", desc: "Modernize legacy retail environments with secure, scalable cloud platforms and next-generation digital technologies." },
       ],
-      closingQuote: "Build Agile, Resilient, Future-Ready Retail.",
+      // closingQuote removed — not in the MD content
     },
   },
   {
