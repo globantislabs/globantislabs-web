@@ -96,13 +96,11 @@ const SHOW_WHY_US = new Set<string>([]);
 // Industries that KEEP the §3 cards grid.
 // Per content.md, only pages with explicit tile content keep it.
 // logistics removed ('Stages that connect' not in MD).
-const SHOW_CARDS_GRID = new Set([
-  "healthcare",
-  "education",
+const SHOW_CARDS_GRID = new Set<string>([
   "cybersecurity",
-  "ecommerce",
   "automation",
-  "financial-services",
+  // healthcare, ecommerce, financial-services, logistics, education
+  // all removed — use solutions tiles (SolutionsImageGrid) instead.
 ]);
 
 /* ============================================================

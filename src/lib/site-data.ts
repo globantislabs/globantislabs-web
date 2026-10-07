@@ -1189,6 +1189,51 @@ export const industries: Industry[] = [
         },
       ],
     },
+    sections: [
+      {
+        label: "Overview",
+        heading: "Accelerating Financial Services Transformation",
+        image: "/images/industries/financial-services/prose-overview.jpg",
+        paragraphs: [
+          "In financial services, transformation is no longer a choice—it is a continuous necessity. Institutions face rising customer expectations, evolving risk landscapes, regulatory complexity, and the urgent need to modernize legacy systems.",
+          "We combine deep industry understanding, advanced technology, and a customer-first approach to help banks, insurers, capital markets, and fintech organizations navigate complex challenges and unlock new opportunities.",
+          "Our technology capabilities, innovation-driven solutions, industry-focused frameworks, and experienced global teams help businesses accelerate growth, modernize operations, adapt to changing market demands, and deliver connected experiences that keep customers at the center.",
+        ],
+      },
+      {
+        label: "Banking & Lending",
+        heading: "Banking Built for the Digital Era",
+        image: "/images/industries/financial-services/overview/overview.jpg",
+        paragraphs: [
+          "Banking is evolving rapidly as institutions manage diverse products, channels, and increasingly connected customer journeys. Today's customers expect personalized experiences, seamless digital interactions, and consistent service across every touchpoint.",
+          "We help banking organizations modernize their customer-facing and operational ecosystems with intelligent digital solutions. From digital onboarding and mobile banking to core modernization and real-time payments, our technology enables banks to deliver personalized customer experiences, improve operational efficiency, and build lasting relationships.",
+        ],
+      },
+      {
+        label: "Insurance & Risk",
+        heading: "Insurance Designed for Every Customer",
+        paragraphs: [
+          "The insurance industry is evolving rapidly across underwriting, claims, distribution, and risk management. As customer expectations rise and regulations become increasingly complex, organizations need greater agility, automation, and operational efficiency.",
+          "We help insurance businesses modernize their operations with intelligent, scalable digital solutions that connect people, processes, and technology. From claims automation and fraud detection to telematics and customer engagement, our solutions enable seamless policy lifecycles, smarter decision-making, and more resilient insurance operations.",
+        ],
+      },
+    ],
+    overviewQuote: "Transform Finance. Empower People. Accelerate Growth.",
+    solutions: {
+      intro: {
+        eyebrow: undefined,
+        title: "Powering the Next Generation of Financial Services",
+        desc: "From digital banking and payments to capital markets, insurance, and risk management, we engineer the digital fabric that connects institutions, regulators, and customers across the entire financial services ecosystem.",
+      },
+      tiles: [
+        { icon: Smartphone, image: "/images/industries/financial-services/tile-digital-banking.jpg", title: "Digital Banking", desc: "Mobile-first banking experiences, digital onboarding, account aggregation, and real-time payments across channels." },
+        { icon: LineChart, image: "/images/industries/financial-services/tile-capital-markets.jpg", title: "Capital Markets & Trading", desc: "Algorithmic trading platforms, market data analytics, post-trade processing, and regulatory reporting at scale." },
+        { icon: ShieldCheck, image: "/images/industries/financial-services/tile-insurance-risk.jpg", title: "Insurance & Risk Management", desc: "Claims automation, underwriting engines, telematics, fraud detection, and policy lifecycle management." },
+        { icon: CreditCard, image: "/images/industries/financial-services/tile-payments-fintech.jpg", title: "Payments & Fintech", desc: "Real-time payment rails, cross-border remittance, BNPL platforms, and embedded finance APIs." },
+        { icon: Scale, image: "/images/industries/financial-services/tile-regulatory-compliance.jpg", title: "Regulatory Compliance", desc: "Basel III/IV, MiFID II, AML/KYC automation, regulatory reporting pipelines, and audit-ready evidence." },
+        { icon: Lock, image: "/images/industries/financial-services/tile-fraud-security.jpg", title: "Fraud Detection & Security", desc: "AI-driven fraud scoring, account takeover prevention, zero-trust architecture, and data protection for PCI DSS." },
+      ],
+    },
   },
   {
     slug: "healthcare",
@@ -1325,98 +1370,7 @@ export const industries: Industry[] = [
       closingQuote: "Reimagine Healthcare. Transform Experiences. Create Lasting Impact.",
     },
   },
-  {
-    slug: "education",
-    title: "Education",
-    bannerImage: "/images/industries/education.png",
-    icon: GraduationCap,
-    tagline: "Scalable, accessible, personalized learning pathways.",
-    focusAreas: ["Virtual Classrooms", "AI Learning", "Cloud LMS"],
-    partners: [
-      "Canadian university",
-      "UK college group",
-      "Dubai K-12 network",
-      "Edtech platform",
-    ],
-    challenges: [
-      {
-        icon: Users,
-        title: "Student engagement",
-        desc: "Passive recorded lectures lose 60% of learners by week three — interactive, adaptive paths are now table stakes.",
-      },
-      {
-        icon: Wifi,
-        title: "Digital equity",
-        desc: "Rural Canada, UK social-housing estates and Dubai labour-camp schools still hit bandwidth and device ceilings that break live video.",
-      },
-      {
-        icon: FileText,
-        title: "Administrative overhead",
-        desc: "Admissions, accreditation and reporting swallow the budget that should fund pedagogy and student support.",
-      },
-      {
-        icon: LineChart,
-        title: "Learning outcomes",
-        desc: "Institutions can measure completion but struggle to evidence mastery — accreditors and employers want skills, not seat-time.",
-      },
-    ],
-    pathway: [
-      {
-        title: "Learner Onboarding",
-        desc: "Adaptive profiles, skill diagnostics and goal-setting that tailor the journey to each learner from day one.",
-      },
-      {
-        title: "Personalized Learning",
-        desc: "AI-curated content paths adjust pace, modality and difficulty in real time based on engagement signals.",
-      },
-      {
-        title: "Live & Async Delivery",
-        desc: "Virtual classrooms, breakout rooms and async micro-lessons unified into a single collaboration surface.",
-      },
-      {
-        title: "Continuous Assessment",
-        desc: "Formative analytics, proctored exams and competency maps that make mastery visible and measurable.",
-      },
-      {
-        title: "Outcome & Career Path",
-        desc: "Credentialing, employer pathways and alumni networks that connect learning to lifelong opportunity.",
-      },
-    ],
-    platformFeatures: [
-      {
-        icon: Laptop,
-        title: "Cloud-Native LMS",
-        desc: "Multi-tenant, scalable learning management built on cloud infrastructure — resilient across regions and devices.",
-      },
-      {
-        icon: BarChart3,
-        title: "Learning Analytics",
-        desc: "Real-time engagement, dropout risk and mastery dashboards that turn learning data into action.",
-      },
-      {
-        icon: ShieldCheck,
-        title: "Student Data Privacy",
-        desc: "FERPA / GDPR-aligned controls, SSO and encryption that protect minors, families and institutions.",
-      },
-    ],
-    sections: [
-      {
-        heading: "Transforming Education Through Technology",
-        paragraphs: [
-          "The education sector is evolving rapidly, driven by digital learning, changing student expectations, and the need for scalable, accessible education models. Institutions are balancing innovation with affordability, data privacy, and regulatory compliance—all while striving to deliver meaningful learning experiences.",
-        ],
-        image: "/images/wp/2025-04/testimonials.jpg",
-      },
-      {
-        label: "Approach",
-        heading: "Future-Ready, Inclusive & Secure Digital Campuses",
-        paragraphs: [
-          "Technology is reshaping education through virtual classrooms, AI-powered learning platforms, learning analytics, and personalized education pathways. Cloud-based systems and digital collaboration tools are enabling institutions to expand access, improve engagement, and enhance academic outcomes. Despite these advancements, challenges such as digital inequality, system integration, cybersecurity risks, and data protection continue to impact educational environments. We help educational institutions modernize their digital infrastructure, integrate learning systems, secure sensitive data, and align technology with educators and learners—empowering smarter, more inclusive, and future-ready education.",
-        ],
-      },
-    ],
-  },
-  {
+{
     slug: "logistics",
     title: "Logistics & Hospitality",
     bannerImage: "/images/industries/logistics.png",
@@ -1489,6 +1443,7 @@ export const industries: Industry[] = [
     ],
     sections: [
       {
+        label: "Overview",
         heading: "Accelerating Digital Transformation",
         paragraphs: [
           "We combine deep industry understanding, advanced technology, and a customer-first approach to help travel, transportation, hospitality, and logistics organizations navigate complex challenges and unlock new opportunities.",
@@ -1598,6 +1553,7 @@ export const industries: Industry[] = [
     ],
     sections: [
       {
+        label: "Overview",
         heading: "Cybersecurity for Business Resilience",
         paragraphs: [
           "As digital ecosystems continue to expand, organizations face an increasingly complex and evolving threat landscape. Cybersecurity is no longer solely a matter of compliance and risk mitigation—it is a strategic business imperative that enables resilience, protects enterprise value, and supports sustainable growth.",
@@ -1711,6 +1667,7 @@ export const industries: Industry[] = [
     },
     sections: [
       {
+        label: "Overview",
         heading: "Navigating the Future of Retail 4.0",
         paragraphs: [
           "Retail is evolving rapidly, driven by emerging technologies, changing customer expectations, and increasingly data-driven business models. Success in Retail 4.0 requires more than adopting new technologies—it requires a strategic approach to identifying the right investments and translating innovation into measurable business value.",
@@ -1775,8 +1732,47 @@ export const industries: Industry[] = [
         desc: "Bots ship but the operating model doesn't — exceptions still route to people who left, and trust erodes with each failure.",
       },
     ],
-    heroHeading:
-      "Automation solutions designed to eliminate manual effort and optimize business operations.",
+    heroHeading: "Automation Solutions for Smarter Operations",
+    intro:
+      "Automation is transforming how organizations operate — from rule-based task execution to intelligent, adaptive business operations. We help enterprises identify high-value automation opportunities and transform them into scalable, AI-powered solutions.",
+    sections: [
+      {
+        label: "Overview",
+        heading: "Accelerating Automation Transformation",
+        image: "/images/industries/automation/prose-overview.jpg",
+        paragraphs: [
+          "Automation is transforming how organizations operate — from rule-based task execution to intelligent, adaptive business operations. Organizations can now combine artificial intelligence, machine learning, Generative AI, and intelligent agents to automate complex workflows, improve decision-making, and create more responsive customer and employee experiences.",
+          "We combine deep industry understanding, advanced technology, and a customer-first approach to help organizations navigate complex automation challenges and unlock new opportunities across manufacturing, logistics, finance, healthcare, and retail.",
+          "Our technology capabilities, innovation-driven solutions, industry-focused frameworks, and experienced global teams help businesses accelerate growth, modernize operations, adapt to changing market demands, and deliver connected experiences that keep customers at the center.",
+        ],
+      },
+      {
+        label: "Intelligent Operations",
+        heading: "Process Automation Built for Scale",
+        image: "/images/industries/automation/prose-intelligent.jpg",
+        paragraphs: [
+          "Process automation is evolving rapidly as organizations manage diverse systems, data sources, and increasingly connected operational ecosystems. Today's businesses expect intelligent, adaptive, and scalable automation that delivers measurable outcomes — not just task efficiency.",
+          "We help organizations modernize their operational ecosystems with intelligent digital solutions. From RPA and workflow orchestration to AI-driven decision support and autonomous operations, our technology enables businesses to deliver personalized experiences, improve operational efficiency, and build lasting competitive advantage.",
+        ],
+      },
+    ],
+    overviewQuote: "From Automation to Autonomous Operations.",
+    solutions: {
+      intro: {
+        eyebrow: undefined,
+        title: "Powering the Next Generation of Automation",
+        desc: "From intelligent process automation and RPA to AI-powered document processing and autonomous operations, we engineer the digital fabric that connects people, processes, and technology across the entire automation journey.",
+      },
+      tiles: [
+        { icon: Workflow, image: "/images/industries/automation/intelligent-process-automation.jpg", title: "Intelligent Process Automation", desc: "Automate repetitive and complex workflows using AI-driven decision-making and intelligent orchestration across enterprise systems." },
+        { icon: Bot, image: "/images/industries/automation/tile-rpa.jpg", title: "Robotic Process Automation", desc: "Software bots handle repetitive, rule-based tasks across legacy and SaaS systems — billing, payroll, invoice processing, and customer onboarding." },
+        { icon: FileText, image: "/images/industries/automation/ai-powered-document-processing.jpg", title: "AI-Powered Document Processing", desc: "Extract, classify, validate, and process information from documents with intelligent automation and GenAI." },
+        { icon: Cpu, image: "/images/industries/automation/tile-industrial-iot.jpg", title: "Industrial IoT & Edge Automation", desc: "Connect factory floor sensors, PLCs, and edge devices for real-time monitoring, predictive maintenance, and autonomous control." },
+        { icon: Network, image: "/images/industries/automation/business-workflow-automation.jpg", title: "Workflow Orchestration", desc: "Connect applications, systems, data, and people to streamline end-to-end enterprise processes with intelligent routing." },
+        { icon: Activity, image: "/images/industries/automation/ai-driven-operations.jpg", title: "Autonomous Operations", desc: "Continuously monitor processes, identify inefficiencies, predict issues, and optimize operations with AI-driven self-healing systems." },
+      ],
+      closingQuote: "Transform Workflows. Empower People. Accelerate Business.",
+    },
     workflow: [
       {
         icon: Zap,
