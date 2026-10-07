@@ -426,10 +426,6 @@ section .text-center p {
   margin-bottom: 14px;
   position: relative;
   letter-spacing: 0.02em;
-  background: #ffffff;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid #e2e8f0;
 }
 
 /* Slim scrollbar */
