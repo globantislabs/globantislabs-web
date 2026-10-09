@@ -1319,9 +1319,12 @@ export const industries: Industry[] = [
     ],
     sections: [
       {
-        heading: "Overview",
+        label: "Overview",
+        heading: "Technology Advancing the Future of Healthcare",
+        image: "/images/industries/healthcare/prose-overview.jpg",
         paragraphs: [
-          "Healthcare is evolving rapidly, driven by personalized care, emerging treatment models, rising operational pressures, and an increasingly complex regulatory landscape. Technology is reshaping how healthcare is delivered, managed, and experienced.",
+          "Healthcare is evolving rapidly, driven by personalized care, emerging treatment models, rising operational pressures, and an increasingly complex regulatory landscape.",
+          "Technology is reshaping how healthcare is delivered, managed, and experienced.",
           "Innovations such as AI-powered diagnostics, telemedicine, connected healthcare, predictive analytics, and digital health platforms are enabling faster decision-making and more personalized patient experiences. Advances in genomics and biotechnology are also opening new possibilities for precision medicine, drug discovery, and next-generation therapies.",
           "At the same time, healthcare organizations continue to navigate critical challenges around affordability, accessibility, interoperability, data privacy, and security.",
           "We help healthcare organizations modernize their digital ecosystems, connect fragmented systems, streamline processes, and enable their people with intelligent technology solutions—creating more connected, efficient, secure, and patient-centric healthcare experiences.",
@@ -1555,6 +1558,7 @@ export const industries: Industry[] = [
       {
         label: "Overview",
         heading: "Cybersecurity for Business Resilience",
+        image: "/images/industries/cybersecurity/prose-intro.jpg",
         paragraphs: [
           "As digital ecosystems continue to expand, organizations face an increasingly complex and evolving threat landscape. Cybersecurity is no longer solely a matter of compliance and risk mitigation—it is a strategic business imperative that enables resilience, protects enterprise value, and supports sustainable growth.",
         ],
@@ -1669,6 +1673,7 @@ export const industries: Industry[] = [
       {
         label: "Overview",
         heading: "Navigating the Future of Retail 4.0",
+        image: "/images/industries/ecommerce/prose-intro.jpg",
         paragraphs: [
           "Retail is evolving rapidly, driven by emerging technologies, changing customer expectations, and increasingly data-driven business models. Success in Retail 4.0 requires more than adopting new technologies—it requires a strategic approach to identifying the right investments and translating innovation into measurable business value.",
           "Our retail experts help organizations navigate the evolving digital landscape, prioritize technology investments, and maximize return on investment. From hyper-personalized customer experiences to intelligent operations, we enable retailers to build agile, resilient, and future-ready businesses.",
