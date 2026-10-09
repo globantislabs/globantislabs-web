@@ -154,7 +154,7 @@ export function AISection() {
 
     {/* === Bottom section: "Welcome to AI That Creates Business Value" ===
      *     FULL blue background section with heading + 4 paragraphs + closing tagline */}
-    <section className="relative overflow-hidden bg-brand py-section-md text-white">
+    <section className="relative overflow-hidden bg-ink py-section-md text-white">
       <div aria-hidden className="absolute inset-0 grid-pattern opacity-10" />
       <div
         aria-hidden
