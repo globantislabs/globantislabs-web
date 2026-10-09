@@ -115,7 +115,7 @@ export default function ContactPage() {
                       Hours
                     </p>
                     <p className="text-sm font-semibold text-white">
-                      Mon–Fri, 9:00–18:00 (ET)
+                      Mon–Fri, 24/5 Follow-the-Sun
                     </p>
                   </div>
                 </div>

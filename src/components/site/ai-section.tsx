@@ -149,11 +149,12 @@ export function AISection() {
           </Reveal>
         </div>
 
-        {/* === Middle: "Welcome to AI That Creates Business Value" === */}
-        <div className="mt-20 lg:mt-28">
+        {/* === Middle: "Welcome to AI That Creates Business Value" ===
+         *     Blue background section */}
+        <div className="mt-20 lg:mt-28 rounded-3xl bg-brand py-12 px-6 sm:px-10 lg:px-16 text-center">
           <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="section-label text-brand !mx-auto !block">
+            <div className="mx-auto max-w-3xl">
+              <span className="section-label text-white !mx-auto !block">
                 [ Welcome to AI That Creates Business Value ]
               </span>
               <div
@@ -168,7 +169,7 @@ export function AISection() {
                 {DESCRIPTION_PARAS.map((p, i) => (
                   <p
                     key={i}
-                    className="text-[16px] leading-relaxed text-body sm:text-[17px]"
+                    className="text-[16px] leading-relaxed text-white/80 sm:text-[17px]"
                   >
                     {p}
                   </p>

@@ -59,7 +59,7 @@ export const company = {
   emailHref: "mailto:sales@globantislabs.com",
   careersEmail: "careers@globantislabs.com",
   canadaAddress: "3992 Rue de la Seine Laval, Québec H7W 2S3, Canada",
-  indiaAddress: "RMZ Millenia Business Park, Perungudi, Chennai, India",
+  indiaAddress: "RMZ Millenia Business Park Campus – 1A, 2nd Floor, 9/1A MGR Main Road, Kodandarama Nagar, Perungudi, Chennai, Tamil Nadu - 600009",
   founded: "2026",
   offices: [
     {
@@ -73,7 +73,7 @@ export const company = {
     {
       city: "Chennai",
       country: "India",
-      address: "RMZ Millenia Business Park, Perungudi, Chennai, India",
+      address: "RMZ Millenia Business Park Campus – 1A, 2nd Floor, 9/1A MGR Main Road, Kodandarama Nagar, Perungudi, Chennai, Tamil Nadu - 600009",
       tz: "India Standard (UTC+5:30)",
       image: "/images/wp/2026-01/about-office-e1767452844756.jpg",
       role: "Engineering hub · 24/5 follow-the-sun",
@@ -1953,7 +1953,7 @@ export const officeLocations = [
   {
     city: "Chennai",
     country: "India",
-    address: "RMZ Millenia Business Park, Perungudi, Chennai, India",
+    address: "RMZ Millenia Business Park Campus – 1A, 2nd Floor, 9/1A MGR Main Road, Kodandarama Nagar, Perungudi, Chennai, Tamil Nadu - 600009",
     tz: "India Standard (UTC+5:30)",
     image: "/images/wp/2026-01/about-office-e1767452844756.jpg",
     role: "Engineering hub · 24/5 follow-the-sun",
