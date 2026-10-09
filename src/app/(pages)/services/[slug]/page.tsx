@@ -91,73 +91,6 @@ export default async function ServiceDetailPage({
 }
 
 /* ============================================================
- * Shared CTA — used by every layout at the end of the page.
- * Primary button label is always "Start a project" → /contact.
- * An optional secondary outline link lets the layout surface a
- * "back to /services" or sibling navigation affordance.
- * ============================================================ */
-function CTASection({
-  bg,
-  eyebrow,
-  title,
-  desc,
-  secondaryHref,
-  secondaryLabel,
-}: {
-  bg: "bg-white" | "bg-shade";
-  eyebrow: string;
-  title: string;
-  desc: string;
-  secondaryHref?: string;
-  secondaryLabel?: string;
-}) {
-  return (
-    <section className={`${bg} py-section-md`}>
-      <div className="container-site">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-line ink-gradient px-6 py-14 text-center sm:px-12 lg:px-20 lg:py-16">
-            <div aria-hidden className="absolute inset-0 grid-pattern opacity-25" />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -left-20 -top-24 size-64 rounded-full bg-flame/25 blur-3xl"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-28 -right-16 size-72 rounded-full bg-flame/20 blur-3xl"
-            />
-            <div className="relative">
-              <span className="section-label !text-brand-light">{eyebrow}</span>
-              <h2 className="text-display-lg font-bold text-white">{title}</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[17px] leading-relaxed text-white/70">
-                {desc}
-              </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/contact"
-                  className="btn-lift inline-flex h-14 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white shadow-glow-flame hover:bg-brand-dark"
-                >
-                  Start a project
-                  <ArrowRight className="size-4" aria-hidden />
-                </Link>
-                {secondaryHref && secondaryLabel && (
-                  <Link
-                    href={secondaryHref}
-                    className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/20 px-7 text-base font-semibold text-white transition-colors duration-300 hover:border-flame hover:text-flame"
-                  >
-                    {secondaryLabel}
-                    <ArrowUpRight className="size-4" aria-hidden />
-                  </Link>
-                )}
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
  * LAYOUT A — services 0, 3, 6, 9
  * (Custom Software · Mobile · Cybersecurity · Managed Services)
  *
@@ -252,15 +185,6 @@ function LayoutA({ service }: { service: ServiceV2 }) {
       )}
 
 
-      {/* === Section 3 — white, CTA === */}
-      <CTASection
-        bg="bg-white"
-        eyebrow="[ Explore this service ]"
-        title={`Ready to scope your ${service.shortTitle} project?`}
-        desc="From first call to first commit — we'll scope, sequence and price your engagement in a single discovery session."
-        secondaryHref="/services"
-        secondaryLabel="Explore all services"
-      />
     </>
   );
 }
@@ -308,77 +232,6 @@ function LayoutB({ service }: { service: ServiceV2 }) {
         </div>
       </section>
 
-      {/* === Section 2 — white, full-width image with navy gradient overlay === */}
-      <section className="relative h-[340px] overflow-hidden bg-ink sm:h-[440px] lg:h-[480px]">
-        <Image
-          src={service.heroImage}
-          alt={service.title}
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(120deg, rgba(0,3,61,0.94) 0%, rgba(11,22,94,0.65) 50%, rgba(11,22,94,0.25) 100%)",
-          }}
-        />
-        <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 top-1/4 size-72 rounded-full bg-flame/20 blur-[120px]"
-        />
-        <div className="container-site relative flex h-full items-center">
-          <Reveal className="max-w-xl">
-            <span className="section-label !text-brand-light">
-              [ Capabilities that ship ]
-            </span>
-            <p className="mt-3 text-display-md font-bold leading-snug text-white sm:text-display-lg">
-              Capabilities that <span className="text-flame">ship.</span>
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-white/70 sm:text-base">
-              Production-ready building blocks — each one scoped, engineered and
-              delivered as part of the engagement.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* === Section 3 — shade, 3-col capability card grid === */}
-      <section className="bg-shade py-section-md">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              label="[ The scope ]"
-              title={
-                <>
-                  Production-ready{" "}
-                  <span className="text-flame">building blocks.</span>
-                </>
-              }
-              lead="Each item below is a capability we've shipped before — selected, scoped and delivered as part of the engagement."
-              align="center"
-            />
-          </Reveal>
-
-          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-            {service.capabilities.map((cap, i) => (
-              <Reveal key={cap} className="h-full" delay={Math.min(i * 0.05, 0.3)}>
-                <div className="card-lift group flex h-full items-center gap-3 rounded-xl border border-line bg-white p-5 hover:border-flame/40 hover:shadow-lift">
-                  <CheckCircle2
-                    className="size-5 shrink-0 text-brand transition-colors duration-500 group-hover:text-flame"
-                    aria-hidden
-                  />
-                  <span className="text-sm font-semibold text-ink">{cap}</span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* === Section 3.5 — HCL-style capabilities tiles + closing quote === */}
       {service.overviewQuote && (
         <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
@@ -395,13 +248,6 @@ function LayoutB({ service }: { service: ServiceV2 }) {
         </div>
       )}
 
-      {/* === Section 4 — white, CTA === */}
-      <CTASection
-        bg="bg-white"
-        eyebrow="[ Start a project ]"
-        title={`Ready to scope your ${service.shortTitle} project?`}
-        desc="One discovery session. A scoped plan. A clear path from opportunity to production outcome."
-      />
     </>
   );
 }
@@ -455,47 +301,6 @@ function LayoutC({ service }: { service: ServiceV2 }) {
       )}
 
 
-      {/* === Section 3 — white, full-width image break with overlay quote === */}
-      <section className="relative h-[360px] overflow-hidden bg-ink sm:h-[460px] lg:h-[520px]">
-        <Image
-          src={service.heroImage}
-          alt={service.title}
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(120deg, rgba(0,3,61,0.95) 0%, rgba(11,22,94,0.72) 50%, rgba(11,22,94,0.32) 100%)",
-          }}
-        />
-        <div aria-hidden className="absolute inset-0 grid-pattern opacity-20" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-16 top-1/3 size-72 rounded-full bg-flame/20 blur-[120px]"
-        />
-        <div className="container-site relative flex h-full items-center">
-          <Reveal className="max-w-2xl">
-            <span className="section-label !text-brand-light">[ Field note ]</span>
-            <blockquote className="mt-3 text-display-md font-bold leading-snug text-white sm:text-display-lg">
-              <span className="text-flame" aria-hidden>
-                &ldquo;
-              </span>
-              {service.tagline}
-              <span className="text-flame" aria-hidden>
-                &rdquo;
-              </span>
-            </blockquote>
-            <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
-              {service.shortTitle} — engineered around the outcomes that matter.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
       {/* === Section 3.5 — HCL-style capabilities tiles + closing quote === */}
       {service.overviewQuote && (
         <OverviewQuote quote={service.overviewQuote} bg="bg-white" />
@@ -512,13 +317,6 @@ function LayoutC({ service }: { service: ServiceV2 }) {
         </div>
       )}
 
-      {/* === Section 4 — shade, CTA === */}
-      <CTASection
-        bg="bg-shade"
-        eyebrow="[ Start a project ]"
-        title={`Ready to scope your ${service.shortTitle} project?`}
-        desc="Tell us where you are today. We'll translate it into a scoped engagement with clear milestones and a delivery plan."
-      />
     </>
   );
 }
