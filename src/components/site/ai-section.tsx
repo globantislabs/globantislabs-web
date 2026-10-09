@@ -62,7 +62,7 @@ export function AISection() {
           {/* Left — text */}
           <div>
             <Reveal>
-              <span className="section-label text-brand">
+              <span className="section-label">
                 [ AI Technologies for Business Transformation ]
               </span>
               <div aria-hidden className="rule-flame mt-3 mb-6" />
@@ -81,7 +81,7 @@ export function AISection() {
                   return (
                     <span
                       key={c.label}
-                      className="inline-flex items-center gap-2 rounded-full border border-line bg-shade px-4 py-2 text-xs font-semibold text-ink/70 backdrop-blur"
+                      className="inline-flex items-center gap-2 px-1 py-1 text-xs font-semibold text-ink/70"
                     >
                       <Icon aria-hidden className="size-4 text-flame" />
                       {c.label}
@@ -106,9 +106,9 @@ export function AISection() {
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute -right-5 -top-5 hidden h-full w-full rounded-3xl border border-line bg-shade lg:block"
+                className="absolute -right-5 -top-5 hidden h-full w-full rounded-3xl bg-cream lg:block"
               />
-              <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink shadow-lift">
+              <div className="relative overflow-hidden rounded-3xl bg-shade shadow-lift">
                 <Image
                   src="/images/ai/ai-hero.png"
                   alt="AI-driven neural network visualization representing business transformation"
@@ -127,7 +127,7 @@ export function AISection() {
                   }}
                 />
                 {/* Floating stat chip */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl border border-white/15 bg-ink/85 px-5 py-3 backdrop-blur">
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl bg-white/90 px-5 py-3 backdrop-blur shadow-float">
                   <div className="flex items-center gap-3">
                     <span className="flex size-9 items-center justify-center rounded-lg bg-flame/15 text-flame">
                       <BrainCircuit aria-hidden className="size-5" />

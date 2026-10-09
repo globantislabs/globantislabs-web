@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Mail,
-  Clock,
   MapPin,
   Send,
   Loader2,
@@ -106,19 +105,6 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </a>
-                <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand text-white">
-                    <Clock className="size-5" />
-                  </span>
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-white/60">
-                      Hours
-                    </p>
-                    <p className="text-sm font-semibold text-white">
-                      Mon–Fri, 24/5 Follow-the-Sun
-                    </p>
-                  </div>
-                </div>
               </div>
 
               {/* Offices */}
