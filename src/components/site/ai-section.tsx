@@ -40,6 +40,7 @@ const CAPABILITY_CHIPS = [
 
 export function AISection() {
   return (
+    <>
     <section
       id="ai"
       className="relative overflow-hidden bg-white py-section-md text-ink"
@@ -148,40 +149,51 @@ export function AISection() {
             </div>
           </Reveal>
         </div>
+      </div>
+    </section>
 
-        {/* === Middle: "Welcome to AI That Creates Business Value" ===
-         *     Blue background section */}
-        <div className="mt-20 lg:mt-28 rounded-3xl bg-brand py-12 px-6 sm:px-10 lg:px-16 text-center">
-          <Reveal>
-            <div className="mx-auto max-w-3xl">
-              <span className="section-label text-white !mx-auto !block">
-                [ Welcome to AI That Creates Business Value ]
-              </span>
-              <div
-                aria-hidden
-                className="mx-auto mt-3 mb-6 h-[2px] w-12 rounded-full bg-gradient-to-r from-flame to-flame-soft"
-              />
-              <h3 className="text-display-md font-bold leading-snug text-white">
-                Welcome to AI That Creates{" "}
-                <span className="text-flame">Business Value.</span>
-              </h3>
-              <div className="mt-7 space-y-4 text-left">
-                {DESCRIPTION_PARAS.map((p, i) => (
-                  <p
-                    key={i}
-                    className="text-[16px] leading-relaxed text-white/80 sm:text-[17px]"
-                  >
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* === Bottom: closing tagline band === */}
+    {/* === Bottom section: "Welcome to AI That Creates Business Value" ===
+     *     FULL blue background section with heading + 4 paragraphs + closing tagline */}
+    <section className="relative overflow-hidden bg-brand py-section-md text-white">
+      <div aria-hidden className="absolute inset-0 grid-pattern opacity-10" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-flame/20 blur-[130px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-ink/20 blur-[130px]"
+      />
+      <div className="container-site relative">
         <Reveal>
-          <div className="mt-16 lg:mt-20 border-t border-white/10 pt-12 text-center">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-label text-white !mx-auto !block">
+              [ Welcome to AI That Creates Business Value ]
+            </span>
+            <div
+              aria-hidden
+              className="mx-auto mt-3 mb-6 h-[2px] w-12 rounded-full bg-gradient-to-r from-flame to-flame-soft"
+            />
+            <h3 className="text-display-md font-bold leading-snug text-white">
+              Welcome to AI That Creates{" "}
+              <span className="text-flame">Business Value.</span>
+            </h3>
+            <div className="mt-7 space-y-4 text-left">
+              {DESCRIPTION_PARAS.map((p, i) => (
+                <p
+                  key={i}
+                  className="text-[16px] leading-relaxed text-white/80 sm:text-[17px]"
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Closing tagline — same blue section */}
+        <Reveal>
+          <div className="mt-16 lg:mt-20 border-t border-white/15 pt-12 text-center">
             <p className="text-display-sm font-bold leading-tight text-white sm:text-display-md">
               From AI Potential to{" "}
               <span className="text-flame">Business Impact.</span>
@@ -190,5 +202,6 @@ export function AISection() {
         </Reveal>
       </div>
     </section>
+    </>
   );
 }

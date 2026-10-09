@@ -80,7 +80,7 @@ export function Consultation() {
               your project and our experts will get back to you within 24 hours.
             </p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 grid gap-3">
               <ContactItem
                 icon={<Mail className="size-5" />}
                 label="Email us"
@@ -190,11 +190,11 @@ function ContactItem({
       <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/20 text-white">
         {icon}
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <p className="text-[11px] font-medium uppercase tracking-wider text-white/70">
           {label}
         </p>
-        <p className="truncate text-sm font-semibold text-white">{value}</p>
+        <p className="text-sm font-semibold leading-snug text-white break-words">{value}</p>
       </div>
     </div>
   );
